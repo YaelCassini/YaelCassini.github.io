@@ -11,6 +11,18 @@
         <content type="html"><![CDATA[<p>一些零碎的知识</p><span id="more"></span><h3 id="Key-Words"><a href="#Key-Words" class="headerlink" title="Key Words:"></a>Key Words:</h3><ul><li><p>重要性采样</p></li><li><p>Image based lighting</p></li><li><p>Spherical Harmonics</p></li><li><p>Blender渲染中的两种重要性采样</p></li><li><ul><li>Indirect Light</li></ul></li><li><ul><li>Direct Light</li></ul></li><li><p>如何制作雨中布料渲染效果</p></li><li><ul><li><a href="https://www.youtube.com/watch?v=w3lwfMKkEwI">https://www.youtube.com/watch?v=w3lwfMKkEwI</a></li></ul></li><li><ul><li><a href="https://youngjoongkwon.wordpress.com/2017/11/30/real-time-animation-of-rain-wet-cloth-material-2016/">https://youngjoongkwon.wordpress.com/2017/11/30/real-time-animation-of-rain-wet-cloth-material-2016/</a></li></ul></li><li><ul><li></li></ul></li></ul>]]></content>
       
       
+      <categories>
+          
+          <category> 渲染 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 杂记 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -24,6 +36,22 @@
         <content type="html"><![CDATA[<ul><li><p>GAN论文总结：<a href="https://mp.weixin.qq.com/s?__biz=MzU5MTgzNzE0MA==&amp;mid=100002834&amp;idx=1&amp;sn=7d1c740509ba6b65f630f6db6bd51d7b&amp;chksm=7e29aea9495e27bfa746902298298c921320c3cb13a0619824528c3d1803f533779b7a93a242#rd">https://mp.weixin.qq.com/s?__biz=MzU5MTgzNzE0MA==&amp;mid=100002834&amp;idx=1&amp;sn=7d1c740509ba6b65f630f6db6bd51d7b&amp;chksm=7e29aea9495e27bfa746902298298c921320c3cb13a0619824528c3d1803f533779b7a93a242#rd</a></p></li><li><p>3DMM：<a href="https://zhuanlan.zhihu.com/p/161828142">https://zhuanlan.zhihu.com/p/161828142</a></p></li><li><p>深度学习入门：<a href="https://zhuanlan.zhihu.com/p/372029815">https://zhuanlan.zhihu.com/p/372029815</a></p></li><li><p>Keywords: 全连接神经网络、CNN、RNN、LTSM、GAN</p></li></ul>]]></content>
       
       
+      <categories>
+          
+          <category> 人工智能 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Deep Learing </tag>
+            
+            <tag> GAN </tag>
+            
+            <tag> Deep Fake </tag>
+            
+        </tags>
       
     </entry>
     
@@ -37,19 +65,20 @@
         <content type="html"><![CDATA[<p>蒙特卡洛积分：</p><ul><li><a href="https://zhuanlan.zhihu.com/p/146144853">https://zhuanlan.zhihu.com/p/146144853</a></li><li><a href="https://www.cnblogs.com/time-flow1024/p/10094293.html#mjx-eqn-eq%3AFN">https://www.cnblogs.com/time-flow1024/p/10094293.html#mjx-eqn-eq%3AFN</a></li><li><a href="https://zhuanlan.zhihu.com/p/365624460">https://zhuanlan.zhihu.com/p/365624460</a></li><li>我悟了！</li></ul><p>Blender Random Walk SSS：</p><ul><li><a href="https://www.blendernation.com/2018/02/10/new-random-walk-method-sss-cycles/">https://www.blendernation.com/2018/02/10/new-random-walk-method-sss-cycles/</a></li><li><a href="https://www.youtube.com/watch?v=fSShkXJtWjU">https://www.youtube.com/watch?v=fSShkXJtWjU</a></li></ul><p>Blender Subsurface：</p><ul><li><a href="https://docs.blender.org/manual/en/latest/render/shader_nodes/shader/sss.html">https://docs.blender.org/manual/en/latest/render/shader_nodes/shader/sss.html</a></li></ul><p>BRDF、BTDF、BSDF、BSSDF：</p><ul><li><a href="https://zhuanlan.zhihu.com/p/27014447">https://zhuanlan.zhihu.com/p/27014447</a></li></ul><p>次表面散射：</p><ul><li><p>毛星云总结Gems 3：<a href="https://zhuanlan.zhihu.com/p/42433792">https://zhuanlan.zhihu.com/p/42433792</a></p></li><li><p><a href="https://zhuanlan.zhihu.com/p/21247702?refer=graphics">https://zhuanlan.zhihu.com/p/21247702?refer=graphics</a></p></li><li><ol start="2001"><li>A Practical Model for Subsurface Light Transport</li></ol></li><li><p>引入偶极子：2001. A Practical Model for Subsurface Light Transport</p></li><li><p>引入多极子：2005. Light Diffusion in Multi-Layered Translucent Materials</p></li></ul><p>基于纹理空间、基于屏幕空间</p><p>基于纹理空间：Advanced Skin Rendering——Nvidia：<a href="https://developer.download.nvidia.com/presentations/2007/gdc/Advanced_Skin.pdf">https://developer.download.nvidia.com/presentations/2007/gdc/Advanced_Skin.pdf</a></p><ul><li><p>可分离的次表面散射：Separable Subsurface Scattering</p></li><li><p>Arnold 提供的次表面散射说明：<a href="https://docs.arnoldrenderer.com/display/A5AFMUG/Subsurface">https://docs.arnoldrenderer.com/display/A5AFMUG/Subsurface</a></p></li><li><p>Random Walk算法：<a href="https://blog.csdn.net/Da___Vinci/article/details/82958297">https://blog.csdn.net/Da___Vinci/article/details/82958297</a></p></li><li><p>一维随机游走：<a href="https://blog.csdn.net/qq_43186282/article/details/114585885">https://blog.csdn.net/qq_43186282/article/details/114585885</a></p></li><li><p><a href="http://www.iryoku.com/">http://www.iryoku.com/</a></p></li><li><p><a href="http://www.iryoku.com/separable-sss/">http://www.iryoku.com/separable-sss/</a></p></li></ul>]]></content>
       
       
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Hello World</title>
-      <link href="/2022/06/15/hello-world/"/>
-      <url>/2022/06/15/hello-world/</url>
-      
-        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><div class="story post-story"><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p></div>]]></content>
+      <categories>
+          
+          <category> 渲染 </category>
+          
+      </categories>
       
       
+        <tags>
+            
+            <tag> SSS </tag>
+            
+            <tag> 蒙特卡洛积分 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -121,18 +150,19 @@
         <content type="html"><![CDATA[<h1 id="test0607"><a href="#test0607" class="headerlink" title="test0607"></a>test0607</h1><div class="story post-story"><h2 id="yeyeye"><a href="#yeyeye" class="headerlink" title="yeyeye"></a>yeyeye</h2><h3 id="difhciudhfud"><a href="#difhciudhfud" class="headerlink" title="difhciudhfud"></a>difhciudhfud</h3><h4 id="dhcuhdiufdaadfda"><a href="#dhcuhdiufdaadfda" class="headerlink" title="dhcuhdiufdaadfda"></a>dhcuhdiufdaadfda</h4><h5 id="djnfjdsnfds"><a href="#djnfjdsnfds" class="headerlink" title="djnfjdsnfds"></a>djnfjdsnfds</h5><ol><li>2jcnducd</li><li>dfbahbfa<br>2.1 cdishcuidanhcuoa<br>2.2 cdushciuandc<br>2.3 cdfhcuisdhc</li><li>cijnsdiucnd</li></ol><p>test0607</p><p><img src="http://rd39pq3ux.bkt.clouddn.com/liuyao.jpg" alt="testimg" title="Background"></p><p><img src="https://raw.githubusercontent.com/Cassinicc/MyGraphBed/main/test.png" alt="testimg" title="testimg"></p></div>]]></content>
       
       
-      <categories>
-          
-          <category> test0607 </category>
-          
-      </categories>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="/2022/06/08/hello-world/"/>
+      <url>/2022/06/08/hello-world/</url>
+      
+        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><div class="story post-story"><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p></div>]]></content>
       
       
-        <tags>
-            
-            <tag> test0607 </tag>
-            
-        </tags>
       
     </entry>
     
