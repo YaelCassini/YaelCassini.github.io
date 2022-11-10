@@ -4,6 +4,44 @@
   
     
     <entry>
+      <title>一些资源</title>
+      <link href="/2022/11/10/%E4%B8%80%E4%BA%9B%E8%B5%84%E6%BA%90/"/>
+      <url>/2022/11/10/%E4%B8%80%E4%BA%9B%E8%B5%84%E6%BA%90/</url>
+      
+        <content type="html"><![CDATA[<p>常用Mesh：<a href="http://casual-effects.com/data/index.html">http://casual-effects.com/data/index.html</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Neural Rendering</title>
+      <link href="/2022/07/29/Neural-Rendering/"/>
+      <url>/2022/07/29/Neural-Rendering/</url>
+      
+        <content type="html"><![CDATA[<ul><li><a href="https://www.youtube.com/watch?v=otly9jcZ0Jg">https://www.youtube.com/watch?v=otly9jcZ0Jg</a></li><li><a href="https://www.youtube.com/watch?v=aboFl5ozImM">https://www.youtube.com/watch?v=aboFl5ozImM</a></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 人工智能 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Neural Rendering </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Deep Face 初期实践</title>
       <link href="/2022/07/25/Deep-Face-%E5%88%9D%E6%9C%9F%E5%AE%9E%E8%B7%B5/"/>
       <url>/2022/07/25/Deep-Face-%E5%88%9D%E6%9C%9F%E5%AE%9E%E8%B7%B5/</url>
@@ -37,7 +75,7 @@
       <link href="/2022/07/14/TA-learning/"/>
       <url>/2022/07/14/TA-learning/</url>
       
-        <content type="html"><![CDATA[<p>一些零碎的知识</p><span id="more"></span><h3 id="Key-Words"><a href="#Key-Words" class="headerlink" title="Key Words:"></a>Key Words:</h3><ul><li><p>重要性采样</p></li><li><p>Image based lighting</p></li><li><p>Spherical Harmonics</p></li><li><p>Blender渲染中的两种重要性采样</p></li><li><ul><li>Indirect Light</li></ul></li><li><ul><li>Direct Light</li></ul></li><li><p>如何制作雨中布料渲染效果</p></li><li><ul><li><a href="https://www.youtube.com/watch?v=w3lwfMKkEwI">https://www.youtube.com/watch?v=w3lwfMKkEwI</a></li></ul></li><li><ul><li><a href="https://youngjoongkwon.wordpress.com/2017/11/30/real-time-animation-of-rain-wet-cloth-material-2016/">https://youngjoongkwon.wordpress.com/2017/11/30/real-time-animation-of-rain-wet-cloth-material-2016/</a></li></ul></li><li><ul><li><a href="https://cdn.jsdelivr.net/gh/YaelCassini/Papers/TA/Wet%20cloth%20animation%20with%20vertex%20based%20adhesion%20force%20model.pdf">https://cdn.jsdelivr.net/gh/YaelCassini/Papers/TA/Wet%20cloth%20animation%20with%20vertex%20based%20adhesion%20force%20model.pdf</a></li></ul></li><li><ul><li><a href="https://cdn.jsdelivr.net/gh/YaelCassini/Papers/TA/Real-time%20Animation%20of%20Rain-wet%20Cloth%20Material.pdf">https://cdn.jsdelivr.net/gh/YaelCassini/Papers/TA/Real-time%20Animation%20of%20Rain-wet%20Cloth%20Material.pdf</a></li></ul></li><li><p>Normal Mapping相关</p></li><li><ul><li>Triplanar Mapping</li></ul></li><li><ul><li><a href="https://blog.selfshadow.com/publications/blending-in-detail/#mjx-eqn-eqquat">https://blog.selfshadow.com/publications/blending-in-detail/#mjx-eqn-eqquat</a></li></ul></li></ul>]]></content>
+        <content type="html"><![CDATA[<p>一些零碎的知识</p><span id="more"></span><h3 id="Key-Words"><a href="#Key-Words" class="headerlink" title="Key Words:"></a>Key Words:</h3><ul><li><p>重要性采样</p></li><li><p>Image based lighting</p></li><li><p>Spherical Harmonics</p></li><li><p>Blender渲染中的两种重要性采样</p></li><li><ul><li>Indirect Light</li></ul></li><li><ul><li>Direct Light</li></ul></li><li><p>如何制作雨中布料渲染效果</p></li><li><ul><li><a href="https://www.youtube.com/watch?v=w3lwfMKkEwI">https://www.youtube.com/watch?v=w3lwfMKkEwI</a></li></ul></li><li><ul><li><a href="https://youngjoongkwon.wordpress.com/2017/11/30/real-time-animation-of-rain-wet-cloth-material-2016/">https://youngjoongkwon.wordpress.com/2017/11/30/real-time-animation-of-rain-wet-cloth-material-2016/</a></li></ul></li><li><ul><li><a href="https://cdn.jsdelivr.net/gh/YaelCassini/Papers/TA/Wet%20cloth%20animation%20with%20vertex%20based%20adhesion%20force%20model.pdf">https://cdn.jsdelivr.net/gh/YaelCassini/Papers/TA/Wet%20cloth%20animation%20with%20vertex%20based%20adhesion%20force%20model.pdf</a></li></ul></li><li><ul><li><a href="https://cdn.jsdelivr.net/gh/YaelCassini/Papers/TA/Real-time%20Animation%20of%20Rain-wet%20Cloth%20Material.pdf">https://cdn.jsdelivr.net/gh/YaelCassini/Papers/TA/Real-time%20Animation%20of%20Rain-wet%20Cloth%20Material.pdf</a></li></ul></li><li><p>Normal Mapping相关</p></li><li><ul><li>Triplanar Mapping</li></ul></li><li><ul><li><a href="https://blog.selfshadow.com/publications/blending-in-detail/#mjx-eqn-eqquat">https://blog.selfshadow.com/publications/blending-in-detail/#mjx-eqn-eqquat</a></li></ul></li><li><p>渲染中的坐标变换：</p></li><li><ul><li><a href="https://blog.csdn.net/sinat_34870723/article/details/113925012">https://blog.csdn.net/sinat_34870723/article/details/113925012</a></li></ul></li><li><ul><li><a href="https://zhuanlan.zhihu.com/p/115395322">https://zhuanlan.zhihu.com/p/115395322</a></li></ul></li></ul>]]></content>
       
       
       <categories>
