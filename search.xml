@@ -4,11 +4,24 @@
   
     
     <entry>
+      <title>Visibility</title>
+      <link href="/2023/02/17/Visibility/"/>
+      <url>/2023/02/17/Visibility/</url>
+      
+        <content type="html"><![CDATA[<div class="story post-story"><h2 id="任务目标："><a href="#任务目标：" class="headerlink" title="任务目标："></a>任务目标：</h2><p>参与一个可微分渲染的项目，主要负责其中的渲染部分相关工作，在前期需要使用已有的Mesh和Texture数据生成网络所需要的输入数据。其中就包括Visibility，刚开始做的时候什么都不太懂，学习相关知识耽误了很多时间，故整理于此。</p></div><div class="story post-story"><h2 id="任务理解："><a href="#任务理解：" class="headerlink" title="任务理解："></a>任务理解：</h2><p>经与导师沟通后，本项目要求的Visibility并不是从相机角度看过去的可视性，而是更像环境光照那种，设想有一个无限大的球面，在球面上通过遍历不同的经纬得到不同的光线方向，对于模型上面的每一个顶点，计算在球面上各个方向其是否可视（光线不被其他物体或者面片遮挡）。<br><br>为了方便数据输入网络，导师还要求将这个可视数据通过球谐函数Spherical Harmonics计算得到在球谐函数空间的前9维系数，从而将每一个顶点在各个方向上是否可见的信息，转化为一个9维的向量，作为Mesh中顶点的附加属性。</p></div><div class="story post-story"><h2 id="具体实现："><a href="#具体实现：" class="headerlink" title="具体实现："></a>具体实现：</h2><p>因为在计算Visibility中需要对整个球面进行光线方向的采样，并计算其在整个场景中是否与其他物体或者面片相交，因此其实可以转化为使用一个光线追踪的框架来帮助完成这个工作，在前期探索中，曾经试图使用Games202 Assignment2的Nori框架来完成这件事，但是后面与导师沟通后，导师建议我使用Mitsuba来完成该工作，原因主要有下：Mitsuba的使用场合较为广泛，相关的资料和实验室能够提供的帮助也较多；另外学习Mitsuba也对我之后在渲染方向的继续探索有帮助。</p><p>而对于投影到SH这一步，目前我在Giuhub上找到一个开源的项目：</p><ul><li><a href="https://github.com/chalmersgit/SphericalHarmonics">https://github.com/chalmersgit/SphericalHarmonics</a></li></ul><p>初步决定在其基础上进行修改完成第二部分计算工作。这个项目初衷是针对Image Based Lighting的SH投影计算，其使用的IBL投影方式是Equirectangular Projection(ERP)。相关资料：</p><ul><li><a href="https://blog.csdn.net/lin453701006/article/details/71173090">https://blog.csdn.net/lin453701006/article/details/71173090</a></li></ul><p>因此首先要把球面采样的代码修改到与该投影方式对应，得到一张这样的图像，再使用该项目计算SH。</p></div><div class="story post-story"><h2 id="相关知识点"><a href="#相关知识点" class="headerlink" title="相关知识点"></a>相关知识点</h2><p>Image Based Lighting分为三种不同的投影方式：</p><ul><li>Cube Map</li><li>Dual Paraboloid Map</li><li>Equirectangualr Map</li></ul></div><div class="story post-story"><h2 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h2><ul><li>Spherical Harmonics：<br><a href="https://www.jianshu.com/p/a379b4c6d346">https://www.jianshu.com/p/a379b4c6d346</a></li></ul></div>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>一些资源</title>
       <link href="/2022/11/10/%E4%B8%80%E4%BA%9B%E8%B5%84%E6%BA%90/"/>
       <url>/2022/11/10/%E4%B8%80%E4%BA%9B%E8%B5%84%E6%BA%90/</url>
       
-        <content type="html"><![CDATA[<p>常用Mesh：<a href="http://casual-effects.com/data/index.html">http://casual-effects.com/data/index.html</a></p>]]></content>
+        <content type="html"><![CDATA[<p>常用Mesh：<a href="http://casual-effects.com/data/index.html">http://casual-effects.com/data/index.html</a></p><ul><li>Spherical Harmonics：<br><a href="https://www.jianshu.com/p/a379b4c6d346">https://www.jianshu.com/p/a379b4c6d346</a></li><li><a href="https://github.com/blurgyy/cg-2020">https://github.com/blurgyy/cg-2020</a></li></ul>]]></content>
       
       
       
