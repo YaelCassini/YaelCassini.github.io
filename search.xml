@@ -21,7 +21,7 @@
       <link href="/2022/11/10/%E4%B8%80%E4%BA%9B%E8%B5%84%E6%BA%90/"/>
       <url>/2022/11/10/%E4%B8%80%E4%BA%9B%E8%B5%84%E6%BA%90/</url>
       
-        <content type="html"><![CDATA[<p>常用Mesh：<a href="http://casual-effects.com/data/index.html">http://casual-effects.com/data/index.html</a></p><ul><li>Spherical Harmonics：<br><a href="https://www.jianshu.com/p/a379b4c6d346">https://www.jianshu.com/p/a379b4c6d346</a></li><li><a href="https://github.com/blurgyy/cg-2020">https://github.com/blurgyy/cg-2020</a></li></ul>]]></content>
+        <content type="html"><![CDATA[<p>常用Mesh：<a href="http://casual-effects.com/data/index.html">http://casual-effects.com/data/index.html</a></p><ul><li><p>Spherical Harmonics：<br><a href="https://www.jianshu.com/p/a379b4c6d346">https://www.jianshu.com/p/a379b4c6d346</a></p></li><li><p><a href="https://github.com/blurgyy/cg-2020">https://github.com/blurgyy/cg-2020</a></p></li><li><p>Chrono是c++11的一个时间库，可以用它来做程序运行时间的记录。</p></li><li><p><a href="https://www.cnblogs.com/jwk000/p/3560086.html">https://www.cnblogs.com/jwk000/p/3560086.html</a></p></li><li><p>git submodule 如何push 代码</p></li><li><p>cd your_submodule</p></li><li><p>git checkout master</p></li><li><p>git commit -a -m “commit message”</p></li><li><p>git push</p></li><li><p>cd ..</p></li><li><p>git add your_submodule</p></li><li><p>git commit -m “Update submodule”</p></li><li><p>git submodule update –remote</p></li><li><p>git pull –recurse-submodules</p></li><li><p>Warp是一个可以迁移拓扑并投影贴图的软件</p></li></ul>]]></content>
       
       
       
