@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>PathTracing</title>
+      <link href="/2023/03/24/PathTracing/"/>
+      <url>/2023/03/24/PathTracing/</url>
+      
+        <content type="html"><![CDATA[<h3 id="Related-Information"><a href="#Related-Information" class="headerlink" title="Related Information:"></a>Related Information:</h3><ul><li><a href="https://raytracing.github.io/books/RayTracingInOneWeekend.html">https://raytracing.github.io/books/RayTracingInOneWeekend.html</a></li><li><a href="https://raytracing.github.io/books/RayTracingTheNextWeek.html">https://raytracing.github.io/books/RayTracingTheNextWeek.html</a></li><li><a href="https://agraphicsguynotes.com/posts/sample_microfacet_brdf/">https://agraphicsguynotes.com/posts/sample_microfacet_brdf/</a></li><li><a href="http://www.cim.mcgill.ca/~derek/ecse689_a3.html">http://www.cim.mcgill.ca/~derek/ecse689_a3.html</a></li><li><a href="https://raytracing.github.io/books/RayTracingInOneWeekend.html#dielectrics">https://raytracing.github.io/books/RayTracingInOneWeekend.html#dielectrics</a></li><li><a href="https://en.wikipedia.org/wiki/M%C3%B6ller%E2%80%93Trumbore_intersection_algorithm">https://en.wikipedia.org/wiki/M%C3%B6ller%E2%80%93Trumbore_intersection_algorithm</a></li><li><a href="https://math.stackexchange.com/questions/538458/how-to-sample-points-on-a-triangle-surface-in-3d">https://math.stackexchange.com/questions/538458/how-to-sample-points-on-a-triangle-surface-in-3d</a></li><li><a href="https://computergraphics.stackexchange.com/questions/5152/progressive-path-tracing-with-explicit-light-sampling">https://computergraphics.stackexchange.com/questions/5152/progressive-path-tracing-with-explicit-light-sampling</a></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> PathTracing </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Rendering </tag>
+            
+            <tag> RayTracing </tag>
+            
+            <tag> PathTracing </tag>
+            
+            <tag> Monte Carlo </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Visibility</title>
       <link href="/2023/02/17/Visibility/"/>
       <url>/2023/02/17/Visibility/</url>
@@ -11,6 +42,22 @@
         <content type="html"><![CDATA[<div class="story post-story"><h2 id="任务目标："><a href="#任务目标：" class="headerlink" title="任务目标："></a>任务目标：</h2><p>参与一个可微分渲染的项目，主要负责其中的渲染部分相关工作，在前期需要使用已有的Mesh和Texture数据生成网络所需要的输入数据。其中就包括Visibility，刚开始做的时候什么都不太懂，学习相关知识耽误了很多时间，故整理于此。</p></div><div class="story post-story"><h2 id="任务理解："><a href="#任务理解：" class="headerlink" title="任务理解："></a>任务理解：</h2><p>经与导师沟通后，本项目要求的Visibility并不是从相机角度看过去的可视性，而是更像环境光照那种，设想有一个无限大的球面，在球面上通过遍历不同的经纬得到不同的光线方向，对于模型上面的每一个顶点，计算在球面上各个方向其是否可视（光线不被其他物体或者面片遮挡）。<br><br>为了方便数据输入网络，导师还要求将这个可视数据通过球谐函数Spherical Harmonics计算得到在球谐函数空间的前9维系数，从而将每一个顶点在各个方向上是否可见的信息，转化为一个9维的向量，作为Mesh中顶点的附加属性。</p></div><div class="story post-story"><h2 id="具体实现："><a href="#具体实现：" class="headerlink" title="具体实现："></a>具体实现：</h2><p>因为在计算Visibility中需要对整个球面进行光线方向的采样，并计算其在整个场景中是否与其他物体或者面片相交，因此其实可以转化为使用一个光线追踪的框架来帮助完成这个工作，在前期探索中，曾经试图使用Games202 Assignment2的Nori框架来完成这件事，但是后面与导师沟通后，导师建议我使用Mitsuba来完成该工作，原因主要有下：Mitsuba的使用场合较为广泛，相关的资料和实验室能够提供的帮助也较多；另外学习Mitsuba也对我之后在渲染方向的继续探索有帮助。</p><p>而对于投影到SH这一步，目前我在Giuhub上找到一个开源的项目：</p><ul><li><a href="https://github.com/chalmersgit/SphericalHarmonics">https://github.com/chalmersgit/SphericalHarmonics</a></li></ul><p>初步决定在其基础上进行修改完成第二部分计算工作。这个项目初衷是针对Image Based Lighting的SH投影计算，其使用的IBL投影方式是Equirectangular Projection(ERP)。相关资料：</p><ul><li><a href="https://blog.csdn.net/lin453701006/article/details/71173090">https://blog.csdn.net/lin453701006/article/details/71173090</a></li></ul><p>因此首先要把球面采样的代码修改到与该投影方式对应，得到一张这样的图像，再使用该项目计算SH。</p></div><div class="story post-story"><h2 id="具体实现中遇到的问题"><a href="#具体实现中遇到的问题" class="headerlink" title="具体实现中遇到的问题"></a>具体实现中遇到的问题</h2><ul><li>从maya导出的mesh 在Maya中没有Transform 但是导入Blender有x轴上90度的旋转，而进入到Mitsuba时其在空间坐标系中的状态是Blender中去掉90旋转之后的状态，初步怀疑是Maya、Blender和Mitsuba三者的坐标系有些不同，但是目前还没有深入探索得到答案。</li><li>在进行球面采样的时候，需要为了防止边界出现问题，需要将每个像素点的坐标变换到像素点中心，即遍历xy时对其进行x+0.5 y+0.5的计算。</li></ul></div><div class="story post-story"><h2 id="相关知识点"><a href="#相关知识点" class="headerlink" title="相关知识点"></a>相关知识点</h2><p>Image Based Lighting分为三种不同的投影方式：</p><ul><li>Cube Map</li><li>Dual Paraboloid Map</li><li>Equirectangualr Map</li></ul></div><div class="story post-story"><h2 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h2><ul><li>Spherical Harmonics：<br><a href="https://www.jianshu.com/p/a379b4c6d346">https://www.jianshu.com/p/a379b4c6d346</a></li></ul></div>]]></content>
       
       
+      <categories>
+          
+          <category> Deep Face Project </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Deep Learing </tag>
+            
+            <tag> Artificial Intelligent </tag>
+            
+            <tag> Spherical Harmonics </tag>
+            
+        </tags>
       
     </entry>
     
@@ -23,6 +70,12 @@
       
         <content type="html"><![CDATA[<p>常用Mesh：<a href="http://casual-effects.com/data/index.html">http://casual-effects.com/data/index.html</a></p><ul><li><p>Spherical Harmonics：<br><a href="https://www.jianshu.com/p/a379b4c6d346">https://www.jianshu.com/p/a379b4c6d346</a></p></li><li><p><a href="https://github.com/blurgyy/cg-2020">https://github.com/blurgyy/cg-2020</a></p></li><li><p>Chrono是c++11的一个时间库，可以用它来做程序运行时间的记录。</p></li><li><p><a href="https://www.cnblogs.com/jwk000/p/3560086.html">https://www.cnblogs.com/jwk000/p/3560086.html</a></p></li><li><p>git submodule 如何push 代码</p></li><li><p>cd your_submodule</p></li><li><p>git checkout master</p></li><li><p>git commit -a -m “commit message”</p></li><li><p>git push</p></li><li><p>cd ..</p></li><li><p>git add your_submodule</p></li><li><p>git commit -m “Update submodule”</p></li><li><p>git submodule update –remote</p></li><li><p>git pull –recurse-submodules</p></li><li><p>Warp是一个可以迁移拓扑并投影贴图的软件</p></li><li><p>TinyXML2是一个可以解析XML格式文件的库</p></li><li><p><a href="https://github.com/leethomason/tinyxml2">https://github.com/leethomason/tinyxml2</a></p></li><li><p>Maya里面的坐标系是Y轴朝上</p></li><li><p>Blender里面的坐标系是z轴朝上</p></li><li><p>都是右手坐标系</p></li><li><p>所以模型导入blender会自动沿着x轴旋转90度</p></li></ul>]]></content>
       
+      
+      <categories>
+          
+          <category> Others </category>
+          
+      </categories>
       
       
     </entry>
@@ -39,7 +92,7 @@
       
       <categories>
           
-          <category> 人工智能 </category>
+          <category> Neural Rendering </category>
           
       </categories>
       
@@ -47,6 +100,10 @@
         <tags>
             
             <tag> Neural Rendering </tag>
+            
+            <tag> Artificial Intelligence </tag>
+            
+            <tag> Rendering </tag>
             
         </tags>
       
@@ -64,7 +121,7 @@
       
       <categories>
           
-          <category> 人工智能 </category>
+          <category> Deep Face Project </category>
           
       </categories>
       
@@ -77,6 +134,8 @@
             
             <tag> Deep Fake </tag>
             
+            <tag> Artificial Intelligent </tag>
+            
         </tags>
       
     </entry>
@@ -84,7 +143,7 @@
     
     
     <entry>
-      <title>TA-learning</title>
+      <title>TA-learning-Note01</title>
       <link href="/2022/07/14/TA-learning/"/>
       <url>/2022/07/14/TA-learning/</url>
       
@@ -93,14 +152,18 @@
       
       <categories>
           
-          <category> 渲染 </category>
+          <category> TA-learning </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 杂记 </tag>
+            <tag> Rendering </tag>
+            
+            <tag> Notes </tag>
+            
+            <tag> Technical Artist </tag>
             
         </tags>
       
@@ -118,7 +181,7 @@
       
       <categories>
           
-          <category> 人工智能 </category>
+          <category> Deep Face Project </category>
           
       </categories>
       
@@ -130,6 +193,8 @@
             <tag> GAN </tag>
             
             <tag> Deep Fake </tag>
+            
+            <tag> Artificial Intelligent </tag>
             
         </tags>
       
@@ -147,16 +212,16 @@
       
       <categories>
           
-          <category> 渲染 </category>
+          <category> Subsurface Scattering </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> SSS </tag>
+            <tag> Rendering </tag>
             
-            <tag> 蒙特卡洛积分 </tag>
+            <tag> Monte Carlo </tag>
             
         </tags>
       
