@@ -5,8 +5,8 @@
   <meta name="Volantis" content="5.3.2">
   <meta charset="utf-8">
   <!-- SEO相关 -->
-  <meta name="robots" content="noindex,follow">
-  <link rel="canonical" href="https://yaelcassini.github.io/archives/2022/06/"/>
+  
+  <link rel="canonical" href="https://yaelcassini.github.io/2023/03/28/rendering-history/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -32,18 +32,24 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>归档：2022/6 - Unknown Island</title>
-  <meta name="keywords" content="null">
+  <title>Rendering History - Unknown Island</title>
+  <meta name="keywords" content="Rendering,RayTracing,PathTracing,Monte Carlo,null">
   <meta desc name="description" content="赛博小屋 - Cassini - Unknown Island">
   
-<meta property="og:type" content="website">
-<meta property="og:title" content="Unknown Island">
-<meta property="og:url" content="https://yaelcassini.github.io/archives/2022/06/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Rendering History">
+<meta property="og:url" content="https://yaelcassini.github.io/2023/03/28/Rendering-History/index.html">
 <meta property="og:site_name" content="Unknown Island">
-<meta property="og:description" content="赛博小屋">
+<meta property="og:description" content="真实感渲染光照模型 Illumination Model 灯光 阴影  基于物理的材质 Material 明暗 纹理 透明 一种标准的基本属性主要是Metallic-Roughness，另一种标准是Specular-Glossiness，前者对设计师更友好，后者侧重物理属性，保留了反射率F0。  光栅化 Rasterization光线追踪消隐技术全局光照（Global Illumination）后">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+<meta property="article:published_time" content="2023-03-28T12:37:39.000Z">
+<meta property="article:modified_time" content="2023-03-28T12:43:10.719Z">
 <meta property="article:author" content="Cassini">
+<meta property="article:tag" content="Rendering">
+<meta property="article:tag" content="RayTracing">
+<meta property="article:tag" content="PathTracing">
+<meta property="article:tag" content="Monte Carlo">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png">
   <style>
@@ -2690,7 +2696,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
       <!-- see: /layout/_partial/scripts/_ctrl/coverCtrl.ejs -->
-      <div id="half" class='cover-wrapper  dock' style="display: ;">
+      <div id="half" class='cover-wrapper post dock' style="display: ;">
         
   <div id="parallax-window"></div>
 
@@ -2767,28 +2773,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         <div class="body-wrapper">
           
 <div id="l_main" class=''>
-	
-		
-  <section class="post-list">
-    
-      
-        
-          
-        
-          
-        
-          
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://yaelcassini.github.io/2022/06/15/Subsurface-Scattering/">
+  <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow floatable blur article-type-post" id="post" itemscope itemprop="blogPost">
+  <link itemprop="mainEntityOfPage" href="https://yaelcassini.github.io/2023/03/28/Rendering-History/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Unknown Island">
   </span>
@@ -2797,284 +2783,622 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <meta itemprop="description" content="赛博小屋">
   </span>
   
-  
+
+
   
     <span hidden>
       <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png">
     </span>
   
-  
+  <div class="article-meta" id="top">
     
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2022/06/15/Subsurface-Scattering/"  itemprop="url">
-        Subsurface Scattering
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
     
-      
-        蒙特卡洛积分：
+    
+      <h1 class="title" itemprop="name headline">
+        Rendering History
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+            
+<div class='new-meta-item author' itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <a itemprop="url" class='author' href="about/" rel="nofollow">
+    <img itemprop="image" src="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/logo_64.png">
+    <p itemprop="name">Yael Cassini</p>
+  </a>
+</div>
 
-https://zhuanlan.zhihu.com/p/146144853
-https://www.cnblogs.com/time-flow1024/p/10094293.html#mjx-eqn-eq%3AFN
-https://zhuanlan.zhihu.com/p/365624460
-我悟了！
+          
+        
+          
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2023-03-28T20:37:39+08:00">
+  <a class='notlink'>
+    <i class="fa-solid fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2023年3月28日</p>
+  </a>
+</div>
 
-Blender Random Walk SSS：
-
-https://...
-      
+          
+        
+          
+            
+  <div class='new-meta-item category'>
+    <i class="fa-solid fa-folder-open fa-fw" aria-hidden="true"></i>
+    <a class="category-link" href="/categories/Rendering/">Rendering</a>
+    
+      <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+        <a href="/categories/Rendering/" itemprop="url"><span itemprop="name">Rendering</span></a>
+      </span>
     
   </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' href='about/'><img src='https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/logo_64.png'></a>
-          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="image" content="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/logo_64.png">
-            <meta itemprop="name" content="Yael Cassini">
-            <meta itemprop="url" content="about/">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2022-06-15T15:47:18+08:00">2022-06-15</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Subsurface-Scattering/">Subsurface Scattering</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/Subsurface-Scattering/" itemprop="url"><span itemprop="name">Subsurface Scattering</span></a>
-            </span>
+
+
           
         
-      </div>
+          
+            
+
+
+<div class="new-meta-item browse">
+  <a class='notlink'>
+    <p>
+      <i class="fa-solid fa-eye fa-fw" aria-hidden="true"></i>
       
-        <div>
-          <a class='readmore' href='/2022/06/15/Subsurface-Scattering/' itemprop="url">
-            阅读全文
-          </a>
+      <span id="busuanzi_value_page_pv"><i class="fa-solid fa-loader fa-spin fa-fw" aria-hidden="true"></i></span>
+      
+      <span>次浏览</span>
+    </p>
+  </a>
+</div>
+
+
+          
+        
+        <!-- Custom Files topMeta begin-->
+        
+        <!-- Custom Files topMeta end-->
+      </div>
+    
+  </div>
+
+
+  <div id="layoutHelper-page-plugins"></div>
+  <div id="post-body" itemprop="articleBody">
+    <div class="story post-story"><h2 id="真实感渲染"><a href="#真实感渲染" class="headerlink" title="真实感渲染"></a>真实感渲染</h2><h3 id="光照模型-Illumination-Model"><a href="#光照模型-Illumination-Model" class="headerlink" title="光照模型 Illumination Model"></a>光照模型 Illumination Model</h3><ul>
+<li>灯光</li>
+<li>阴影</li>
+</ul>
+<h3 id="基于物理的材质-Material"><a href="#基于物理的材质-Material" class="headerlink" title="基于物理的材质 Material"></a>基于物理的材质 Material</h3><ul>
+<li>明暗</li>
+<li>纹理</li>
+<li>透明</li>
+<li>一种标准的基本属性主要是Metallic-Roughness，另一种标准是Specular-Glossiness，前者对设计师更友好，后者侧重物理属性，保留了反射率F0。</li>
+</ul>
+<h3 id="光栅化-Rasterization"><a href="#光栅化-Rasterization" class="headerlink" title="光栅化 Rasterization"></a>光栅化 Rasterization</h3><h3 id="光线追踪"><a href="#光线追踪" class="headerlink" title="光线追踪"></a>光线追踪</h3><h3 id="消隐技术"><a href="#消隐技术" class="headerlink" title="消隐技术"></a>消隐技术</h3><h3 id="全局光照（Global-Illumination）"><a href="#全局光照（Global-Illumination）" class="headerlink" title="全局光照（Global Illumination）"></a>全局光照（Global Illumination）</h3><h3 id="后处理"><a href="#后处理" class="headerlink" title="后处理"></a>后处理</h3><h3 id="DLSS"><a href="#DLSS" class="headerlink" title="DLSS"></a>DLSS</h3></div><div class="story post-story"><h2 id="光照模型"><a href="#光照模型" class="headerlink" title="光照模型"></a>光照模型</h2><h3 id="局部光照模型"><a href="#局部光照模型" class="headerlink" title="局部光照模型"></a>局部光照模型</h3><ul>
+<li>Lambert漫反射模型</li>
+<li>Gourand光照模型</li>
+<li>Phong光照模型</li>
+<li>Blinn-Phong光照模型</li>
+<li>Cook-Torrance模型</li>
+</ul>
+<h3 id="全局光照模型"><a href="#全局光照模型" class="headerlink" title="全局光照模型"></a>全局光照模型</h3><ul>
+<li><p>光线追踪</p>
+<ul>
+<li><p>路径追踪</p>
+</li>
+<li><p>递归光线追踪 whitted-type</p>
+</li>
+<li><p>分布式光线追踪 distrubution</p>
+</li>
+<li><p>双向路径追踪 Bidirectional Path</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://graphics.stanford.edu/courses/cs348b-03/papers/veach-chapter10.pdf">https://graphics.stanford.edu/courses/cs348b-03/papers/veach-chapter10.pdf</a></li>
+</ul>
+</li>
+<li><p>Metropolis</p>
+</li>
+<li><p>光子映射 Photon Mapping</p>
+</li>
+<li><p>基于点的全局光照</p>
+</li>
+</ul>
+</li>
+<li><p>辐射度算法</p>
+</li>
+<li><p>光子映射</p>
+</li>
+</ul>
+</div><div class="story post-story"><h2 id="Other-Topic"><a href="#Other-Topic" class="headerlink" title="Other Topic"></a>Other Topic</h2><h3 id="Ray-Marching"><a href="#Ray-Marching" class="headerlink" title="Ray Marching"></a>Ray Marching</h3><h3 id="Percentage-Closer-Soft-Shadows-PCSS"><a href="#Percentage-Closer-Soft-Shadows-PCSS" class="headerlink" title="Percentage Closer Soft Shadows (PCSS)"></a>Percentage Closer Soft Shadows (PCSS)</h3><h2 id="大事记-amp-原文引用"><a href="#大事记-amp-原文引用" class="headerlink" title="大事记&amp;原文引用"></a>大事记&amp;原文引用</h2><h3 id="1760"><a href="#1760" class="headerlink" title="1760"></a>1760</h3><ul>
+<li>Johann Heinrich Lambert在其著作Photometria中提出Lambert模型。</li>
+<li>Half-Lambert是Valve公司提出来的算法，为了解决Lambert公式在灰面太暗的问题。”Half Lambert” lighting is a technique first developed in the original Half-Life.</li>
+</ul>
+<h3 id="1967"><a href="#1967" class="headerlink" title="1967"></a>1967</h3><ul>
+<li><p>Siggraph（Special Interest Group for Computer GRAPHICS，计算机图形图像特别兴趣小组）成立</p>
+</li>
+<li><p>光照模型：Wylie等人第一次在显示物体时加入了光照效果。该论文提出，物体表面上一点接收到的光强，与该点到光源距离的平方成反比，且与光照方向和表面发现的夹角有关。</p>
+<ul>
+<li>Chris Wylie, Gordon Romney, David Evans, and Alan Erdahl. 1967. Half-tone perspective drawings by computer. In Proceedings of the November 14-16, 1967, fall joint computer conference (AFIPS ‘67 (Fall)). Association for Computing Machinery, New York, NY, USA, 49–58. <a target="_blank" rel="noopener" href="https://doi.org/10.1145/1465611.1465619">https://doi.org/10.1145/1465611.1465619</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="1968"><a href="#1968" class="headerlink" title="1968"></a>1968</h3><ul>
+<li><p>Arthur Appel 在研究隐藏面消除时提出了光线投射算法（Ray Casting），并首次给出了光线跟踪算法的描述。其具体思路是从每一个像素射出一条射线，然后找到最接近的物体挡住射线的路径，而视平面上每个像素的颜色取决于从可见光表面产生的亮度。</p>
+<ul>
+<li>Arthur Appel. 1968. Some techniques for shading machine renderings of solids. In Proceedings of the April 30–May 2, 1968, spring joint computer conference (AFIPS ‘68 (Spring)). Association for Computing Machinery, New York, NY, USA, 37–45. <a target="_blank" rel="noopener" href="https://doi.org/10.1145/1468075.1468082">https://doi.org/10.1145/1468075.1468082</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="1970"><a href="#1970" class="headerlink" title="1970"></a>1970</h3><ul>
+<li><p>光照模型：Bouknight提出第一个光反射模型，指出物体表面朝向是确定物体表面上一点光强的主要因素，用Lambert漫反射定律计算物体表面上各多边形的光强，对光照射不到的地方，用环境光代替。</p>
+<ul>
+<li>W. Jack Bouknight. 1970. A procedure for generation of three-dimensional half-toned computer graphics presentations. Commun. ACM 13, 9 (Sept. 1970), 527–536. <a target="_blank" rel="noopener" href="https://doi.org/10.1145/362736.362739">https://doi.org/10.1145/362736.362739</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="1971"><a href="#1971" class="headerlink" title="1971"></a>1971</h3><ul>
+<li><p>光照模型：Gourand提出的基于“漫反射模型与插值”思想的Gourand模型。对多面体模型，用漫反射模型计算多边形顶点的光亮度，再用增量法插值计算。</p>
+<ul>
+<li>Gouraud, H. (1971). Continuous Shading of Curved Surfaces. IEEE Transactions on Computers, C-20, 623-629. <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/1671906">https://ieeexplore.ieee.org/document/1671906</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="1974"><a href="#1974" class="headerlink" title="1974"></a>1974</h3><ul>
+<li><p>Siggraph开始每年举办计算机图形学顶级年度会议。</p>
+</li>
+<li><p>Z-buffer算法</p>
+<ul>
+<li>Catmull, E., “A Subdivision Algorithm for Computer Display of Curved Surfaces,” PhD. thesis, Dept. of Computer Science, University of Utah, 1974.</li>
+</ul>
+</li>
+</ul>
+<h3 id="1975"><a href="#1975" class="headerlink" title="1975"></a>1975</h3><ul>
+<li><p>光照模型：Phong提出图形学中第一个有影响的简单光照明模型。模型虽然只是一个经验模型，但是其真实度已达到可以接受的程度。在Phong光照模型的基础之上，相继出现了Goud明暗处理和Phong明暗处理两个增量式光照模型。</p>
+<ul>
+<li>Bui Tuong Phong. 1975. Illumination for computer generated pictures. Commun. ACM 18, 6 (June 1975), 311–317. <a target="_blank" rel="noopener" href="https://doi.org/10.1145/360825.360839">https://doi.org/10.1145/360825.360839</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="1976"><a href="#1976" class="headerlink" title="1976"></a>1976</h3><ul>
+<li><p>UV mapping</p>
+<ul>
+<li>James F. Blinn and Martin E. Newell. 1976. Texture and reflection in computer generated images. Commun. ACM 19, 10 (Oct. 1976), 542–547. <a target="_blank" rel="noopener" href="https://doi.org/10.1145/360349.360353">https://doi.org/10.1145/360349.360353</a></li>
+</ul>
+</li>
+<li><p>用于消隐的数据结构</p>
+<ul>
+<li>James H. Clark. 1976. Hierarchical geometric models for visible surface algorithms. Commun. ACM 19, 10 (Oct. 1976), 547–554. <a target="_blank" rel="noopener" href="https://doi.org/10.1145/360349.360354">https://doi.org/10.1145/360349.360354</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="1977"><a href="#1977" class="headerlink" title="1977"></a>1977</h3><ul>
+<li><p>光照模型：Blinn-Phong</p>
+<ul>
+<li>James F. Blinn. 1977. Models of light reflection for computer synthesized pictures. SIGGRAPH Comput. Graph. 11, 2 (Summer 1977), 192–198. <a target="_blank" rel="noopener" href="https://doi.org/10.1145/965141.563893">https://doi.org/10.1145/965141.563893</a></li>
+</ul>
+</li>
+<li><p>Shadow Volume</p>
+<ul>
+<li>Crow, Franklin C., “Shadow Algorithms for Computer Graphics,” Computer Graphics (SIGGRAPH ’77 Proceedings), vol. 11, no. 2, pp. 242–248, July 1977.</li>
+</ul>
+</li>
+</ul>
+<h3 id="1978"><a href="#1978" class="headerlink" title="1978"></a>1978</h3><ul>
+<li><p>Shadow Map算法</p>
+<ul>
+<li><p>Lance Williams. 1978. Casting curved shadows on curved surfaces. SIGGRAPH Comput. Graph. 12, 3 (August 1978), 270–274. <a target="_blank" rel="noopener" href="https://doi.org/10.1145/965139.807402">https://doi.org/10.1145/965139.807402</a></p>
+</li>
+<li><p>Development：</p>
+<ul>
+<li>C. Hourcade and A. Nicolas.  Algorithms for antialiased cast shadows. Computers and Graphics, 9(3):259–265, 1985.</li>
+<li>Midpoint Shadow Map.  Andrew Woo, VII.1 - THE SHADOW DEPTH MAP REVISITED, Editor(s): DAVID KIRK, Graphics Gems III (IBM Version), Morgan Kaufmann, 1992,Pages 338-342,  <a target="_blank" rel="noopener" href="https://doi.org/10.1016/B978-0-08-050755-2.50073-7">https://doi.org/10.1016/B978-0-08-050755-2.50073-7</a>.</li>
+<li>Mark Segal, Carl Korobkin, Rolf van Widenfelt, Jim Foran, and Paul Haeberli. 1992.  Fast shadows and lighting effects using texture mapping. SIGGRAPH Comput. Graph. 26, 2 (July 1992), 249–252. <a target="_blank" rel="noopener" href="https://doi.org/10.1145/142920.134071">https://doi.org/10.1145/142920.134071</a></li>
+<li>Shenchang Eric Chen and Lance Williams. 1993.  View interpolation for image synthesis. In Proceedings of the 20th annual conference on Computer graphics and interactive techniques (SIGGRAPH ‘93). Association for Computing Machinery, New York, NY, USA, 279–288. <a target="_blank" rel="noopener" href="https://doi.org/10.1145/166117.166153">https://doi.org/10.1145/166117.166153</a></li>
+<li>Y. Wang and S. Molnar. Second-depth shadow mapping.  Technical Report TR94-019, Department of Computer Science, University of North Carolina - Chapel Hill, Dec. 1994.</li>
+<li>. Fernando, S. Fernandez, K. Bala, and D. P. Greenberg. Adaptive shadow maps. In SIGGRAPH 2001 Conference Proceedings, pages 387–390, 2001.</li>
+<li>M. Stamminger and G. Drettakis. Perspective shadow maps. ACM Transactions on Graphics, 21(3):557–562, July 2002.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>感觉是消隐</p>
+<ul>
+<li>Edwin Catmull. 1978. A hidden-surface algorithm with anti-aliasing. SIGGRAPH Comput. Graph. 12, 3 (August 1978), 6–11. <a target="_blank" rel="noopener" href="https://doi.org/10.1145/965139.807360">https://doi.org/10.1145/965139.807360</a></li>
+</ul>
+</li>
+<li><p>太有名了先放在这里</p>
+<ul>
+<li>Turner Whitted. 1978. A scan line algorithm for computer display of curved surfaces. SIGGRAPH Comput. Graph. 12, SI (August 1978), 8–13. <a target="_blank" rel="noopener" href="https://doi.org/10.1145/988437.988440">https://doi.org/10.1145/988437.988440</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="1980"><a href="#1980" class="headerlink" title="1980"></a>1980</h3><ul>
+<li><p>光照模型&amp;光线追踪：Whitted提出了Whitted模型，并第一次给出一般性光线跟踪算法的范例。该模型综合考虑了光的反射、折射透射、阴影等。此时的光线追踪才真正的变成一个强大的工具，其将光线投射算法扩展为递归算法（Recursive Ray Tracing）。</p>
+<ul>
+<li>Turner Whitted. 1980. An improved illumination model for shaded display. Commun. ACM 23, 6 (June 1980), 343–349. <a target="_blank" rel="noopener" href="https://doi.org/10.1145/358876.358882">https://doi.org/10.1145/358876.358882</a></li>
+</ul>
+</li>
+<li><p>八叉树？</p>
+<ul>
+<li>Steven M. Rubin and Turner Whitted. 1980. A 3-dimensional representation for fast rendering of complex scenes. SIGGRAPH Comput. Graph. 14, 3 (July 1980), 110–116. <a target="_blank" rel="noopener" href="https://doi.org/10.1145/965105.807479">https://doi.org/10.1145/965105.807479</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="1982"><a href="#1982" class="headerlink" title="1982"></a>1982</h3><ul>
+<li><p>光照模型：Cook和Torrance为了克服Phong模型的缺点，提出了一个基于物理光学的表面反射模型—大名鼎鼎的Cook-Torrance微表面模型，使得模型中反射光的位置和分布与实际情况非常接近，因而用它绘制的图形具有很好的质感。</p>
+<ul>
+<li>R. L. Cook and K. E. Torrance. 1982. A Reflectance Model for Computer Graphics. ACM Trans. Graph. 1, 1 (Jan. 1982), 7–24. <a target="_blank" rel="noopener" href="https://doi.org/10.1145/357290.357293">https://doi.org/10.1145/357290.357293</a></li>
+</ul>
+</li>
+<li><p>体积散射 blinn</p>
+</li>
+</ul>
+<h3 id="1983"><a href="#1983" class="headerlink" title="1983"></a>1983</h3><ul>
+<li>光照模型：Hall和Greenbert在whitted基础上此进一步给出Hall光透射模型,考虑了漫透射和规则透射光。改进了whitted中投射高光效果，并再环境光中加入距离衰减因子，使之能够更好的模拟物体表面的透射特性。</li>
+</ul>
+<h3 id="1984"><a href="#1984" class="headerlink" title="1984"></a>1984</h3><ul>
+<li><p>Cook于1984年引入蒙特卡洛方法（Monte Carlo method）到光线跟踪领域，将经典的光线跟踪方法扩展为分布式光线跟踪算法（Distributed Ray Tracing），又称为随机光线追踪（stochasticray tracing），可以模拟更多的效果，如金属光泽、软阴影、景深（ Depthof Field）、运动模糊等等。</p>
+<ul>
+<li>Robert L. Cook, Thomas Porter, and Loren Carpenter. 1984. Distributed ray tracing. SIGGRAPH Comput. Graph. 18, 3 (July 1984), 137–145. <a target="_blank" rel="noopener" href="https://doi.org/10.1145/964965.808590">https://doi.org/10.1145/964965.808590</a></li>
+</ul>
+</li>
+<li><p>Goral 1984年 辐射度算法</p>
+</li>
+</ul>
+<h3 id="1986"><a href="#1986" class="headerlink" title="1986"></a>1986</h3><ul>
+<li><p>光照模型&amp;光线追踪：Kajiya统一了以前所有的光照模型。Kajiya首先提出使类似于随机采样的蒙特卡罗（Monte Carlo）方法求解绘制方程的光线追踪算法（Raytracing）——通过对到达图像平面上的光线路径进行采样，然后估计它们对最终图像的贡献来生成图像。</p>
+<ul>
+<li>James T. Kajiya. 1986. The rendering equation. SIGGRAPH Comput. Graph. 20, 4 (Aug. 1986), 143–150. <a target="_blank" rel="noopener" href="https://doi.org/10.1145/15886.15902">https://doi.org/10.1145/15886.15902</a></li>
+</ul>
+</li>
+<li><p>Non-diffuse Radiosity</p>
+<ul>
+<li>David S. Immel, Michael F. Cohen, and Donald P. Greenberg. 1986. A radiosity method for non-diffuse environments. SIGGRAPH Comput. Graph. 20, 4 (Aug. 1986), 133–142. <a target="_blank" rel="noopener" href="https://doi.org/10.1145/15886.15901">https://doi.org/10.1145/15886.15901</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="1987"><a href="#1987" class="headerlink" title="1987"></a>1987</h3><ul>
+<li><p>PCF算法</p>
+<ul>
+<li>William T. Reeves, David H. Salesin, and Robert L. Cook. 1987. Rendering antialiased shadows with depth maps. SIGGRAPH Comput. Graph. 21, 4 (July 1987), 283–291. <a target="_blank" rel="noopener" href="https://doi.org/10.1145/37402.37435">https://doi.org/10.1145/37402.37435</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="1991"><a href="#1991" class="headerlink" title="1991"></a>1991</h3><ul>
+<li><p>非漫射辐射度（Non-diffuse Radiosity）</p>
+<ul>
+<li>Françis X. Sillion, James R. Arvo, Stephen H. Westin, and Donald P. Greenberg. 1991. A global illumination solution for general reflectance distributions. SIGGRAPH Comput. Graph. 25, 4 (July 1991), 187–196. <a target="_blank" rel="noopener" href="https://doi.org/10.1145/127719.122739">https://doi.org/10.1145/127719.122739</a></li>
+</ul>
+</li>
+<li><p>Hanrahan 1991年 分级辐射度算法（Hierarchical radiosity）</p>
+</li>
+<li><p>先放在这</p>
+<ul>
+<li>Xiao D. He, Kenneth E. Torrance, François X. Sillion, and Donald P. Greenberg. 1991. A comprehensive physical model for light reflection. SIGGRAPH Comput. Graph. 25, 4 (July 1991), 175–186. <a target="_blank" rel="noopener" href="https://doi.org/10.1145/127719.122738">https://doi.org/10.1145/127719.122738</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="1992"><a href="#1992" class="headerlink" title="1992"></a>1992</h3><ul>
+<li>RenderMan规范，简称RISpec，是一个开放的API，由皮克斯开发，用于描述三维模型并把它转换成逼真的数字图像。RenderMan规范作为建模程序和渲染程序之间的通信协议（或称为接口），用于生成逼真的数字图像。</li>
+</ul>
+<h3 id="1993"><a href="#1993" class="headerlink" title="1993"></a>1993</h3><ul>
+<li><p>不连续网格辐射度（Discontinuity meshing）</p>
+<ul>
+<li>Dani Lischinski, Filippo Tampieri, and Donald P. Greenberg. 1993. Combining hierarchical radiosity and discontinuity meshing. In Proceedings of the 20th annual conference on Computer graphics and interactive techniques (SIGGRAPH ‘93). Association for Computing Machinery, New York, NY, USA, 199–208. <a target="_blank" rel="noopener" href="https://doi.org/10.1145/166117.166143">https://doi.org/10.1145/166117.166143</a></li>
+</ul>
+</li>
+<li><p>Lafortune and Willems 1993 年• Veach and Guibas 1994年 双向路径跟踪</p>
+</li>
+</ul>
+<h3 id="1994"><a href="#1994" class="headerlink" title="1994"></a>1994</h3><ul>
+<li><p>微表面&amp;Roughness相关</p>
+<ul>
+<li>Michael Oren and Shree K. Nayar. 1994. Generalization of Lambert’s reflectance model. In Proceedings of the 21st annual conference on Computer graphics and interactive techniques (SIGGRAPH ‘94). Association for Computing Machinery, New York, NY, USA, 239–246. <a target="_blank" rel="noopener" href="https://doi.org/10.1145/192161.192213">https://doi.org/10.1145/192161.192213</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="1995"><a href="#1995" class="headerlink" title="1995"></a>1995</h3><ul>
+<li>Diffusion for light transport</li>
+</ul>
+<h3 id="1996"><a href="#1996" class="headerlink" title="1996"></a>1996</h3><ul>
+<li><p>光子映射 Photon Mapping</p>
+<ul>
+<li>Jensen, Henrik Wann. “Global Illumination using Photon Maps.” Rendering Techniques (1996).</li>
+</ul>
+</li>
+</ul>
+<h3 id="1997"><a href="#1997" class="headerlink" title="1997"></a>1997</h3><ul>
+<li><p>Veach and Guibas 1997 马尔可夫链蒙特卡洛</p>
+<ul>
+<li>Robust Monte Carlo Methods for Light Transport Simulation</li>
+</ul>
+</li>
+<li><p>光子映射 Photon Mapping</p>
+<ul>
+<li>Bruce Walter, Philip M. Hubbard, Peter Shirley, and Donald P. Greenberg. 1997. Global illumination using local linear density estimation. ACM Trans. Graph. 16, 3 (July 1997), 217–259. <a target="_blank" rel="noopener" href="https://doi.org/10.1145/256157.256158">https://doi.org/10.1145/256157.256158</a></li>
+</ul>
+</li>
+<li><p>Light Transport</p>
+<ul>
+<li>Veach, Eric &amp; Guibas, Leonidas. (1970). Metropolis Light Transport. Computer Graphics (SIGGRAPH ‘97 Proceedings). 31. 10.1145&#x2F;258734.258775.</li>
+</ul>
+</li>
+<li><p>Keller 1997年Virtual point lights (Instant Radiosity)</p>
+</li>
+</ul>
+<h3 id="1998"><a href="#1998" class="headerlink" title="1998"></a>1998</h3><ul>
+<li><p>Jensen and Christensen 1998年Volumetric photon mapping</p>
+</li>
+<li><p>Bi-Directional Path Tracing</p>
+<ul>
+<li>Lafortune, Eric &amp; Willems, Yves. (1998). Bi-Directional Path Tracing. Proceedings of Third International Conference on Computational Graphics and Visualization Techniques (Compugraphics’. 93.</li>
+</ul>
+</li>
+</ul>
+<h3 id="2000"><a href="#2000" class="headerlink" title="2000"></a>2000</h3><ul>
+<li>Pauly 2000年 Metropolis in volumes</li>
+</ul>
+<h3 id="2001"><a href="#2001" class="headerlink" title="2001"></a>2001</h3><ul>
+<li><p>次表面散射</p>
+<ul>
+<li>Jensen H W, Marschner S R, Levoy M, et al. A practical model for subsurface light transport[C]&#x2F;&#x2F;Proceedings of the 28th annual conference on Computer graphics and interactive techniques. ACM, 2001: 511-518.</li>
+</ul>
+</li>
+</ul>
+<h3 id="2002"><a href="#2002" class="headerlink" title="2002"></a>2002</h3><ul>
+<li>Kelemen et al. 2002Primary sample space MCMC</li>
+</ul>
+<h3 id="2005"><a href="#2005" class="headerlink" title="2005"></a>2005</h3><ul>
+<li><p>Walter 2005年 LightCuts</p>
+</li>
+<li><p>Cline 2005年“Energy Redistribution” 和 非遍历 MCMC</p>
+</li>
+<li><p>Fernando发表了Percentage-Closer Soft Shadows，称为“百分比渐近柔和阴影（PCSS）。</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://developer.download.nvidia.com/shaderlibrary/docs/shadow_PCSS.pdf">https://developer.download.nvidia.com/shaderlibrary/docs/shadow_PCSS.pdf</a></li>
+</ul>
+</li>
+<li><p>RSM算法（Reflective Shadow Map）</p>
+<ul>
+<li>Carsten Dachsbacher and Marc Stamminger. 2005. Reflective shadow maps. In Proceedings of the 2005 symposium on Interactive 3D graphics and games (I3D ‘05). Association for Computing Machinery, New York, NY, USA, 203–231. <a target="_blank" rel="noopener" href="https://doi.org/10.1145/1053427.1053460">https://doi.org/10.1145/1053427.1053460</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="2006"><a href="#2006" class="headerlink" title="2006"></a>2006</h3><ul>
+<li><p>VSM算法（Variance shadow maps）</p>
+<ul>
+<li>William Donnelly and Andrew Lauritzen. 2006. Variance shadow maps. In Proceedings of the 2006 symposium on Interactive 3D graphics and games (I3D ‘06). Association for Computing Machinery, New York, NY, USA, 161–165. <a target="_blank" rel="noopener" href="https://doi.org/10.1145/1111411.1111440">https://doi.org/10.1145/1111411.1111440</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="2007"><a href="#2007" class="headerlink" title="2007"></a>2007</h3><ul>
+<li><p>Walter 2007 年 Microfacet transmission model</p>
+</li>
+<li><p>CSM算法</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://developer.download.nvidia.com/SDK/10.5/opengl/src/cascaded_shadow_maps/doc/cascaded_shadow_maps.pdf">https://developer.download.nvidia.com/SDK/10.5/opengl/src/cascaded_shadow_maps/doc/cascaded_shadow_maps.pdf</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="2008"><a href="#2008" class="headerlink" title="2008"></a>2008</h3><ul>
+<li>Jarosz 2008年 光束辐射估计（Beam Radiance Estimate）</li>
+</ul>
+<h3 id="2010"><a href="#2010" class="headerlink" title="2010"></a>2010</h3><ul>
+<li>Jakob 2010年Anisotropic volume media</li>
+</ul>
+<h3 id="2011"><a href="#2011" class="headerlink" title="2011"></a>2011</h3><ul>
+<li>d’Eon and Irving 2011年Advanced diffusion models</li>
+</ul>
+<h3 id="2012"><a href="#2012" class="headerlink" title="2012"></a>2012</h3><ul>
+<li><p>Jakob &amp;amp;amp; Marschner 2012年Manifold Exploration</p>
+</li>
+<li><p>Disney Principled BRDF</p>
+<p>- </p>
+<ul>
+<li>MERL 100 BRDF 材质库</li>
+</ul>
+</li>
+</ul>
+<h3 id="2014"><a href="#2014" class="headerlink" title="2014"></a>2014</h3><ul>
+<li>Křivánek 2014年Unifying Points, Beams, and Paths</li>
+</ul>
+<h3 id="2015"><a href="#2015" class="headerlink" title="2015"></a>2015</h3><ul>
+<li><p>Kettunen 2015 梯度域路径跟踪</p>
+</li>
+<li><p>Stochastic Screen-Space Reflections</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://view.officeapps.live.com/op/view.aspx?src=https://advances.realtimerendering.com/s2015/Stochastic%2520Screen-Space%2520Reflections.pptx">https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fadvances.realtimerendering.com%2Fs2015%2FStochastic%2520Screen-Space%2520Reflections.pptx</a></li>
+</ul>
+</li>
+<li><p>Moment Shadow Map</p>
+<ul>
+<li>Christoph Peters and Reinhard Klein. 2015. Moment shadow mapping. In Proceedings of the 19th Symposium on Interactive 3D Graphics and Games (i3D ‘15). Association for Computing Machinery, New York, NY, USA, 7–14. <a target="_blank" rel="noopener" href="https://doi.org/10.1145/2699276.2699277">https://doi.org/10.1145/2699276.2699277</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="2018"><a href="#2018" class="headerlink" title="2018"></a>2018</h3><ul>
+<li><p>微软提出了DirectX Ray Tracing（DXR）的API，提供了Ray Tracing Pipeline的雏形。</p>
+</li>
+<li><p>NVIDIA宣布了可加速硬件中光线追踪速度的新架构Turing，以及搭载实时光线追踪技术的RTX系列显卡。Nvidia推出了新一代的RTX显卡，提供了Ray Tracing硬件加速的能力。</p>
+</li>
+<li><p>第一款搭载RTX实时混合光线追踪技术的游戏《战地5（Battlefield V）》正式面世，基于EA的Frostbite引擎，带来了出色的混合光线追踪反射（Hybrid Ray-Traced Reflections）渲染表现。</p>
+</li>
+<li><p>Eric Heitz于2018年提出了一种结合了解析直接光照（analytic direct illumination）和随机阴影（stochastic shadows）的新方法[13]）。在paper中，他们提出了一种比率估计器（ratio estimator），该比率估计器可以将解析光照技术（analytic illumination techniques）与随机光线追踪阴影（stochastic raytraced shadows）正确组合。</p>
+<ul>
+<li>Eric Heitz, Stephen Hill, and Morgan McGuire. 2018. Combining analytic direct illumination and stochastic shadows. In Proceedings of the ACM SIGGRAPH Symposium on Interactive 3D Graphics and Games (I3D ‘18). Association for Computing Machinery, New York, NY, USA, Article 2, 1–11. <a target="_blank" rel="noopener" href="https://doi.org/10.1145/3190834.3190852">https://doi.org/10.1145/3190834.3190852</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="2019"><a href="#2019" class="headerlink" title="2019"></a>2019</h3><ul>
+<li><p>SIGGRAPH2019的Ray Tracing专题报告展望了实时光线追踪的未来。其中，SEED团队分享了自己的混合渲染管线（上图），管线由一个接一个的阶段串联，而每个阶段采用最合适的技术来实现。</p>
+<ul>
+<li>SIGGRAPH 2019, State-of-the-Art and Challenges in Game Ray Tracing</li>
+</ul>
+</li>
+</ul>
+<h3 id="2020"><a href="#2020" class="headerlink" title="2020"></a>2020</h3><ul>
+<li>Vulkan也推出了Ray Tracing规范，同DXR非常相似。</li>
+</ul>
+<h3 id="2021"><a href="#2021" class="headerlink" title="2021"></a>2021</h3><ul>
+<li>2021年，UE5的视频又掀起了一波热潮，新一代的渲染引擎Lumen则是一套完整的光线追踪管线，分为Software和Hardware两种形式。</li>
+<li>Nvidia推出 RayTracing Gens Ⅱ。</li>
+</ul>
+<h3 id="2022"><a href="#2022" class="headerlink" title="2022"></a>2022</h3><ul>
+<li>AMD推出自己的Ray Tracing库——HIP。</li>
+</ul>
+</div><div class="story post-story"><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><h3 id="https-zhuanlan-zhihu-com-p-50165536"><a href="#https-zhuanlan-zhihu-com-p-50165536" class="headerlink" title="https://zhuanlan.zhihu.com/p/50165536"></a><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/50165536">https://zhuanlan.zhihu.com/p/50165536</a></h3><h3 id="https-zhuanlan-zhihu-com-p-49474631"><a href="#https-zhuanlan-zhihu-com-p-49474631" class="headerlink" title="https://zhuanlan.zhihu.com/p/49474631"></a><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/49474631">https://zhuanlan.zhihu.com/p/49474631</a></h3><h3 id="https-zhuanlan-zhihu-com-p-29418992"><a href="#https-zhuanlan-zhihu-com-p-29418992" class="headerlink" title="https://zhuanlan.zhihu.com/p/29418992"></a><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/29418992">https://zhuanlan.zhihu.com/p/29418992</a></h3>
+</div>
+  </div>
+  
+  
+    
+    <div class='footer'>
+      
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享4.0国际 (CC BY-NC-SA 4.0) 协议</p>
+
+              
+            
+              
+                <p>本文永久链接是：<a href=https://yaelcassini.github.io/2023/03/28/Rendering-History/>https://yaelcassini.github.io/2023/03/28/Rendering-History/</a></p>
+              
+            
+          </blockquote>
         </div>
+      
       
     </div>
   
+  
+    
 
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2023-03-28T20:43:10+08:00">
+  <a class='notlink'>
+    <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2023年3月28日</p>
+  </a>
 </div>
 
-          </div>
         
       
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://yaelcassini.github.io/2022/06/15/Volantis%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Unknown Island">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="Unknown Island">
-    <meta itemprop="description" content="赛博小屋">
-  </span>
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Rendering/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>Rendering</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/RayTracing/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>RayTracing</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/PathTracing/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>PathTracing</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Monte-Carlo/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>Monte Carlo</p></a></div>
+  <span hidden itemprop="keywords">Rendering RayTracing PathTracing Monte Carlo</span>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yaelcassini.github.io/2023/03/28/Rendering-History/&title=Rendering History - Unknown Island&summary="
+          
+          >
+          
+            <img src="https://fastly.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://yaelcassini.github.io/2023/03/28/Rendering-History/&title=Rendering History - Unknown Island&summary="
+          
+          >
+          
+            <img src="https://fastly.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://yaelcassini.github.io/2023/03/28/Rendering-History/&title=Rendering History - Unknown Island&summary="
+          
+          >
+          
+            <img src="https://fastly.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png">
+          
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+    <!-- Custom Files bottomMeta begin -->
+    
+    <!-- Custom Files bottomMeta end -->
+  </div>
+
+
   
   
+
   
+    <div class="prev-next">
+      
+      
+        <a class='next' href='/2023/03/24/PathTracing/'>
+          <p class='title'>PathTracing<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>Related Information:
+https://raytracing.github.io/books/RayTracingInOneWeekend.html
+https://raytr...</p>
+        </a>
+      
+    </div>
+  
+  <!-- Custom Files postEnd begin-->
+  
+  <!-- Custom Files postEnd end-->
+</article>
+
+
+  
+
+
+  <article class="post white-box shadow floatable blur" id="comments">
     <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+      <meta itemprop="discussionUrl" content="/2023/03/28/Rendering-History/index.html#comments">
     </span>
-  
-  
+    <p ct><i class='fa-solid fa-comments'></i> 评论</p>
     
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2022/06/15/Volantis%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE/"  itemprop="url">
-        Volantis主题配置
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      <p>Volantis主题配制教程<br>转自：<a target="_blank" rel="noopener" href="https://volantis.js.org/v5/theme-settings/">https://volantis.js.org/v5/theme-settings/</a></p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' href='about/'><img src='https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/logo_64.png'></a>
-          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="image" content="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/logo_64.png">
-            <meta itemprop="name" content="Yael Cassini">
-            <meta itemprop="url" content="about/">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2022-06-15T14:28:46+08:00">2022-06-15</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url"><span itemprop="name">前端</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2022/06/15/Volantis%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
 
-</div>
+    <div id="layoutHelper-comments"></div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://yaelcassini.github.io/2022/06/08/%E4%B8%AA%E4%BA%BA%E4%B8%BB%E9%A1%B5%E6%90%AD%E5%BB%BA%E6%B5%81%E7%A8%8B/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Unknown Island">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="Unknown Island">
-    <meta itemprop="description" content="赛博小屋">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2022/06/08/%E4%B8%AA%E4%BA%BA%E4%B8%BB%E9%A1%B5%E6%90%AD%E5%BB%BA%E6%B5%81%E7%A8%8B/"  itemprop="url">
-        个人主页搭建流程
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      <p>本网站建立依附于Github Pages，使用到的框架是Hexo（基于Node.js），使用的主题是Hexo，图床使用Github自行搭建。目前用到的外部支持有：Busuanzi、Giscus、Parallax等。</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' href='about/'><img src='https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/logo_64.png'></a>
-          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="image" content="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/logo_64.png">
-            <meta itemprop="name" content="Yael Cassini">
-            <meta itemprop="url" content="about/">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2022-06-08T18:28:46+08:00">2022-06-08</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url"><span itemprop="name">前端</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2022/06/08/%E4%B8%AA%E4%BA%BA%E4%B8%BB%E9%A1%B5%E6%90%AD%E5%BB%BA%E6%B5%81%E7%A8%8B/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://yaelcassini.github.io/2022/06/08/hello-world/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Unknown Island">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="Unknown Island">
-    <meta itemprop="description" content="赛博小屋">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2022/06/08/hello-world/"  itemprop="url">
-        Hello World
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Qu...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' href='about/'><img src='https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/logo_64.png'></a>
-          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="image" content="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/logo_64.png">
-            <meta itemprop="name" content="Yael Cassini">
-            <meta itemprop="url" content="about/">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2022-06-08T18:00:00+08:00">2022-06-08</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2022/06/08/hello-world/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-    
-  </section>
-  
-    
-  
+  </article>
 
 
-	
+
+
+
+
 </div>
 <aside id='l_side' itemscope itemtype="http://schema.org/WPSideBar">
   
@@ -3152,91 +3476,31 @@ Qu...
   
     
     
-  
 
-  <section class="widget category shadow floatable blur desktop mobile pjax">
+
+
+  <section class="widget toc-wrapper shadow floatable blur desktop mobile pjax" id="toc-div" >
     
   <header>
     
-      <a href='/categories/'><i class="fa-solid fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
+      <i class="fa-solid fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
     
   </header>
 
 
     <div class='content'>
-      <ul class="entry navigation">
-        
-          <li><a class="flat-box"
-            title="/categories/Deep-Face-Project/" href="/categories/Deep-Face-Project/"
-            active-action="action-categoriesDeep-Face-Project"
-            ><div class='name'>Deep Face Project</div><div class='badge'>(3)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/Neural-Rendering/" href="/categories/Neural-Rendering/"
-            active-action="action-categoriesNeural-Rendering"
-            ><div class='name'>Neural Rendering</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/Others/" href="/categories/Others/"
-            active-action="action-categoriesOthers"
-            ><div class='name'>Others</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/PathTracing/" href="/categories/PathTracing/"
-            active-action="action-categoriesPathTracing"
-            ><div class='name'>PathTracing</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/Rendering/" href="/categories/Rendering/"
-            active-action="action-categoriesRendering"
-            ><div class='name'>Rendering</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/Subsurface-Scattering/" href="/categories/Subsurface-Scattering/"
-            active-action="action-categoriesSubsurface-Scattering"
-            ><div class='name'>Subsurface Scattering</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/TA-learning/" href="/categories/TA-learning/"
-            active-action="action-categoriesTA-learning"
-            ><div class='name'>TA-learning</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E5%89%8D%E7%AB%AF/" href="/categories/%E5%89%8D%E7%AB%AF/"
-            active-action="action-categoriesE5898DE7ABAF"
-            ><div class='name'>前端</div><div class='badge'>(2)</div></a></li>
-        
-      </ul>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9C%9F%E5%AE%9E%E6%84%9F%E6%B8%B2%E6%9F%93"><span class="toc-text">真实感渲染</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B-Illumination-Model"><span class="toc-text">光照模型 Illumination Model</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E7%89%A9%E7%90%86%E7%9A%84%E6%9D%90%E8%B4%A8-Material"><span class="toc-text">基于物理的材质 Material</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%89%E6%A0%85%E5%8C%96-Rasterization"><span class="toc-text">光栅化 Rasterization</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA"><span class="toc-text">光线追踪</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B6%88%E9%9A%90%E6%8A%80%E6%9C%AF"><span class="toc-text">消隐技术</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%A8%E5%B1%80%E5%85%89%E7%85%A7%EF%BC%88Global-Illumination%EF%BC%89"><span class="toc-text">全局光照（Global Illumination）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%8E%E5%A4%84%E7%90%86"><span class="toc-text">后处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DLSS"><span class="toc-text">DLSS</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B"><span class="toc-text">光照模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B1%80%E9%83%A8%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B"><span class="toc-text">局部光照模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%A8%E5%B1%80%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B"><span class="toc-text">全局光照模型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Other-Topic"><span class="toc-text">Other Topic</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Ray-Marching"><span class="toc-text">Ray Marching</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Percentage-Closer-Soft-Shadows-PCSS"><span class="toc-text">Percentage Closer Soft Shadows (PCSS)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%A7%E4%BA%8B%E8%AE%B0-amp-%E5%8E%9F%E6%96%87%E5%BC%95%E7%94%A8"><span class="toc-text">大事记&amp;原文引用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1760"><span class="toc-text">1760</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1967"><span class="toc-text">1967</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1968"><span class="toc-text">1968</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1970"><span class="toc-text">1970</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1971"><span class="toc-text">1971</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1974"><span class="toc-text">1974</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1975"><span class="toc-text">1975</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1976"><span class="toc-text">1976</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1977"><span class="toc-text">1977</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1978"><span class="toc-text">1978</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1980"><span class="toc-text">1980</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1982"><span class="toc-text">1982</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1983"><span class="toc-text">1983</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1984"><span class="toc-text">1984</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1986"><span class="toc-text">1986</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1987"><span class="toc-text">1987</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1991"><span class="toc-text">1991</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1992"><span class="toc-text">1992</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1993"><span class="toc-text">1993</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1994"><span class="toc-text">1994</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1995"><span class="toc-text">1995</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1996"><span class="toc-text">1996</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1997"><span class="toc-text">1997</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1998"><span class="toc-text">1998</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2000"><span class="toc-text">2000</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2001"><span class="toc-text">2001</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2002"><span class="toc-text">2002</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2005"><span class="toc-text">2005</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2006"><span class="toc-text">2006</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2007"><span class="toc-text">2007</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2008"><span class="toc-text">2008</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2010"><span class="toc-text">2010</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2011"><span class="toc-text">2011</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2012"><span class="toc-text">2012</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2014"><span class="toc-text">2014</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2015"><span class="toc-text">2015</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2018"><span class="toc-text">2018</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2019"><span class="toc-text">2019</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2020"><span class="toc-text">2020</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2021"><span class="toc-text">2021</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2022"><span class="toc-text">2022</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-text">Reference</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#https-zhuanlan-zhihu-com-p-50165536"><span class="toc-text">https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;50165536</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#https-zhuanlan-zhihu-com-p-49474631"><span class="toc-text">https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;49474631</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#https-zhuanlan-zhihu-com-p-29418992"><span class="toc-text">https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;29418992</span></a></li></ol></li></ol>
     </div>
   </section>
-
-
-  
-
-  
-    
-    
-  
-
-  <section class="widget tagcloud shadow floatable blur desktop mobile pjax">
-    
-  <header>
-    
-      <a href='/tags/'><i class="fa-solid fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <a href="/tags/Artificial-Intelligence/" style="font-size: 14px; color: #999">Artificial Intelligence</a> <a href="/tags/Artificial-Intelligent/" style="font-size: 20.67px; color: #6c6c6c">Artificial Intelligent</a> <a href="/tags/Deep-Fake/" style="font-size: 17.33px; color: #828282">Deep Fake</a> <a href="/tags/Deep-Learing/" style="font-size: 20.67px; color: #6c6c6c">Deep Learing</a> <a href="/tags/GAN/" style="font-size: 17.33px; color: #828282">GAN</a> <a href="/tags/Github-Pages/" style="font-size: 17.33px; color: #828282">Github Pages</a> <a href="/tags/Hexo/" style="font-size: 17.33px; color: #828282">Hexo</a> <a href="/tags/Monte-Carlo/" style="font-size: 20.67px; color: #6c6c6c">Monte Carlo</a> <a href="/tags/Neural-Rendering/" style="font-size: 14px; color: #999">Neural Rendering</a> <a href="/tags/Notes/" style="font-size: 14px; color: #999">Notes</a> <a href="/tags/PathTracing/" style="font-size: 17.33px; color: #828282">PathTracing</a> <a href="/tags/RayTracing/" style="font-size: 17.33px; color: #828282">RayTracing</a> <a href="/tags/Rendering/" style="font-size: 24px; color: #555">Rendering</a> <a href="/tags/Spherical-Harmonics/" style="font-size: 14px; color: #999">Spherical Harmonics</a> <a href="/tags/Technical-Artist/" style="font-size: 14px; color: #999">Technical Artist</a> <a href="/tags/Volantis/" style="font-size: 17.33px; color: #828282">Volantis</a>
-    </div>
-  </section>
-
 
   
 
 
 <!-- 没有 pjax 占位会报错 万恶的 pjax -->
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
 
   <div class="pjax">
     <!-- pjax占位 -->
@@ -3265,13 +3529,14 @@ Qu...
 </aside>
 
 
+
           <!--此文件用来存放一些不方便取值的变量-->
 <!--思路大概是将值藏到重加载的区域内-->
 
 <pjax>
 <script>
   window.pdata={}
-  pdata.ispage=false;
+  pdata.ispage=true;
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   pdata.commentConfig={};
@@ -4579,7 +4844,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Unknown Island","url":"https://yaelcassini.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/","sameAs":["https://github.com/volantis-x"],"description":"赛博小屋"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://yaelcassini.github.io/","name":"Unknown Island"}},{"@type":"ListItem","position":2,"item":{"@id":"https://yaelcassini.github.io/archives/","name":"Archive"}},{"@type":"ListItem","position":3,"item":{"@id":"https://yaelcassini.github.io/archives/2022/","name":"2022年"}},{"@type":"ListItem","position":4,"item":{"@id":"https://yaelcassini.github.io/archives/2022/6/","name":"6月"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Unknown Island","url":"https://yaelcassini.github.io/","keywords":null,"description":"赛博小屋","author":{"@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/","description":"赛博小屋"},"publisher":{"@type":"Organization","name":"Unknown Island","url":"https://yaelcassini.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://yaelcassini.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","description":"赛博小屋","inLanguage":["zh-CN","en","zh-HK","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage"},"author":{"@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/"},"publisher":{"@type":"Organization","name":"Unknown Island","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"wordCount":0,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Unknown Island","url":"https://yaelcassini.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/","sameAs":["https://github.com/volantis-x"],"description":"赛博小屋"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://yaelcassini.github.io/","name":"Unknown Island"}},{"@type":"ListItem","position":2,"item":{"@id":"https://yaelcassini.github.io/categories/Rendering/","name":"Rendering"}},{"@type":"ListItem","position":3,"item":{"@id":"https://yaelcassini.github.io/2023/03/28/Rendering-History/","name":"Rendering History"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Unknown Island","url":"https://yaelcassini.github.io/","keywords":null,"description":"赛博小屋","author":{"@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/","description":"赛博小屋"},"publisher":{"@type":"Organization","name":"Unknown Island","url":"https://yaelcassini.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://yaelcassini.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Rendering History","description":"赛博小屋","inLanguage":["zh-CN","en","zh-HK","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://yaelcassini.github.io/2023/03/28/Rendering-History/"},"author":{"@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/"},"publisher":{"@type":"Organization","name":"Unknown Island","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://yaelcassini.github.io/2023/03/28/Rendering-History/","wordCount":0,"datePublished":"2023-03-28T12:37:39.000Z","dateModified":"2023-03-28T12:43:10.719Z","articleSection":"Rendering","keywords":"Rendering,RayTracing,PathTracing,Monte Carlo","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
