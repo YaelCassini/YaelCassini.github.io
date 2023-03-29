@@ -5,8 +5,8 @@
   <meta name="Volantis" content="5.3.2">
   <meta charset="utf-8">
   <!-- SEO相关 -->
-  <meta name="robots" content="noindex,follow">
-  <link rel="canonical" href="https://yaelcassini.github.io/tags/monte-carlo/"/>
+  
+  <link rel="canonical" href="https://yaelcassini.github.io/2023/03/29/shadow-rendering/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -32,18 +32,27 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>标签：Monte Carlo - Unknown Island</title>
-  <meta name="keywords" content="null">
+  <title>Shadow Rendering - Unknown Island</title>
+  <meta name="keywords" content="Rendering,Shadow,Shadow Map,PCF,PCSS,VSM,MSM,null">
   <meta desc name="description" content="赛博小屋 - Cassini - Unknown Island">
   
-<meta property="og:type" content="website">
-<meta property="og:title" content="Unknown Island">
-<meta property="og:url" content="https://yaelcassini.github.io/tags/Monte-Carlo/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Shadow Rendering">
+<meta property="og:url" content="https://yaelcassini.github.io/2023/03/29/Shadow-Rendering/index.html">
 <meta property="og:site_name" content="Unknown Island">
-<meta property="og:description" content="赛博小屋">
+<meta property="og:description" content="渲染技术研究报告——阴影绘制技术的发展历程及方法比较一、前言阴影绘制是真实感渲染中非常重要的一个模块，对提高场景的真实度有着至关重要的作用，不管是使用光栅化的流程还是光线追踪的流程进行场景绘制，阴影绘制的技术都经过了多次的更新和迭代。我也在一些课程中学习过一些简单的阴影绘制方法，因此想借此机会对所有的阴影绘制方法做一个系统性的梳理和总结。阴影绘制的方法按照时间发展顺序主要有Shadow Volum">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+<meta property="article:published_time" content="2023-03-29T12:16:36.000Z">
+<meta property="article:modified_time" content="2023-03-29T12:27:01.727Z">
 <meta property="article:author" content="Cassini">
+<meta property="article:tag" content="Rendering">
+<meta property="article:tag" content="Shadow">
+<meta property="article:tag" content="Shadow Map">
+<meta property="article:tag" content="PCF">
+<meta property="article:tag" content="PCSS">
+<meta property="article:tag" content="VSM">
+<meta property="article:tag" content="MSM">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png">
   <style>
@@ -2690,7 +2699,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
       <!-- see: /layout/_partial/scripts/_ctrl/coverCtrl.ejs -->
-      <div id="half" class='cover-wrapper  dock' style="display: ;">
+      <div id="half" class='cover-wrapper post dock' style="display: ;">
         
   <div id="parallax-window"></div>
 
@@ -2766,29 +2775,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <div id="safearea">
         <div class="body-wrapper">
           
-
 <div id="l_main" class=''>
-  
-    
-      
-  <section class="post-list">
-    
-      
-        
-          
-        
-          
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://yaelcassini.github.io/2023/03/28/Rendering-History/">
+  <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow floatable blur article-type-post" id="post" itemscope itemprop="blogPost">
+  <link itemprop="mainEntityOfPage" href="https://yaelcassini.github.io/2023/03/29/Shadow-Rendering/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Unknown Island">
   </span>
@@ -2797,24 +2786,286 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <meta itemprop="description" content="赛博小屋">
   </span>
   
-  
+
+
   
     <span hidden>
       <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png">
     </span>
   
+  <div class="article-meta" id="top">
+    
+    
+    
+      <h1 class="title" itemprop="name headline">
+        Shadow Rendering
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+            
+<div class='new-meta-item author' itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <a itemprop="url" class='author' href="about/" rel="nofollow">
+    <img itemprop="image" src="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/logo_64.png">
+    <p itemprop="name">Yael Cassini</p>
+  </a>
+</div>
+
+          
+        
+          
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2023-03-29T20:16:36+08:00">
+  <a class='notlink'>
+    <i class="fa-solid fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2023年3月29日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class='new-meta-item category'>
+    <i class="fa-solid fa-folder-open fa-fw" aria-hidden="true"></i>
+    <a class="category-link" href="/categories/Rendering/">Rendering</a>
+    
+      <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+        <a href="/categories/Rendering/" itemprop="url"><span itemprop="name">Rendering</span></a>
+      </span>
+    
+  </div>
+
+
+          
+        
+          
+            
+
+
+<div class="new-meta-item browse">
+  <a class='notlink'>
+    <p>
+      <i class="fa-solid fa-eye fa-fw" aria-hidden="true"></i>
+      
+      <span id="busuanzi_value_page_pv"><i class="fa-solid fa-loader fa-spin fa-fw" aria-hidden="true"></i></span>
+      
+      <span>次浏览</span>
+    </p>
+  </a>
+</div>
+
+
+          
+        
+        <!-- Custom Files topMeta begin-->
+        
+        <!-- Custom Files topMeta end-->
+      </div>
+    
+  </div>
+
+
+  <div id="layoutHelper-page-plugins"></div>
+  <div id="post-body" itemprop="articleBody">
+    <h3 id="渲染技术研究报告——阴影绘制技术的发展历程及方法比较"><a href="#渲染技术研究报告——阴影绘制技术的发展历程及方法比较" class="headerlink" title="渲染技术研究报告——阴影绘制技术的发展历程及方法比较"></a>渲染技术研究报告——阴影绘制技术的发展历程及方法比较</h3><h4 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h4><p>阴影绘制是真实感渲染中非常重要的一个模块，对提高场景的真实度有着至关重要的作用，不管是使用光栅化的流程还是光线追踪的流程进行场景绘制，阴影绘制的技术都经过了多次的更新和迭代。我也在一些课程中学习过一些简单的阴影绘制方法，因此想借此机会对所有的阴影绘制方法做一个系统性的梳理和总结。阴影绘制的方法按照时间发展顺序主要有Shadow Volume算法、Shadow Map算法、PCF算法、PCSS算法、VSM算法等等。<br><br>首先，阴影的定义是Shadow is the region of space for which at least on point of the light source is occluded，也就是绘制中那些至少对一盏光源，其没有被直接照亮而是被其他物体遮挡住的区域。<br></p>
+<p>图源Real-Time Rendering 4th<br>如上图所示，要实现阴影的绘制，需要考虑的有光源、遮挡物（Occluder）、接受物（Receiver）、本影区（umbra）半影区（penumbra）等。<br><br>其中，对于接收物体是平面的情况，我们可以直接通过光源位置、物体几何等信息进行光线求交几何计算，解析地得到平面上阴影的形状和范围（如下图），但是这显然无法处理复杂的场景阴影绘制，也不是我们需要的通用的方法，也因此本文仍然选择聚焦于在任何曲面或者几何体上产生阴影的通用方法。<br></p>
+<p>图源Real-Time Rendering 4th</p>
+<h4 id="二、Shadow-Volume算法诞生及其改进"><a href="#二、Shadow-Volume算法诞生及其改进" class="headerlink" title="二、Shadow Volume算法诞生及其改进"></a>二、Shadow Volume算法诞生及其改进</h4><p>图源Real-Time Rendering 4th<br>Shadow Volume是Franklin在1977年提出的阴影绘制算法，虽然在今天这个算法由于其较大的开销已经不太被使用，但我们仍然可以从中学到一些基础的思维方式，并且由于该算法不是在图像空间进行的，因此不会像Shadow Map一样收到采样的影响。<br><br>Shadow Volume算法的基本思想是对于投影物体（以一个三角形为例），以光源为出发点建立一个类似金字塔的无限延伸的体积结构，并切除在光源点和投影物体之间的部分。所有包含在剩余体积范围内的区域都处在阴影中。<br><br>对于场景中的所有物体，都可以使用该方法建立其投影金字塔。在正常绘制场景时，对于每一哥Fragment，都需要遍历所有的投影金字塔，计算其是否被包含在其中并记录被包含的次数。被包含的越多，则该处阴影强度越大（阴影颜色更暗）。以此类推，绘制完成所有的Fragment。可想而知，对于较为复杂的场景，Shadow Volume方法需要的时间和空间开销都是巨大的，不仅需要管理每一个投影物体的投影金字塔，还需要对任何一个片元进行所有金字塔的遍历测试。如果场景中包含N个物体，且都可以投射阴影，则该算法的时间复杂度将达到O(n²)。<br></p>
+<h4 id="三、Shadow-Map算法的诞生及其改进"><a href="#三、Shadow-Map算法的诞生及其改进" class="headerlink" title="三、Shadow Map算法的诞生及其改进"></a>三、Shadow Map算法的诞生及其改进</h4><p>早在 1968年，Arthur Appel就在研究隐藏面消除时提出了光线投射算法（Ray Casting），并首次给出了光线跟踪算法的描述。其具体思路是从每一个像素射出一条射线，然后找到最接近的物体挡住射线的路径，而视平面上每个像素的颜色取决于从可见光表面产生的亮度。<br></p>
+<p>1974年，Catmull为了解决消隐问题提出了Z-Buffer算法，该算法的主要思路是使用一个屏幕空间的缓存，记录每一个像素点所对应的最小深度，在绘制每一个多边形时，与对应像素位置的当前最小深度做对比，如果小于该值则证明该多边形可见，绘制并更新Z-Buffer。Z-Buffer算法思路简单且通用性较好，为之后图形学的许多技术提供了理论基础。<br></p>
+<p>因此在1978年，William以Z-Buffer算法为基础，提出了Shadow Map算法，主要思想就是维护一个从光源看出的Z-Buffer（也就是Shadow Map）。能从光源出发直接看到的区域就不属于阴影，否则属于阴影。<br></p>
+<p>图源【3】<br>Shadow Map是一个2-pass的算法。算法主要步骤为：<br></p>
+<ol>
+<li>第一个pass：以光源为视点出发绘制场景，只需要绘制深度信息，像Z-Buffer算法一样记录屏幕空间上每一个像素点的最小深度，得到 Shadow Map。</li>
+<li>第二个Pass：正常绘制场景。</li>
+</ol>
+<ul>
+<li>在每个像素绘制时通过坐标转换，计算出其在光源坐标系下对应的屏幕坐标。</li>
+<li>如果其在光源坐标系下的深度在浮点数精度下小于等于Shadow Map上对应位置的当前值，则证明该点被光源直接照亮，否则证明该点在阴影中。<br>其中，需要做的坐标转换为：首先根据片元当前的屏幕坐标，乘以当前相机投影矩阵的逆矩阵得到其世界坐标，再根据光源坐标系下的投影矩阵计算出在Shadow Map的屏幕坐标。其中，对于太阳光这样的平行光我们需要使用平行投影方式绘制Shadow Map，而对于点光源则应该使用透视投影绘制Shadow Map。<br></li>
+</ul>
+<p>图源Real-Time Rendering 4th</p>
+<p>不难想到，如何选择Shadow Map绘制的视口是一个至关重要的问题，如果光源坐标系下的视口刚好可以包含正常绘制时所有能看到的物体，如上图中所示，则算法可行，否则可能会出现正常绘制时的某些Fragment对应的光源坐标系下的坐标超过视口范围，在Shadow Map上没有对应点，无法判断是否属于阴影的情况。另外，对于在场景中间的点光源（在不同方向上都可能投射阴影），则一般选择使用一个six-view cude，分别绘制不同方向上的Shadow Map。但这样的解决方法同样也带来了不同view交界处的走样问题。<br></p>
+<p>Shadow Map算法的效果很大程度上受限于 Shadow Map的分辨率，因此在绘制Shadow Map时进行场景物体的剔除和剪枝也是十分有必要的，对于那些在相机中不可见的物体，在Shadow Map中也不需要绘制，这样可以有效缩小Shadow Map绘制的范围，从而对同样分辨率的Shadow Map达到更高的利用率和绘制精度。<br></p>
+<p>图源Real-Time Rendering 4th</p>
+<p>但是普通的Shadow Map算法不可避免地存在着问题，主要的两个问题有自遮挡问题（“surface acne”）和锯齿状走样问题。<br></p>
+<p>图源网络</p>
+<p>其中，自遮挡问题产生的原因是如下图，在从灯光出发进行Shadow Map绘制时，视线方向与接收投影的平面方向存在夹角，但是绘制时仅采样了像素中心的深度值作为整体的深度值。在第二个pass比较深度是就会出现本来同一平面但是有部分像素通不过Shadow Map的深度测试这种情况，从而导致如下图所示的阴影错误。对该问题可以使用设置比较的bias来尝试解决，但是bias过小时不能完全避免这种错误的产生，过大时又会产生如下图中右边所示的阴影和物体不贴合的错误（被称为Light Leaks 或者 Peter Panning），出现物体悬浮的绘制效果。<br></p>
+<p>图源Real-Time Rendering 4th</p>
+<p>另外一个解决Self-shadowing自遮挡问题的思路是修改绘制Shadow Map的过程，比如说绘制时进行面剔除（Face Culling），仅绘制模型的背面。这种方法在物体都是流形时（拥有背面和反面）效果较好，能很好地避免surface acne问题。但是无法处理某些模型只有单个面的情况。一种沿着这个思路的改进方法是Second-depth Shadow Map，是在绘制Shadow Map时选择front face和back face的中间值作为Shadow Map的采样值。<br></p>
+<p>图源Real-Time Rendering 4th</p>
+<p>而另一个问题锯齿状走样本质上还是由于Shadow Map的分辨率限制导致的，由于Shadow Map的绘制视口与相机绘制视口不同，可能会导致在相机坐标系下占很大部分的空间在Shadow Map中仅仅对应几个像素，因而导致其不能完全表达出该部分的相互遮挡信息，正常绘制时的较大区域可能整体无法通过Shadow Map的深度测试，产生锯齿状走样。<br></p>
+<p>为了解决分辨率不够导致的锯齿状走样问题，Nvdia提出了CSM算法（Cascaded Shadow Maps），也就是使用级联的阴影贴图。其主要思想就是通过物体的距离，动态地进行不同分辨率的Shadow Map的绘制，比如说对远处的物体采用分辨率较小的Shadow Map，而对于较近处的物体则采用分辨率较大Shadow Map。LearnOpenGL中提供了一种基本的思路：<br><br>首先使用相机的视图和投影矩阵，反向计算出它所定义的视锥体在世界坐标系下的位置，然后将其划分为 n 个子视锥体，其中第i个截锥体的远平面是第i+1个截锥体的近平面。然后对于每一个截锥体中的物体依次渲染一张Shadow Map，在正常绘制时，则同样根据Fragment的Z值计算其应该属于哪一个截锥体，从而选取不同的Shadow Map。<br><br>需要注意的一点是，如果某个物体不在相机视锥体内，但在光源和某个截锥体之间，则绘制Shadow Map时也需要对其进行考虑，否则也会造成阴影绘制的错误。<br></p>
+<h4 id="四、PCF算法-amp-PCSS算法"><a href="#四、PCF算法-amp-PCSS算法" class="headerlink" title="四、PCF算法&amp;PCSS算法"></a>四、PCF算法&amp;PCSS算法</h4><p>普通的Shadow Map只能得到非零即一的阴影测试值，只能绘制硬阴影，这显然不能满足我们真实感渲染的需求，因此在1987年，William T. Reeves引入了本来用于做抗锯齿的PCF算法（Percentage Closer Filter）到阴影绘制领域，在此基础上改良得到Shadow Map算法得到了PCSS算法。<br><br>该算法的基本思想是对深度测试的结果进行Filter（而不是直接对Shadow Map进行filter）。具体操作方法是：在第二个Pass进行正常绘制时，对于每一个Fragment的深度测试，不仅比较直接对应的Shadow Map像素，还要与其邻域内（比如说3*3）像素进行深度测试，小于等于（表示不在阴影中）则记为0，大于则记为1，得到一个01的矩阵，对其求平均得到一个0-1之间的浮点数值，则代表该像素的阴影值，这样就能实现软阴影的效果。<br></p>
+<p>图源【7】<br>在以上这种思想的指导下我们不难发现，filter的邻域大小一定程度决定了得到的阴影边缘的平滑程度，也就是邻域越大越容易得到“软”阴影。而在生活中，当投影物体靠近接收物体时，我们得到的阴影边缘更硬，反之则较软。以此为指导，Fernando在2005年提出的PCSS算法是在PCF进行阴影绘制基础上的进一步改进。其主要思想是使用如下图所示的几何关系来估计半影区（Penumbra）的宽度（也就是阴影的软硬程度）。其中d_blocker指的是投影物体的深度也就是Shadow Map中储存的深度，d_receiver指的是接收物体的深度也就是当前片元的深度。而用此方法计算出的半影区的宽度可以指导我们进行PCF中filter邻域大小的选择。<br></p>
+<p>图源【8】</p>
+<p>PCSS算法的主要流程为：</p>
+<ol>
+<li>Blocker Search</li>
+</ol>
+<ul>
+<li>在一个小的邻域内采样得到投影物体的平均深度。</li>
+</ul>
+<ol start="2">
+<li>Penumbra Estimation</li>
+</ol>
+<ul>
+<li>根据投影物体的平均深度和当前片元的深度计算半影区的宽度。</li>
+</ul>
+<ol start="3">
+<li>Percentage Closer Filtering</li>
+</ol>
+<ul>
+<li>根据计算出的半影区的宽度选定filter的邻域大小并进行PCF计算。<br>其中，在第一步进行投影物体深度的采样时，采样区域的大小可以用下图所示的这种方式选定，也就是根据投影物体的深度和光源的大小计算选定。</li>
+</ul>
+<p>图源【8】</p>
+<h4 id="五、VSM算法和VSSM算法"><a href="#五、VSM算法和VSSM算法" class="headerlink" title="五、VSM算法和VSSM算法"></a>五、VSM算法和VSSM算法</h4><p>VSM算法全称为Variance Shadow Mapping，VSSM算法全称为Variance Soft Shadow Mapping，这两种算法相互承袭，是一种使用统计学知识对PCSS算法的改进方案，其主要的思路是通过对Shadow Map中Block内的深度分布进行统计学估计，避免大量采样计算PCF的过程，从而加快阴影绘制速度。<br><br>PCF算法的基本思想就是在某一个邻域内测试有百分之多少的像素能使得当前片元通过深度测试。也就是测试当前片元的深度在该邻域内分布在百分之多少。VSSM算法引入了统计学的知识，假设当前邻域内的深度分布符合高斯分布，如果要测试当前片元的深度在该邻域内分布在百分之多少，只需要知道当前分布的均值和方差。<br><br>对于深度图邻域内均值的计算，我们可以自然地联想到对Shadow Map进行Mipmap查询。而对于方差的计算，VSM引入了以下的公式，因此我们只需要在绘制Shadow Map的同时绘制一个储存深度的平方的map。<br><br>var(x)&#x3D;E(x^2),-E^2 (x)<br>这样在Shadow Map绘制完成后，对于其上的每一个点我们都能通过均值和方差得到该位置的一个深度的近似分布情况，从而可以根据当前片元的值，计算出其CDF。另外，VSM算法还引入了切比雪夫不等式（如下），只需要知道分布的期望和方差，就可以计算出x大于某个固定值的概率。<br><br>P(x&gt;t)≤σ^2&#x2F;(σ^2+(t-μ)^2 )<br>切比雪夫不等式成立的条件是t＞μ，也就是当前的d＞z_avg。也就说如果Block内的平均深度小于当前Fragment的深度，就不能使用这种估计方法。<br></p>
+<p>上面这种从统计学出发的估计解决了PCSS算法中的第三个步骤也就是PCF计算，但是PCSS算法中的第一个步骤Blocker Search仍然会耗费较长的时间，因此VSSM算法针对性地提出了估计方案。<br><br>对于一个Block，第一个步骤Block Search的目标是估计其中遮挡物的平均深度，我们可以设Block中的像素总数为N，平均深度为Z_avg，深度小于当前值（遮挡物）的像素数为N1，平均深度为Z_occ，深度大于当前值（接收物体）的像素数为N2，平均深度为Z_unocc。则可以得到等式：<br><br>N_1&#x2F;N Z_unocc+N_2&#x2F;N Z_occ&#x3D;Z_avg<br>不难看出，N_1&#x2F;N就是非遮挡物所占比例，也就可以转化为P（X≥t）。则上式可以转化为：<br><br>P(x≥t) z_unocc+(1.0-P(x≥t)) z_occ&#x3D;z_avg<br>要计算遮挡物的平均深度，可以使用：<br><br>Z_occ&#x3D;(z_avg-P(x≥t) z_unocc)&#x2F;(1.0-P(x≥t))<br>而其中的Z_avg可以通过Mipmap得到，因此VSSM假设非遮挡物的深度都是t，从而可以计算出遮挡物的平均深度，这种假设的理论依据是一般的接收物体都是一个平面。而对于那些不是一个平面的阴影接收物体，以及切比雪夫不成立的情况，VSSM这篇论文则提出了分治的解决方案。对不满足d&gt;z_avg的Block，将其分割为更小的sub-Block，再进行阴影的绘制计算。<br><br>具体的分治思路是，对于那些z_avg＜d的sub-Block，我们之前使用切比雪夫不等式的估计仍然是有效的，但是对于那些z_avg≥d的sub-Block，论文中选择了直接使用普通的PCSS算法进行阴影的绘制。其原因是论文认为分治之后的sub-Block较小，可以使用传统的PCF采样进行计算。论文使用类似四叉树的结构进行分治之后Block的管理和遍历。<br></p>
+<h4 id="六、MSM算法"><a href="#六、MSM算法" class="headerlink" title="六、MSM算法"></a>六、MSM算法</h4><p>MSM算法全称为Moment Shadow Mapping。是Christoph Peters在2015年提出的一种阴影绘制方式。<br><br>MSM实际上是在VSSM算法的基础上，对使用统计学思想逼近Depth Map的分布进行阴影绘制这种想法的延续。VSSM算法中，仅仅使用到了Depth的平均值和方差（也就是一阶矩和二阶矩）去估计深度的分布情况，这显然是可能产生偏差的，比如说对于下图中右边这种深度的分布，集中分布在几个固定的值附近，这样的情况使用切比雪夫不等式去估计就会出现比较大的误差。<br></p>
+<p>图源Games202<br>而为了让VSM中对分布的描述更加精确，Christoph Peters提出了使用高阶矩来描述分布的方法。如下图，蓝色表示真正的深度分布CDF，如果使用VSSM算法则只能对CDF逼近到红色线条的程度，而如果使用前四阶矩则能逼近到绿色线段的程度，这样能使得我们对深度分布的估计更精确，对PCF进行近似计算也就更精确。<br></p>
+<p>图源【13】<br>Christoph的测试表明，相对于VSM和ESM算法，MSM算法能提供更小的Shadow绘制误差（如下图）。<br></p>
+<p>图源【13】</p>
+<h4 id="七、总结"><a href="#七、总结" class="headerlink" title="七、总结"></a>七、总结</h4><p>在当前的渲染领域，由于时序上降噪技术的引入，实时的光线追踪技术成为了可能，因此目前传统的阴影绘制方法或许没有像之前那样应用这么广泛，但是在顺着这条发展路径学习的过程中，我对渲染的一些理解仍然能加深，并且获得新的启发。传统渲染方式虽然在一定程度上是某个时代算力限制的产物，但是其中蕴含的思考方式和优化方法，相信仍然能在未来的学习中给我带来灵感和启发。<br></p>
+<h5 id="参考资料："><a href="#参考资料：" class="headerlink" title="参考资料："></a>参考资料：</h5><ol>
+<li>Tomas Akenine-Möller, Eric Haines, Naty Hoffman, Angelo Pesce, Michał Iwanicki, and Sébastien Hillaire,T.  Real-Time Rendering 4rd Edition[M]. Natick, MA, USA: A. K. Peters, Ltd., 2020. </li>
+<li>Catmull, E., “A Subdivision Algorithm for Computer Display of Curved Surfaces,” PhD. thesis, Dept. of Computer Science, University of Utah, 1974.</li>
+<li>Lance Williams. 1978. Casting curved shadows on curved surfaces. SIGGRAPH Comput. Graph. 12, 3 (August 1978), 270–274. <a target="_blank" rel="noopener" href="https://doi.org/10.1145/965139.807402">https://doi.org/10.1145/965139.807402</a></li>
+<li>Y. Wang and S. Molnar. Second-depth shadow mapping.  Technical Report TR94-019, Department of Computer Science, University of North Carolina - Chapel Hill, Dec. 1994.</li>
+<li>Fernando, S. Fernandez, K. Bala, and D. P. Greenberg. Adaptive shadow maps. In SIGGRAPH 2001 Conference Proceedings, pages 387–390, 2001.</li>
+<li>M. Stamminger and G. Drettakis. Perspective shadow maps. ACM Transactions on Graphics, 21(3):557–562, July 2002.</li>
+<li>William T. Reeves, David H. Salesin, and Robert L. Cook. 1987. Rendering antialiased shadows with depth maps. SIGGRAPH Comput. Graph. 21, 4 (July 1987), 283–291. <a target="_blank" rel="noopener" href="https://doi.org/10.1145/37402.37435">https://doi.org/10.1145/37402.37435</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.download.nvidia.com/shaderlibrary/docs/shadow_PCSS.pdf">https://developer.download.nvidia.com/shaderlibrary/docs/shadow_PCSS.pdf</a></li>
+<li>William Donnelly and Andrew Lauritzen. 2006. Variance shadow maps. In Proceedings of the 2006 symposium on Interactive 3D graphics and games (I3D ‘06). Association for Computing Machinery, New York, NY, USA, 161–165. <a target="_blank" rel="noopener" href="https://doi.org/10.1145/1111411.1111440">https://doi.org/10.1145/1111411.1111440</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.download.nvidia.com/SDK/10.5/opengl/src/cascaded_shadow_maps/doc/cascaded_shadow_maps.pdf">https://developer.download.nvidia.com/SDK/10.5/opengl/src/cascaded_shadow_maps/doc/cascaded_shadow_maps.pdf</a></li>
+<li>Salvi, Marco, “Rendering Filtered Shadows with Exponential Shadow Maps,” in Wolfgang Engel, ed., ShaderX6, Charles River Media, pp. 257–274, 2008.</li>
+<li>Yang, B., Dong, Z., Feng, J., Seidel, H.-P. and Kautz, J. (2010), Variance Soft Shadow Mapping. Computer Graphics Forum, 29: 2127-2134. <a target="_blank" rel="noopener" href="https://doi.org/10.1111/j.1467-8659.2010.01800.x">https://doi.org/10.1111/j.1467-8659.2010.01800.x</a></li>
+<li>Christoph Peters and Reinhard Klein. 2015. Moment shadow mapping. In Proceedings of the 19th Symposium on Interactive 3D Graphics and Games (i3D ‘15). Association for Computing Machinery, New York, NY, USA, 7–14. <a target="_blank" rel="noopener" href="https://doi.org/10.1145/2699276.2699277">https://doi.org/10.1145/2699276.2699277</a></li>
+<li>Lingqi Yan. Games202 Lecture3&amp;Lecture4.</li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/384446688">https://zhuanlan.zhihu.com/p/384446688</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/478472753">https://zhuanlan.zhihu.com/p/478472753</a></li>
+</ol>
+
+
+  </div>
+  
   
     
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2023/03/28/Rendering-History/"  itemprop="url">
-        Rendering History
-      </a>
-    </h2>
+    <div class='footer'>
+      
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享4.0国际 (CC BY-NC-SA 4.0) 协议</p>
+
+              
+            
+              
+                <p>本文永久链接是：<a href=https://yaelcassini.github.io/2023/03/29/Shadow-Rendering/>https://yaelcassini.github.io/2023/03/29/Shadow-Rendering/</a></p>
+              
+            
+          </blockquote>
+        </div>
+      
+      
+    </div>
   
-  <div class='md article-desc' itemprop="articleBody">
+  
+    
+
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2023-03-29T20:27:01+08:00">
+  <a class='notlink'>
+    <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2023年3月29日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Rendering/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>Rendering</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Shadow/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>Shadow</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Shadow-Map/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>Shadow Map</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/PCF/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>PCF</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/PCSS/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>PCSS</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/VSM/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>VSM</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/MSM/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>MSM</p></a></div>
+  <span hidden itemprop="keywords">Rendering Shadow Shadow Map PCF PCSS VSM MSM</span>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
     
       
-        真实感渲染光照模型 Illumination Model
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yaelcassini.github.io/2023/03/29/Shadow-Rendering/&title=Shadow Rendering - Unknown Island&summary="
+          
+          >
+          
+            <img src="https://fastly.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://yaelcassini.github.io/2023/03/29/Shadow-Rendering/&title=Shadow Rendering - Unknown Island&summary="
+          
+          >
+          
+            <img src="https://fastly.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://yaelcassini.github.io/2023/03/29/Shadow-Rendering/&title=Shadow Rendering - Unknown Island&summary="
+          
+          >
+          
+            <img src="https://fastly.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png">
+          
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+    <!-- Custom Files bottomMeta begin -->
+    
+    <!-- Custom Files bottomMeta end -->
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+      
+        <a class='next' href='/2023/03/28/Rendering-History/'>
+          <p class='title'>Rendering History<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>真实感渲染光照模型 Illumination Model
 灯光
 阴影
 
@@ -2822,213 +3073,36 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 明暗
 纹理
 透明
-一种标准的基本属性主要是Metallic-Roughness，另一种标准是Specular-Glossiness，前者对设计师更友好，后者侧重物理属性，保留了反射率F0。
-
-光栅化 Rasterization光线追踪消隐技术全局光照（Global Illuminatio...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' href='about/'><img src='https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/logo_64.png'></a>
-          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="image" content="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/logo_64.png">
-            <meta itemprop="name" content="Yael Cassini">
-            <meta itemprop="url" content="about/">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2023-03-28T20:37:39+08:00">2023-03-28</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Rendering/">Rendering</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/Rendering/" itemprop="url"><span itemprop="name">Rendering</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2023/03/28/Rendering-History/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
+一种标准的基本属性主要是Metallic-Roughness，另一种标...</p>
+        </a>
       
     </div>
   
+  <!-- Custom Files postEnd begin-->
+  
+  <!-- Custom Files postEnd end-->
+</article>
 
-</div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://yaelcassini.github.io/2023/03/24/PathTracing/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Unknown Island">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="Unknown Island">
-    <meta itemprop="description" content="赛博小屋">
-  </span>
   
-  
-  
+
+
+  <article class="post white-box shadow floatable blur" id="comments">
     <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+      <meta itemprop="discussionUrl" content="/2023/03/29/Shadow-Rendering/index.html#comments">
     </span>
-  
-  
+    <p ct><i class='fa-solid fa-comments'></i> 评论</p>
     
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2023/03/24/PathTracing/"  itemprop="url">
-        PathTracing
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        Related Information:
-https://raytracing.github.io/books/RayTracingInOneWeekend.html
-https://raytracing.github.io/books/RayTracingTheNextWeek.html
-https://agraphicsguynotes.com/posts/sample_microfac...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' href='about/'><img src='https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/logo_64.png'></a>
-          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="image" content="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/logo_64.png">
-            <meta itemprop="name" content="Yael Cassini">
-            <meta itemprop="url" content="about/">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2023-03-24T14:32:57+08:00">2023-03-24</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/PathTracing/">PathTracing</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/PathTracing/" itemprop="url"><span itemprop="name">PathTracing</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2023/03/24/PathTracing/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
 
-</div>
+    <div id="layoutHelper-comments"></div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://yaelcassini.github.io/2022/06/15/Subsurface-Scattering/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Unknown Island">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="Unknown Island">
-    <meta itemprop="description" content="赛博小屋">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2022/06/15/Subsurface-Scattering/"  itemprop="url">
-        Subsurface Scattering
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        蒙特卡洛积分：
-
-https://zhuanlan.zhihu.com/p/146144853
-https://www.cnblogs.com/time-flow1024/p/10094293.html#mjx-eqn-eq%3AFN
-https://zhuanlan.zhihu.com/p/365624460
-我悟了！
-
-Blender Random Walk SSS：
-
-https://...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' href='about/'><img src='https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/logo_64.png'></a>
-          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="image" content="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/logo_64.png">
-            <meta itemprop="name" content="Yael Cassini">
-            <meta itemprop="url" content="about/">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2022-06-15T15:47:18+08:00">2022-06-15</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Subsurface-Scattering/">Subsurface Scattering</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/Subsurface-Scattering/" itemprop="url"><span itemprop="name">Subsurface Scattering</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2022/06/15/Subsurface-Scattering/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-    
-  </section>
-  
-    
-  
+  </article>
 
 
-    
-  
+
+
+
+
 </div>
 <aside id='l_side' itemscope itemtype="http://schema.org/WPSideBar">
   
@@ -3106,91 +3180,31 @@ https://...
   
     
     
-  
 
-  <section class="widget category shadow floatable blur desktop mobile pjax">
+
+
+  <section class="widget toc-wrapper shadow floatable blur desktop mobile pjax" id="toc-div" >
     
   <header>
     
-      <a href='/categories/'><i class="fa-solid fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
+      <i class="fa-solid fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
     
   </header>
 
 
     <div class='content'>
-      <ul class="entry navigation">
-        
-          <li><a class="flat-box"
-            title="/categories/Deep-Face-Project/" href="/categories/Deep-Face-Project/"
-            active-action="action-categoriesDeep-Face-Project"
-            ><div class='name'>Deep Face Project</div><div class='badge'>(3)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/Neural-Rendering/" href="/categories/Neural-Rendering/"
-            active-action="action-categoriesNeural-Rendering"
-            ><div class='name'>Neural Rendering</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/Others/" href="/categories/Others/"
-            active-action="action-categoriesOthers"
-            ><div class='name'>Others</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/PathTracing/" href="/categories/PathTracing/"
-            active-action="action-categoriesPathTracing"
-            ><div class='name'>PathTracing</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/Rendering/" href="/categories/Rendering/"
-            active-action="action-categoriesRendering"
-            ><div class='name'>Rendering</div><div class='badge'>(2)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/Subsurface-Scattering/" href="/categories/Subsurface-Scattering/"
-            active-action="action-categoriesSubsurface-Scattering"
-            ><div class='name'>Subsurface Scattering</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/TA-learning/" href="/categories/TA-learning/"
-            active-action="action-categoriesTA-learning"
-            ><div class='name'>TA-learning</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E5%89%8D%E7%AB%AF/" href="/categories/%E5%89%8D%E7%AB%AF/"
-            active-action="action-categoriesE5898DE7ABAF"
-            ><div class='name'>前端</div><div class='badge'>(2)</div></a></li>
-        
-      </ul>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B8%B2%E6%9F%93%E6%8A%80%E6%9C%AF%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E2%80%94%E2%80%94%E9%98%B4%E5%BD%B1%E7%BB%98%E5%88%B6%E6%8A%80%E6%9C%AF%E7%9A%84%E5%8F%91%E5%B1%95%E5%8E%86%E7%A8%8B%E5%8F%8A%E6%96%B9%E6%B3%95%E6%AF%94%E8%BE%83"><span class="toc-text">渲染技术研究报告——阴影绘制技术的发展历程及方法比较</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%89%8D%E8%A8%80"><span class="toc-text">一、前言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E3%80%81Shadow-Volume%E7%AE%97%E6%B3%95%E8%AF%9E%E7%94%9F%E5%8F%8A%E5%85%B6%E6%94%B9%E8%BF%9B"><span class="toc-text">二、Shadow Volume算法诞生及其改进</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%89%E3%80%81Shadow-Map%E7%AE%97%E6%B3%95%E7%9A%84%E8%AF%9E%E7%94%9F%E5%8F%8A%E5%85%B6%E6%94%B9%E8%BF%9B"><span class="toc-text">三、Shadow Map算法的诞生及其改进</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%9B%E3%80%81PCF%E7%AE%97%E6%B3%95-amp-PCSS%E7%AE%97%E6%B3%95"><span class="toc-text">四、PCF算法&amp;PCSS算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%94%E3%80%81VSM%E7%AE%97%E6%B3%95%E5%92%8CVSSM%E7%AE%97%E6%B3%95"><span class="toc-text">五、VSM算法和VSSM算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%AD%E3%80%81MSM%E7%AE%97%E6%B3%95"><span class="toc-text">六、MSM算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E6%80%BB%E7%BB%93"><span class="toc-text">七、总结</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%EF%BC%9A"><span class="toc-text">参考资料：</span></a></li></ol></li></ol></li></ol>
     </div>
   </section>
-
-
-  
-
-  
-    
-    
-  
-
-  <section class="widget tagcloud shadow floatable blur desktop mobile pjax">
-    
-  <header>
-    
-      <a href='/tags/'><i class="fa-solid fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <a href="/tags/Artificial-Intelligence/" style="font-size: 14px; color: #999">Artificial Intelligence</a> <a href="/tags/Artificial-Intelligent/" style="font-size: 20.67px; color: #6c6c6c">Artificial Intelligent</a> <a href="/tags/Deep-Fake/" style="font-size: 17.33px; color: #828282">Deep Fake</a> <a href="/tags/Deep-Learing/" style="font-size: 20.67px; color: #6c6c6c">Deep Learing</a> <a href="/tags/GAN/" style="font-size: 17.33px; color: #828282">GAN</a> <a href="/tags/Github-Pages/" style="font-size: 17.33px; color: #828282">Github Pages</a> <a href="/tags/Hexo/" style="font-size: 17.33px; color: #828282">Hexo</a> <a href="/tags/MSM/" style="font-size: 14px; color: #999">MSM</a> <a href="/tags/Monte-Carlo/" style="font-size: 20.67px; color: #6c6c6c">Monte Carlo</a> <a href="/tags/Neural-Rendering/" style="font-size: 14px; color: #999">Neural Rendering</a> <a href="/tags/Notes/" style="font-size: 14px; color: #999">Notes</a> <a href="/tags/PCF/" style="font-size: 14px; color: #999">PCF</a> <a href="/tags/PCSS/" style="font-size: 14px; color: #999">PCSS</a> <a href="/tags/PathTracing/" style="font-size: 17.33px; color: #828282">PathTracing</a> <a href="/tags/RayTracing/" style="font-size: 17.33px; color: #828282">RayTracing</a> <a href="/tags/Rendering/" style="font-size: 24px; color: #555">Rendering</a> <a href="/tags/Shadow/" style="font-size: 14px; color: #999">Shadow</a> <a href="/tags/Shadow-Map/" style="font-size: 14px; color: #999">Shadow Map</a> <a href="/tags/Spherical-Harmonics/" style="font-size: 14px; color: #999">Spherical Harmonics</a> <a href="/tags/Technical-Artist/" style="font-size: 14px; color: #999">Technical Artist</a> <a href="/tags/VSM/" style="font-size: 14px; color: #999">VSM</a> <a href="/tags/Volantis/" style="font-size: 17.33px; color: #828282">Volantis</a>
-    </div>
-  </section>
-
 
   
 
 
 <!-- 没有 pjax 占位会报错 万恶的 pjax -->
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
 
   <div class="pjax">
     <!-- pjax占位 -->
@@ -3219,13 +3233,14 @@ https://...
 </aside>
 
 
+
           <!--此文件用来存放一些不方便取值的变量-->
 <!--思路大概是将值藏到重加载的区域内-->
 
 <pjax>
 <script>
   window.pdata={}
-  pdata.ispage=false;
+  pdata.ispage=true;
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   pdata.commentConfig={};
@@ -4533,7 +4548,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Unknown Island","url":"https://yaelcassini.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/","sameAs":["https://github.com/volantis-x"],"description":"赛博小屋"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://yaelcassini.github.io/","name":"Unknown Island"}},{"@type":"ListItem","position":2,"item":{"@id":"https://yaelcassini.github.io/tags/Monte Carlo/","name":"Monte Carlo"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Unknown Island","url":"https://yaelcassini.github.io/","keywords":null,"description":"赛博小屋","author":{"@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/","description":"赛博小屋"},"publisher":{"@type":"Organization","name":"Unknown Island","url":"https://yaelcassini.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://yaelcassini.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","description":"赛博小屋","inLanguage":["zh-CN","en","zh-HK","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage"},"author":{"@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/"},"publisher":{"@type":"Organization","name":"Unknown Island","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"wordCount":0,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Unknown Island","url":"https://yaelcassini.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/","sameAs":["https://github.com/volantis-x"],"description":"赛博小屋"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://yaelcassini.github.io/","name":"Unknown Island"}},{"@type":"ListItem","position":2,"item":{"@id":"https://yaelcassini.github.io/categories/Rendering/","name":"Rendering"}},{"@type":"ListItem","position":3,"item":{"@id":"https://yaelcassini.github.io/2023/03/29/Shadow-Rendering/","name":"Shadow Rendering"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Unknown Island","url":"https://yaelcassini.github.io/","keywords":null,"description":"赛博小屋","author":{"@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/","description":"赛博小屋"},"publisher":{"@type":"Organization","name":"Unknown Island","url":"https://yaelcassini.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://yaelcassini.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Shadow Rendering","description":"赛博小屋","inLanguage":["zh-CN","en","zh-HK","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://yaelcassini.github.io/2023/03/29/Shadow-Rendering/"},"author":{"@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/"},"publisher":{"@type":"Organization","name":"Unknown Island","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://yaelcassini.github.io/2023/03/29/Shadow-Rendering/","wordCount":0,"datePublished":"2023-03-29T12:16:36.000Z","dateModified":"2023-03-29T12:27:01.727Z","articleSection":"Rendering","keywords":"Rendering,Shadow,Shadow Map,PCF,PCSS,VSM,MSM","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
