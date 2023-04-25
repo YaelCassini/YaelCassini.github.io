@@ -4,6 +4,66 @@
   
     
     <entry>
+      <title>Color-Management</title>
+      <link href="/2023/04/24/Color-Management/"/>
+      <url>/2023/04/24/Color-Management/</url>
+      
+        <content type="html"><![CDATA[<p>颜色管理是图形学中一个非常重要的课题，图形学与图像和颜色的可视化息息相关，但是我们有时候追求的是储存元数据的信息，有时候又追求的是图像看上去合理，符合美术工作人员的期待。不同的显示器、不同的颜色空间管理以及不同的人眼都会产生颜色的感知偏差。</p><h3 id="Gamma-矫正"><a href="#Gamma-矫正" class="headerlink" title="Gamma 矫正"></a>Gamma 矫正</h3><p>Gamma矫正最初是为了适应CRT显示器的非线性输出问题，目前存在则是主要为了适应人眼的非线性感知问题。</p><p>CRT显示器的非线性输出具体来说是，如果输入一个0.5的值到显示器，显示器会呈现出0.218的值</p><p>现在的Gamma矫正大多是为了拟合人眼的感知曲线，人眼对暗部细节的感知更加丰富，因此使用gamma矫正在储存图像时，相当于对源数据的暗部进行了展开，亮部进行了压缩，这样能储存更丰富的暗部细节信息。但gamma矫正本质上是一种编码格式，并不应该影响实际的数据，比如源数据在储存为RGB格式时做了gamma矫正，那么在从RGB文件中读取时要做反gamma矫正重新映射回源数据。</p><p>另外，由于历史遗留原因，我们使用的大部分显示器，仍然沿袭CRT显示器的这种非线性输出，也就是我们再把数据传递给显示器时需要做一个类似gamma矫正的变换，而显示器则会做一个类似CRT显示器的反gamma变换。</p><h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><ol><li>Games101-Lecture 20-Color and Perception</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> Computer Graphics </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Color </tag>
+            
+            <tag> Color Space </tag>
+            
+            <tag> Gamma Correction </tag>
+            
+            <tag> Tone Mapping </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>PBR Neural Rendering</title>
+      <link href="/2023/04/18/PBR-Neural-Rendering/"/>
+      <url>/2023/04/18/PBR-Neural-Rendering/</url>
+      
+        <content type="html"><![CDATA[<ul><li><p>ICLR 2023：《Light Sampling Field and BRDF Representation for Physically-based Neural Rendering》</p></li><li><p><a href="https://www.researchgate.net/publication/369974931_Light_Sampling_Field_and_BRDF_Representation_for_Physically-based_Neural_Rendering">https://www.researchgate.net/publication/369974931_Light_Sampling_Field_and_BRDF_Representation_for_Physically-based_Neural_Rendering</a></p></li><li><p><a href="https://www.youtube.com/watch?v=qpIgS11DlJE">https://www.youtube.com/watch?v=qpIgS11DlJE</a></p></li><li><p><a href="https://docs.unrealengine.com/4.26/en-US/RenderingAndGraphics/Lightmass/VolumetricLightmaps/#:~:text=The%20Volumetric%20Lightmap%20allows%20previewing%20of%20objects%20with,the%20Volumetric%20Lightmap%20until%20lighting%20is%20built%20again">https://docs.unrealengine.com/4.26/en-US/RenderingAndGraphics/Lightmass/VolumetricLightmaps/#:~:text=The%20Volumetric%20Lightmap%20allows%20previewing%20of%20objects%20with,the%20Volumetric%20Lightmap%20until%20lighting%20is%20built%20again</a>.</p></li><li><p>NeRF：</p></li><li><p><a href="https://www.matthewtancik.com/nerf">https://www.matthewtancik.com/nerf</a></p></li><li><p>NeRV：</p></li><li><p><a href="https://pratulsrinivasan.github.io/nerv/">https://pratulsrinivasan.github.io/nerv/</a></p></li><li><p>NeRD：</p></li><li><p><a href="https://pratulsrinivasan.github.io/nerv/">https://pratulsrinivasan.github.io/nerv/</a></p></li><li><p>State of Art of Neural Rendering</p></li><li><p><a href="https://arxiv.org/abs/2004.03805">https://arxiv.org/abs/2004.03805</a></p></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Neural Rendering </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Neural Rendering </tag>
+            
+            <tag> Rendering </tag>
+            
+            <tag> PBR </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Shadow Rendering</title>
       <link href="/2023/03/29/Shadow-Rendering/"/>
       <url>/2023/03/29/Shadow-Rendering/</url>
@@ -136,7 +196,7 @@
       <link href="/2022/11/10/%E4%B8%80%E4%BA%9B%E8%B5%84%E6%BA%90/"/>
       <url>/2022/11/10/%E4%B8%80%E4%BA%9B%E8%B5%84%E6%BA%90/</url>
       
-        <content type="html"><![CDATA[<p>常用Mesh：<a href="http://casual-effects.com/data/index.html">http://casual-effects.com/data/index.html</a></p><ul><li><p>Spherical Harmonics：<br><a href="https://www.jianshu.com/p/a379b4c6d346">https://www.jianshu.com/p/a379b4c6d346</a></p></li><li><p><a href="https://github.com/blurgyy/cg-2020">https://github.com/blurgyy/cg-2020</a></p></li><li><p>Chrono是c++11的一个时间库，可以用它来做程序运行时间的记录。</p></li><li><p><a href="https://www.cnblogs.com/jwk000/p/3560086.html">https://www.cnblogs.com/jwk000/p/3560086.html</a></p></li><li><p>git submodule 如何push 代码</p></li><li><p>cd your_submodule</p></li><li><p>git checkout master</p></li><li><p>git commit -a -m “commit message”</p></li><li><p>git push</p></li><li><p>cd ..</p></li><li><p>git add your_submodule</p></li><li><p>git commit -m “Update submodule”</p></li><li><p>git submodule update –remote</p></li><li><p>git pull –recurse-submodules</p></li><li><p>Warp是一个可以迁移拓扑并投影贴图的软件</p></li><li><p>TinyXML2是一个可以解析XML格式文件的库</p></li><li><p><a href="https://github.com/leethomason/tinyxml2">https://github.com/leethomason/tinyxml2</a></p></li><li><p>Maya里面的坐标系是Y轴朝上</p></li><li><p>Blender里面的坐标系是z轴朝上</p></li><li><p>都是右手坐标系</p></li><li><p>所以模型导入blender会自动沿着x轴旋转90度</p></li><li><p>PBRT:</p></li><li><p><a href="https://www.pbr-book.org/3ed-2018/contents">https://www.pbr-book.org/3ed-2018/contents</a></p></li><li><p><a href="https://github.com/BachiLi/lajolla_public">https://github.com/BachiLi/lajolla_public</a></p></li><li><p><a href="https://github.com/462cmu">https://github.com/462cmu</a></p></li><li><p><a href="https://github.com/wjakob/nori">https://github.com/wjakob/nori</a></p></li></ul>]]></content>
+        <content type="html"><![CDATA[<p>常用Mesh：<a href="http://casual-effects.com/data/index.html">http://casual-effects.com/data/index.html</a></p><ul><li><p>Spherical Harmonics：<br><a href="https://www.jianshu.com/p/a379b4c6d346">https://www.jianshu.com/p/a379b4c6d346</a></p></li><li><p><a href="https://github.com/blurgyy/cg-2020">https://github.com/blurgyy/cg-2020</a></p></li><li><p>Chrono是c++11的一个时间库，可以用它来做程序运行时间的记录。</p></li><li><p><a href="https://www.cnblogs.com/jwk000/p/3560086.html">https://www.cnblogs.com/jwk000/p/3560086.html</a></p></li><li><p>git submodule 如何push 代码</p></li><li><p>cd your_submodule</p></li><li><p>git checkout master</p></li><li><p>git commit -a -m “commit message”</p></li><li><p>git push</p></li><li><p>cd ..</p></li><li><p>git add your_submodule</p></li><li><p>git commit -m “Update submodule”</p></li><li><p>git submodule update –remote</p></li><li><p>git pull –recurse-submodules</p></li><li><p>Warp是一个可以迁移拓扑并投影贴图的软件</p></li><li><p>TinyXML2是一个可以解析XML格式文件的库</p></li><li><p><a href="https://github.com/leethomason/tinyxml2">https://github.com/leethomason/tinyxml2</a></p></li><li><p>Maya里面的坐标系是Y轴朝上</p></li><li><p>Blender里面的坐标系是z轴朝上</p></li><li><p>都是右手坐标系</p></li><li><p>所以模型导入blender会自动沿着x轴旋转90度</p></li><li><p>PBRT:</p></li><li><p><a href="https://www.pbr-book.org/3ed-2018/contents">https://www.pbr-book.org/3ed-2018/contents</a></p></li><li><p><a href="https://github.com/BachiLi/lajolla_public">https://github.com/BachiLi/lajolla_public</a></p></li><li><p><a href="https://github.com/462cmu">https://github.com/462cmu</a></p></li><li><p><a href="https://github.com/wjakob/nori">https://github.com/wjakob/nori</a></p></li><li><p><a href="https://github.com/HW140701/Book-list-of-computational-geometry-and-computer-graphics">https://github.com/HW140701/Book-list-of-computational-geometry-and-computer-graphics</a></p></li></ul>]]></content>
       
       
       <categories>
