@@ -44,7 +44,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2023-05-08T06:47:49.000Z">
-<meta property="article:modified_time" content="2023-05-12T06:43:45.035Z">
+<meta property="article:modified_time" content="2023-05-12T07:22:25.399Z">
 <meta property="article:author" content="Cassini">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png">
@@ -1977,7 +1977,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: false,
     cdn: {"js":{"app":"/js/app.e546c981.js","parallax":"/js/plugins/parallax.8bf0ab10.js","rightMenu":"/js/plugins/rightMenu.d9437285.js","rightMenus":"/js/plugins/rightMenus.cd02aa19.js","sites":"/js/plugins/tags/sites.76bf19b8.js","friends":"/js/plugins/tags/friends.f372da57.js","contributors":"/js/plugins/tags/contributors.aec80453.js","search":"/js/search/hexo.0e52f222.js"},"css":{"style":"/css/style.87c2c8ad.css"}},
     default: {"avatar":"https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/avatar/round/3442075.svg","link":"https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/link/8f277b4ee0ecd.svg","cover":"https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/cover/76b86c0226ffd.svg","image":"https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg"},
-    lastupdate: new Date(1683873886509),
+    lastupdate: new Date(1684139959965),
     sidebar: {
       for_page: ["blogger","category","tagcloud"],
       for_post: ["blogger","toc"],
@@ -2850,43 +2850,48 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <ul>
-<li><p>virual box 共享文件夹设置：</p>
-</li>
-<li><ul>
+    <ol>
+<li>virual box 共享文件夹设置：</li>
+</ol>
+<ul>
 <li><a target="_blank" rel="noopener" href="https://blog.csdn.net/jumpingpig/article/details/104109395">https://blog.csdn.net/jumpingpig/article/details/104109395</a></li>
 </ul>
-</li>
-<li><p>欧几里德结构数据(Euclidean Structure Data) 以及非欧几里德结构数据(Non-Euclidean Structure Data)</p>
-</li>
-<li><ul>
+<ol start="2">
+<li>欧几里德结构数据(Euclidean Structure Data) 以及非欧几里德结构数据(Non-Euclidean Structure Data)</li>
+</ol>
+<ul>
 <li><a target="_blank" rel="noopener" href="https://blog.csdn.net/imsuhxz/article/details/91361977">https://blog.csdn.net/imsuhxz/article/details/91361977</a></li>
 </ul>
-</li>
-<li><p>U-net网络结构：</p>
-</li>
-<li><ul>
+<ol start="3">
+<li>U-net网络结构：</li>
+</ol>
+<ul>
 <li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/313283141">https://zhuanlan.zhihu.com/p/313283141</a></li>
 </ul>
-</li>
-<li><p>nn.ReplicationPad3d</p>
-</li>
-<li><ul>
+<ol start="4">
+<li>nn.ReplicationPad3d</li>
+</ol>
+<ul>
 <li>使用输入边界的复制对输入张量进行填充。</li>
-</ul>
-</li>
-<li><ul>
 <li>Parameters</li>
-</ul>
-</li>
 <li><ul>
-<li><ul>
-<li>padding ( int , tuple ) – 填充的大小。如果是 int ，则在所有边界中使用相同的填充。如果是 6 tuple，则使用( padding_left, padding_right, padding_top, padding_bottom, padding_front, padding_back )</li>
+<li>padding(int,tuple)–填充的大小。如果是int，则在所有边界中使用相同的填充。如果是6 tuple，则使用(padding_left,padding_right, padding_top, padding_bottom, padding_front, padding_back )</li>
 </ul>
 </li>
 </ul>
-</li>
+<ol start="5">
+<li>torch.nn.Conv3D</li>
+</ol>
+<ul>
+<li>3D卷积, 输入的shape是(N, C_{in}, D, H, W) (N, C_{in}, D, H, W)(N, C_{in}, D, H, W)，输出shape(N, C_{out}, D_{out}, H_{out}, W_{out})</li>
+<li>其中，就是batch_size；C_{in}对应着输入图像的通道数，比如RGB图像通道数为3；D为深度，H、W则是tensor的长宽。</li>
 </ul>
+<ol start="6">
+<li><p>torch.nn.BatchNorm3d</p>
+</li>
+<li><p>torch.nn.LeakyReLU</p>
+</li>
+</ol>
 
 
   </div>
@@ -2923,7 +2928,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2023-05-12T14:43:45+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2023-05-12T15:22:25+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：2023年5月12日</p>
@@ -3001,6 +3006,14 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   
     <div class="prev-next">
+      
+        <a class='prev' href='/2023/05/15/Relightable-Neural-Renderer-%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E8%AE%B0%E5%BD%95/'>
+          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>Relightable Neural Renderer 配置环境记录</p>
+          <p class='content'>
+原Github仓库地址：https://github.com/LansburyCH/relightable-nr
+
+因为项目需要学习了Relightable Neural Rendering，...</p>
+        </a>
       
       
         <a class='next' href='/2023/04/24/Color-Management/'>
@@ -4170,7 +4183,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/011.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/019.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/001.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/015.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/003.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/023.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/018.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/021.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/012.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/005.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/004.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/006.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/020.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/022.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/002.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/009.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/025.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/024.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/008.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/010.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/007.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/016.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/013.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/017.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/014.webp"];
+  let imgs = ["https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/022.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/018.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/023.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/015.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/019.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/003.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/020.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/010.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/006.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/013.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/025.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/004.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/014.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/017.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/001.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/002.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/012.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/008.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/016.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/021.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/009.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/011.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/005.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/007.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/024.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -4470,7 +4483,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Unknown Island","url":"https://yaelcassini.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/","sameAs":["https://github.com/volantis-x"],"description":"赛博小屋"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://yaelcassini.github.io/","name":"Unknown Island"}},{"@type":"ListItem","position":3,"item":{"@id":"https://yaelcassini.github.io/2023/05/08/Relighing学习笔记/","name":"Relighing学习笔记"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Unknown Island","url":"https://yaelcassini.github.io/","keywords":null,"description":"赛博小屋","author":{"@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/","description":"赛博小屋"},"publisher":{"@type":"Organization","name":"Unknown Island","url":"https://yaelcassini.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://yaelcassini.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Relighing学习笔记","description":"赛博小屋","inLanguage":["zh-CN","en","zh-HK","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://yaelcassini.github.io/2023/05/08/Relighing%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"},"author":{"@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/"},"publisher":{"@type":"Organization","name":"Unknown Island","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://yaelcassini.github.io/2023/05/08/Relighing%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/","wordCount":0,"datePublished":"2023-05-08T06:47:49.000Z","dateModified":"2023-05-12T06:43:45.035Z","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Unknown Island","url":"https://yaelcassini.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/","sameAs":["https://github.com/volantis-x"],"description":"赛博小屋"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://yaelcassini.github.io/","name":"Unknown Island"}},{"@type":"ListItem","position":3,"item":{"@id":"https://yaelcassini.github.io/2023/05/08/Relighing学习笔记/","name":"Relighing学习笔记"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Unknown Island","url":"https://yaelcassini.github.io/","keywords":null,"description":"赛博小屋","author":{"@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/","description":"赛博小屋"},"publisher":{"@type":"Organization","name":"Unknown Island","url":"https://yaelcassini.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://yaelcassini.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Relighing学习笔记","description":"赛博小屋","inLanguage":["zh-CN","en","zh-HK","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://yaelcassini.github.io/2023/05/08/Relighing%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"},"author":{"@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/"},"publisher":{"@type":"Organization","name":"Unknown Island","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://yaelcassini.github.io/2023/05/08/Relighing%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/","wordCount":0,"datePublished":"2023-05-08T06:47:49.000Z","dateModified":"2023-05-12T07:22:25.399Z","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 

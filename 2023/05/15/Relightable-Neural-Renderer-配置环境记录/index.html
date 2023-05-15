@@ -5,8 +5,8 @@
   <meta name="Volantis" content="5.3.2">
   <meta charset="utf-8">
   <!-- SEO相关 -->
-  <meta name="robots" content="index,follow">
-  <link rel="canonical" href="https://yaelcassini.github.io/"/>
+  
+  <link rel="canonical" href="https://yaelcassini.github.io/2023/05/15/relightable-neural-renderer-配置环境记录/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -32,18 +32,24 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>Unknown Island</title>
-  <meta name="keywords" content="">
+  <title>Relightable Neural Renderer 配置环境记录 - Unknown Island</title>
+  <meta name="keywords" content="Neural Rendering,Rendering,anaconda,pytorch,null">
   <meta desc name="description" content="赛博小屋 - Cassini - Unknown Island">
   
-<meta property="og:type" content="website">
-<meta property="og:title" content="Unknown Island">
-<meta property="og:url" content="https://yaelcassini.github.io/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Relightable Neural Renderer 配置环境记录">
+<meta property="og:url" content="https://yaelcassini.github.io/2023/05/15/Relightable-Neural-Renderer-%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E8%AE%B0%E5%BD%95/index.html">
 <meta property="og:site_name" content="Unknown Island">
-<meta property="og:description" content="赛博小屋">
+<meta property="og:description" content="原Github仓库地址：https:&#x2F;&#x2F;github.com&#x2F;LansburyCH&#x2F;relightable-nr  因为项目需要学习了Relightable Neural Rendering， 并尝试把源码下载到本地配置环境运行，被pytorch环境折磨的不轻，把最后成功的过程在这里放一下。原仓库中记录的环境是Ubuntu 16.04 + CUDA 9.0 + gcc 4.9.2 + Anaco">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+<meta property="article:published_time" content="2023-05-15T07:03:48.000Z">
+<meta property="article:modified_time" content="2023-05-15T08:35:42.240Z">
 <meta property="article:author" content="Cassini">
+<meta property="article:tag" content="Neural Rendering">
+<meta property="article:tag" content="Rendering">
+<meta property="article:tag" content="anaconda">
+<meta property="article:tag" content="pytorch">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png">
   <style>
@@ -2690,7 +2696,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
       <!-- see: /layout/_partial/scripts/_ctrl/coverCtrl.ejs -->
-      <div id="full" class='cover-wrapper  dock' style="display: ;">
+      <div id="half" class='cover-wrapper post dock' style="display: ;">
         
   <div id="parallax-window"></div>
 
@@ -2757,7 +2763,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   </div>
 </div>
 
-        <div id="scroll-down" style="display: ;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+        <div id="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
       </div>
     
   
@@ -2767,61 +2773,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         <div class="body-wrapper">
           
 <div id="l_main" class=''>
-  
-  <section class="post-list">
-    
-      
-        
-          
-        
-          
-        
-          
-        
-          
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow floatable blur article-type-post" id="post" itemscope itemprop="blogPost">
   <link itemprop="mainEntityOfPage" href="https://yaelcassini.github.io/2023/05/15/Relightable-Neural-Renderer-%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E8%AE%B0%E5%BD%95/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Unknown Island">
@@ -2831,762 +2783,270 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <meta itemprop="description" content="赛博小屋">
   </span>
   
-  
+
+
   
     <span hidden>
       <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png">
     </span>
   
-  
+  <div class="article-meta" id="top">
     
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2023/05/15/Relightable-Neural-Renderer-%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E8%AE%B0%E5%BD%95/"  itemprop="url">
+    
+    
+      <h1 class="title" itemprop="name headline">
         Relightable Neural Renderer 配置环境记录
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
+      </h1>
+      <div class='new-meta-box'>
         
-原Github仓库地址：https://github.com/LansburyCH/relightable-nr
+          
+            
+<div class='new-meta-item author' itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <a itemprop="url" class='author' href="about/" rel="nofollow">
+    <img itemprop="image" src="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/logo_64.png">
+    <p itemprop="name">Yael Cassini</p>
+  </a>
+</div>
 
-因为项目需要学习了Relightable Neural Rendering， 并尝试把源码下载到本地配置环境运行，被pytorch环境折磨的不轻，把最后成功的过程在这里放一下。原仓库中记录的环境是Ubuntu 16.04 + CUDA 9.0 + gcc 4.9.2 + An...
-      
+          
+        
+          
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2023-05-15T15:03:48+08:00">
+  <a class='notlink'>
+    <i class="fa-solid fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2023年5月15日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class='new-meta-item category'>
+    <i class="fa-solid fa-folder-open fa-fw" aria-hidden="true"></i>
+    <a class="category-link" href="/categories/Neural-Rendering/">Neural Rendering</a>
+    
+      <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+        <a href="/categories/Neural-Rendering/" itemprop="url"><span itemprop="name">Neural Rendering</span></a>
+      </span>
     
   </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' href='about/'><img src='https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/logo_64.png'></a>
-          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="image" content="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/logo_64.png">
-            <meta itemprop="name" content="Yael Cassini">
-            <meta itemprop="url" content="about/">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2023-05-15T15:03:48+08:00">2023-05-15</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Neural-Rendering/">Neural Rendering</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/Neural-Rendering/" itemprop="url"><span itemprop="name">Neural Rendering</span></a>
-            </span>
+
+
           
         
-      </div>
+          
+            
+
+
+<div class="new-meta-item browse">
+  <a class='notlink'>
+    <p>
+      <i class="fa-solid fa-eye fa-fw" aria-hidden="true"></i>
       
-        <div>
-          <a class='readmore' href='/2023/05/15/Relightable-Neural-Renderer-%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E8%AE%B0%E5%BD%95/' itemprop="url">
-            阅读全文
-          </a>
+      <span id="busuanzi_value_page_pv"><i class="fa-solid fa-loader fa-spin fa-fw" aria-hidden="true"></i></span>
+      
+      <span>次浏览</span>
+    </p>
+  </a>
+</div>
+
+
+          
+        
+        <!-- Custom Files topMeta begin-->
+        
+        <!-- Custom Files topMeta end-->
+      </div>
+    
+  </div>
+
+
+  <div id="layoutHelper-page-plugins"></div>
+  <div id="post-body" itemprop="articleBody">
+    <ul>
+<li>原Github仓库地址：<a target="_blank" rel="noopener" href="https://github.com/LansburyCH/relightable-nr">https://github.com/LansburyCH/relightable-nr</a></li>
+</ul>
+<p>因为项目需要学习了Relightable Neural Rendering， 并尝试把源码下载到本地配置环境运行，被pytorch环境折磨的不轻，把最后成功的过程在这里放一下。<br><br>原仓库中记录的环境是<code>Ubuntu 16.04 + CUDA 9.0 + gcc 4.9.2 + Anaconda 3</code>，但因为手边没有合适的Linux服务器，所以使用windows环境配置，版本太老的cuda目前已经找不到合适的pytorch支持，最后使用的环境是<code>window 10 + python3.9.16 + pytorch 1.13.0 + cuda 11.7 + anaconda 3</code>，在两台windows系统电脑上都成功跑通了：一台是双3090，一台是1650。<br></p>
+<h3 id="环境配置过程"><a href="#环境配置过程" class="headerlink" title="环境配置过程"></a>环境配置过程</h3><p>原仓库提供的environment环境文件太过杂乱，有很多不必要一一匹配的包，并且其中有很多版本都太老了已经无从下载，因此安装的时候就没有管这个environment了。<br>首先在官网安装cuda11.7版本，anaconda新建一个python3.9的环境，安装pytorch1.13.0，安装命令为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install pytorch==1.13.0 torchvision==0.14.0 torchaudio==0.13.0 pytorch-cuda=11.7 -c pytorch -c nvidia</span><br></pre></td></tr></table></figure>
+<ul>
+<li>安装旧版本的pytorch指令集：<a target="_blank" rel="noopener" href="https://pytorch.org/get-started/previous-versions/">https://pytorch.org/get-started/previous-versions/</a></li>
+</ul>
+<p>安装后需要进行的步骤为：</p>
+<ol>
+<li>安装opencv：<code>conda install opencv</code></li>
+<li>安装trimesh：<code>conda install -c conda-forge trimesh</code></li>
+<li>安装torch-geometric。这里参考了：<a target="_blank" rel="noopener" href="https://blog.csdn.net/xiangfengl/article/details/120254867#%E5%AE%89%E8%A3%85torch-%20geometric">https://blog.csdn.net/xiangfengl/article/details/120254867#%E5%AE%89%E8%A3%85torch-%20geometric</a><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">pip install torch-scatter -f https://pytorch-geometric.com/whl/torch-1.13.0%2Bcu117.html</span><br><span class="line">pip install torch-sparse -f https://pytorch-geometric.com/whl/torch-1.13.0%2Bcu117.html</span><br><span class="line">pip install torch-cluster -f https://pytorch-geometric.com/whl/torch-1.13.0%2Bcu117.html</span><br><span class="line">pip install torch-spline-conv -f https://pytorch-geometric.com/whl/torch-1.13.0%2Bcu117.html</span><br><span class="line">pip install torch-geometric</span><br></pre></td></tr></table></figure></li>
+<li><code>pip install pyshtools</code></li>
+<li><code>pip install openexr</code></li>
+<li><code>conda install tensorboardX</code></li>
+<li><code>pip install pytorch_msssim</code></li>
+</ol>
+<h3 id="与此同时，源码需要做的修改："><a href="#与此同时，源码需要做的修改：" class="headerlink" title="与此同时，源码需要做的修改："></a>与此同时，源码需要做的修改：</h3><ol>
+<li>nerural-renderer模块中，rasterize_cuda_kernel.cu中，将<br><code>#if  __CUDA_ARCH__ &lt; 600 and defined(__CUDA_ARCH__)</code>修改为<code>#if  __CUDA_ARCH__ &lt; 600 &amp;&amp; defined(__CUDA_ARCH__)</code>。</li>
+<li>将源码cuda文件夹下所有的代码中的<code>AT_CHECK</code>替换为<code>TORCH_CHECK</code>。</li>
+<li>在precompute.py, stitch_lp.py, train_rnr.py三个文件开头添加：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">os.environ[&#x27;OPENCV_IO_ENABLE_OPENEXR&#x27;] = &#x27;TRUE&#x27;</span><br></pre></td></tr></table></figure></li>
+<li>将<code>np.int</code>修改为<code>np.int_</code></li>
+<li>由于在windows系统下，将<code>num_workers = 8</code>修改为<code>num_workers = 0</code>。</li>
+</ol>
+
+
+  </div>
+  
+  
+    
+    <div class='footer'>
+      
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享4.0国际 (CC BY-NC-SA 4.0) 协议</p>
+
+              
+            
+              
+                <p>本文永久链接是：<a href=https://yaelcassini.github.io/2023/05/15/Relightable-Neural-Renderer-%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E8%AE%B0%E5%BD%95/>https://yaelcassini.github.io/2023/05/15/Relightable-Neural-Renderer-%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E8%AE%B0%E5%BD%95/</a></p>
+              
+            
+          </blockquote>
         </div>
+      
       
     </div>
   
+  
+    
 
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2023-05-15T16:35:42+08:00">
+  <a class='notlink'>
+    <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2023年5月15日</p>
+  </a>
 </div>
 
-          </div>
         
       
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://yaelcassini.github.io/2023/05/08/Relighing%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Unknown Island">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="Unknown Island">
-    <meta itemprop="description" content="赛博小屋">
-  </span>
+          
   
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2023/05/08/Relighing%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"  itemprop="url">
-        Relighing学习笔记
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Neural-Rendering/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>Neural Rendering</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Rendering/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>Rendering</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/anaconda/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>anaconda</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/pytorch/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>pytorch</p></a></div>
+  <span hidden itemprop="keywords">Neural Rendering Rendering anaconda pytorch</span>
+
+
+        
       
         
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yaelcassini.github.io/2023/05/15/Relightable-Neural-Renderer-%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E8%AE%B0%E5%BD%95/&title=Relightable Neural Renderer 配置环境记录 - Unknown Island&summary="
+          
+          >
+          
+            <img src="https://fastly.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://yaelcassini.github.io/2023/05/15/Relightable-Neural-Renderer-%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E8%AE%B0%E5%BD%95/&title=Relightable Neural Renderer 配置环境记录 - Unknown Island&summary="
+          
+          >
+          
+            <img src="https://fastly.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://yaelcassini.github.io/2023/05/15/Relightable-Neural-Renderer-%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E8%AE%B0%E5%BD%95/&title=Relightable Neural Renderer 配置环境记录 - Unknown Island&summary="
+          
+          >
+          
+            <img src="https://fastly.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png">
+          
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+    <!-- Custom Files bottomMeta begin -->
+    
+    <!-- Custom Files bottomMeta end -->
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+      
+        <a class='next' href='/2023/05/08/Relighing%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/'>
+          <p class='title'>Relighing学习笔记<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>
 virual box 共享文件夹设置：
 
 
 https://blog.csdn.net/jumpingpig/article/details/104109395
 
 
-欧几里德结构数据(Euclidean Structure Data) 以及非欧几里德结构数据(Non-Euclidean Structure Data)
-
-
-https://blog.csdn.net/imsuhxz/arti...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' href='about/'><img src='https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/logo_64.png'></a>
-          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="image" content="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/logo_64.png">
-            <meta itemprop="name" content="Yael Cassini">
-            <meta itemprop="url" content="about/">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2023-05-08T14:47:49+08:00">2023-05-08</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2023/05/08/Relighing%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
+欧几里德结构数据(Eucl...</p>
+        </a>
       
     </div>
   
+  <!-- Custom Files postEnd begin-->
+  
+  <!-- Custom Files postEnd end-->
+</article>
 
-</div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://yaelcassini.github.io/2023/04/24/Color-Management/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Unknown Island">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="Unknown Island">
-    <meta itemprop="description" content="赛博小屋">
-  </span>
   
-  
-  
+
+
+  <article class="post white-box shadow floatable blur" id="comments">
     <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+      <meta itemprop="discussionUrl" content="/2023/05/15/Relightable-Neural-Renderer-%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E8%AE%B0%E5%BD%95/index.html#comments">
     </span>
-  
-  
+    <p ct><i class='fa-solid fa-comments'></i> 评论</p>
     
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2023/04/24/Color-Management/"  itemprop="url">
-        Color-Management
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        颜色管理是图形学中一个非常重要的课题，图形学与图像和颜色的可视化息息相关，但是我们有时候追求的是储存元数据的信息，有时候又追求的是图像看上去合理，符合美术工作人员的期待。不同的显示器、不同的颜色空间管理以及不同的人眼都会产生颜色的感知偏差。
-Gamma 矫正Gamma矫正最初是为了适应CRT显示器的非线性输出问题，目前存在则是主要为了适应人眼的非线性感知问题。
-CRT显示器的非线性输出具体来...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' href='about/'><img src='https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/logo_64.png'></a>
-          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="image" content="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/logo_64.png">
-            <meta itemprop="name" content="Yael Cassini">
-            <meta itemprop="url" content="about/">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2023-04-24T16:26:01+08:00">2023-04-24</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Computer-Graphics/">Computer Graphics</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/Computer-Graphics/" itemprop="url"><span itemprop="name">Computer Graphics</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2023/04/24/Color-Management/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
 
-</div>
+    <div id="layoutHelper-comments"></div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://yaelcassini.github.io/2023/04/18/PBR-Neural-Rendering/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Unknown Island">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="Unknown Island">
-    <meta itemprop="description" content="赛博小屋">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2023/04/18/PBR-Neural-Rendering/"  itemprop="url">
-        PBR Neural Rendering
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        
-ICLR 2023：《Light Sampling Field and BRDF Representation for Physically-based Neural Rendering》
-
-https://www.researchgate.net/publication/369974931_Light_Sampling_Field_and_BRDF_Representation_for_...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' href='about/'><img src='https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/logo_64.png'></a>
-          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="image" content="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/logo_64.png">
-            <meta itemprop="name" content="Yael Cassini">
-            <meta itemprop="url" content="about/">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2023-04-18T16:31:00+08:00">2023-04-18</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Neural-Rendering/">Neural Rendering</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/Neural-Rendering/" itemprop="url"><span itemprop="name">Neural Rendering</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2023/04/18/PBR-Neural-Rendering/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://yaelcassini.github.io/2023/03/29/Shadow-Rendering/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Unknown Island">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="Unknown Island">
-    <meta itemprop="description" content="赛博小屋">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2023/03/29/Shadow-Rendering/"  itemprop="url">
-        Shadow Rendering
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        渲染技术研究报告——阴影绘制技术的发展历程及方法比较一、前言阴影绘制是真实感渲染中非常重要的一个模块，对提高场景的真实度有着至关重要的作用，不管是使用光栅化的流程还是光线追踪的流程进行场景绘制，阴影绘制的技术都经过了多次的更新和迭代。我也在一些课程中学习过一些简单的阴影绘制方法，因此想借此机会对所有的阴影绘制方法做一个系统性的梳理和总结。阴影绘制的方法按照时间发展顺序主要有Shadow Vo...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' href='about/'><img src='https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/logo_64.png'></a>
-          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="image" content="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/logo_64.png">
-            <meta itemprop="name" content="Yael Cassini">
-            <meta itemprop="url" content="about/">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2023-03-29T20:16:36+08:00">2023-03-29</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Rendering/">Rendering</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/Rendering/" itemprop="url"><span itemprop="name">Rendering</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2023/03/29/Shadow-Rendering/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://yaelcassini.github.io/2023/03/28/Rendering-History/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Unknown Island">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="Unknown Island">
-    <meta itemprop="description" content="赛博小屋">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2023/03/28/Rendering-History/"  itemprop="url">
-        Rendering History
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        真实感渲染光照模型 Illumination Model
-灯光
-阴影
-
-基于物理的材质 Material
-明暗
-纹理
-透明
-一种标准的基本属性主要是Metallic-Roughness，另一种标准是Specular-Glossiness，前者对设计师更友好，后者侧重物理属性，保留了反射率F0。
-
-光栅化 Rasterization光线追踪消隐技术全局光照（Global Illuminatio...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' href='about/'><img src='https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/logo_64.png'></a>
-          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="image" content="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/logo_64.png">
-            <meta itemprop="name" content="Yael Cassini">
-            <meta itemprop="url" content="about/">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2023-03-28T20:37:39+08:00">2023-03-28</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Rendering/">Rendering</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/Rendering/" itemprop="url"><span itemprop="name">Rendering</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2023/03/28/Rendering-History/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://yaelcassini.github.io/2023/03/24/PathTracing/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Unknown Island">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="Unknown Island">
-    <meta itemprop="description" content="赛博小屋">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2023/03/24/PathTracing/"  itemprop="url">
-        PathTracing
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        Related Information:
-https://raytracing.github.io/books/RayTracingInOneWeekend.html
-https://raytracing.github.io/books/RayTracingTheNextWeek.html
-https://agraphicsguynotes.com/posts/sample_microfac...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' href='about/'><img src='https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/logo_64.png'></a>
-          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="image" content="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/logo_64.png">
-            <meta itemprop="name" content="Yael Cassini">
-            <meta itemprop="url" content="about/">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2023-03-24T14:32:57+08:00">2023-03-24</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/PathTracing/">PathTracing</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/PathTracing/" itemprop="url"><span itemprop="name">PathTracing</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2023/03/24/PathTracing/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://yaelcassini.github.io/2023/02/17/Visibility/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Unknown Island">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="Unknown Island">
-    <meta itemprop="description" content="赛博小屋">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2023/02/17/Visibility/"  itemprop="url">
-        Visibility
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        任务目标：参与一个可微分渲染的项目，主要负责其中的渲染部分相关工作，在前期需要使用已有的Mesh和Texture数据生成网络所需要的输入数据。其中就包括Visibility，刚开始做的时候什么都不太懂，学习相关知识耽误了很多时间，故整理于此。
-任务理解：经与导师沟通后，本项目要求的Visibility并不是从相机角度看过去的可视性，而是更像环境光照那种，设想有一个无限大的球面，在球面上通过遍...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' href='about/'><img src='https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/logo_64.png'></a>
-          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="image" content="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/logo_64.png">
-            <meta itemprop="name" content="Yael Cassini">
-            <meta itemprop="url" content="about/">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2023-02-17T14:10:50+08:00">2023-02-17</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Deep-Face-Project/">Deep Face Project</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/Deep-Face-Project/" itemprop="url"><span itemprop="name">Deep Face Project</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2023/02/17/Visibility/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://yaelcassini.github.io/2022/11/10/%E4%B8%80%E4%BA%9B%E8%B5%84%E6%BA%90/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Unknown Island">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="Unknown Island">
-    <meta itemprop="description" content="赛博小屋">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2022/11/10/%E4%B8%80%E4%BA%9B%E8%B5%84%E6%BA%90/"  itemprop="url">
-        一些资源
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        常用Mesh：http://casual-effects.com/data/index.html
-
-shell转bat：
-
-https://daniel-sc.github.io/bash-shell-to-bat-converter/
-
-
-Spherical Harmonics：https://www.jianshu.com/p/a379b4c6d346
-
-https://github.c...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' href='about/'><img src='https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/logo_64.png'></a>
-          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="image" content="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/logo_64.png">
-            <meta itemprop="name" content="Yael Cassini">
-            <meta itemprop="url" content="about/">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2022-11-10T11:45:40+08:00">2022-11-10</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Others/">Others</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/Others/" itemprop="url"><span itemprop="name">Others</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2022/11/10/%E4%B8%80%E4%BA%9B%E8%B5%84%E6%BA%90/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://yaelcassini.github.io/2022/07/29/Neural-Rendering/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Unknown Island">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="Unknown Island">
-    <meta itemprop="description" content="赛博小屋">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2022/07/29/Neural-Rendering/"  itemprop="url">
-        Neural Rendering
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        
-https://www.youtube.com/watch?v=otly9jcZ0Jg
-https://www.youtube.com/watch?v=aboFl5ozImM
+  </article>
 
 
 
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' href='about/'><img src='https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/logo_64.png'></a>
-          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="image" content="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/logo_64.png">
-            <meta itemprop="name" content="Yael Cassini">
-            <meta itemprop="url" content="about/">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2022-07-29T18:04:19+08:00">2022-07-29</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Neural-Rendering/">Neural Rendering</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/Neural-Rendering/" itemprop="url"><span itemprop="name">Neural Rendering</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2022/07/29/Neural-Rendering/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
 
-</div>
-
-          </div>
-        
-      
-    
-  </section>
-  
-    
-      <br>
-      <div class="prev-next">
-        
-        <p class="current">
-          1 / 2
-        </p>
-        
-          <a class="next" rel="next" href="/page/2/">
-            <section class="post next white-box shadow floatable blur">
-              &nbsp;下一页&nbsp;<i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
-            </section>
-          </a>
-        
-      </div>
-    
-  
 
 
 </div>
@@ -3666,96 +3126,31 @@ https://www.youtube.com/watch?v=aboFl5ozImM
   
     
     
-  
 
-  <section class="widget category shadow floatable blur desktop mobile pjax">
+
+
+  <section class="widget toc-wrapper shadow floatable blur desktop mobile pjax" id="toc-div" >
     
   <header>
     
-      <a href='/categories/'><i class="fa-solid fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
+      <i class="fa-solid fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
     
   </header>
 
 
     <div class='content'>
-      <ul class="entry navigation">
-        
-          <li><a class="flat-box"
-            title="/categories/Computer-Graphics/" href="/categories/Computer-Graphics/"
-            active-action="action-categoriesComputer-Graphics"
-            ><div class='name'>Computer Graphics</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/Deep-Face-Project/" href="/categories/Deep-Face-Project/"
-            active-action="action-categoriesDeep-Face-Project"
-            ><div class='name'>Deep Face Project</div><div class='badge'>(3)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/Neural-Rendering/" href="/categories/Neural-Rendering/"
-            active-action="action-categoriesNeural-Rendering"
-            ><div class='name'>Neural Rendering</div><div class='badge'>(3)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/Others/" href="/categories/Others/"
-            active-action="action-categoriesOthers"
-            ><div class='name'>Others</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/PathTracing/" href="/categories/PathTracing/"
-            active-action="action-categoriesPathTracing"
-            ><div class='name'>PathTracing</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/Rendering/" href="/categories/Rendering/"
-            active-action="action-categoriesRendering"
-            ><div class='name'>Rendering</div><div class='badge'>(2)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/Subsurface-Scattering/" href="/categories/Subsurface-Scattering/"
-            active-action="action-categoriesSubsurface-Scattering"
-            ><div class='name'>Subsurface Scattering</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/TA-learning/" href="/categories/TA-learning/"
-            active-action="action-categoriesTA-learning"
-            ><div class='name'>TA-learning</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E5%89%8D%E7%AB%AF/" href="/categories/%E5%89%8D%E7%AB%AF/"
-            active-action="action-categoriesE5898DE7ABAF"
-            ><div class='name'>前端</div><div class='badge'>(2)</div></a></li>
-        
-      </ul>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E8%BF%87%E7%A8%8B"><span class="toc-text">环境配置过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8E%E6%AD%A4%E5%90%8C%E6%97%B6%EF%BC%8C%E6%BA%90%E7%A0%81%E9%9C%80%E8%A6%81%E5%81%9A%E7%9A%84%E4%BF%AE%E6%94%B9%EF%BC%9A"><span class="toc-text">与此同时，源码需要做的修改：</span></a></li></ol>
     </div>
   </section>
-
-
-  
-
-  
-    
-    
-  
-
-  <section class="widget tagcloud shadow floatable blur desktop mobile pjax">
-    
-  <header>
-    
-      <a href='/tags/'><i class="fa-solid fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <a href="/tags/Artificial-Intelligence/" style="font-size: 14px; color: #999">Artificial Intelligence</a> <a href="/tags/Artificial-Intelligent/" style="font-size: 20.67px; color: #6c6c6c">Artificial Intelligent</a> <a href="/tags/Color/" style="font-size: 14px; color: #999">Color</a> <a href="/tags/Color-Space/" style="font-size: 14px; color: #999">Color Space</a> <a href="/tags/Deep-Fake/" style="font-size: 17.33px; color: #828282">Deep Fake</a> <a href="/tags/Deep-Learing/" style="font-size: 20.67px; color: #6c6c6c">Deep Learing</a> <a href="/tags/GAN/" style="font-size: 17.33px; color: #828282">GAN</a> <a href="/tags/Gamma-Correction/" style="font-size: 14px; color: #999">Gamma Correction</a> <a href="/tags/Github-Pages/" style="font-size: 17.33px; color: #828282">Github Pages</a> <a href="/tags/Hexo/" style="font-size: 17.33px; color: #828282">Hexo</a> <a href="/tags/MSM/" style="font-size: 14px; color: #999">MSM</a> <a href="/tags/Monte-Carlo/" style="font-size: 20.67px; color: #6c6c6c">Monte Carlo</a> <a href="/tags/Neural-Rendering/" style="font-size: 20.67px; color: #6c6c6c">Neural Rendering</a> <a href="/tags/Notes/" style="font-size: 14px; color: #999">Notes</a> <a href="/tags/PBR/" style="font-size: 14px; color: #999">PBR</a> <a href="/tags/PCF/" style="font-size: 14px; color: #999">PCF</a> <a href="/tags/PCSS/" style="font-size: 14px; color: #999">PCSS</a> <a href="/tags/PathTracing/" style="font-size: 17.33px; color: #828282">PathTracing</a> <a href="/tags/RayTracing/" style="font-size: 17.33px; color: #828282">RayTracing</a> <a href="/tags/Rendering/" style="font-size: 24px; color: #555">Rendering</a> <a href="/tags/Shadow/" style="font-size: 14px; color: #999">Shadow</a> <a href="/tags/Shadow-Map/" style="font-size: 14px; color: #999">Shadow Map</a> <a href="/tags/Spherical-Harmonics/" style="font-size: 14px; color: #999">Spherical Harmonics</a> <a href="/tags/Technical-Artist/" style="font-size: 14px; color: #999">Technical Artist</a> <a href="/tags/Tone-Mapping/" style="font-size: 14px; color: #999">Tone Mapping</a> <a href="/tags/VSM/" style="font-size: 14px; color: #999">VSM</a> <a href="/tags/Volantis/" style="font-size: 17.33px; color: #828282">Volantis</a> <a href="/tags/anaconda/" style="font-size: 14px; color: #999">anaconda</a> <a href="/tags/pytorch/" style="font-size: 14px; color: #999">pytorch</a>
-    </div>
-  </section>
-
 
   
 
 
 <!-- 没有 pjax 占位会报错 万恶的 pjax -->
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
 
   <div class="pjax">
     <!-- pjax占位 -->
@@ -3791,7 +3186,7 @@ https://www.youtube.com/watch?v=aboFl5ozImM
 <pjax>
 <script>
   window.pdata={}
-  pdata.ispage=false;
+  pdata.ispage=true;
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   pdata.commentConfig={};
@@ -3806,9 +3201,9 @@ https://www.youtube.com/watch?v=aboFl5ozImM
       // cover
       var cover_wrapper=document.querySelector('#l_cover .cover-wrapper');
       var scroll_down=document.getElementById('scroll-down');
-      cover_wrapper.id="full";
+      cover_wrapper.id="half";
       cover_wrapper.style.display="";
-      scroll_down.style.display="";
+      scroll_down.style.display="none";
     
   
 </script>
@@ -5099,7 +4494,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Unknown Island","url":"https://yaelcassini.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/","sameAs":["https://github.com/volantis-x"],"description":"赛博小屋"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://yaelcassini.github.io/","name":"Unknown Island"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Unknown Island","url":"https://yaelcassini.github.io/","keywords":null,"description":"赛博小屋","author":{"@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/","description":"赛博小屋"},"publisher":{"@type":"Organization","name":"Unknown Island","url":"https://yaelcassini.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://yaelcassini.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","description":"赛博小屋","inLanguage":["zh-CN","en","zh-HK","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage"},"author":{"@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/"},"publisher":{"@type":"Organization","name":"Unknown Island","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"wordCount":0,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Unknown Island","url":"https://yaelcassini.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/","sameAs":["https://github.com/volantis-x"],"description":"赛博小屋"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://yaelcassini.github.io/","name":"Unknown Island"}},{"@type":"ListItem","position":2,"item":{"@id":"https://yaelcassini.github.io/categories/Neural-Rendering/","name":"Neural Rendering"}},{"@type":"ListItem","position":3,"item":{"@id":"https://yaelcassini.github.io/2023/05/15/Relightable-Neural-Renderer-配置环境记录/","name":"Relightable Neural Renderer 配置环境记录"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Unknown Island","url":"https://yaelcassini.github.io/","keywords":null,"description":"赛博小屋","author":{"@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/","description":"赛博小屋"},"publisher":{"@type":"Organization","name":"Unknown Island","url":"https://yaelcassini.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://yaelcassini.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Relightable Neural Renderer 配置环境记录","description":"赛博小屋","inLanguage":["zh-CN","en","zh-HK","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://yaelcassini.github.io/2023/05/15/Relightable-Neural-Renderer-%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E8%AE%B0%E5%BD%95/"},"author":{"@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/"},"publisher":{"@type":"Organization","name":"Unknown Island","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://yaelcassini.github.io/2023/05/15/Relightable-Neural-Renderer-%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E8%AE%B0%E5%BD%95/","wordCount":0,"datePublished":"2023-05-15T07:03:48.000Z","dateModified":"2023-05-15T08:35:42.240Z","articleSection":"Neural Rendering","keywords":"Neural Rendering,Rendering,anaconda,pytorch","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
