@@ -5,8 +5,8 @@
   <meta name="Volantis" content="5.3.2">
   <meta charset="utf-8">
   <!-- SEO相关 -->
-  <meta name="robots" content="noindex,follow">
-  <link rel="canonical" href="https://yaelcassini.github.io/archives/2023/05/"/>
+  
+  <link rel="canonical" href="https://yaelcassini.github.io/2023/05/16/线性插值和矢量线性插值关键帧动画/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -32,18 +32,21 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>归档：2023/5 - Unknown Island</title>
-  <meta name="keywords" content="null">
+  <title>线性插值和矢量线性插值关键帧动画 - Unknown Island</title>
+  <meta name="keywords" content="Computer Animation,null">
   <meta desc name="description" content="赛博小屋 - Cassini - Unknown Island">
   
-<meta property="og:type" content="website">
-<meta property="og:title" content="Unknown Island">
-<meta property="og:url" content="https://yaelcassini.github.io/archives/2023/05/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="线性插值和矢量线性插值关键帧动画">
+<meta property="og:url" content="https://yaelcassini.github.io/2023/05/16/%E7%BA%BF%E6%80%A7%E6%8F%92%E5%80%BC%E5%92%8C%E7%9F%A2%E9%87%8F%E7%BA%BF%E6%80%A7%E6%8F%92%E5%80%BC%E5%85%B3%E9%94%AE%E5%B8%A7%E5%8A%A8%E7%94%BB/index.html">
 <meta property="og:site_name" content="Unknown Island">
-<meta property="og:description" content="赛博小屋">
+<meta property="og:description" content="课程名称： 	计算机动画实验项目名称： 	线性插值和矢量线性插值关键帧动画	实验日期： 2020	年 11	月 	6	日 一、 实验目的和要求 关键帧动画技术是计算机动画中的一类重要技术。本实验选取线性插值和矢量线性插值作为实验内容，旨在了解关键帧动画系统的结构，变形算法的思想以及不同算法对应的不同性能。   本实验要求实现线性插值和矢量线性插值两种关键帧插值算法的图形化界面展示，用户通过鼠标点击">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+<meta property="article:published_time" content="2023-05-16T05:54:42.000Z">
+<meta property="article:modified_time" content="2023-05-16T07:08:37.154Z">
 <meta property="article:author" content="Cassini">
+<meta property="article:tag" content="Computer Animation">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png">
   <style>
@@ -2690,7 +2693,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
       <!-- see: /layout/_partial/scripts/_ctrl/coverCtrl.ejs -->
-      <div id="half" class='cover-wrapper  dock' style="display: ;">
+      <div id="half" class='cover-wrapper post dock' style="display: ;">
         
   <div id="parallax-window"></div>
 
@@ -2767,25 +2770,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         <div class="body-wrapper">
           
 <div id="l_main" class=''>
-	
-		
-  <section class="post-list">
-    
-      
-        
-          
-        
-          
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow floatable blur article-type-post" id="post" itemscope itemprop="blogPost">
   <link itemprop="mainEntityOfPage" href="https://yaelcassini.github.io/2023/05/16/%E7%BA%BF%E6%80%A7%E6%8F%92%E5%80%BC%E5%92%8C%E7%9F%A2%E9%87%8F%E7%BA%BF%E6%80%A7%E6%8F%92%E5%80%BC%E5%85%B3%E9%94%AE%E5%B8%A7%E5%8A%A8%E7%94%BB/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Unknown Island">
@@ -2795,225 +2780,312 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <meta itemprop="description" content="赛博小屋">
   </span>
   
-  
+
+
   
     <span hidden>
       <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png">
     </span>
   
-  
+  <div class="article-meta" id="top">
     
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2023/05/16/%E7%BA%BF%E6%80%A7%E6%8F%92%E5%80%BC%E5%92%8C%E7%9F%A2%E9%87%8F%E7%BA%BF%E6%80%A7%E6%8F%92%E5%80%BC%E5%85%B3%E9%94%AE%E5%B8%A7%E5%8A%A8%E7%94%BB/"  itemprop="url">
+    
+    
+      <h1 class="title" itemprop="name headline">
         线性插值和矢量线性插值关键帧动画
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+            
+<div class='new-meta-item author' itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <a itemprop="url" class='author' href="about/" rel="nofollow">
+    <img itemprop="image" src="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/logo_64.png">
+    <p itemprop="name">Yael Cassini</p>
+  </a>
+</div>
+
+          
+        
+          
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2023-05-16T13:54:42+08:00">
+  <a class='notlink'>
+    <i class="fa-solid fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2023年5月16日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class='new-meta-item category'>
+    <i class="fa-solid fa-folder-open fa-fw" aria-hidden="true"></i>
+    <a class="category-link" href="/categories/Homework/">Homework</a>
     
-      
-        课程名称： 	计算机动画实验项目名称： 	线性插值和矢量线性插值关键帧动画	实验日期： 2020	年 11	月 	6	日
-一、 实验目的和要求
-关键帧动画技术是计算机动画中的一类重要技术。本实验选取线性插值和矢量线性插值作为实验内容，旨在了解关键帧动画系统的结构，变形算法的思想以及不同算法对应的不同性能。
-
-
-本实验要求实现线性插值和矢量线性插值两种关键帧插值算法的图形化界面展示，用户通过鼠...
-      
+      <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+        <a href="/categories/Homework/" itemprop="url"><span itemprop="name">Homework</span></a>
+      </span>
     
   </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' href='about/'><img src='https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/logo_64.png'></a>
-          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="image" content="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/logo_64.png">
-            <meta itemprop="name" content="Yael Cassini">
-            <meta itemprop="url" content="about/">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2023-05-16T13:54:42+08:00">2023-05-16</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Homework/">Homework</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/Homework/" itemprop="url"><span itemprop="name">Homework</span></a>
-            </span>
+
+
           
         
-      </div>
+          
+            
+
+
+<div class="new-meta-item browse">
+  <a class='notlink'>
+    <p>
+      <i class="fa-solid fa-eye fa-fw" aria-hidden="true"></i>
       
-        <div>
-          <a class='readmore' href='/2023/05/16/%E7%BA%BF%E6%80%A7%E6%8F%92%E5%80%BC%E5%92%8C%E7%9F%A2%E9%87%8F%E7%BA%BF%E6%80%A7%E6%8F%92%E5%80%BC%E5%85%B3%E9%94%AE%E5%B8%A7%E5%8A%A8%E7%94%BB/' itemprop="url">
-            阅读全文
-          </a>
+      <span id="busuanzi_value_page_pv"><i class="fa-solid fa-loader fa-spin fa-fw" aria-hidden="true"></i></span>
+      
+      <span>次浏览</span>
+    </p>
+  </a>
+</div>
+
+
+          
+        
+        <!-- Custom Files topMeta begin-->
+        
+        <!-- Custom Files topMeta end-->
+      </div>
+    
+  </div>
+
+
+  <div id="layoutHelper-page-plugins"></div>
+  <div id="post-body" itemprop="articleBody">
+    <p>课程名称： 	计算机动画<br>实验项目名称： 	线性插值和矢量线性插值关键帧动画	<br>实验日期： 2020	年 11	月 	6	日</p>
+<div class="story post-story"><h2 id="一、-实验目的和要求"><a href="#一、-实验目的和要求" class="headerlink" title="一、 实验目的和要求"></a>一、 实验目的和要求</h2><ol>
+<li><pre><code>关键帧动画技术是计算机动画中的一类重要技术。本实验选取线性插值和矢量线性插值作为实验内容，旨在了解关键帧动画系统的结构，变形算法的思想以及不同算法对应的不同性能。
+</code></pre>
+<ol start="2">
+<li><pre><code>本实验要求实现线性插值和矢量线性插值两种关键帧插值算法的图形化界面展示，用户通过鼠标点击交互选定起点帧和终点帧的关键点，由程序自行生成起始帧的图形，并且通过计算得到中间的插值图像，连续播放形成关键帧动画。
+</code></pre>
+</li>
+</ol>
+</li>
+</ol>
+</div><div class="story post-story"><h2 id="二、-实验内容和原理"><a href="#二、-实验内容和原理" class="headerlink" title="二、 实验内容和原理"></a>二、 实验内容和原理</h2><p>系统包括三个部分：<br>1.	输入数据：包括初始形状数据和终止形状数据, 一般为事先定义好的整型变量数据,如简单的几何物体形状（苹果，凳子，陶罐）以及简单的动物形状（大象，马）等。也可以设计交互界面，用户通过界面交互输入数据。<br>2.	插值算法：包括线性插值和矢量线性插值。</p>
+<ul>
+<li><p>线性插值：对于初始和终止形状上每个点的坐标 $P_i$  进行线性插值得到物体变形的中间形状；</p>
+</li>
+<li><p>矢量线性插值：对初始形状和终止形状上每两个相邻点计算其对应的矢量的长度和角度，然后对其进行线性插值得到中间长度和角度， 对起点帧和终点帧的第一个关键点进行线性插值得到中间图像的第一个关键点。顺序连接插值后定义的各个矢量得到中间变化形状。插值变量变化范围是[0，1], 插值变量等于 0 时对应于初始形状，插值变量等于 0 时对应于终止形状；数据类型为 double。</p>
+<ol start="3">
+<li><pre><code>插值结果输出。用户可以在图形化界面中自行指定插值帧的个数以及动画刷新频率，程序会根据其设定的参数生成不同效果的关键帧动画并播放动画。用户可以通过点击不同插值方式的按钮，反复播放不同算法生成的插值结果。
+</code></pre>
+</li>
+</ol>
+</li>
+</ul>
+</div><div class="story post-story"><h2 id="三、-实验平台"><a href="#三、-实验平台" class="headerlink" title="三、 实验平台"></a>三、 实验平台</h2><p>Qt 5.14.2 @ Windows</p>
+</div><div class="story post-story"><h2 id="四、-实验步骤"><a href="#四、-实验步骤" class="headerlink" title="四、 实验步骤"></a>四、 实验步骤</h2><h3 id="1-线性插值："><a href="#1-线性插值：" class="headerlink" title="1.	线性插值："></a>1.	线性插值：</h3><p>指定两幅关键画面图形（最简单的是大小不同的两个矩形，分别由４个点构成。学生也可以自己构造更复杂的图形，如由若干点构成的手图形）， 然后计算两幅图对应点的线性距离来得到它们的中间画面图形。<br>设图形上有 N 个点，$(x_i，y_i),  i&#x3D;1,…N$;  初始图形的点记为$（x_{0i}， y_{0i}）$，终止图形记为$（x_{1i}，y_{1i}）$，生成的中间图形记为$（x_ti，y_ti）$，设生成 M 个画面，则有：</p>
+<p>$ x_{ti} &#x3D; x_0<em>t + x_1</em>(1-t);	t&#x3D;1,…M; y_{ti} &#x3D; y_0<em>t + y_1</em>(1-t)$ ;</p>
+<p>线性插值代码实现：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">if (mode == 0)</span><br><span class="line">&#123;</span><br><span class="line">	inter_points.clear();</span><br><span class="line">	double t = 1.0 * time / grain;</span><br><span class="line">	for (int i = 0; i &lt; start_points.size(); i++)</span><br><span class="line">	&#123;</span><br><span class="line">	QPoint temp;</span><br><span class="line">	double x0 = start_points[i].x();</span><br><span class="line">	double y0 = start_points[i].y();</span><br><span class="line">	double x1 = end_points[i].x();</span><br><span class="line">	double y1 = end_points[i].y();</span><br><span class="line">	double x = (1 - t) * x0 + t * x1;</span><br><span class="line">	double y = (1 - t) * y0 + t * y1;</span><br><span class="line"></span><br><span class="line">	temp.setX(x);</span><br><span class="line">	temp.setY(y);</span><br><span class="line">	inter_points.push_back(temp);</span><br><span class="line">	&#125;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-矢量线性插值："><a href="#2-矢量线性插值：" class="headerlink" title="2.	矢量线性插值："></a>2.	矢量线性插值：</h3><p>与线性差值框架类似，但插值变量不再是线性插值中的点坐标表(x, y), 而是把图形曲线上每两个邻近点看成一个矢量，这样就能把由N 个点构成的曲线分解成 N-1 个矢量。初始图形的矢量记为$（a_{0i}， p_{0i}）$，终止图形记为$（a_{1i}，p_{1i}）$，生成的中间图形记为$（a_{ti}，p_{ti}）$,  设生成 M 个画面，则有：</p>
+<p>$a_{ti} &#x3D; a_0<em>t + a_1</em>(1-t);  t&#x3D;1,…M; p_{ti} &#x3D; p_0<em>t + p_1</em>(1-t);$</p>
+<p>矢量线性插值代码实现：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">//mode==1:普通矢量线性插值（不规定矢量插值方向）</span><br><span class="line">else if(mode==1)</span><br><span class="line">&#123;</span><br><span class="line">    inter_points.clear();</span><br><span class="line">    double t=1.0*time/grain;</span><br><span class="line">    QPoint temp;</span><br><span class="line">    double x0=start_points[0].x();</span><br><span class="line">    double y0=start_points[0].y();</span><br><span class="line">    double x1=end_points[0].x();</span><br><span class="line">    double y1=end_points[0].y();</span><br><span class="line">    double x=(1-t)*x0+t*x1;</span><br><span class="line">    double y=(1-t)*y0+t*y1;</span><br><span class="line">    temp.setX(x);</span><br><span class="line">    temp.setY(y);</span><br><span class="line">    inter_points.push_back(temp);</span><br><span class="line">    for(int i=0;i&lt;start_vectors.size();i++)</span><br><span class="line">    &#123;</span><br><span class="line">        double vec_a0=start_vectors[i].a;</span><br><span class="line">        double vec_p0=start_vectors[i].p;</span><br><span class="line">        double vec_a1=end_vectors[i].a;</span><br><span class="line">        double vec_p1=end_vectors[i].p;</span><br><span class="line">        if(vec_a0&lt;0)vec_a0+=2*PI;</span><br><span class="line">        if(vec_a1&lt;0)vec_a1+=2*PI;</span><br><span class="line">        if(vec_a1-vec_a0&gt;PI)vec_a0+=2*PI;</span><br><span class="line">        if(vec_a1-vec_a0&lt;-PI)vec_a1+=2*PI;</span><br><span class="line"></span><br><span class="line">        double vec_a=(1-t)*vec_a0+t*vec_a1;</span><br><span class="line">        double vec_p=(1-t)*vec_p0+t*vec_p1;</span><br><span class="line">        x+=vec_p*cos(vec_a);</span><br><span class="line">        y+=vec_p*sin(vec_a);</span><br><span class="line">        temp.setX(x);</span><br><span class="line">        temp.setY(y);</span><br><span class="line">        inter_points.push_back(temp);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>本次试验中，我还对矢量线性插值进行了三种不同的改良：分别是规定矢量顺时针旋转、规定矢量逆时针旋转以及规定矢量旋转角度小于π。<br>使用控制变量 mode：mode 为 1、2、3 时分别在矢量插值函数代码中插入不同语句，如下：<br>Mode&#x3D;&#x3D;1 时：</p>
+<h3 id="3"><a href="#3" class="headerlink" title="3."></a>3.</h3><p>编写paintWindow 类作为画板，继承自 QWidget 类。在 paintWindow 类中编写鼠标回调函数 mousePressEvent，记录通过鼠标交互选定的关键点。以及绘制函数paintEvent，在每次 update（）时调用。paintWindow 类定义具体如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">1. class paintWindow : public QWidget</span><br><span class="line">2. &#123;</span><br><span class="line">3.	Q_OBJECT</span><br><span class="line">4. private:</span><br><span class="line">5.	int grain; //每个曲线区间有多少个插值点（包括两端关键点）</span><br><span class="line">6.	int speed; //刷新速度（改为 int）</span><br><span class="line">7.	int mode=0; //插值模式</span><br><span class="line">8.	int pen_index=0;//使用第几种笔刷</span><br><span class="line">9.	int time;//时间</span><br><span class="line">10.	QTimer* timer; //计时器</span><br><span class="line">11.</span><br><span class="line">12.	vector&lt;QPoint&gt; start_points;//储存起点帧点坐标</span><br><span class="line">13.	vector&lt;Vector&gt; start_vectors;//储存起点帧向量</span><br><span class="line">14.	vector&lt;QPoint&gt; end_points;//储存终点帧点坐标</span><br><span class="line">15.	vector&lt;Vector&gt; end_vectors;//储存终点帧向量</span><br><span class="line">16.	vector&lt;QPoint&gt; inter_points;//储存当前插值帧关键点</span><br><span class="line">17.</span><br><span class="line">18.	bool start_draw=false; //是否绘制起始帧图像</span><br><span class="line">19.	bool end_draw=false; //是否绘制终止帧图像</span><br><span class="line">20.</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="4"><a href="#4" class="headerlink" title="4."></a>4.</h3><p>鼠标回调函数 mousePressEvent，记录通过鼠标交互选定的关键点，储存在名为start_points 和 end_points 的vector 中。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//鼠标回调函数，鼠标点击，加入关键点</span><br><span class="line">void	paintWindow::mousePressEvent(QMouseEvent * e)</span><br><span class="line">&#123;</span><br><span class="line">	if (startframe)start_points.push_back(e-&gt;pos());</span><br><span class="line">	else if (endframe) end_points.push_back(e-&gt;pos());</span><br><span class="line">	update();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="5"><a href="#5" class="headerlink" title="5."></a>5.</h3><p>绘制函数 paintEvent，根据数据变化，绘制所有的关键点，起始帧图像，以及中间插值图像。（篇幅限制，此处省略部分代码）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">//绘制函数</span><br><span class="line">void paintWindow::paintEvent(QPaintEvent*)</span><br><span class="line">&#123;</span><br><span class="line">	QPainter paint(this);</span><br><span class="line">	if (start_points.size() &lt;= 0)return; //没有关键点6.</span><br><span class="line">	//设置笔刷样式，绘制关键点</span><br><span class="line">	paint.setPen(QPen(Qt::black, 5, Qt::DashDotLine, Qt::RoundCap));</span><br><span class="line">	for (int i = 0; i &lt; start_points.size(); i++)</span><br><span class="line">		paint.drawEllipse(start_points[i], 1, 1);</span><br><span class="line">	for (int i = 0; i &lt; end_points.size(); i++)</span><br><span class="line">		paint.drawEllipse(end_points[i], 1, 1);</span><br><span class="line">	//设置笔刷样式，绘制起点帧图像</span><br><span class="line">	//paint.setPen(QPen(Qt::blue,3,Qt::SolidLine,Qt::RoundCap));</span><br><span class="line">	if (start_points.size() &gt; 0)</span><br><span class="line">	&#123;</span><br><span class="line">		if (start_draw)</span><br><span class="line">		&#123;</span><br><span class="line">			for (unsigned int i = 0; i &lt; start_points.size() - 1; i++)</span><br><span class="line">			&#123;</span><br><span class="line">				QPoint p1 = start_points[i];</span><br><span class="line">				QPoint p2 = start_points[i + 1];</span><br><span class="line">				paint.drawLine(p1, p2);</span><br><span class="line">			&#125;</span><br><span class="line">			QPoint p1 = start_points[0];</span><br><span class="line">			QPoint p2 = start_points[start_points.size() - 1];</span><br><span class="line">			paint.drawLine(p1, p2);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	//设置笔刷样式，绘制终点帧图像（省略）</span><br><span class="line">	//设置笔刷样式，绘制插值帧图像</span><br><span class="line">	//paint.setPen(QPen(Qt::red,3,Qt::DotLine,Qt::RoundCap));</span><br><span class="line">	if (time != 0)</span><br><span class="line">	&#123;</span><br><span class="line">		if (inter_points.size() &gt; 0)</span><br><span class="line">		&#123;</span><br><span class="line">			for (unsigned int i = 0; i &lt; inter_points.size() - 1; i++)</span><br><span class="line">			&#123;</span><br><span class="line">				QPoint p1 = inter_points[i];</span><br><span class="line">				QPoint p2 = inter_points[i + 1];</span><br><span class="line">				paint.drawLine(p1, p2);</span><br><span class="line">			&#125;</span><br><span class="line">			QPoint p1 = inter_points[0];</span><br><span class="line">			QPoint p2 = inter_points[inter_points.size() - 1];</span><br><span class="line">			paint.drawLine(p1, p2);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="6"><a href="#6" class="headerlink" title="6."></a>6.</h3><p>引入QTimer 类作为计时器，每隔一段时间调用 changestate 函数， 在该函数中，改变当前插值图像信息。通过线性插值或者矢量线性插值计算，将当前插值图像的所有关键点坐标储存在名为inter_points 的vector 中。</p>
+<h3 id="7"><a href="#7" class="headerlink" title="7."></a>7.</h3><p>MainWindow 设计及按钮槽函数<br>MainWindow 窗口设计如下：<br><img src="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/note/202305161456.jpg" alt="图片alt" title="图片title"></p>
+</div><div class="story post-story"><h2 id="五、-程序运行方式展示"><a href="#五、-程序运行方式展示" class="headerlink" title="五、 程序运行方式展示"></a>五、 程序运行方式展示</h2><p>展示视频链接：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1zL4y137rn/">https://www.bilibili.com/video/BV1zL4y137rn/</a></p>
+</div><div class="story post-story"><h2 id="六、-实验结果分析"><a href="#六、-实验结果分析" class="headerlink" title="六、 实验结果分析"></a>六、 实验结果分析</h2><p>分析不同起始帧和终止帧对应不同插值方法的效果和局限性：</p>
+<h3 id="1）普通四边形（几乎不旋转）"><a href="#1）普通四边形（几乎不旋转）" class="headerlink" title="1）	普通四边形（几乎不旋转）"></a>1）	普通四边形（几乎不旋转）</h3><p><img src="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/note/202305161457.jpg" alt="图片alt" title="图片title"><br><img src="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/note/202305161458.jpg" alt="图片alt" title="图片title"><br>普通线性插值和第一种矢量线性插值（变换角不大于π）效果都很好，但是规定变换方向为顺时针或者逆时针的则出现了变形问题，通过分析，我找到了原因，这是因为有两条相邻的边，向量旋转方向相反，比如：<br><img src="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/note/202305161459.jpg" alt="图片alt" title="图片title"></p>
+<p>上图中绿色标注的边终点帧比起点帧的向量角度更小，而蓝色标注的边，则是终点帧比起点帧的向量角度更大，因此在选择向量顺时针插值时，绿色标注的边可以直接选择角度小于π的旋转方式，而蓝色标注的边则会选择大于π的旋转方式（几乎接近旋转一周），因此导致图像插值过程中变形。</p>
+<h3 id="2）边交叉的四边形（有一定的旋转角度（0-π-x2F-2））"><a href="#2）边交叉的四边形（有一定的旋转角度（0-π-x2F-2））" class="headerlink" title="2）	边交叉的四边形（有一定的旋转角度（0 ~π&#x2F;2））"></a>2）	边交叉的四边形（有一定的旋转角度（0 ~π&#x2F;2））</h3><p><img src="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/note/202305161460.jpg" alt="图片alt" title="图片title"><br><img src="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/note/202305161461.jpg" alt="图片alt" title="图片title"></p>
+<p>可以看出上图中四种插值方式的效果都非常好，顺时针向量插值时，图像呈现顺时针转动效果，逆时针插值时效果相反。</p>
+<h3 id="3）小车大小变化（有一定的旋转角度（π-x2F-2-π））"><a href="#3）小车大小变化（有一定的旋转角度（π-x2F-2-π））" class="headerlink" title="3）	小车大小变化（有一定的旋转角度（π&#x2F;2 ~π））"></a>3）	小车大小变化（有一定的旋转角度（π&#x2F;2 ~π））</h3><p><img src="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/note/202305161462.jpg" alt="图片alt" title="图片title"><br><img src="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/note/202305161463.jpg" alt="图片alt" title="图片title"></p>
+<p>可以看出上图中直接线性插值方式会产生明显的变形，不能保持形状平滑变化，而其他三种矢量线性插值方式效果都表现得非常好。</p>
+<h3 id="4）箭头图形（旋转角度接近π）"><a href="#4）箭头图形（旋转角度接近π）" class="headerlink" title="4）	箭头图形（旋转角度接近π）"></a>4）	箭头图形（旋转角度接近π）</h3><p><img src="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/note/202305161464.jpg" alt="图片alt" title="图片title"></p>
+<p>可以看出上图中直接线性插值方式会产生明显的变形，不能保持形状平滑变化，第一种矢量线性插值方式也会产生非常严重的变形， 而规定了顺时针或者逆时针差值的矢量线性插值方式效果表现得非常好。<br>通过分析，我找到了原因，这是因为对第一种矢量线性差之方式， 有两条相邻的边，向量旋转方向在都接近π的情况下，一个比π略小一些，一个比π略大一些，比如：<br><img src="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/note/202305161465.jpg" alt="图片alt" title="图片title"></p>
+<p>上图中绿色标注的边终点帧比起点帧的向量大一个接近π的值， 于是算法在判断后，认为该边应该逆时针旋转插值，而蓝色标注的边， 则是终点帧比起点帧的向量大一个稍大于π的值（也可以看成是小一个接近π的值），因此算法在判断后，认为该边应该顺时针旋转。这就导致了相邻的两个向量向着不同的方向旋转，因此导致图像插值过程中变形。</p>
+<h3 id="5）复杂图像的关键帧插值动画"><a href="#5）复杂图像的关键帧插值动画" class="headerlink" title="5）	复杂图像的关键帧插值动画"></a>5）	复杂图像的关键帧插值动画</h3><p><img src="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/note/202305161466.jpg" alt="图片alt" title="图片title"><br><img src="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/note/202305161467.jpg" alt="图片alt" title="图片title"></p>
+<p>如上图，可以看出，除了线性插值有明显的变形之外，其他三种矢量差值方式都表现得效果非常好。</p>
+<h3 id="6）分析总结"><a href="#6）分析总结" class="headerlink" title="6）	分析总结"></a>6）	分析总结</h3><p>没有一种关键帧动画算法可以适用于所有的场景，通过对不同起始帧终止帧图像的情形的实践和分析，我总结出：</p>
+<ol>
+<li>对于方向基本没有变化的初始帧和终止帧，普通线性插值效果非常不错，第一种矢量线性插值算法（规定矢量旋转角度小于π）也表现非常好，第二三种矢量线性插值算法（规定矢量旋转方向为顺时针或者逆时针）则可能会产生较大的变形，原因是相邻两个矢量旋转角度一个大于零一个小于零。</li>
+<li>对于方向有一定变化（0~π）的初始帧和终止帧，普通线性插</li>
+</ol>
+<p>值算法会使得插值图像有较大的变形（一般情况下，旋转角度大的， 变形程度也会更大），而三种矢量线性插值算法都表现得效果非常好。<br>3. 对于方向变化接近π的初始帧和终止帧，普通线性插值算法也会使得插值图像有较大的变形（一般情况下，旋转角度大的，变形程度也会更大），第二三种矢量线性插值算法（规定矢量旋转方向为顺时针或者逆时针）也表现非常好，第一种矢量线性插值算法（规定矢量旋转角度小于π）则可能会产生较大的变形，原因是相邻两个矢量旋转角度一个大于π一个小于零π。<br>4. 对于方向变化较大（π~2π）的初始帧和终止帧，效果可以参考第二条。<br>5. 以上所有总结建立在本实验程序的演示基础上，本实验中产生这些现象的主要原因是，不能保证初始帧和终止帧有完全相同的角度，如果在更多元化的图形化交互界面中，可以将初始帧直接复制放大缩小平移旋转得到终止帧，则每一种矢量线性插值算法都不会产生上述的严重变形现象。<br>6. 但是在真正的动画制作中，也不可能保证初始帧和终止帧有完全相同的角度，因此本次实验的分析还是非常具有实际意义的。</p>
+</div><div class="story post-story"><h2 id="七、-实验感悟及问题"><a href="#七、-实验感悟及问题" class="headerlink" title="七、 实验感悟及问题"></a>七、 实验感悟及问题</h2><p>通过本次实验，我对线性插值和矢量线性插值算法生成关键帧动画有了更深刻的认识和了解，也亲身实践了该算法，并且更加深入实践了 Qt 的使用，并利用 Qt 实现图形化界面编程，自行设计和实现界面实现与用户的各种交互功能。<br>通过实验，我对于线性插值和矢量线性差值的算法效果和算法局限性有了更深刻的认识，自行分析了矢量线性算法对于矢量方向差值的不同方式所带来的不同效果，并自行尝试对算法局限性以及不同算法适用的场合进行分析和归纳。通过绘制不同状态的起始帧和终止帧图像变化，来更加全面地考察和分析不同改进方式对于插值动画的影响。</p>
+
+</div>
+  </div>
+  
+  
+    
+    <div class='footer'>
+      
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享4.0国际 (CC BY-NC-SA 4.0) 协议</p>
+
+              
+            
+              
+                <p>本文永久链接是：<a href=https://yaelcassini.github.io/2023/05/16/%E7%BA%BF%E6%80%A7%E6%8F%92%E5%80%BC%E5%92%8C%E7%9F%A2%E9%87%8F%E7%BA%BF%E6%80%A7%E6%8F%92%E5%80%BC%E5%85%B3%E9%94%AE%E5%B8%A7%E5%8A%A8%E7%94%BB/>https://yaelcassini.github.io/2023/05/16/%E7%BA%BF%E6%80%A7%E6%8F%92%E5%80%BC%E5%92%8C%E7%9F%A2%E9%87%8F%E7%BA%BF%E6%80%A7%E6%8F%92%E5%80%BC%E5%85%B3%E9%94%AE%E5%B8%A7%E5%8A%A8%E7%94%BB/</a></p>
+              
+            
+          </blockquote>
         </div>
+      
       
     </div>
   
+  
+    
 
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2023-05-16T15:08:37+08:00">
+  <a class='notlink'>
+    <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2023年5月16日</p>
+  </a>
 </div>
 
-          </div>
         
       
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://yaelcassini.github.io/2023/05/15/Relightable-Neural-Renderer-%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E8%AE%B0%E5%BD%95/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Unknown Island">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="Unknown Island">
-    <meta itemprop="description" content="赛博小屋">
-  </span>
+          
   
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2023/05/15/Relightable-Neural-Renderer-%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E8%AE%B0%E5%BD%95/"  itemprop="url">
-        Relightable Neural Renderer 配置环境记录
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Computer-Animation/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>Computer Animation</p></a></div>
+  <span hidden itemprop="keywords">Computer Animation</span>
+
+
+        
       
         
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yaelcassini.github.io/2023/05/16/%E7%BA%BF%E6%80%A7%E6%8F%92%E5%80%BC%E5%92%8C%E7%9F%A2%E9%87%8F%E7%BA%BF%E6%80%A7%E6%8F%92%E5%80%BC%E5%85%B3%E9%94%AE%E5%B8%A7%E5%8A%A8%E7%94%BB/&title=线性插值和矢量线性插值关键帧动画 - Unknown Island&summary="
+          
+          >
+          
+            <img src="https://fastly.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://yaelcassini.github.io/2023/05/16/%E7%BA%BF%E6%80%A7%E6%8F%92%E5%80%BC%E5%92%8C%E7%9F%A2%E9%87%8F%E7%BA%BF%E6%80%A7%E6%8F%92%E5%80%BC%E5%85%B3%E9%94%AE%E5%B8%A7%E5%8A%A8%E7%94%BB/&title=线性插值和矢量线性插值关键帧动画 - Unknown Island&summary="
+          
+          >
+          
+            <img src="https://fastly.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://yaelcassini.github.io/2023/05/16/%E7%BA%BF%E6%80%A7%E6%8F%92%E5%80%BC%E5%92%8C%E7%9F%A2%E9%87%8F%E7%BA%BF%E6%80%A7%E6%8F%92%E5%80%BC%E5%85%B3%E9%94%AE%E5%B8%A7%E5%8A%A8%E7%94%BB/&title=线性插值和矢量线性插值关键帧动画 - Unknown Island&summary="
+          
+          >
+          
+            <img src="https://fastly.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png">
+          
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+    <!-- Custom Files bottomMeta begin -->
+    
+    <!-- Custom Files bottomMeta end -->
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+      
+        <a class='next' href='/2023/05/15/Relightable-Neural-Renderer-%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E8%AE%B0%E5%BD%95/'>
+          <p class='title'>Relightable Neural Renderer 配置环境记录<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>
 原Github仓库地址：https://github.com/LansburyCH/relightable-nr
 
-因为项目需要学习了Relightable Neural Rendering， 并尝试把源码下载到本地配置环境运行，被pytorch环境折磨的不轻，把最后成功的过程在这里放一下。原仓库中记录的环境是Ubuntu 16.04 + CUDA 9.0 + gcc 4.9.2 + An...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' href='about/'><img src='https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/logo_64.png'></a>
-          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="image" content="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/logo_64.png">
-            <meta itemprop="name" content="Yael Cassini">
-            <meta itemprop="url" content="about/">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2023-05-15T15:03:48+08:00">2023-05-15</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Neural-Rendering/">Neural Rendering</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/Neural-Rendering/" itemprop="url"><span itemprop="name">Neural Rendering</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2023/05/15/Relightable-Neural-Renderer-%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E8%AE%B0%E5%BD%95/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
+因为项目需要学习了Relightable Neural Rendering，...</p>
+        </a>
       
     </div>
   
+  <!-- Custom Files postEnd begin-->
+  
+  <!-- Custom Files postEnd end-->
+</article>
 
-</div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://yaelcassini.github.io/2023/05/08/Relighing%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Unknown Island">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="Unknown Island">
-    <meta itemprop="description" content="赛博小屋">
-  </span>
   
-  
-  
+
+
+  <article class="post white-box shadow floatable blur" id="comments">
     <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+      <meta itemprop="discussionUrl" content="/2023/05/16/%E7%BA%BF%E6%80%A7%E6%8F%92%E5%80%BC%E5%92%8C%E7%9F%A2%E9%87%8F%E7%BA%BF%E6%80%A7%E6%8F%92%E5%80%BC%E5%85%B3%E9%94%AE%E5%B8%A7%E5%8A%A8%E7%94%BB/index.html#comments">
     </span>
-  
-  
+    <p ct><i class='fa-solid fa-comments'></i> 评论</p>
     
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2023/05/08/Relighing%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"  itemprop="url">
-        Relighing学习笔记
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        
-virual box 共享文件夹设置：
+
+    <div id="layoutHelper-comments"></div>
+
+  </article>
 
 
-https://blog.csdn.net/jumpingpig/article/details/104109395
 
 
-欧几里德结构数据(Euclidean Structure Data) 以及非欧几里德结构数据(Non-Euclidean Structure Data)
 
 
-https://blog.csdn.net/imsuhxz/arti...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' href='about/'><img src='https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/logo_64.png'></a>
-          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="image" content="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/logo_64.png">
-            <meta itemprop="name" content="Yael Cassini">
-            <meta itemprop="url" content="about/">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2023-05-08T14:47:49+08:00">2023-05-08</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2023/05/08/Relighing%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-    
-  </section>
-  
-    
-  
-
-
-	
 </div>
 <aside id='l_side' itemscope itemtype="http://schema.org/WPSideBar">
   
@@ -3091,101 +3163,31 @@ https://blog.csdn.net/imsuhxz/arti...
   
     
     
-  
 
-  <section class="widget category shadow floatable blur desktop mobile pjax">
+
+
+  <section class="widget toc-wrapper shadow floatable blur desktop mobile pjax" id="toc-div" >
     
   <header>
     
-      <a href='/categories/'><i class="fa-solid fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
+      <i class="fa-solid fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
     
   </header>
 
 
     <div class='content'>
-      <ul class="entry navigation">
-        
-          <li><a class="flat-box"
-            title="/categories/Computer-Graphics/" href="/categories/Computer-Graphics/"
-            active-action="action-categoriesComputer-Graphics"
-            ><div class='name'>Computer Graphics</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/Deep-Face-Project/" href="/categories/Deep-Face-Project/"
-            active-action="action-categoriesDeep-Face-Project"
-            ><div class='name'>Deep Face Project</div><div class='badge'>(3)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/Homework/" href="/categories/Homework/"
-            active-action="action-categoriesHomework"
-            ><div class='name'>Homework</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/Neural-Rendering/" href="/categories/Neural-Rendering/"
-            active-action="action-categoriesNeural-Rendering"
-            ><div class='name'>Neural Rendering</div><div class='badge'>(3)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/Others/" href="/categories/Others/"
-            active-action="action-categoriesOthers"
-            ><div class='name'>Others</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/PathTracing/" href="/categories/PathTracing/"
-            active-action="action-categoriesPathTracing"
-            ><div class='name'>PathTracing</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/Rendering/" href="/categories/Rendering/"
-            active-action="action-categoriesRendering"
-            ><div class='name'>Rendering</div><div class='badge'>(2)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/Subsurface-Scattering/" href="/categories/Subsurface-Scattering/"
-            active-action="action-categoriesSubsurface-Scattering"
-            ><div class='name'>Subsurface Scattering</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/TA-learning/" href="/categories/TA-learning/"
-            active-action="action-categoriesTA-learning"
-            ><div class='name'>TA-learning</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E5%89%8D%E7%AB%AF/" href="/categories/%E5%89%8D%E7%AB%AF/"
-            active-action="action-categoriesE5898DE7ABAF"
-            ><div class='name'>前端</div><div class='badge'>(2)</div></a></li>
-        
-      </ul>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81-%E5%AE%9E%E9%AA%8C%E7%9B%AE%E7%9A%84%E5%92%8C%E8%A6%81%E6%B1%82"><span class="toc-text">一、 实验目的和要求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81-%E5%AE%9E%E9%AA%8C%E5%86%85%E5%AE%B9%E5%92%8C%E5%8E%9F%E7%90%86"><span class="toc-text">二、 实验内容和原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81-%E5%AE%9E%E9%AA%8C%E5%B9%B3%E5%8F%B0"><span class="toc-text">三、 实验平台</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81-%E5%AE%9E%E9%AA%8C%E6%AD%A5%E9%AA%A4"><span class="toc-text">四、 实验步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%BA%BF%E6%80%A7%E6%8F%92%E5%80%BC%EF%BC%9A"><span class="toc-text">1.	线性插值：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%9F%A2%E9%87%8F%E7%BA%BF%E6%80%A7%E6%8F%92%E5%80%BC%EF%BC%9A"><span class="toc-text">2.	矢量线性插值：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3"><span class="toc-text">3.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4"><span class="toc-text">4.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5"><span class="toc-text">5.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6"><span class="toc-text">6.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7"><span class="toc-text">7.</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81-%E7%A8%8B%E5%BA%8F%E8%BF%90%E8%A1%8C%E6%96%B9%E5%BC%8F%E5%B1%95%E7%A4%BA"><span class="toc-text">五、 程序运行方式展示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81-%E5%AE%9E%E9%AA%8C%E7%BB%93%E6%9E%9C%E5%88%86%E6%9E%90"><span class="toc-text">六、 实验结果分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%EF%BC%89%E6%99%AE%E9%80%9A%E5%9B%9B%E8%BE%B9%E5%BD%A2%EF%BC%88%E5%87%A0%E4%B9%8E%E4%B8%8D%E6%97%8B%E8%BD%AC%EF%BC%89"><span class="toc-text">1）	普通四边形（几乎不旋转）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%EF%BC%89%E8%BE%B9%E4%BA%A4%E5%8F%89%E7%9A%84%E5%9B%9B%E8%BE%B9%E5%BD%A2%EF%BC%88%E6%9C%89%E4%B8%80%E5%AE%9A%E7%9A%84%E6%97%8B%E8%BD%AC%E8%A7%92%E5%BA%A6%EF%BC%880-%CF%80-x2F-2%EF%BC%89%EF%BC%89"><span class="toc-text">2）	边交叉的四边形（有一定的旋转角度（0 ~π&#x2F;2））</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%EF%BC%89%E5%B0%8F%E8%BD%A6%E5%A4%A7%E5%B0%8F%E5%8F%98%E5%8C%96%EF%BC%88%E6%9C%89%E4%B8%80%E5%AE%9A%E7%9A%84%E6%97%8B%E8%BD%AC%E8%A7%92%E5%BA%A6%EF%BC%88%CF%80-x2F-2-%CF%80%EF%BC%89%EF%BC%89"><span class="toc-text">3）	小车大小变化（有一定的旋转角度（π&#x2F;2 ~π））</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%EF%BC%89%E7%AE%AD%E5%A4%B4%E5%9B%BE%E5%BD%A2%EF%BC%88%E6%97%8B%E8%BD%AC%E8%A7%92%E5%BA%A6%E6%8E%A5%E8%BF%91%CF%80%EF%BC%89"><span class="toc-text">4）	箭头图形（旋转角度接近π）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%EF%BC%89%E5%A4%8D%E6%9D%82%E5%9B%BE%E5%83%8F%E7%9A%84%E5%85%B3%E9%94%AE%E5%B8%A7%E6%8F%92%E5%80%BC%E5%8A%A8%E7%94%BB"><span class="toc-text">5）	复杂图像的关键帧插值动画</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6%EF%BC%89%E5%88%86%E6%9E%90%E6%80%BB%E7%BB%93"><span class="toc-text">6）	分析总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83%E3%80%81-%E5%AE%9E%E9%AA%8C%E6%84%9F%E6%82%9F%E5%8F%8A%E9%97%AE%E9%A2%98"><span class="toc-text">七、 实验感悟及问题</span></a></li></ol>
     </div>
   </section>
-
-
-  
-
-  
-    
-    
-  
-
-  <section class="widget tagcloud shadow floatable blur desktop mobile pjax">
-    
-  <header>
-    
-      <a href='/tags/'><i class="fa-solid fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <a href="/tags/Artificial-Intelligence/" style="font-size: 14px; color: #999">Artificial Intelligence</a> <a href="/tags/Artificial-Intelligent/" style="font-size: 20.67px; color: #6c6c6c">Artificial Intelligent</a> <a href="/tags/Color/" style="font-size: 14px; color: #999">Color</a> <a href="/tags/Color-Space/" style="font-size: 14px; color: #999">Color Space</a> <a href="/tags/Computer-Animation/" style="font-size: 14px; color: #999">Computer Animation</a> <a href="/tags/Deep-Fake/" style="font-size: 17.33px; color: #828282">Deep Fake</a> <a href="/tags/Deep-Learing/" style="font-size: 20.67px; color: #6c6c6c">Deep Learing</a> <a href="/tags/GAN/" style="font-size: 17.33px; color: #828282">GAN</a> <a href="/tags/Gamma-Correction/" style="font-size: 14px; color: #999">Gamma Correction</a> <a href="/tags/Github-Pages/" style="font-size: 17.33px; color: #828282">Github Pages</a> <a href="/tags/Hexo/" style="font-size: 17.33px; color: #828282">Hexo</a> <a href="/tags/MSM/" style="font-size: 14px; color: #999">MSM</a> <a href="/tags/Monte-Carlo/" style="font-size: 20.67px; color: #6c6c6c">Monte Carlo</a> <a href="/tags/Neural-Rendering/" style="font-size: 20.67px; color: #6c6c6c">Neural Rendering</a> <a href="/tags/Notes/" style="font-size: 14px; color: #999">Notes</a> <a href="/tags/PBR/" style="font-size: 14px; color: #999">PBR</a> <a href="/tags/PCF/" style="font-size: 14px; color: #999">PCF</a> <a href="/tags/PCSS/" style="font-size: 14px; color: #999">PCSS</a> <a href="/tags/PathTracing/" style="font-size: 17.33px; color: #828282">PathTracing</a> <a href="/tags/RayTracing/" style="font-size: 17.33px; color: #828282">RayTracing</a> <a href="/tags/Rendering/" style="font-size: 24px; color: #555">Rendering</a> <a href="/tags/Shadow/" style="font-size: 14px; color: #999">Shadow</a> <a href="/tags/Shadow-Map/" style="font-size: 14px; color: #999">Shadow Map</a> <a href="/tags/Spherical-Harmonics/" style="font-size: 14px; color: #999">Spherical Harmonics</a> <a href="/tags/Technical-Artist/" style="font-size: 14px; color: #999">Technical Artist</a> <a href="/tags/Tone-Mapping/" style="font-size: 14px; color: #999">Tone Mapping</a> <a href="/tags/VSM/" style="font-size: 14px; color: #999">VSM</a> <a href="/tags/Volantis/" style="font-size: 17.33px; color: #828282">Volantis</a> <a href="/tags/anaconda/" style="font-size: 14px; color: #999">anaconda</a> <a href="/tags/pytorch/" style="font-size: 14px; color: #999">pytorch</a>
-    </div>
-  </section>
-
 
   
 
 
 <!-- 没有 pjax 占位会报错 万恶的 pjax -->
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
 
   <div class="pjax">
     <!-- pjax占位 -->
@@ -3214,13 +3216,14 @@ https://blog.csdn.net/imsuhxz/arti...
 </aside>
 
 
+
           <!--此文件用来存放一些不方便取值的变量-->
 <!--思路大概是将值藏到重加载的区域内-->
 
 <pjax>
 <script>
   window.pdata={}
-  pdata.ispage=false;
+  pdata.ispage=true;
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   pdata.commentConfig={};
@@ -4528,7 +4531,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Unknown Island","url":"https://yaelcassini.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/","sameAs":["https://github.com/volantis-x"],"description":"赛博小屋"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://yaelcassini.github.io/","name":"Unknown Island"}},{"@type":"ListItem","position":2,"item":{"@id":"https://yaelcassini.github.io/archives/","name":"Archive"}},{"@type":"ListItem","position":3,"item":{"@id":"https://yaelcassini.github.io/archives/2023/","name":"2023年"}},{"@type":"ListItem","position":4,"item":{"@id":"https://yaelcassini.github.io/archives/2023/5/","name":"5月"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Unknown Island","url":"https://yaelcassini.github.io/","keywords":null,"description":"赛博小屋","author":{"@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/","description":"赛博小屋"},"publisher":{"@type":"Organization","name":"Unknown Island","url":"https://yaelcassini.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://yaelcassini.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","description":"赛博小屋","inLanguage":["zh-CN","en","zh-HK","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage"},"author":{"@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/"},"publisher":{"@type":"Organization","name":"Unknown Island","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"wordCount":0,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Unknown Island","url":"https://yaelcassini.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/","sameAs":["https://github.com/volantis-x"],"description":"赛博小屋"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://yaelcassini.github.io/","name":"Unknown Island"}},{"@type":"ListItem","position":2,"item":{"@id":"https://yaelcassini.github.io/categories/Homework/","name":"Homework"}},{"@type":"ListItem","position":3,"item":{"@id":"https://yaelcassini.github.io/2023/05/16/线性插值和矢量线性插值关键帧动画/","name":"线性插值和矢量线性插值关键帧动画"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Unknown Island","url":"https://yaelcassini.github.io/","keywords":null,"description":"赛博小屋","author":{"@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/","description":"赛博小屋"},"publisher":{"@type":"Organization","name":"Unknown Island","url":"https://yaelcassini.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://yaelcassini.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"线性插值和矢量线性插值关键帧动画","description":"赛博小屋","inLanguage":["zh-CN","en","zh-HK","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://yaelcassini.github.io/2023/05/16/%E7%BA%BF%E6%80%A7%E6%8F%92%E5%80%BC%E5%92%8C%E7%9F%A2%E9%87%8F%E7%BA%BF%E6%80%A7%E6%8F%92%E5%80%BC%E5%85%B3%E9%94%AE%E5%B8%A7%E5%8A%A8%E7%94%BB/"},"author":{"@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/"},"publisher":{"@type":"Organization","name":"Unknown Island","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://yaelcassini.github.io/2023/05/16/%E7%BA%BF%E6%80%A7%E6%8F%92%E5%80%BC%E5%92%8C%E7%9F%A2%E9%87%8F%E7%BA%BF%E6%80%A7%E6%8F%92%E5%80%BC%E5%85%B3%E9%94%AE%E5%B8%A7%E5%8A%A8%E7%94%BB/","wordCount":0,"datePublished":"2023-05-16T05:54:42.000Z","dateModified":"2023-05-16T07:08:37.154Z","articleSection":"Homework","keywords":"Computer Animation","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
