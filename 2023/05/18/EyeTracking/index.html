@@ -44,7 +44,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2023-05-18T08:32:27.000Z">
-<meta property="article:modified_time" content="2023-05-18T08:34:39.857Z">
+<meta property="article:modified_time" content="2023-05-18T08:48:14.993Z">
 <meta property="article:author" content="Cassini">
 <meta property="article:tag" content="EyeTracking">
 <meta property="article:tag" content="Virtual Reality">
@@ -1979,7 +1979,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: false,
     cdn: {"js":{"app":"/js/app.e546c981.js","parallax":"/js/plugins/parallax.8bf0ab10.js","rightMenu":"/js/plugins/rightMenu.d9437285.js","rightMenus":"/js/plugins/rightMenus.cd02aa19.js","sites":"/js/plugins/tags/sites.76bf19b8.js","friends":"/js/plugins/tags/friends.f372da57.js","contributors":"/js/plugins/tags/contributors.aec80453.js","search":"/js/search/hexo.0e52f222.js"},"css":{"style":"/css/style.87c2c8ad.css"}},
     default: {"avatar":"https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/avatar/round/3442075.svg","link":"https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/link/8f277b4ee0ecd.svg","cover":"https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/cover/76b86c0226ffd.svg","image":"https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg"},
-    lastupdate: new Date(1684398887135),
+    lastupdate: new Date(1684399700799),
     sidebar: {
       for_page: ["blogger","category","tagcloud"],
       for_post: ["blogger","toc"],
@@ -2875,11 +2875,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>​		</p>
 <p>​		人类的眼球结构决定了，单眼的实现方向可以通过<strong>眼球中心和瞳孔的连线</strong>来得到，而瞳孔的位置可以通过对虹膜识别和提取中心点得到。而同时得到两只眼睛的实现方向，就可以通过两线交点得到用户的注视点。</p>
 <p>​		对于VR中的注视点提取，还有一个关键的问题，如下图，用户的成像屏幕可能在离自己较近的地方，但由于VR中<strong>立体视觉</strong>的应用，用户真正的注视点可能并不在成像屏幕上，我们可以通过结合虚拟现实环境中虚拟物体的<strong>深度信息</strong>，构建一条虚拟线，可以从眼睛的方向追踪到虚拟世界中用户正在注释的物体上。</p>
-<p><img src="https://pics4.baidu.com/feed/d8f9d72a6059252df23bcd3daf90a83d5bb5b9e9.jpeg?token=64ca12b1d3debd070df7a90bd9dd63d4" alt="img"></p>
+<p><img src="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/note/202305181642.jpg" alt="图片alt" title="图片title"></p>
 </div><div class="story post-story"><h2 id="三、应用领域"><a href="#三、应用领域" class="headerlink" title="三、应用领域"></a>三、应用领域</h2><p>​		视线追踪技术在VR领域的应用方式有：</p>
 <h4 id="1-图形渲染资源分配："><a href="#1-图形渲染资源分配：" class="headerlink" title="1. 图形渲染资源分配："></a>1. 图形渲染资源分配：</h4><p>​		通过使用VR中的眼动跟踪信息，可以执行所谓的<strong>“中心凹形渲染”</strong>，即在用户注视的方向分配更多的图形渲染资源。这样可以使得给定的渲染功率可以提供更高质量的输出，降低所需的处理能力，还可以创建一个更加身临其境的环境，在其中虚拟世界可以更紧密地表示现实世界。同时，这样的渲染方式还可以在VR虚拟环境中实现景深效果，更贴近人眼在现实世界中的成像特点。</p>
-<img src="https://pics4.baidu.com/feed/71cf3bc79f3df8dcb20ba396561ad98d47102890.jpeg?token=888539d59bd1842d434c5d8f534da464" alt="img" style="zoom:80%;" />
-
+<p><img src="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/note/202305181643.jpg" alt="图片alt" title="图片title"></p>
 <h4 id="2-数据预取："><a href="#2-数据预取：" class="headerlink" title="2. 数据预取："></a>2. 数据预取：</h4><p>​		某些VR<strong>数据的读取和修改</strong>等操作需要一定的时间才能完成。如果用户在特定方向上扫视，那在用户选择要与之交互之前，数据读取可以在后台提前进行。</p>
 <h4 id="3-多模式智能3D对象选择："><a href="#3-多模式智能3D对象选择：" class="headerlink" title="3. 多模式智能3D对象选择："></a>3. 多模式智能3D对象选择：</h4><p>​		对于VR中的虚拟场景，用户很难在杂乱的环境中选定特定的小对象。通过把视线信息与控制器输入组合结合，可以一定程度上<strong>消除选择歧义</strong>，让用户更准确地选择对象。</p>
 <h4 id="4-自动头显校准："><a href="#4-自动头显校准：" class="headerlink" title="4. 自动头显校准："></a>4. 自动头显校准：</h4><p>​		获取用户眼睛注视位置，可以使得头显设备可以更好地调整自己的<strong>图像输出参数</strong>，以获得最佳的用户舒适度。</p>
@@ -2891,23 +2890,21 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>​		2. 基于神经网络的映射函数方法</p>
 <p>​		3. 基于投影变换方法</p>
 <p>​		基于角膜反射光斑方法需要外加照明光源，由于角膜的凸型结构，当视线发生变化时，角膜对来自固定光源发出的光的反射光斑也是变化的。利用相机采集到的角膜上反射光斑的分布就能得到眼球运动信息，进而得到视线方向。这种方法精度较高，是目前比较常用视线测量方法之一。日本开发的眼控鼠标就是基于这种原理。这种方法的缺点是外加光源对测试者有一定的干扰性，视线估计精度也容易受到环境光线的影响。</p>
-<img src="C:\Users\Cassini\AppData\Roaming\Typora\typora-user-images\image-20210530223215510.png" alt="image-20210530223215510" style="zoom:70%;" />
-
+<p><img src="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/note/202305181644.jpg" alt="图片alt" title="图片title"></p>
 <p>​		上图给出了基于神经网络的映射函数进行视线估计的神经网络结构，将眼睛区域图像作为神经网络的输入，并利用高斯编码处理输出单元得到视线方向估计。这种方法并不借助眼睛的生理解剖模型，而是利用整幅图像的信息构造与注视点之间的单一映射。但是这类方法不仅需要大量的训练样本，而且样本维数较大，因此网络训练时间较长。同时训练好的网络缺少一定的适应能力，外界条件稍有改变都会显著影响映射的结果，因此不具备良好的推广性。</p>
 <p>​		根据眼球结构和成像原理，人们提出了多种用于视线估计的3D模型。在Le Grand模型中，光轴定义为从瞳孔中心到角膜曲率中心的连线。在Wang的模型中，视线近似认为是眼球中心与虹膜中心连线。基于投影变换的视线估计方法只要根据二维图像信息求出视线在3D空间中的方向，再根据测试者和相机的相对位置，就可以得到视线在空间中的位置。但这类方法对头部和眼睛运动比较敏感，如果图像分辨率较低，则会极大的影响最终结果，同时这种方法涉及的模型较为复杂，计算量较大。</p>
 <p>​		上述方法中，精度较高的基于角膜反射光斑方法需要外加光源照射眼睛区域，存在一定的<strong>侵入性</strong>和<strong>伤害性</strong>，对测试距离和测试环境也有严格的<strong>限制</strong>；映射方法适合处理注视与否问题，但是作为视线估计方法<strong>精度较低</strong>，而且<strong>缺少适应能力</strong>，外界条件稍有改变都会显著影响映射的结果；基于投影变换方法涉及的<strong>模型较为复杂</strong>，<strong>计算量较大</strong>，而且要求图像具有较高的分辨率。</p>
 <p>​		我阅读的论文针对上述方法中的不足，提出了一种结合了投影变换和神经网络的视线方向估算方法。在<strong>无特殊光源和头部固定装置</strong>的条件下仅使用<strong>单相机</strong>作为采集设备。计算模拟结果表明该算法可以有效地提高人眼视线估计精度。</p>
 <h3 id="2-视线估计流程："><a href="#2-视线估计流程：" class="headerlink" title="2. 视线估计流程："></a>2. 视线估计流程：</h3><p>​		视线估计系统工作流程图如下：</p>
-<img src="C:\Users\Cassini\AppData\Roaming\Typora\typora-user-images\image-20210528234144755.png" alt="image-20210528234144755" style="zoom:80%;" />
-
+<p><img src="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/note/202305181645.jpg" alt="图片alt" title="图片title"></p>
 <p>​		本次技术点分析，我针对以上的流程重点学习了<strong>虹膜定位</strong>和<strong>视线估计</strong>的原理和算法。</p>
 <h3 id="4-虹膜定位"><a href="#4-虹膜定位" class="headerlink" title="4. 虹膜定位"></a>4. 虹膜定位</h3><p>​		由于我们在进行视线分析时需要获取瞳孔位置，因此我们在进行人眼定位之后，需要进行虹膜的定位（虹膜中心既是瞳孔）。东方人的虹膜颜色大都为黑色或深褐色，灰度值较低，和皮肤、巩膜的灰度值差异较大，因此利用恰当的<strong>阈值</strong>二值化分割出虹膜区域是最直观简单的方法。<strong>二值化</strong>计算代价小、速度快，非常具有实用价值。从输入图像 $f$ 到输出图像 $f’$ 的二值变换可以表示为（其中 $T$ 是阈值）：</p>
-<p><img src="C:\Users\Cassini\AppData\Roaming\Typora\typora-user-images\image-20210529195808710.png" alt="image-20210529195808710"></p>
+<p><img src="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/note/202305181646.jpg" alt="图片alt" title="图片title"></p>
 <p>​		</p>
 <p>​		选择<strong>恰当的阈值</strong>是图像分割和提取虹膜的关键，但是由于图像的噪声、环境光强的变化或其他一些因素，采用<strong>恒定的阈值</strong>对所有的图像进行去二值化处理是不合理的，对每幅图像找到一个<strong>全局自适应阈值</strong>分割虹膜区域比较合理。</p>
 <p>​		自适应阈值可以通过<strong>图像灰度的直方图</strong>找到。灰度直方图是灰度级的函数，它表示图像中具有每种灰度级的像素的个数，反映图像中每种灰度出现的频率。在得到图像直方图后，图像阈值由以下公式计算：<br>$$<br>\theta_e &#x3D; \frac{H}{3}　　　　　　　　<br>H &#x3D; \frac{\sum(gN_g)}{\sum N_g}<br>$$<br>​		其中 $g$ 为像素灰度， $N_g$ 为图像中灰度为 $g$ 的像素个数， $\theta_e$ 为图像阈值。当某一个像素的灰度值低于 $\theta_e$ 时，则令该像素灰度为0，反之为1。然后利用形态学算子（比如闭操作），将虹膜区域中可能存在的空隙填满。</p>
 <p>​		二值化后的图像中虹膜区域的像素值都为0，将图像像素值<strong>沿纵向进行累加</strong>，以最小值对应的水平位置为中心，用边长为图像宽度的矩形窗口完成对虹膜的定位。</p>
-<p><img src="C:\Users\Cassini\AppData\Roaming\Typora\typora-user-images\image-20210530002558683.png" alt="image-20210530002558683"></p>
+<p><img src="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/note/202305181647.jpg" alt="图片alt" title="图片title"></p>
 <p>​		在对虹膜进行定位之后，通常我们还需要对虹膜进行<strong>椭圆拟合</strong>，拟合时可以使用Hough变换。</p>
 <p>​		Hough变换是1962年由Paul Hough提出的用来检测直线的一种方法，其本质上是一种<strong>聚类方法</strong>，通过建立图像空间与参数空间的对应关系，将图像空间像素点转化到<strong>参数空间</strong>，图像空间中的同在一条曲线上的点对应参数空间相交于一点的多条曲线，通过在参数空间统计交点分布来确定图像空间曲线参数。</p>
 <p>​		在拟合参数过程中还使用到了<strong>RANSAC</strong>方法，RANSAC方法的核心思想是：先随机取出少量的点来构造一个解，然后验证这个解的可靠性，多次重复这个过程，选出最可靠的结果作为最终的拟合结果。这样做就可以从<strong>包含大量异常点的数据</strong>中得到较为可靠的模型参数。RANSAC的<strong>基本假设</strong>是：数据是由“<strong>内点</strong>’’、“<strong>外点</strong>’’和“<strong>噪声点</strong>’’组成，其中“内点”分布符合某种数学模型，而“外点”不符合这种数学模型，其余的可以视为“噪声点”。</p>
@@ -2920,49 +2917,34 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>​				（2）短半轴 $b$、长半轴 $a$ 和虹膜半径 $R$ 满足 $\alpha R&gt;a&gt;b&gt;\beta R$，$\alpha$ 和 $\beta$ 为自定义的合理阈值。</p>
 <p>​		（5）计算（4）中得到的所有椭圆方程对其内点的误差平方和，取误差平方和最小的椭圆所对应的<strong>内点</strong>作为<strong>数据点</strong>，用<strong>最小二乘法</strong>重新拟合椭圆作为最终结果。</p>
 <h3 id="5-基于中心投影的视线估计"><a href="#5-基于中心投影的视线估计" class="headerlink" title="5. 基于中心投影的视线估计"></a>5. 基于中心投影的视线估计</h3><p>​		人眼模型：</p>
-<p><img src="C:\Users\Cassini\AppData\Roaming\Typora\typora-user-images\image-20210529211342642.png" alt="image-20210529211342642"></p>
+<p><img src="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/note/202305181648.jpg" alt="图片alt" title="图片title"></p>
 <p>​		眼球是一个复杂的天然光学器件。眼球的形状近似球形，眼球壁外层的前 1&#x2F;6 为角膜，其余 5&#x2F;6 为白色的巩膜。角膜是透明的，其折射率约为1.367，它是光束进入眼睛的门户。角膜后面的空间称为前房，其中充满折射率与水相近的水状液。前房之后有一中心带圆孔的彩色盘状膜，称为<strong>虹膜</strong>。<strong>虹膜的中心圆孔即为瞳孔</strong>。虹膜后面是晶状体，它的外形如双凸透镜，并附着在睫状肌上。睫状肌的伸缩能调节晶状体的曲率，以达到调节焦距的目的。晶状体后面的空间称为后房，后房充满一种胶性透明体，叫玻璃体。玻璃体的折射率约为1.336，其透明外膜与视网膜紧贴着。</p>
 <p>​		从几何光学的角度来看，眼睛是一个由多界面组成的复杂的<strong>共轴光学系统</strong>。瞳孔可以看作光圈，角膜、晶状体等可以看作透镜系统，眼底视网膜就是感光底片。进入眼睛的光线通过一系列界面的折射，最后成像于视网膜。与光学设备不同的是：光学设备通常是通过改变<strong>透镜之间距离</strong>来改变焦距，而眼睛是靠调节<strong>晶状体的弯曲程度</strong>来改变眼睛焦距。</p>
 <p>​		下文是 Wang J G 等人提出的眼球模型。该模型将眼球视为一个半径为 R 的<strong>标准球体</strong>，并可以围绕着其中心转动。虹膜位于球体的前端，其轮廓是一个半径为 r 的<strong>圆盘状椭球</strong>，眼球中心到虹膜所在平面的距离为 d 。基于这个模型，Wang 等人提出了<strong>单眼视线估计方法</strong>和<strong>双眼视线估计方法</strong>，其精度在非侵入视线估计方法中仅次于基于角膜反射光斑的方法。这两种方法的思想都是将视线估计问题转化为<strong>求解空间中具有圆形特征物体的姿态问题</strong>，通过虹膜在图像上的<strong>椭圆轮廓</strong>求出其在三维空间中所在平面，并将虹膜平面的<strong>法向量</strong>作为对视线方向的估计。在双眼视线估计问题中，Wang充分利用<strong>双眼视线交汇一点</strong>的眼动模式作为约束条件求出注视点的空间位置。在单眼视线估计中，由于缺少了这个约束条件，所以还必须知道<strong>屏幕距离测试者的距离</strong>，才能得到注视点的位置。</p>
-<p><img src="C:\Users\Cassini\AppData\Roaming\Typora\typora-user-images\image-20210530004159878.png" alt="image-20210530004159878"></p>
+<p><img src="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/note/202305181649.jpg" alt="图片alt" title="图片title"></p>
 <p>​		Wang的方法虽然在理论上非常完美，但是实验效果却不是很理想。总的来说Wang的方法存在以下两个问题：</p>
 <p>​		第一，在计算过程中涉及到空间中锥方程求解以及解的可能性的讨论等问题，<strong>计算较为复杂繁琐</strong>；</p>
 <p>​		第二，方法的精度<strong>受到图像分辨率限制</strong>，如果不能保证得到足够多的虹膜边缘像素，视线估计精度会大大降低。</p>
 <p>​		因此我阅读的论文中针对上述问题提出了新的方法。</p>
 <p>​		当人眼正视前方时，虹膜的轮廓接近圆形，而当视线方向发生偏移的时候，虹膜轮廓的在相机中所成像的形状会发生形变，成为一个椭圆。该方法利用这一点，依据虹膜轮廓的<strong>畸变程度</strong>得到视线方向的初步估计。</p>
 <p>​		为了避免Wang方法中的复杂计算，我们将视线方向的<strong>立体角分解</strong>成两个角度：一个为人眼分别注视目标和注视相机时两个视线方向之间的夹角$\theta$；另一个为视线在图像平面的投影与像平面水平坐标轴之间的夹角$\gamma$。</p>
-<img src="C:\Users\Cassini\AppData\Roaming\Typora\typora-user-images\image-20210530010409436.png" alt="image-20210530010409436" style="zoom:80%;" />
-
+<p><img src="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/note/202305181650.jpg" alt="图片alt" title="图片title"></p>
 <p>​		考虑任意一个过眼球中心和相机的平面，假设视线在这个平面上发生偏转（如下图），虹膜 $\overline {DJ}$ 在物平面的投影 $\overline {BC}$ 可以表示为：</p>
-<p><img src="C:\Users\Cassini\AppData\Roaming\Typora\typora-user-images\image-20210530013249546.png" alt="image-20210530013249546"></p>
+<p><img src="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/note/202305181651.jpg" alt="图片alt" title="图片title"></p>
 <p>​		可以看出 $ \overline {BC}$ 同时也是物平面上虹膜轮廓拟合椭圆的短轴。虹膜中心在物平面上的偏移量可以表示为</p>
-<p><img src="C:\Users\Cassini\AppData\Roaming\Typora\typora-user-images\image-20210530013259734.png" alt="image-20210530013259734"></p>
+<p><img src="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/note/202305181652.jpg" alt="图片alt" title="图片title"></p>
 <p>​		其中 $R$ 为眼球半径，$r$ 为虹膜半径， $l$ 为物距，$R$、$r$ 和 $\alpha$ 之间关系满足 $sin \alpha &#x3D; r&#x2F;R$ ，通常把 $r&#x2F;R$ 的值看作一个固定的解剖结构常量，约为0.4。</p>
 <p>​		第二个角度 $\gamma$ ，可以从像平面上的虹膜轮廓拟合的<strong>椭圆方程</strong>得到。当视线方向发生偏转时，虹膜轮廓拟合椭圆的短轴就是视线在像平面上的投影，因此第二个角度 $\gamma$ 就是椭圆短轴与图像坐标系中水平轴的夹角。</p>
-<img src="C:\Users\Cassini\AppData\Roaming\Typora\typora-user-images\image-20210530014226540.png" alt="image-20210530014226540" style="zoom:80%;" />
-
-
-
+<p><img src="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/note/202305181653.jpg" alt="图片alt" title="图片title"></p>
 <p>​		从上图可以发现，当第一个角度 $\theta$ 确定，而第二个角度 $\gamma$ 相差 $\pi$ 时，虹膜的畸变程度是一样的，无法给出正确的注视方向，因此还需要借助其他信息处理这个<strong>歧义问题</strong>。Wang在2001的文章中提出一种基于眼角点位置的判断方法，其原理是：假设眼球中心不改变，并认为视线方向是由眼球中心指向虹膜中心，因此不管视线如何改变，从眼球中心到两个眼角的距离应该是近似相等的。这样就可以唯一确定眼球中心，从而确定视线方向。</p>
-<img src="C:\Users\Cassini\AppData\Roaming\Typora\typora-user-images\image-20210530111304505.png" alt="image-20210530111304505" style="zoom:80%;" />
-
-
-
-
-
+<p><img src="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/note/202305181654.jpg" alt="图片alt" title="图片title"></p>
 <p>​		在我阅读的论文中，作者通过对大量实验数据的统计，发现当视线发生偏转时，虹膜中心位移要大于瞳孔中心位移，但事实上，瞳孔就是虹膜中心的圆孔。产生这一现象的原因是由于眼球特殊的结构，在角膜与虹膜之间有一个充满无色液体的空腔结构叫做<strong>前房</strong>，虹膜就紧贴在前房的后面。前房的形状是中间厚，两边薄，可以将其看作是一个<strong>凸透镜</strong>。因此我们看到的虹膜实际上是虹膜的<strong>虚像</strong>，并且由于像场弯曲，使得瞳孔的虚像位于虹膜虚像的后方。因此当视线发生转动时，<strong>虹膜中心位移要大于瞳孔中心位移</strong>。<br>​		依据这个规律，作者提出一种从两个可能解中找出真实解的方法。由虹膜中心和瞳孔中心的坐标可以得到向量 $\overline {O_{pupil} O_{iris} }$ ，将这个向量与两个可能的视线方向向量 $\overline {v(\gamma)}$做内积，y的真实解应满足条件 $&lt;\overline{v(\gamma)}，\overline{O_{pupil} O_{iris}}&gt;0$。并且通过作者的实验结果分析，对于视线角(相对于注视相机)在5°​以上的情况，这种方法可以完全正确的找出正确解；对于视线角(相对于注视相机)在5°以下的情况，这种方法准确度在92％左右。</p>
-<p><img src="C:\Users\Cassini\AppData\Roaming\Typora\typora-user-images\image-20210530013706997.png" alt="image-20210530013706997"></p>
+<p><img src="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/note/202305181655.jpg" alt="图片alt" title="图片title"></p>
 </div><div class="story post-story"><h2 id="五、应用中的细节设计问题"><a href="#五、应用中的细节设计问题" class="headerlink" title="五、应用中的细节设计问题"></a>五、应用中的细节设计问题</h2><h3 id="1-碰撞检测的范围"><a href="#1-碰撞检测的范围" class="headerlink" title="1. 碰撞检测的范围"></a>1. 碰撞检测的范围</h3><p>​		基于目前眼球追踪技术，无法做到100%准确识别出注视物体，会存在一定的<strong>误差</strong>。因此视线与物体进行碰撞检测时，不应该将视线视为一个无限细的射线进行检测，一般需要设置一定的<strong>扩展范围</strong>，最好是将视线设置为一个圆锥形。</p>
-<img src="https://pic3.zhimg.com/80/v2-f11e26bcee580231293662cfd528429e_720w.jpg" alt="img" style="zoom:75%;" />
-
-
-
+<p><img src="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/note/202305181656.jpg" alt="图片alt" title="图片title"></p>
 <h3 id="2-碰撞检测并不等同于注视"><a href="#2-碰撞检测并不等同于注视" class="headerlink" title="2. 碰撞检测并不等同于注视"></a>2. 碰撞检测并不等同于注视</h3><p>​		<strong>人眼有两种常见的运动模式：</strong>眼跳和注视。<strong>检测到视线物体的碰撞和用户在注视这个物体并不是等同的。</strong></p>
 <p>​		眼跳的速度非常快，这时检测到视线和物体的碰撞，产生交互是没有必要的。视线落在某个物体上超过一定的时间才是注视，因此在交互设计中，一般需要通过一定的<strong>延迟判定</strong>才能认为是注视。</p>
-<img src="https://pic4.zhimg.com/80/v2-5a4e7580588ceb0949877a42aded01e3_720w.jpg" style="zoom: 70%;" />
-
-
-
+<p><img src="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/note/202305181657.jpg" alt="图片alt" title="图片title"></p>
 <h3 id="3-避免米达斯接触"><a href="#3-避免米达斯接触" class="headerlink" title="3. 避免米达斯接触"></a>3. 避免米达斯接触</h3><p>​		在眼球追踪技术应用中，还有一个问题：<strong>米达斯接触</strong>问题。</p>
 <p>​		所谓米达斯接触（Midas Touch）问题（米达斯是希腊神话中的一位能点石成金的国王）指的是由于用户视线运动的随意性而造成计算机对<strong>用户意图识别</strong>的困难。用户有时只是单纯地观察一个物体，而不希望引发该物体对应的功能。</p>
 <p>​		为了解决这个问题，一般不会采用注视后马上触发功能的方式，而是使用以下两种方式：</p>
@@ -3009,7 +2991,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2023-05-18T16:34:39+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2023-05-18T16:48:14+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：2023年5月18日</p>
@@ -4273,7 +4255,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/003.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/005.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/022.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/025.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/007.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/010.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/020.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/013.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/001.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/021.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/023.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/019.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/016.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/011.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/012.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/006.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/004.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/002.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/018.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/024.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/015.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/017.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/009.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/014.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/008.webp"];
+  let imgs = ["https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/024.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/014.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/017.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/020.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/021.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/019.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/023.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/013.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/011.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/016.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/002.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/018.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/007.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/005.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/012.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/009.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/004.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/003.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/001.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/008.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/006.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/010.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/025.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/015.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/022.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -4368,6 +4350,60 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 <!-- pjax 标签必须存在于所有页面 否则 pjax error -->
 <pjax>
+
+        <script>
+  // https://github.com/theme-next/hexo-theme-next/blob/master/layout/_third-party/math/mathjax.swig
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = "https://unpkg.com/volantis-static@0.0.1649552113628/libs/mathjax/es5/tex-mml-chtml.js";
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    // 文章章节标题不能为 “MathJax” ，否则会报错。
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typesetPromise();
+  }
+</script>
+
+
 
 </pjax>
 
@@ -4573,7 +4609,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Unknown Island","url":"https://yaelcassini.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/","sameAs":["https://github.com/volantis-x"],"description":"赛博小屋"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://yaelcassini.github.io/","name":"Unknown Island"}},{"@type":"ListItem","position":2,"item":{"@id":"https://yaelcassini.github.io/categories/Homework/","name":"Homework"}},{"@type":"ListItem","position":3,"item":{"@id":"https://yaelcassini.github.io/2023/05/18/EyeTracking/","name":"EyeTracking"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Unknown Island","url":"https://yaelcassini.github.io/","keywords":null,"description":"赛博小屋","author":{"@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/","description":"赛博小屋"},"publisher":{"@type":"Organization","name":"Unknown Island","url":"https://yaelcassini.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://yaelcassini.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"EyeTracking","description":"课程名称：虚拟现实与数字娱乐    报告名称：眼球跟踪技术  日期：2021 年 5 月 20 日","inLanguage":["zh-CN","en","zh-HK","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://yaelcassini.github.io/2023/05/18/EyeTracking/"},"author":{"@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/"},"publisher":{"@type":"Organization","name":"Unknown Island","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://yaelcassini.github.io/2023/05/18/EyeTracking/","wordCount":49,"datePublished":"2023-05-18T08:32:27.000Z","dateModified":"2023-05-18T08:34:39.857Z","articleSection":"Homework","keywords":"EyeTracking,Virtual Reality","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Unknown Island","url":"https://yaelcassini.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/","sameAs":["https://github.com/volantis-x"],"description":"赛博小屋"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://yaelcassini.github.io/","name":"Unknown Island"}},{"@type":"ListItem","position":2,"item":{"@id":"https://yaelcassini.github.io/categories/Homework/","name":"Homework"}},{"@type":"ListItem","position":3,"item":{"@id":"https://yaelcassini.github.io/2023/05/18/EyeTracking/","name":"EyeTracking"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Unknown Island","url":"https://yaelcassini.github.io/","keywords":null,"description":"赛博小屋","author":{"@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/","description":"赛博小屋"},"publisher":{"@type":"Organization","name":"Unknown Island","url":"https://yaelcassini.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://yaelcassini.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"EyeTracking","description":"课程名称：虚拟现实与数字娱乐    报告名称：眼球跟踪技术  日期：2021 年 5 月 20 日","inLanguage":["zh-CN","en","zh-HK","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://yaelcassini.github.io/2023/05/18/EyeTracking/"},"author":{"@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/"},"publisher":{"@type":"Organization","name":"Unknown Island","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://yaelcassini.github.io/2023/05/18/EyeTracking/","wordCount":49,"datePublished":"2023-05-18T08:32:27.000Z","dateModified":"2023-05-18T08:48:14.993Z","articleSection":"Homework","keywords":"EyeTracking,Virtual Reality","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
