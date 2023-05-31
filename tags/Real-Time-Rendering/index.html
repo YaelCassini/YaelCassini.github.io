@@ -5,8 +5,8 @@
   <meta name="Volantis" content="5.3.2">
   <meta charset="utf-8">
   <!-- SEO相关 -->
-  
-  <link rel="canonical" href="https://yaelcassini.github.io/about/"/>
+  <meta name="robots" content="noindex,follow">
+  <link rel="canonical" href="https://yaelcassini.github.io/tags/real-time-rendering/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -32,19 +32,17 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>关于 - Unknown Island</title>
+  <title>标签：Real-Time Rendering - Unknown Island</title>
   <meta name="keywords" content="null">
   <meta desc name="description" content="赛博小屋 - Cassini - Unknown Island">
   
 <meta property="og:type" content="website">
 <meta property="og:title" content="Unknown Island">
-<meta property="og:url" content="https://yaelcassini.github.io/about/index.html">
+<meta property="og:url" content="https://yaelcassini.github.io/tags/Real-Time-Rendering/index.html">
 <meta property="og:site_name" content="Unknown Island">
-<meta property="og:description" content="教育经历：本科：浙江大学 数字媒体技术专业研究生：浙江大学 计算机科学与技术专业 CAD&amp;CG实验室">
+<meta property="og:description" content="赛博小屋">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-<meta property="article:published_time" content="2022-06-08T10:10:36.000Z">
-<meta property="article:modified_time" content="2023-03-29T09:43:21.621Z">
 <meta property="article:author" content="Cassini">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png">
@@ -2411,6 +2409,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <ul class='switcher nav-list-h m-phone' id="pjax-header-nav-list">
         <li><a id="s-comment" class="fa-solid fa-comments fa-fw" target="_self"  href="/" onclick="return false;" title="comment"></a></li>
         
+          <li><a id="s-toc" class="s-toc fa-solid fa-list fa-fw" target="_self"  href="/" onclick="return false;" title="toc"></a></li>
+        
       </ul>
     </div>
 		<div class="nav-main">
@@ -2690,7 +2690,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
       <!-- see: /layout/_partial/scripts/_ctrl/coverCtrl.ejs -->
-      <div id="half" class='cover-wrapper docs dock' style="display: ;">
+      <div id="half" class='cover-wrapper  dock' style="display: ;">
         
   <div id="parallax-window"></div>
 
@@ -2766,9 +2766,25 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <div id="safearea">
         <div class="body-wrapper">
           
-<div id="l_main" class=' no_sidebar'>
-  <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow floatable blur article-type-docs" id="docs" itemscope itemprop="blogPost">
-  <link itemprop="mainEntityOfPage" href="https://yaelcassini.github.io/about/index.html">
+
+<div id="l_main" class=''>
+  
+    
+      
+  <section class="post-list">
+    
+      
+        
+          
+        
+      
+    
+    
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://yaelcassini.github.io/2023/05/31/GPUrendering-Porject/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Unknown Island">
   </span>
@@ -2777,100 +2793,248 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <meta itemprop="description" content="赛博小屋">
   </span>
   
-
-
+  
   
     <span hidden>
       <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png">
     </span>
   
-  <div class="article-meta" id="top">
+  
     
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2023/05/31/GPUrendering-Porject/"  itemprop="url">
+        基于GPU的渲染project - 布料真实感实时渲染
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
     
+      
+        PS: 当时还比较年轻，有些问题略弱智。
+〇.  Part Zero    基本概述及project组织架构基本概述：​		本次大程为了实现布料的实时渲染，我的主要思路是使用PBR的渲染方式，通过使用Albedo、Normal Map、Roughness Map等贴图，完成布料的基本着色。
+​		阴影部分采用ShadowMap算法实现，使用PCF算法完成对阴影锯齿状走样的消除和处理，得到软阴...
+      
     
-      <span hidden itemprop="name headline">
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
         
-      </span>
-    
-  </div>
-
-
-  <div id="layoutHelper-page-plugins"></div>
-  <div id="post-body" itemprop="articleBody">
-    <p>教育经历：<br>本科：浙江大学 数字媒体技术专业<br>研究生：浙江大学 计算机科学与技术专业 CAD&amp;CG实验室</p>
-
-
-  </div>
-  
-  
-    
-    <div class='footer'>
+          
+          <a class='avatar' href='about/'><img src='https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/logo_64.png'></a>
+          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <meta itemprop="image" content="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/logo_64.png">
+            <meta itemprop="name" content="Yael Cassini">
+            <meta itemprop="url" content="about/">
+          </span>
+        
+        <time itemprop="dateCreated datePublished" datetime="2023-05-31T22:42:55+08:00">2023-05-31</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/Homework/">Homework</a>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/Homework/" itemprop="url"><span itemprop="name">Homework</span></a>
+            </span>
+          
+        
+      </div>
       
-      
-      
-      
-    </div>
-  
-  
-    
-
-
-  <div class='article-meta' id="bottom">
-    <div class='new-meta-box'>
+        <div>
+          <a class='readmore' href='/2023/05/31/GPUrendering-Porject/' itemprop="url">
+            阅读全文
+          </a>
+        </div>
       
     </div>
-    <!-- Custom Files bottomMeta begin -->
+  
+
+</div>
+
+          </div>
+        
+      
     
-    <!-- Custom Files bottomMeta end -->
-  </div>
-
-
+  </section>
   
-  
-
-  
-  <!-- Custom Files postEnd begin-->
-  
-  <!-- Custom Files postEnd end-->
-</article>
-
-
-  
-
-
-  <article class="post white-box shadow floatable blur" id="comments">
-    <span hidden>
-      <meta itemprop="discussionUrl" content="/about/index.html#comments">
-    </span>
-    <p ct><i class='fa-solid fa-comments'></i> 评论</p>
     
-
-    <div id="layoutHelper-comments"></div>
-
-  </article>
+  
 
 
-
-
-
-
+    
+  
 </div>
 <aside id='l_side' itemscope itemtype="http://schema.org/WPSideBar">
   
+  
+    
+    
+
+<section class="widget blogger shadow floatable blur desktop mobile pjax">
+  <div class='content'>
+    
+      
+        <a class='avatar flat-box rectangle' href='/about/'>
+          <img no-lazy src='https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/avatar_1024.jpg'/>
+        </a>
+      
+    
+    
+      <div class='text'>
+        
+          <h2>Yael Cassini</h2>
+        
+        
+        
+          <p><span id="jinrishici-sentence">Unknown Island</span></p>
+          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        
+      </div>
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/"
+              class="social fa-solid fa-home flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="mailto:3247365200@qq.com"
+              class="social fa-solid fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="https://github.com/YaelCassini"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="/"
+              class="social fa-solid fa-headphones-alt flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+  
+
+  
+    
+    
+  
+
+  <section class="widget category shadow floatable blur desktop mobile pjax">
+    
+  <header>
+    
+      <a href='/categories/'><i class="fa-solid fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
+    
+  </header>
+
+
+    <div class='content'>
+      <ul class="entry navigation">
+        
+          <li><a class="flat-box"
+            title="/categories/Computer-Graphics/" href="/categories/Computer-Graphics/"
+            active-action="action-categoriesComputer-Graphics"
+            ><div class='name'>Computer Graphics</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/Deep-Face-Project/" href="/categories/Deep-Face-Project/"
+            active-action="action-categoriesDeep-Face-Project"
+            ><div class='name'>Deep Face Project</div><div class='badge'>(3)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/Homework/" href="/categories/Homework/"
+            active-action="action-categoriesHomework"
+            ><div class='name'>Homework</div><div class='badge'>(10)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/Neural-Rendering/" href="/categories/Neural-Rendering/"
+            active-action="action-categoriesNeural-Rendering"
+            ><div class='name'>Neural Rendering</div><div class='badge'>(3)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/Others/" href="/categories/Others/"
+            active-action="action-categoriesOthers"
+            ><div class='name'>Others</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/PathTracing/" href="/categories/PathTracing/"
+            active-action="action-categoriesPathTracing"
+            ><div class='name'>PathTracing</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/Rendering/" href="/categories/Rendering/"
+            active-action="action-categoriesRendering"
+            ><div class='name'>Rendering</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/Subsurface-Scattering/" href="/categories/Subsurface-Scattering/"
+            active-action="action-categoriesSubsurface-Scattering"
+            ><div class='name'>Subsurface Scattering</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/TA-learning/" href="/categories/TA-learning/"
+            active-action="action-categoriesTA-learning"
+            ><div class='name'>TA-learning</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/%E5%89%8D%E7%AB%AF/" href="/categories/%E5%89%8D%E7%AB%AF/"
+            active-action="action-categoriesE5898DE7ABAF"
+            ><div class='name'>前端</div><div class='badge'>(2)</div></a></li>
+        
+      </ul>
+    </div>
+  </section>
+
+
+  
+
+  
+    
+    
+  
+
+  <section class="widget tagcloud shadow floatable blur desktop mobile pjax">
+    
+  <header>
+    
+      <a href='/tags/'><i class="fa-solid fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
+    
+  </header>
+
+
+    <div class='content'>
+      <a href="/tags/Artificial-Intelligence/" style="font-size: 14px; color: #999">Artificial Intelligence</a> <a href="/tags/Artificial-Intelligent/" style="font-size: 20.67px; color: #6c6c6c">Artificial Intelligent</a> <a href="/tags/Color/" style="font-size: 14px; color: #999">Color</a> <a href="/tags/Color-Space/" style="font-size: 14px; color: #999">Color Space</a> <a href="/tags/Computer-Animation/" style="font-size: 20.67px; color: #6c6c6c">Computer Animation</a> <a href="/tags/Computer-Graphics-History/" style="font-size: 14px; color: #999">Computer Graphics History</a> <a href="/tags/Computer-Vision/" style="font-size: 14px; color: #999">Computer Vision</a> <a href="/tags/Deep-Fake/" style="font-size: 17.33px; color: #828282">Deep Fake</a> <a href="/tags/Deep-Learing/" style="font-size: 20.67px; color: #6c6c6c">Deep Learing</a> <a href="/tags/Degign/" style="font-size: 17.33px; color: #828282">Degign</a> <a href="/tags/EyeTracking/" style="font-size: 14px; color: #999">EyeTracking</a> <a href="/tags/GAN/" style="font-size: 17.33px; color: #828282">GAN</a> <a href="/tags/GPU/" style="font-size: 17.33px; color: #828282">GPU</a> <a href="/tags/Gamma-Correction/" style="font-size: 14px; color: #999">Gamma Correction</a> <a href="/tags/Github-Pages/" style="font-size: 17.33px; color: #828282">Github Pages</a> <a href="/tags/Hexo/" style="font-size: 17.33px; color: #828282">Hexo</a> <a href="/tags/KeyFrame/" style="font-size: 14px; color: #999">KeyFrame</a> <a href="/tags/MSM/" style="font-size: 14px; color: #999">MSM</a> <a href="/tags/Monte-Carlo/" style="font-size: 20.67px; color: #6c6c6c">Monte Carlo</a> <a href="/tags/Neural-Rendering/" style="font-size: 20.67px; color: #6c6c6c">Neural Rendering</a> <a href="/tags/Notes/" style="font-size: 14px; color: #999">Notes</a> <a href="/tags/Nvidia/" style="font-size: 14px; color: #999">Nvidia</a> <a href="/tags/Octree/" style="font-size: 14px; color: #999">Octree</a> <a href="/tags/PBR/" style="font-size: 14px; color: #999">PBR</a> <a href="/tags/PCF/" style="font-size: 14px; color: #999">PCF</a> <a href="/tags/PCSS/" style="font-size: 14px; color: #999">PCSS</a> <a href="/tags/PathTracing/" style="font-size: 17.33px; color: #828282">PathTracing</a> <a href="/tags/RayTracing/" style="font-size: 17.33px; color: #828282">RayTracing</a> <a href="/tags/Real-Time-Rendering/" style="font-size: 14px; color: #999">Real-Time Rendering</a> <a href="/tags/Rendering/" style="font-size: 24px; color: #555">Rendering</a> <a href="/tags/ScanLine-ZBuffer/" style="font-size: 14px; color: #999">ScanLine ZBuffer</a> <a href="/tags/Shadow/" style="font-size: 14px; color: #999">Shadow</a> <a href="/tags/Shadow-Map/" style="font-size: 14px; color: #999">Shadow Map</a> <a href="/tags/Spherical-Harmonics/" style="font-size: 14px; color: #999">Spherical Harmonics</a> <a href="/tags/Spline/" style="font-size: 14px; color: #999">Spline</a> <a href="/tags/Technical-Artist/" style="font-size: 14px; color: #999">Technical Artist</a> <a href="/tags/Tone-Mapping/" style="font-size: 14px; color: #999">Tone Mapping</a> <a href="/tags/VSM/" style="font-size: 14px; color: #999">VSM</a> <a href="/tags/Virtual-Reality/" style="font-size: 14px; color: #999">Virtual Reality</a> <a href="/tags/Volantis/" style="font-size: 17.33px; color: #828282">Volantis</a> <a href="/tags/ZBuffer/" style="font-size: 14px; color: #999">ZBuffer</a> <a href="/tags/anaconda/" style="font-size: 14px; color: #999">anaconda</a> <a href="/tags/pytorch/" style="font-size: 14px; color: #999">pytorch</a>
+    </div>
+  </section>
+
+
+  
+
 
 <!-- 没有 pjax 占位会报错 万恶的 pjax -->
-
-  <div class="pjax">
-    <!-- pjax占位 -->
-  </div>
-
-  <div class="pjax">
-    <!-- pjax占位 -->
-  </div>
-
-  <div class="pjax">
-    <!-- pjax占位 -->
-  </div>
 
   <div class="pjax">
     <!-- pjax占位 -->
@@ -2897,7 +3061,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
   <!-- Custom Files side end -->
 </aside>
-
 
 
           <!--此文件用来存放一些不方便取值的变量-->
@@ -4214,7 +4377,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Unknown Island","url":"https://yaelcassini.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/","sameAs":["https://github.com/volantis-x"],"description":"赛博小屋"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://yaelcassini.github.io/","name":"Unknown Island"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Unknown Island","url":"https://yaelcassini.github.io/","keywords":null,"description":"赛博小屋","author":{"@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/","description":"赛博小屋"},"publisher":{"@type":"Organization","name":"Unknown Island","url":"https://yaelcassini.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://yaelcassini.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"关于","description":"赛博小屋","inLanguage":["zh-CN","en","zh-HK","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://yaelcassini.github.io/about/index.html"},"author":{"@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/"},"publisher":{"@type":"Organization","name":"Unknown Island","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://yaelcassini.github.io/about/index.html","wordCount":0,"datePublished":"2022-06-08T10:10:36.000Z","dateModified":"2023-03-29T09:43:21.621Z","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Unknown Island","url":"https://yaelcassini.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/","sameAs":["https://github.com/volantis-x"],"description":"赛博小屋"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://yaelcassini.github.io/","name":"Unknown Island"}},{"@type":"ListItem","position":2,"item":{"@id":"https://yaelcassini.github.io/tags/Real-Time Rendering/","name":"Real-Time Rendering"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Unknown Island","url":"https://yaelcassini.github.io/","keywords":null,"description":"赛博小屋","author":{"@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/","description":"赛博小屋"},"publisher":{"@type":"Organization","name":"Unknown Island","url":"https://yaelcassini.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://yaelcassini.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","description":"赛博小屋","inLanguage":["zh-CN","en","zh-HK","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage"},"author":{"@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/"},"publisher":{"@type":"Organization","name":"Unknown Island","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"wordCount":0,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 

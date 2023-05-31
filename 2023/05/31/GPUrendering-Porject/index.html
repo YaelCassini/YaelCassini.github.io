@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <!-- SEO相关 -->
   
-  <link rel="canonical" href="https://yaelcassini.github.io/about/"/>
+  <link rel="canonical" href="https://yaelcassini.github.io/2023/05/31/gpurendering-porject/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -32,20 +32,23 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>关于 - Unknown Island</title>
-  <meta name="keywords" content="null">
+  <title>基于GPU的渲染project - 布料真实感实时渲染 - Unknown Island</title>
+  <meta name="keywords" content="Rendering,GPU,Real-Time Rendering,null">
   <meta desc name="description" content="赛博小屋 - Cassini - Unknown Island">
   
-<meta property="og:type" content="website">
-<meta property="og:title" content="Unknown Island">
-<meta property="og:url" content="https://yaelcassini.github.io/about/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于GPU的渲染project - 布料真实感实时渲染">
+<meta property="og:url" content="https://yaelcassini.github.io/2023/05/31/GPUrendering-Porject/index.html">
 <meta property="og:site_name" content="Unknown Island">
-<meta property="og:description" content="教育经历：本科：浙江大学 数字媒体技术专业研究生：浙江大学 计算机科学与技术专业 CAD&amp;CG实验室">
+<meta property="og:description" content="PS: 当时还比较年轻，有些问题略弱智。 〇.  Part Zero    基本概述及project组织架构基本概述：​		本次大程为了实现布料的实时渲染，我的主要思路是使用PBR的渲染方式，通过使用Albedo、Normal Map、Roughness Map等贴图，完成布料的基本着色。 ​		阴影部分采用ShadowMap算法实现，使用PCF算法完成对阴影锯齿状走样的消除和处理，得到软阴影。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-<meta property="article:published_time" content="2022-06-08T10:10:36.000Z">
-<meta property="article:modified_time" content="2023-03-29T09:43:21.621Z">
+<meta property="article:published_time" content="2023-05-31T14:42:55.000Z">
+<meta property="article:modified_time" content="2023-05-31T14:48:07.823Z">
 <meta property="article:author" content="Cassini">
+<meta property="article:tag" content="Rendering">
+<meta property="article:tag" content="GPU">
+<meta property="article:tag" content="Real-Time Rendering">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png">
   <style>
@@ -2411,6 +2414,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <ul class='switcher nav-list-h m-phone' id="pjax-header-nav-list">
         <li><a id="s-comment" class="fa-solid fa-comments fa-fw" target="_self"  href="/" onclick="return false;" title="comment"></a></li>
         
+          <li><a id="s-toc" class="s-toc fa-solid fa-list fa-fw" target="_self"  href="/" onclick="return false;" title="toc"></a></li>
+        
       </ul>
     </div>
 		<div class="nav-main">
@@ -2690,7 +2695,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
       <!-- see: /layout/_partial/scripts/_ctrl/coverCtrl.ejs -->
-      <div id="half" class='cover-wrapper docs dock' style="display: ;">
+      <div id="half" class='cover-wrapper post dock' style="display: ;">
         
   <div id="parallax-window"></div>
 
@@ -2766,9 +2771,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <div id="safearea">
         <div class="body-wrapper">
           
-<div id="l_main" class=' no_sidebar'>
-  <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow floatable blur article-type-docs" id="docs" itemscope itemprop="blogPost">
-  <link itemprop="mainEntityOfPage" href="https://yaelcassini.github.io/about/index.html">
+<div id="l_main" class=''>
+  <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow floatable blur article-type-post" id="post" itemscope itemprop="blogPost">
+  <link itemprop="mainEntityOfPage" href="https://yaelcassini.github.io/2023/05/31/GPUrendering-Porject/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Unknown Island">
   </span>
@@ -2788,18 +2793,317 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
     
-      <span hidden itemprop="name headline">
+      <h1 class="title" itemprop="name headline">
+        基于GPU的渲染project - 布料真实感实时渲染
+      </h1>
+      <div class='new-meta-box'>
         
+          
+            
+<div class='new-meta-item author' itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <a itemprop="url" class='author' href="about/" rel="nofollow">
+    <img itemprop="image" src="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/logo_64.png">
+    <p itemprop="name">Yael Cassini</p>
+  </a>
+</div>
+
+          
+        
+          
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2023-05-31T22:42:55+08:00">
+  <a class='notlink'>
+    <i class="fa-solid fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2023年5月31日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class='new-meta-item category'>
+    <i class="fa-solid fa-folder-open fa-fw" aria-hidden="true"></i>
+    <a class="category-link" href="/categories/Homework/">Homework</a>
+    
+      <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+        <a href="/categories/Homework/" itemprop="url"><span itemprop="name">Homework</span></a>
       </span>
+    
+  </div>
+
+
+          
+        
+          
+            
+
+
+<div class="new-meta-item browse">
+  <a class='notlink'>
+    <p>
+      <i class="fa-solid fa-eye fa-fw" aria-hidden="true"></i>
+      
+      <span id="busuanzi_value_page_pv"><i class="fa-solid fa-loader fa-spin fa-fw" aria-hidden="true"></i></span>
+      
+      <span>次浏览</span>
+    </p>
+  </a>
+</div>
+
+
+          
+        
+        <!-- Custom Files topMeta begin-->
+        
+        <!-- Custom Files topMeta end-->
+      </div>
     
   </div>
 
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <p>教育经历：<br>本科：浙江大学 数字媒体技术专业<br>研究生：浙江大学 计算机科学与技术专业 CAD&amp;CG实验室</p>
+    <p>PS: 当时还比较年轻，有些问题略弱智。</p>
+<div class="story post-story"><h2 id="〇-Part-Zero-基本概述及project组织架构"><a href="#〇-Part-Zero-基本概述及project组织架构" class="headerlink" title="〇.  Part Zero    基本概述及project组织架构"></a>〇.  Part Zero    基本概述及project组织架构</h2><h3 id="基本概述："><a href="#基本概述：" class="headerlink" title="基本概述："></a>基本概述：</h3><p>​		本次大程为了实现<strong>布料的实时渲染</strong>，我的主要思路是使用<strong>PBR</strong>的渲染方式，通过使用Albedo、Normal Map、Roughness Map等<strong>贴图</strong>，完成布料的基本着色。</p>
+<p>​		阴影部分采用<strong>ShadowMap算法</strong>实现，使用<strong>PCF算法</strong>完成对阴影锯齿状走样的消除和处理，得到软阴影。</p>
+<p>​		实验中用到的<strong>贴图</strong>均为本人使用Substance Painter绘制后<strong>烘焙</strong>导出。另外为了使工程文件格式统一，我还对<strong>模型</strong>进行了一些<strong>预处理</strong>。</p>
+<p>​		在后文我将对本次大程中的几个重要部分的原理分别阐述。</p>
+<h3 id="Project组织架构："><a href="#Project组织架构：" class="headerlink" title="Project组织架构："></a>Project组织架构：</h3><ul>
+<li><p>实验环境及用到的库：</p>
+<ul>
+<li>Visual Studio 2019</li>
+<li><a target="_blank" rel="noopener" href="https://www.glfw.org/">GLFW</a></li>
+<li><a target="_blank" rel="noopener" href="https://glad.dav1d.de/">GLAD</a></li>
+<li><a target="_blank" rel="noopener" href="https://glm.g-truc.net/0.9.9/index.html">GLM</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.assimp.org/">Assimp</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/nothings/stb">stb_image</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.freetype.org/">FreeType</a></li>
+</ul>
+</li>
+<li><p>请使用 <strong>Release x86</strong> 生成解决方案和调试。</p>
+</li>
+<li><p>需要的头文件、lib文件已经打包在项目目录下，并在项目属性配置中用相对路径引用。</p>
+</li>
+</ul>
+<ol start="2">
+<li>需要的dll文件放在项目目录下。</li>
+</ol>
+<ul>
+<li>main.cpp为主要源文件，主函数入口在其中，核心的渲染过程也在该源文件中。</li>
+<li>Fonts文件夹下是几个字体，字体用于显示Text（比如FPS显示）。</li>
+<li>include文件夹是需要的头文件，主要是Glad、GLFW等库的头文件</li>
+<li>lib文件夹是用到的库的lib文件</li>
+<li>Headers文件夹下是工程中一些模块的头文件，比如Camera模块、Shader模块等等。</li>
+<li>Models文件夹下是用到模型文件，编号表示模型内容、所属人物和姿势。比如”body1_1“表示第一个人物的第一个姿势，”cloth1_1“表示第一件衣服的第一个姿势，cloth1-cloth3属于第一个人物，cloth4-cloth6属于第二个人物。</li>
+<li>Shaders文件夹下是需要的shader源文件，其中PBRShader是本次项目主要使用的shader，RenderTexture是将ShadowMap展示在窗口使用的shader。</li>
+<li>Textures文件夹下是使用的贴图，background为前缀的贴图是背景幕布的贴图。set1文件夹下存放女孩模型使用的贴图，set2文件夹下存放男孩模型使用的贴图，其中，两个body的渲染使用的是一样的贴图。每套贴图共有5张，编号从0到4分别是Albedo、Normal Map、Metallic Map、Roughness Map、AO Map。其中由于没有使用到Metallic和AO贴图，因此有些地方直接将这两张贴图省略了。</li>
+</ul>
+</div><div class="story post-story"><h2 id="Ⅰ-Part-One-PBR基本原理"><a href="#Ⅰ-Part-One-PBR基本原理" class="headerlink" title="Ⅰ.  Part One    PBR基本原理"></a>Ⅰ.  Part One    PBR基本原理</h2><p>​		PBR（Physically Based Rendering），指的是基于物理的渲染，更符合物理学规律，看上去更真实。并且由于其与真实的物理性质非常接近，可以直接用物理参数为依据来编写表面材质。由于基于物理的渲染旨在以一种物理上合理的方式模拟光，因此与我们的原始照明算法（如Phong和Blinn-Phong）相比，它通常看起来更真实，并且非常接近实际物理，我们可以根据物理参数编写表面材料，而不必求助于廉价的技巧和调整来使灯光看起来正确。基于物理参数编写材质的一个更大的优点是，无论照明条件如何，这些材质都会看起来正确。<br>​		满足基于物理渲染的三个条件：</p>
+<ul>
+<li>基于微平面（Microfacet）的表面模型</li>
+<li>能量守恒</li>
+<li>应用基于物理的BRDF</li>
+</ul>
+<p>	</p>
+<h4 id="微平面模型"><a href="#微平面模型" class="headerlink" title="微平面模型"></a>微平面模型</h4><ul>
+<li>达到微观尺度之后，任何平面都可以用被称为微平面的细小镜面来描绘。</li>
+<li>微平面的取向排列的不一致程度，与平面粗糙程度有关。平面越粗糙，微平面排列越混乱。</li>
+<li>对于粗糙平面，入射光线更趋向于向完全不同的方向发散，光滑平面上，入射光线大体上趋向于向同一个方向发射。</li>
+<li>PBR中一般基于光线向量l和视线向量v的中间向量h与微平面平均取向方向的一致性计算镜面反射。</li>
+<li>中间向量计算公式：$h &#x3D; \frac{l+v}{||l+v||}$</li>
+<li>微平面无法逐像素区分，因此应该假设一个粗糙度参数，并使用统计学方法估算微平面的取向方向。</li>
+<li>粗糙度系数取值为0-1之间，可以估算微平面的取向情况。</li>
+<li>粗糙度越高，镜面反射轮廓越大，反之轮廓越小但边缘更锐利。</li>
+</ul>
+<h4 id="能量守恒"><a href="#能量守恒" class="headerlink" title="能量守恒"></a>能量守恒</h4><ul>
+<li>微平面近似法中的能量守恒：出射光线的能量永远不能超过入射光线的能量（发光面除外）。</li>
+<li>一束光线碰撞到一个表面时，会分离成一个折射部分和一个反射部分。反射部分不进入平面直接反射，成为镜面光照。折射部分会进入表面并被吸收，成为漫反射光照。</li>
+<li>金属表面上所有折射光都会被直接吸收而不会散开，因此金属表面不会显示出漫反射颜色。</li>
+<li>折射光与反射光二者是互斥的关系。能量总和永远不会超过入射光线的能量。</li>
+</ul>
+<h4 id="反射率方程"><a href="#反射率方程" class="headerlink" title="反射率方程"></a>反射率方程</h4><ul>
+<li>反射率方程是PBR中一种渲染方程的特化版本</li>
+<li>反射率方程：$L_0(p,\omega_0) &#x3D; \int _\Omega f_r(p,\omega_i,\omega_0)L_i(p,\omega_i)n·\omega_i d \omega_i$</li>
+<li>$L$是辐射率，用来量化单一方向上发射来的光线的大小和强度</li>
+<li>辐射通量$\Phi$：一个光源输出的能量，以瓦特为单位，可以视为这个光源中包含的所有波长的一个函数。</li>
+<li>立体角：三位立体空间中的角度，可以描述为投射到单位球体上的截面大小。</li>
+<li>辐射强度：单位球面上，一个光源向每个单位立体角所投放的辐射通量。计算公式： $I&#x3D;\frac{d\Phi}{d\omega}$。</li>
+<li>辐射率L：一个拥有辐射强度的光源在单位面积A，单位立体角上辐射出的总能量。也就是：$L&#x3D;\frac{d^2\Phi}{dAd\omega cos\theta}$ 。如果把立体角和面积看作无穷小，就可以用辐射率来表示单束光线穿过空间中一个点的通量。</li>
+<li>反射率方程$L_0(p,\omega_0) &#x3D; \int _\Omega f_r(p,\omega_i,\omega_0)L_i(p,\omega_i)n·\omega_i d \omega_i$中：<ul>
+<li>$L_i(p,\omega_i)$表示通过无限小的立体角（可以近似看作一个入射方向向量）投射到点p上的光线总和。</li>
+<li>$n·\omega_i$也就是余弦值$cos\theta$。</li>
+<li>$\omega_0$表示观察方向，也就是光线的出射方向。</li>
+<li>$L_0(p,\omega_0)$表示了从$\omega_0$方向上观察时，光线投射到点p上之后反射出来的辐照度</li>
+<li>$\Omega$表示以点p为球心，以平面法向n为轴所环绕的半球体。为</li>
+<li>$d \omega_i$积分元，在计算中按照一定的步长对反射率方程离散求解。</li>
+<li>$f_r(p,\omega_i,\omega_0)$为双面反射分布函数，也就是BRDF，它的作用时基于表面材质属性来对入射辐射度进行缩放和加权</li>
+</ul>
+</li>
+</ul>
+<h4 id="BRDF"><a href="#BRDF" class="headerlink" title="BRDF"></a>BRDF</h4><ul>
+<li><p>输入参数：入射光方向，出射光方向$\omega_0$，平面法向$n$，表示微平面粗糙程度的参数$\alpha$</p>
+</li>
+<li><p>当平面为理想镜面时，BRDF只对符合反射定律（即入射光、出射光、平面法向在同一平面，入射角等于出射角）的出射方向返回值为1，其他方向返回值都为0。</p>
+</li>
+<li><p>Blinn-Phong模型也可以认为是一个BRDF，但他不能保证能量守恒，因此不是基于物理的渲染。</p>
+</li>
+<li><p><strong>Cook-Torrance BRDF</strong>（包括漫反射和镜面反射两部分）：</p>
+<p>$f_r &#x3D; k_d f_{lambert} + k_s f_{cook-torrance}$</p>
+</li>
+<li><p>$k_s$表示入射光线中被折射部分的比例， $k_d$表示入射光线中被反射部分的比例。</p>
+</li>
+<li><p>漫反射部分：$f_{lambert} &#x3D; \frac{c}{\pi}$ ，其中$c$表示表面的颜色。</p>
+</li>
+<li><p>镜面反射：$f_{cook-torrance} &#x3D; \frac{DFG}{4(\omega_0·n)(\omega_i·n)}$</p>
+<ul>
+<li>$D$：正态分布函数估算在当前的表面粗糙度下，取向方向与中间向量一致的微平面的数<br>量。</li>
+<li>$G$：几何函数<br>描述了微平面自成阴影的属性，当平面较粗糙时，微平面可能会互相遮挡从而减少表面所反射的光线。</li>
+<li>$F$：菲涅尔方程<br>描述不同表面角下表面所反射的光线所占比例</li>
+</ul>
+</li>
+</ul>
+<h4 id="正态分布函数"><a href="#正态分布函数" class="headerlink" title="正态分布函数"></a>正态分布函数</h4><ul>
+<li>也称为镜面分布，从统计学上近似地表示了与某向量（一般是中间向量h）取向<br>一致的微平面的比例。</li>
+<li>计算公式：$NDF_{GGXTR}(n.h,\alpha) &#x3D; \frac{\alpha^2}{\pi((n·h)^2 (\alpha_2-1) + 1)^2}$</li>
+<li>其中：$h$表示中间向量， $\alpha$表示表面粗糙度</li>
+</ul>
+<h4 id="几何函数"><a href="#几何函数" class="headerlink" title="几何函数"></a>几何函数</h4><ul>
+<li><p>从统计学上近似求得微平面之间相互遮挡的比例，这种遮挡会损耗光线能量。</p>
+</li>
+<li><p>计算公式：$G_{SchlickGGX}(n,v,k) &#x3D; \frac{n·v}{(n·v)(1-k)+k}$</p>
+</li>
+<li><p>其中，$k$是粗糙度$\alpha$的重映射</p>
+<ul>
+<li>针对直接光照：$k_{direct} &#x3D; \frac{(\alpha+1)^2}{8}$</li>
+<li>针对<strong>IBL</strong>（<strong>image based lighting</strong>，一种间接光照技术）光照：$k_{IBL} &#x3D; \frac{\alpha^2}{2}$</li>
+</ul>
+</li>
+<li><p>微平面相互遮挡包括：</p>
+<ul>
+<li>观察方向上：几何遮蔽</li>
+<li>光线方向上：几何阴影</li>
+</ul>
+</li>
+<li><p>同时考虑两种遮挡的几何函数计算公式：</p>
+<p>$G(n,v,l,k) &#x3D; G_{sub}(n,v,k)G_{sub}(n,l,k)$</p>
+</li>
+</ul>
+<h4 id="菲涅尔方程"><a href="#菲涅尔方程" class="headerlink" title="菲涅尔方程"></a>菲涅尔方程</h4><ul>
+<li><p>描述被反射的光线对比光线被折射部分所占的比例，该值会随着观察角度的不同而不同。</p>
+</li>
+<li><p>菲涅尔方程根据观察角度得出被反射的光线所占的百分比。</p>
+</li>
+<li><p>垂直观察时，任何物体和材质表面都有一个基础反射率，而如果从和法线夹角近似90度的方向观察，理论上所有的平面都能完全反射光线，因此反光会变得明显很多。</p>
+</li>
+<li><p>菲涅尔方程的近似解公式：$F_{Schlick}(h,v,F_0) &#x3D; F_0 + (1-F_0)(1-(h·v))^5$</p>
+<ul>
+<li>该近似只对电解质或者说非金属表面有定义，因为使用IOR计算基础反射率对导体表面并不能计算出正确结果。</li>
+<li>对金属材质需要预先计算平面对法向入射的反应，然后基于相应观察叫的近似对这个值进行插值</li>
+<li>$F_0$：平面基础反射率，利用折射指数IOR算出，用RGB三原色来表示，因为对于道题该基础反射率一般是带有颜色的。</li>
+</ul>
+</li>
+<li><p>因为金属表面会吸收所有折射光线而没有漫反射，因此可以直接使用表面纹理来作为他们的基础反射率。</p>
+</li>
+</ul>
+<h4 id="Cook-Torrance反射率方程"><a href="#Cook-Torrance反射率方程" class="headerlink" title="Cook-Torrance反射率方程"></a>Cook-Torrance反射率方程</h4><ul>
+<li>计算公式：$L_0(p,\omega_0) &#x3D; \int _\Omega (k_d\frac{c}{\pi} + k_s \frac{DFG}{4(\omega_0·n)(\omega_i·n)})L_i(p,\omega_i)n·\omega_i d \omega_i$</li>
+</ul>
+<h4 id="PBR渲染管线中的纹理列表"><a href="#PBR渲染管线中的纹理列表" class="headerlink" title="PBR渲染管线中的纹理列表"></a>PBR渲染管线中的纹理列表</h4><ul>
+<li>反照率（Albedo）：每一个金属的纹理像素，指定表面的颜色或者基础反射率</li>
+<li>法线（Normal）：使得我们可以逐片段值得独特的法线，制造表面的起伏感。</li>
+<li>金属度（Metallic）：逐个像素指定是否是金属质地。</li>
+<li>粗糙度（Roughness）：以纹理像素为单位指定表面的粗糙度，粗糙度数值会影响微平面统计学上的取向度。</li>
+<li>环境光遮蔽（AO）：为表面和周围潜在的几何图形指定了一个额外的阴影因子。</li>
+</ul>
+<h4 id="PBR渲染管线中的纹理列表（Metal-x2F-Roughness-Workflow）"><a href="#PBR渲染管线中的纹理列表（Metal-x2F-Roughness-Workflow）" class="headerlink" title="PBR渲染管线中的纹理列表（Metal&#x2F;Roughness Workflow）"></a>PBR渲染管线中的纹理列表（Metal&#x2F;Roughness Workflow）</h4><p>​		在本流程中，金属的反射率值和电解质的反射颜色一起被放置在Base color贴图<br>中。金属贴图就像一个Mask一样来区分Base color中的金属和电介质数据。</p>
+<p>​		常见介电材料的F0被硬编码为0.04。</p>
+<ul>
+<li><p>反照率（Albedo）</p>
+<p>每一个金属的纹理像素，指定表面的颜色或者基础反射率。在色调上比较平坦，对比度低于传统的漫反射贴图。亮度范围最低不应该低于30-50sRGB，最高不应该高于240sRGB。</p>
+</li>
+<li><p>法线（Normal）</p>
+<p>使得我们可以逐片段计算得到独特的法线，制造表面的起伏感。</p>
+</li>
+<li><p>金属度（Metallic）</p>
+<p>金属贴图用于定义材料的哪些区域表示原始的金属，它类似于一个遮罩。0.0表示非金属，1.0表示金属。</p>
+<p>原始金属的灰度范围在金属贴图中定义为235-255sRGB，落在此范围内的金属需要在Base color中有70%-100%的反射率范围。金属上的涂层或者污垢等远低于金属70%-100%的反射率所需要的值，因此在金属贴图低于235sRGB的范围内，可以在介电和金属反射率值之间创建适当的混合。</p>
+</li>
+<li><p>粗糙度（Roughness）</p>
+<p>Roughness贴图以纹理像素为单位指定表面的粗糙度，描述了表面的不规则性，粗糙度数值会影响微平面统计学上的取向度。反射光方向会根据表面粗糙度变化，但强度保持不变。粗糙度高的表面具有范围更大看起来更暗的高光，而较光滑的表面则有范围较小而看起来更亮的高光。</p>
+<p>黑色（0.0）表示光滑的表面，白色（1.0）表示粗糙的表面。</p>
+</li>
+<li><p>环境光遮蔽（AO）：为表面和周围潜在的几何图形指定了一个额外的阴影因子。</p>
+</li>
+</ul>
+</div><div class="story post-story"><h2 id="Ⅱ-Part-Two-Bump-Mapping基本原理"><a href="#Ⅱ-Part-Two-Bump-Mapping基本原理" class="headerlink" title="Ⅱ.  Part Two    Bump Mapping基本原理"></a>Ⅱ.  Part Two    Bump Mapping基本原理</h2><p>​		Bump Mapping（也叫Normal Mapping）也就是法线映射，简单的讲就是通过读取一张存储着法线信息的纹理来计算光照（而不直接简单地通过顶点法线的插值），这样可以明显增强图像的真实感。</p>
+<h4 id="法线贴图（Normal-Map）"><a href="#法线贴图（Normal-Map）" class="headerlink" title="法线贴图（Normal Map）"></a>法线贴图（Normal Map）</h4><p>　　法线贴图是<strong>存储法线</strong>的一张贴图，法线的 <strong>xyz</strong> 的值经过<strong>归一化</strong>之后再被<strong>映射</strong>成为对应的 <strong>RGB</strong> 值。归一化的法线值范围为[-1,1]，而RGB的每一个分量为无符号的8位组成，范围为[0,255]。即法线的分量需要从由[-1，1]映射成[0，255]。法线贴图一般呈蓝色，因为大多数朝向 (0, 0, 1) 的法线被映射成为了 (0, 0, 255)。</p>
+<h4 id="切空间及其变换矩阵"><a href="#切空间及其变换矩阵" class="headerlink" title="切空间及其变换矩阵"></a>切空间及其变换矩阵</h4><p>　　我们需要注意的是，法线贴图中储存的法线是在<strong>切空间</strong>中的法线值。切空间是在某一点由顶点法向和切向量组成的线性空间。在模型每个顶点中，都存在这样的一个切空间坐标系，以模型顶点为中心，以TBN三个方向分别为为3个轴（Tangent，Binormal，Normal）。其中，N是顶点的法线方向，T、B两个向量是顶点切平面的2个向量，一般T的方向是纹理坐标u的方向，B的方向（副切线方向）通过TN叉乘计算得到。</p>
+<p>​		从切空间到模型空间的变换矩阵，由T、B、N三个向量组成，也叫TBN矩阵。Tangent，Binormal，Normal三个向量中，我们在模型顶点中已知Tangent和Normal的值，则Binormal可以通过前2个向量的叉乘来取得。特别的，我们需要首先将Tangent进行<a target="_blank" rel="noopener" href="https://www.cnblogs.com/jqm304775992/p/4914126.html">Gram-Schmidt向量正交化</a>，使之与法线垂直。</p>
+<h4 id="Normal-Mapping主要流程"><a href="#Normal-Mapping主要流程" class="headerlink" title="Normal Mapping主要流程"></a>Normal Mapping主要流程</h4><p>​		因此，我们进行Normal Mapping的主要流程就是：</p>
+<ul>
+<li>根据顶点的Normal和Tangent计算TBN矩阵</li>
+<li>根据顶点UV从Normal Map采样，并将其映射回到[-1,1]，从而得到切空间下的法线信息。</li>
+<li>使用TBN矩阵将法线信息变换到模型空间</li>
+<li>进行后续的光照计算（或许需要对法线做进一步变换转换到世界空间）</li>
+</ul>
+<p>　</p>
+</div><div class="story post-story"><h2 id="Ⅲ-Part-Three-Shadow-Map基本原理"><a href="#Ⅲ-Part-Three-Shadow-Map基本原理" class="headerlink" title="Ⅲ.  Part Three    Shadow Map基本原理"></a>Ⅲ.  Part Three    Shadow Map基本原理</h2><p>​		（本部分由于是课堂学习内容，因此在此不再赘述，只描述基本原理。）</p>
+<p>​		阴影图(Shadow Map)算法是渲染时用于计算阴影的算法，也是现在使用最为广泛的阴影计算方法。</p>
+<p>​		Shadow Map算法计算阴影的基本原理是：从光源可以看到场景中所有的被光照亮的表面。在光源方向不可见的表面都处于阴影区域。</p>
+<p><img src="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/note/202305312239.jpg" alt="图片alt" title="图片title"></p>
+<ul>
+<li><p>为了判断Fragment是否对于光源是可见的，需要分三步：</p>
+<ul>
+<li><p>以光源的位置作为视点，对场景进行一次渲染，这次绘制不会将着色显示在屏幕上，而只取深度信息，得到一张深度图Shadow Map。这张纹理上的每一个像素都记录了第一个可见表面的深度值（也就是与光源的距离）。</p>
+</li>
+<li><p>从真实的视点对场景进行渲染，在渲染的过程中，逐片元进行矩阵变换，求出当前片元在光源为视点的空间下的深度值和UV值（也就是xy坐标值）。</p>
+</li>
+<li><p>使用xy坐标值从第一步生成的Shadow Map中采样，并与当前片元深度值比较。如果当前深度值大于采样得到的深度值，则证明当前片元应该是阴影，反之则证明当前片元可以被光源照亮。</p>
+</li>
+</ul>
+</li>
+<li><p>其中，第一步中以光源为视点进行渲染时，如果使用的是平行光则应该采用正交投影，如果使用的是点光源则应该采用透视投影。</p>
+</li>
+<li><p>使用上述方法得到的阴影会有明显的锯齿状，因此在项目中我还使用了老师上课介绍的PCF算法，以期望得到软阴影，柔化阴影边缘，消除锯齿状走样。</p>
+<ul>
+<li>PCF方法的主要原理是，在从Shadow Map采样时，不仅采样当前UV，还要采样周围的像素（比如一个以当前UV为中心的3*3的窗口），将当前片元的深度值分别与这个窗口内的每一个深度值比较，如果大于当前片元深度值就取值为1，否则取值为0。之后再对这样得到的一个由0和1组成的窗口进行卷积操作（一般是求平均），从而得到当前片元的阴影系数，这样就实现了软阴影。</li>
+</ul>
+</li>
+</ul>
+</div><div class="story post-story"><h2 id="Ⅳ-Part-Four-模型处理及贴图烘焙"><a href="#Ⅳ-Part-Four-模型处理及贴图烘焙" class="headerlink" title="Ⅳ.  Part Four    模型处理及贴图烘焙"></a>Ⅳ.  Part Four    模型处理及贴图烘焙</h2><h4 id="对模型的预处理："><a href="#对模型的预处理：" class="headerlink" title="对模型的预处理："></a>对模型的预处理：</h4><ul>
+<li>使用Maya对模型的大小和旋转方向做了预先处理，这部分在代码里实际上也能通过ModelMatrix来实现，但是由于加入了其他的模型（比如点光源、背景幕布），为了统一，便使用了在Maya中预先处理好的方法。</li>
+</ul>
+<p><img src="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/note/202305312240.jpg" alt="图片alt" title="图片title"></p>
+<p><img src="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/note/202305312241.jpg" alt="图片alt" title="图片title"></p>
+<ul>
+<li>两个模型的人体部分是硬边，也就是每个顶点有多个法线，这样会使得最终的渲染效果皮肤表面有棱角，不够平滑，因此我对两个模型的身体部分在Maya中进行了软化边操作。（下图展示软化边操作前后的模型效果及顶点法线）</li>
+</ul>
+<p><img src="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/note/202305312242.jpg" alt="图片alt" title="图片title"><br><img src="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/note/202305312243.jpg" alt="图片alt" title="图片title"><br><img src="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/note/202305312244.jpg" alt="图片alt" title="图片title"><br><img src="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/note/202305312245.jpg" alt="图片alt" title="图片title"></p>
+<p>  如上图，没有做软化边的模型每个顶点有多个法线，软化边之后的模型每个顶点只有一个法线</p>
+<ul>
+<li><p>自行建模得到了一个幕布，并同样为其制作贴图，对其进行PBR流程渲染。（见上图）</p>
+</li>
+<li><p>有些模型的UV没有展开（比如身体部分），对这些模型进行了UV自动展开（因为皮肤部分对UV排布方式的要求不高）</p>
+</li>
+<li><p>其他模型（衣物等）虽然有展开好的UV，但是该UV并没有在0-1的范围内，因此使用Maya将该展开后的UV放在0-1之内的范围内。</p>
+</li>
+</ul>
+<p><img src="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/note/202305312246.jpg" alt="图片alt" title="图片title"><br><img src="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/note/202305312247.jpg" alt="图片alt" title="图片title"></p>
+<h4 id="贴图的烘焙制作："><a href="#贴图的烘焙制作：" class="headerlink" title="贴图的烘焙制作："></a>贴图的烘焙制作：</h4><ul>
+<li>自行使用Substance Painter完成模型贴图的制作，PBR流程中导出的贴图有Albedo、Normal Map、Metallic Map、Roughness Map、Height Map五张。其中每个模型都使用的有Albedo、Normal Map、Roughness Map。由于本次渲染实验中没有模型有金属度，因此所有的Metallic Map都是一张黑色贴图，可以直接不添加该帖图，Shader会自动使用默认值0。另外，本次实验中也暂时没有烘焙和使用AO贴图。</li>
+</ul>
+<p><img src="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/note/202305312248.jpg" alt="图片alt" title="图片title"><br><img src="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/note/202305312249.jpg" alt="图片alt" title="图片title"><br><img src="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/note/202305312250.jpg" alt="图片alt" title="图片title"></p>
+</div><div class="story post-story"><h2 id="Ⅴ-Part-Five-效果展示"><a href="#Ⅴ-Part-Five-效果展示" class="headerlink" title="Ⅴ.  Part Five    效果展示"></a>Ⅴ.  Part Five    效果展示</h2><p>​		工程运行效果可以查看”录屏展示“文件，本处展示一些运行截图。（截图效果可能因为截图软件分辨率不够等因素，效果并没有直接看的好。）由于设备显卡比较陈旧，渲染FPS似乎较低。</p>
+<p><img src="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/note/202305312251.jpg" alt="图片alt" title="图片title"><br><img src="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/note/202305312252.jpg" alt="图片alt" title="图片title"><br><img src="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/note/202305312253.jpg" alt="图片alt" title="图片title"><br><img src="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/note/202305312254.jpg" alt="图片alt" title="图片title"></p>
+</div><div class="story post-story"><h2 id="Ⅵ-Part-Six-参考资料"><a href="#Ⅵ-Part-Six-参考资料" class="headerlink" title="Ⅵ.  Part Six    参考资料"></a>Ⅵ.  Part Six    参考资料</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://learnopengl-cn.github.io/07%20PBR/01%20Theory/">LeanOpenGL CN官网的PBR理论教程</a></li>
+<li><a target="_blank" rel="noopener" href="https://academy.substance3d.com/courses/the-pbr-guide-part-1">Adobe官方提供的PBR Guide</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/ronintao/article/details/51649664">Shadow Map算法原理</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/384446688">Shadow Map算法及其延伸</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/382202359">三种Shadowmap改进算法的原理</a></li>
+</ol>
 
-
+</div>
   </div>
   
   
@@ -2807,6 +3111,21 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='footer'>
       
       
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享4.0国际 (CC BY-NC-SA 4.0) 协议</p>
+
+              
+            
+              
+                <p>本文永久链接是：<a href=https://yaelcassini.github.io/2023/05/31/GPUrendering-Porject/>https://yaelcassini.github.io/2023/05/31/GPUrendering-Porject/</a></p>
+              
+            
+          </blockquote>
+        </div>
       
       
     </div>
@@ -2817,6 +3136,77 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div class='article-meta' id="bottom">
     <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2023-05-31T22:48:07+08:00">
+  <a class='notlink'>
+    <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2023年5月31日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Rendering/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>Rendering</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/GPU/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>GPU</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Real-Time-Rendering/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>Real-Time Rendering</p></a></div>
+  <span hidden itemprop="keywords">Rendering GPU Real-Time Rendering</span>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yaelcassini.github.io/2023/05/31/GPUrendering-Porject/&title=基于GPU的渲染project - 布料真实感实时渲染 - Unknown Island&summary="
+          
+          >
+          
+            <img src="https://fastly.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://yaelcassini.github.io/2023/05/31/GPUrendering-Porject/&title=基于GPU的渲染project - 布料真实感实时渲染 - Unknown Island&summary="
+          
+          >
+          
+            <img src="https://fastly.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://yaelcassini.github.io/2023/05/31/GPUrendering-Porject/&title=基于GPU的渲染project - 布料真实感实时渲染 - Unknown Island&summary="
+          
+          >
+          
+            <img src="https://fastly.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png">
+          
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+
+        
       
     </div>
     <!-- Custom Files bottomMeta begin -->
@@ -2829,6 +3219,19 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
 
   
+    <div class="prev-next">
+      
+      
+        <a class='next' href='/2023/05/31/Scene-Design/'>
+          <p class='title'>场景设计建模作业<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>场景漫游展示https://www.bilibili.com/video/BV1hb4y1778m/
+参考原画
+高模在maya中的展示效果
+在substance painter中设置材质球后的展...</p>
+        </a>
+      
+    </div>
+  
   <!-- Custom Files postEnd begin-->
   
   <!-- Custom Files postEnd end-->
@@ -2840,7 +3243,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <article class="post white-box shadow floatable blur" id="comments">
     <span hidden>
-      <meta itemprop="discussionUrl" content="/about/index.html#comments">
+      <meta itemprop="discussionUrl" content="/2023/05/31/GPUrendering-Porject/index.html#comments">
     </span>
     <p ct><i class='fa-solid fa-comments'></i> 评论</p>
     
@@ -2857,16 +3260,101 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </div>
 <aside id='l_side' itemscope itemtype="http://schema.org/WPSideBar">
   
+  
+    
+    
+
+<section class="widget blogger shadow floatable blur desktop mobile pjax">
+  <div class='content'>
+    
+      
+        <a class='avatar flat-box rectangle' href='/about/'>
+          <img no-lazy src='https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/avatar_1024.jpg'/>
+        </a>
+      
+    
+    
+      <div class='text'>
+        
+          <h2>Yael Cassini</h2>
+        
+        
+        
+          <p><span id="jinrishici-sentence">Unknown Island</span></p>
+          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        
+      </div>
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/"
+              class="social fa-solid fa-home flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="mailto:3247365200@qq.com"
+              class="social fa-solid fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="https://github.com/YaelCassini"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="/"
+              class="social fa-solid fa-headphones-alt flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+  
+
+  
+    
+    
+
+
+
+  <section class="widget toc-wrapper shadow floatable blur desktop mobile pjax" id="toc-div" >
+    
+  <header>
+    
+      <i class="fa-solid fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%87-Part-Zero-%E5%9F%BA%E6%9C%AC%E6%A6%82%E8%BF%B0%E5%8F%8Aproject%E7%BB%84%E7%BB%87%E6%9E%B6%E6%9E%84"><span class="toc-text">〇.  Part Zero    基本概述及project组织架构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E8%BF%B0%EF%BC%9A"><span class="toc-text">基本概述：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Project%E7%BB%84%E7%BB%87%E6%9E%B6%E6%9E%84%EF%BC%9A"><span class="toc-text">Project组织架构：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%85%A0-Part-One-PBR%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="toc-text">Ⅰ.  Part One    PBR基本原理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BE%AE%E5%B9%B3%E9%9D%A2%E6%A8%A1%E5%9E%8B"><span class="toc-text">微平面模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%83%BD%E9%87%8F%E5%AE%88%E6%81%92"><span class="toc-text">能量守恒</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%8D%E5%B0%84%E7%8E%87%E6%96%B9%E7%A8%8B"><span class="toc-text">反射率方程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#BRDF"><span class="toc-text">BRDF</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0"><span class="toc-text">正态分布函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%A0%E4%BD%95%E5%87%BD%E6%95%B0"><span class="toc-text">几何函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8F%B2%E6%B6%85%E5%B0%94%E6%96%B9%E7%A8%8B"><span class="toc-text">菲涅尔方程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Cook-Torrance%E5%8F%8D%E5%B0%84%E7%8E%87%E6%96%B9%E7%A8%8B"><span class="toc-text">Cook-Torrance反射率方程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PBR%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%E4%B8%AD%E7%9A%84%E7%BA%B9%E7%90%86%E5%88%97%E8%A1%A8"><span class="toc-text">PBR渲染管线中的纹理列表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PBR%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%E4%B8%AD%E7%9A%84%E7%BA%B9%E7%90%86%E5%88%97%E8%A1%A8%EF%BC%88Metal-x2F-Roughness-Workflow%EF%BC%89"><span class="toc-text">PBR渲染管线中的纹理列表（Metal&#x2F;Roughness Workflow）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%85%A1-Part-Two-Bump-Mapping%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="toc-text">Ⅱ.  Part Two    Bump Mapping基本原理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%95%E7%BA%BF%E8%B4%B4%E5%9B%BE%EF%BC%88Normal-Map%EF%BC%89"><span class="toc-text">法线贴图（Normal Map）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%87%E7%A9%BA%E9%97%B4%E5%8F%8A%E5%85%B6%E5%8F%98%E6%8D%A2%E7%9F%A9%E9%98%B5"><span class="toc-text">切空间及其变换矩阵</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Normal-Mapping%E4%B8%BB%E8%A6%81%E6%B5%81%E7%A8%8B"><span class="toc-text">Normal Mapping主要流程</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%85%A2-Part-Three-Shadow-Map%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="toc-text">Ⅲ.  Part Three    Shadow Map基本原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%85%A3-Part-Four-%E6%A8%A1%E5%9E%8B%E5%A4%84%E7%90%86%E5%8F%8A%E8%B4%B4%E5%9B%BE%E7%83%98%E7%84%99"><span class="toc-text">Ⅳ.  Part Four    模型处理及贴图烘焙</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%B9%E6%A8%A1%E5%9E%8B%E7%9A%84%E9%A2%84%E5%A4%84%E7%90%86%EF%BC%9A"><span class="toc-text">对模型的预处理：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B4%B4%E5%9B%BE%E7%9A%84%E7%83%98%E7%84%99%E5%88%B6%E4%BD%9C%EF%BC%9A"><span class="toc-text">贴图的烘焙制作：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%85%A4-Part-Five-%E6%95%88%E6%9E%9C%E5%B1%95%E7%A4%BA"><span class="toc-text">Ⅴ.  Part Five    效果展示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%85%A5-Part-Six-%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-text">Ⅵ.  Part Six    参考资料</span></a></li></ol>
+    </div>
+  </section>
+
+  
+
 
 <!-- 没有 pjax 占位会报错 万恶的 pjax -->
-
-  <div class="pjax">
-    <!-- pjax占位 -->
-  </div>
-
-  <div class="pjax">
-    <!-- pjax占位 -->
-  </div>
 
   <div class="pjax">
     <!-- pjax占位 -->
@@ -2906,7 +3394,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <pjax>
 <script>
   window.pdata={}
-  pdata.ispage=false;
+  pdata.ispage=true;
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   pdata.commentConfig={};
@@ -4010,6 +4498,60 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 <!-- pjax 标签必须存在于所有页面 否则 pjax error -->
 <pjax>
 
+        <script>
+  // https://github.com/theme-next/hexo-theme-next/blob/master/layout/_third-party/math/mathjax.swig
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = "https://unpkg.com/volantis-static@0.0.1649552113628/libs/mathjax/es5/tex-mml-chtml.js";
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    // 文章章节标题不能为 “MathJax” ，否则会报错。
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typesetPromise();
+  }
+</script>
+
+
+
 </pjax>
 
 <script>
@@ -4214,7 +4756,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Unknown Island","url":"https://yaelcassini.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/","sameAs":["https://github.com/volantis-x"],"description":"赛博小屋"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://yaelcassini.github.io/","name":"Unknown Island"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Unknown Island","url":"https://yaelcassini.github.io/","keywords":null,"description":"赛博小屋","author":{"@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/","description":"赛博小屋"},"publisher":{"@type":"Organization","name":"Unknown Island","url":"https://yaelcassini.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://yaelcassini.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"关于","description":"赛博小屋","inLanguage":["zh-CN","en","zh-HK","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://yaelcassini.github.io/about/index.html"},"author":{"@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/"},"publisher":{"@type":"Organization","name":"Unknown Island","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://yaelcassini.github.io/about/index.html","wordCount":0,"datePublished":"2022-06-08T10:10:36.000Z","dateModified":"2023-03-29T09:43:21.621Z","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Unknown Island","url":"https://yaelcassini.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/","sameAs":["https://github.com/volantis-x"],"description":"赛博小屋"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://yaelcassini.github.io/","name":"Unknown Island"}},{"@type":"ListItem","position":2,"item":{"@id":"https://yaelcassini.github.io/categories/Homework/","name":"Homework"}},{"@type":"ListItem","position":3,"item":{"@id":"https://yaelcassini.github.io/2023/05/31/GPUrendering-Porject/","name":"基于GPU的渲染project - 布料真实感实时渲染"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Unknown Island","url":"https://yaelcassini.github.io/","keywords":null,"description":"赛博小屋","author":{"@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/","description":"赛博小屋"},"publisher":{"@type":"Organization","name":"Unknown Island","url":"https://yaelcassini.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://yaelcassini.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"基于GPU的渲染project - 布料真实感实时渲染","description":"赛博小屋","inLanguage":["zh-CN","en","zh-HK","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://yaelcassini.github.io/2023/05/31/GPUrendering-Porject/"},"author":{"@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/"},"publisher":{"@type":"Organization","name":"Unknown Island","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://yaelcassini.github.io/2023/05/31/GPUrendering-Porject/","wordCount":0,"datePublished":"2023-05-31T14:42:55.000Z","dateModified":"2023-05-31T14:48:07.823Z","articleSection":"Homework","keywords":"Rendering,GPU,Real-Time Rendering","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
