@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>Games101_notes</title>
+      <link href="/2023/07/20/Games101-notes/"/>
+      <url>/2023/07/20/Games101-notes/</url>
+      
+        <content type="html"><![CDATA[<ol><li>二维三角形内部判定:</li></ol><ul><li><a href="https://blog.csdn.net/KimHyunA4minute/article/details/40079819">https://blog.csdn.net/KimHyunA4minute/article/details/40079819</a></li></ul><p>2. </p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>计算机视觉HW2 - Harris角点检测</title>
       <link href="/2023/06/02/Harris-Corner-Detection/"/>
       <url>/2023/06/02/Harris-Corner-Detection/</url>
@@ -542,11 +555,11 @@
     
     
     <entry>
-      <title>一些资源</title>
-      <link href="/2022/11/10/%E4%B8%80%E4%BA%9B%E8%B5%84%E6%BA%90/"/>
-      <url>/2022/11/10/%E4%B8%80%E4%BA%9B%E8%B5%84%E6%BA%90/</url>
+      <title>一些资源链接&amp;小知识</title>
+      <link href="/2022/11/10/Dessert-Knowledge/"/>
+      <url>/2022/11/10/Dessert-Knowledge/</url>
       
-        <content type="html"><![CDATA[<p>常用Mesh：<a href="http://casual-effects.com/data/index.html">http://casual-effects.com/data/index.html</a><br>HDRI贴图：<a href="https://polyhaven.com/zh/hdris/indoor">https://polyhaven.com/zh/hdris/indoor</a></p><ul><li><p>shell转bat：</p><ul><li><a href="https://daniel-sc.github.io/bash-shell-to-bat-converter/">https://daniel-sc.github.io/bash-shell-to-bat-converter/</a></li></ul></li><li><p>Spherical Harmonics：<br><a href="https://www.jianshu.com/p/a379b4c6d346">https://www.jianshu.com/p/a379b4c6d346</a></p></li><li><p><a href="https://github.com/blurgyy/cg-2020">https://github.com/blurgyy/cg-2020</a></p></li><li><p>Chrono是c++11的一个时间库，可以用它来做程序运行时间的记录。</p></li><li><p><a href="https://www.cnblogs.com/jwk000/p/3560086.html">https://www.cnblogs.com/jwk000/p/3560086.html</a></p></li><li><p>Warp是一个可以迁移拓扑并投影贴图的软件</p></li><li><p>TinyXML2是一个可以解析XML格式文件的库</p></li><li><p><a href="https://github.com/leethomason/tinyxml2">https://github.com/leethomason/tinyxml2</a></p></li><li><p>Maya里面的坐标系是Y轴朝上</p></li><li><p>Blender里面的坐标系是z轴朝上</p></li><li><p>都是右手坐标系</p></li><li><p>所以模型导入blender会自动沿着x轴旋转90度</p></li><li><p>PBRT:</p></li><li><p><a href="https://www.pbr-book.org/3ed-2018/contents">https://www.pbr-book.org/3ed-2018/contents</a></p></li><li><p><a href="https://github.com/BachiLi/lajolla_public">https://github.com/BachiLi/lajolla_public</a></p></li><li><p><a href="https://github.com/462cmu">https://github.com/462cmu</a></p></li><li><p><a href="https://github.com/wjakob/nori">https://github.com/wjakob/nori</a></p></li><li><p><a href="https://github.com/HW140701/Book-list-of-computational-geometry-and-computer-graphics">https://github.com/HW140701/Book-list-of-computational-geometry-and-computer-graphics</a></p></li><li><p><a href="https://blog.csdn.net/qq_21388689/article/details/117129404">https://blog.csdn.net/qq_21388689/article/details/117129404</a></p></li><li><p><a href="https://zhuanlan.zhihu.com/p/553407062">https://zhuanlan.zhihu.com/p/553407062</a></p></li></ul>]]></content>
+        <content type="html"><![CDATA[<ol><li><p>Siggraph索引：<a href="https://kesen.realtimerendering.com/">https://kesen.realtimerendering.com/</a></p></li><li><p>常用Mesh：<a href="http://casual-effects.com/data/index.html">http://casual-effects.com/data/index.html</a></p></li><li><p>HDRI贴图：<a href="https://polyhaven.com/zh/hdris/indoor">https://polyhaven.com/zh/hdris/indoor</a></p></li><li><p>在线shell转bat：</p></li></ol><ul><li><a href="https://daniel-sc.github.io/bash-shell-to-bat-converter/">https://daniel-sc.github.io/bash-shell-to-bat-converter/</a></li></ul><ol start="5"><li>Spherical Harmonics：</li></ol><ul><li><a href="https://www.jianshu.com/p/a379b4c6d346">https://www.jianshu.com/p/a379b4c6d346</a></li><li><a href="https://github.com/blurgyy/cg-2020">https://github.com/blurgyy/cg-2020</a></li></ul><ol start="6"><li>Chrono是c++11的一个时间库，可以用它来做程序运行时间的记录。</li></ol><ul><li><a href="https://www.cnblogs.com/jwk000/p/3560086.html">https://www.cnblogs.com/jwk000/p/3560086.html</a></li></ul><ol start="7"><li><p>Warp是一个可以迁移拓扑并投影贴图的软件</p></li><li><p>TinyXML2是一个可以解析XML格式文件的库</p></li></ol><ul><li><a href="https://github.com/leethomason/tinyxml2">https://github.com/leethomason/tinyxml2</a></li></ul><ol start="9"><li>三维制作软件中，基本都是右手坐标系，但需要注意默认朝上的轴，比如：</li></ol><ul><li>Maya里面的坐标系是Y轴朝上</li><li>Blender里面的坐标系是z轴朝上</li><li>所以模型导入blender会自动沿着x轴旋转90度</li></ul><ol start="10"><li>PBRT:</li></ol><ul><li><p><a href="https://www.pbr-book.org/3ed-2018/contents">https://www.pbr-book.org/3ed-2018/contents</a></p></li><li><p><a href="https://github.com/BachiLi/lajolla_public">https://github.com/BachiLi/lajolla_public</a></p></li><li><p><a href="https://github.com/462cmu">https://github.com/462cmu</a></p></li><li><p><a href="https://github.com/wjakob/nori">https://github.com/wjakob/nori</a></p></li><li><p><a href="https://github.com/HW140701/Book-list-of-computational-geometry-and-computer-graphics">https://github.com/HW140701/Book-list-of-computational-geometry-and-computer-graphics</a></p></li><li><p><a href="https://blog.csdn.net/qq_21388689/article/details/117129404">https://blog.csdn.net/qq_21388689/article/details/117129404</a></p></li><li><p><a href="https://zhuanlan.zhihu.com/p/553407062">https://zhuanlan.zhihu.com/p/553407062</a></p></li></ul>]]></content>
       
       
       <categories>
