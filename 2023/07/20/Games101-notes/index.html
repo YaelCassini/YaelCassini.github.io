@@ -40,11 +40,11 @@
 <meta property="og:title" content="Games101_notes">
 <meta property="og:url" content="https://yaelcassini.github.io/2023/07/20/Games101-notes/index.html">
 <meta property="og:site_name" content="Unknown Island">
-<meta property="og:description" content="二维三角形内部判定:   https:&#x2F;&#x2F;blog.csdn.net&#x2F;KimHyunA4minute&#x2F;article&#x2F;details&#x2F;40079819   Howework2:   Super Sample部分，只对Depth Buffer进行细分会导致出现两个三角形覆盖交界处出现黑边，应该吧frame buffer也进行细分，输出时直接下采样。">
+<meta property="og:description" content="二维三角形内部判定:   https:&#x2F;&#x2F;blog.csdn.net&#x2F;KimHyunA4minute&#x2F;article&#x2F;details&#x2F;40079819   Howework2:   Super Sample部分，只对Depth Buffer进行细分会导致出现两个三角形覆盖交界处出现黑边，应该吧frame buffer也进行细分，输出时直接下采样。   Homework3：   view_pos插">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2023-07-20T06:45:04.000Z">
-<meta property="article:modified_time" content="2023-07-20T07:16:26.823Z">
+<meta property="article:modified_time" content="2023-08-03T07:27:03.544Z">
 <meta property="article:author" content="Cassini">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png">
@@ -1977,7 +1977,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: false,
     cdn: {"js":{"app":"/js/app.e546c981.js","parallax":"/js/plugins/parallax.8bf0ab10.js","rightMenu":"/js/plugins/rightMenu.d9437285.js","rightMenus":"/js/plugins/rightMenus.cd02aa19.js","sites":"/js/plugins/tags/sites.76bf19b8.js","friends":"/js/plugins/tags/friends.f372da57.js","contributors":"/js/plugins/tags/contributors.aec80453.js","search":"/js/search/hexo.0e52f222.js"},"css":{"style":"/css/style.87c2c8ad.css"}},
     default: {"avatar":"https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/avatar/round/3442075.svg","link":"https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/link/8f277b4ee0ecd.svg","cover":"https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/cover/76b86c0226ffd.svg","image":"https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg"},
-    lastupdate: new Date(1690445523610),
+    lastupdate: new Date(1691048437601),
     sidebar: {
       for_page: ["blogger","category","tagcloud"],
       for_post: ["blogger","toc"],
@@ -2862,6 +2862,23 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <ul>
 <li>Super Sample部分，只对Depth Buffer进行细分会导致出现两个三角形覆盖交界处出现黑边，应该吧frame buffer也进行细分，输出时直接下采样。</li>
 </ul>
+<ol start="3">
+<li>Homework3：</li>
+</ol>
+<ul>
+<li>view_pos插值出了问题，view_pos语义应该是在view space的三角形三个点的坐标，但我感觉这个用什么坐标只要统一就可以，比如如果要传入world space就灯光、相机、mesh都传入world space的坐标，或者都传入view space的坐标。思考：Model matrix的变换是应该体现出来的，但是View Matrix的变换是否收到相机横竖比例不同的影响？（不影响，因为View Matrix里面只有内参，都是刚性变换。）</li>
+<li>灯光衰减系数要使用距离的平方，用距离就不太行，太亮了。</li>
+<li>Texture采样的时候因为加了1.0&#x2F;w会溢出，修改Texture类函数，加了：u &#x3D; (u + width)%width; v同理。</li>
+<li>这里我觉得网上的很多代码选择采样hmap后normalize很没有道理，看上去这个hmap更像是一张normal map，所以我取了采样后的z值作为高度。</li>
+<li>还有一个不明白的点：为什么注释里面要把kn和kh都乘到dU上面，在我看来算dUdV的时候乘kh，算displacement顶点位移的时候乘kn比较合理，但是不乘效果不佳，跟题目设置有关系。</li>
+<li>在写作业的过程中重新学习推导了TBN矩阵，并学习Displacement原理。</li>
+<li>Displacement造成的顶点坐标位移应该是沿着插值得到的法线方向，这里我取的值仍然是z分量，然后在bump shader中计算得到的新法向其实是顶点位移造成的法线变换，所以应该先变换顶点坐标，再赋予新的法向值，这也解释了前面我认为只乘kh是不对的，因为这个法向是通过坐标位移得到的，坐标位移的过程中要乘kn。</li>
+<li>在Displacement Shader为了和示例靠近把diffuse计算的*0.5+0.5去掉了。</li>
+<li>用Z值的Displacement效果不对，改成norm就对了，不准备深究了，因为真正的Displacement Texture应该在一开始mvp之前就参与到修改顶点坐标中？起码应该在view space加入计算。</li>
+<li>还有一个易错点：采样texture的时候先v再u。</li>
+<li>image.at采样得到的数据结构里面是int，直接统一用auto会出问题。</li>
+<li>悲惨的de了很久bug，发现是加权权重搞错了，左边的距离应该作为右边的权重。</li>
+</ul>
 
 
   </div>
@@ -2898,10 +2915,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2023-07-20T15:16:26+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2023-08-03T15:27:03+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2023年7月20日</p>
+    <p>更新于：2023年8月3日</p>
   </a>
 </div>
 
@@ -4159,7 +4176,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/010.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/005.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/004.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/002.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/017.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/007.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/011.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/022.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/025.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/018.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/001.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/023.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/016.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/021.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/009.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/003.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/019.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/020.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/012.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/008.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/024.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/013.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/014.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/015.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/006.webp"];
+  let imgs = ["https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/006.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/012.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/008.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/024.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/002.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/015.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/018.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/022.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/025.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/013.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/005.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/021.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/011.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/003.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/009.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/004.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/007.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/010.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/020.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/023.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/016.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/017.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/014.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/001.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/019.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -4459,7 +4476,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Unknown Island","url":"https://yaelcassini.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/","sameAs":["https://github.com/volantis-x"],"description":"赛博小屋"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://yaelcassini.github.io/","name":"Unknown Island"}},{"@type":"ListItem","position":3,"item":{"@id":"https://yaelcassini.github.io/2023/07/20/Games101-notes/","name":"Games101_notes"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Unknown Island","url":"https://yaelcassini.github.io/","keywords":null,"description":"赛博小屋","author":{"@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/","description":"赛博小屋"},"publisher":{"@type":"Organization","name":"Unknown Island","url":"https://yaelcassini.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://yaelcassini.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Games101_notes","description":"赛博小屋","inLanguage":["zh-CN","en","zh-HK","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://yaelcassini.github.io/2023/07/20/Games101-notes/"},"author":{"@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/"},"publisher":{"@type":"Organization","name":"Unknown Island","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://yaelcassini.github.io/2023/07/20/Games101-notes/","wordCount":0,"datePublished":"2023-07-20T06:45:04.000Z","dateModified":"2023-07-20T07:16:26.823Z","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Unknown Island","url":"https://yaelcassini.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/","sameAs":["https://github.com/volantis-x"],"description":"赛博小屋"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://yaelcassini.github.io/","name":"Unknown Island"}},{"@type":"ListItem","position":3,"item":{"@id":"https://yaelcassini.github.io/2023/07/20/Games101-notes/","name":"Games101_notes"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Unknown Island","url":"https://yaelcassini.github.io/","keywords":null,"description":"赛博小屋","author":{"@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/","description":"赛博小屋"},"publisher":{"@type":"Organization","name":"Unknown Island","url":"https://yaelcassini.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://yaelcassini.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Games101_notes","description":"赛博小屋","inLanguage":["zh-CN","en","zh-HK","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://yaelcassini.github.io/2023/07/20/Games101-notes/"},"author":{"@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/"},"publisher":{"@type":"Organization","name":"Unknown Island","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://yaelcassini.github.io/2023/07/20/Games101-notes/","wordCount":0,"datePublished":"2023-07-20T06:45:04.000Z","dateModified":"2023-08-03T07:27:03.544Z","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
