@@ -44,7 +44,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2023-09-05T06:42:16.000Z">
-<meta property="article:modified_time" content="2023-09-05T08:47:35.397Z">
+<meta property="article:modified_time" content="2023-09-06T09:02:21.759Z">
 <meta property="article:author" content="Cassini">
 <meta property="article:tag" content="Rendering">
 <meta property="article:tag" content="GPU">
@@ -1980,7 +1980,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: false,
     cdn: {"js":{"app":"/js/app.e546c981.js","parallax":"/js/plugins/parallax.8bf0ab10.js","rightMenu":"/js/plugins/rightMenu.d9437285.js","rightMenus":"/js/plugins/rightMenus.cd02aa19.js","sites":"/js/plugins/tags/sites.76bf19b8.js","friends":"/js/plugins/tags/friends.f372da57.js","contributors":"/js/plugins/tags/contributors.aec80453.js","search":"/js/search/hexo.0e52f222.js"},"css":{"style":"/css/style.87c2c8ad.css"}},
     default: {"avatar":"https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/avatar/round/3442075.svg","link":"https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/link/8f277b4ee0ecd.svg","cover":"https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/cover/76b86c0226ffd.svg","image":"https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg"},
-    lastupdate: new Date(1693904026632),
+    lastupdate: new Date(1693990949396),
     sidebar: {
       for_page: ["blogger","category","tagcloud"],
       for_post: ["blogger","toc"],
@@ -2864,13 +2864,47 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li>torch.cuda.memory_summary()<br>需要注意的是，上面两个函数输出的结果都是以Bytes为单位的，需要自己进行换算。</li>
 </ul>
 <ol start="2">
-<li><p>层级分配：<br>在PyTorch中，显存是按页为单位进行分配的，这可能是CUDA设备的限制。就算我们只想申请4字节的显存，pytorch也会为我们分配512字节或者1024字节的空间。即就算我们只想申请4字节的显存，pytorch也会先向CUDA设备申请2MB的显存到自己的cache区中，然后pytorch再为我们分配512字节或者1024字节的空间。这个在使用torch.cuda.memory_allocated()的时候可以看出来512字节；用torch.cuda.memory_cached()可以看出向CUDA申请的2MB。直观点来说，如图所示，PyTorch的显存管理是一个层级结构。</p>
+<li>层级分配：<br>在PyTorch中，显存是按页为单位进行分配的，这可能是CUDA设备的限制。就算我们只想申请4字节的显存，pytorch也会为我们分配512字节或者1024字节的空间。即就算我们只想申请4字节的显存，pytorch也会先向CUDA设备申请2MB的显存到自己的cache区中，然后pytorch再为我们分配512字节或者1024字节的空间。这个在使用torch.cuda.memory_allocated()的时候可以看出来512字节；用torch.cuda.memory_cached()可以看出向CUDA申请的2MB。<br>分配逻辑：</li>
+</ol>
+<ul>
+<li><ol>
+<li>pytorch中的reserved_memory以block的形式存在。</li>
+</ol>
 </li>
+<li><ol start="2">
+<li>一个allocation的显存被释放后，他所在的block可以被重新被allocate.</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>分配器尝试寻找能满足requested size的最小cached block，如果这个block 的大小大于requested size，那么这个block可以被split. 如果没有block了，那么分配器就会调用cudaMalloc向CUDA设备申请显存。</li>
+</ol>
+</li>
+<li><ol start="4">
+<li>如果cudaMalloc失败了，分配器会先尝试释放掉一个足够大的，且没有被split的cached block，并重新尝试allocate。</li>
+</ol>
+</li>
+<li><ol start="5">
+<li>大于1MB的allocation和小于等于1MB的allocation会被存储在不同的pool中。小的请求会放进2MB的buffer里，大的请求会先尝试使用最小的可用free block，或者用cudaMalloc申请一个新的block。</li>
+</ol>
+</li>
+<li><ol start="6">
+<li>为了减小碎片化，在所有可用block都没有充足的大小的时候，1MB到10MB的allocation会使allocator申请一个20MB的block，并在上面进行split；为了进一步减小碎片化，大于200MB的块则不能够被split。大于200MB的超大cached blocks仍可满足小于20MB的请求。</li>
+</ol>
+</li>
+</ul>
+<ol start="3">
 <li><p>变量.to(device)和cuda()的区别<br>在实践中我发现对于一个相同的Tensor，使用to.(device)和cuda()两种方式将其移动的GPU上，造成的显存占用略有不同。<br>md我是蠢比，只用x.to(device)当然是不行的，因为之后没有用到过这个变量，Pytorch会自动将其释放，但是改成x&#x3D;x.to(device)就没有问题了。</p>
 </li>
-<li><p>尝试使用Nsight进行可视化分析。</p>
+<li><p>尝试使用Nsight进行可视化分析。<br>参考：<a target="_blank" rel="noopener" href="https://dev-discuss.pytorch.org/t/using-nsight-systems-to-profile-gpu-workload/59">https://dev-discuss.pytorch.org/t/using-nsight-systems-to-profile-gpu-workload/59</a><br>中的指令：<br>nsys profile -w true -t cuda,nvtx,osrt,cudnn,cublas -s cpu  –capture-range&#x3D;cudaProfilerApi –stop-on-range-end&#x3D;true –cudabacktrace&#x3D;true -x true -o my_profile python main.py<br>但是根据报错更换了指令，</p>
 </li>
 </ol>
+<ul>
+<li>unrecognised option ‘–cudabacktrace&#x3D;true’， 删除该命令行参数</li>
+<li>–sample&#x3D;cpu requires administrative privileges.， 以管理员方式打开vscode</li>
+<li>Illegal –trace argument ‘osrt’, Possible –trace values are one or more of ‘cuda’, ‘nvtx’, ‘opengl’, ‘opengl-annotations’, ‘vulkan’, ‘vulkan-annotations’, ‘dx11’, ‘dx11-annotations’, ‘dx12’, ‘dx12-annotations’, ‘wddm’ or ‘none’， 把不在possible value里面的都删除。</li>
+<li>Program not found: python，这个不知道是为什么，猜测与anaconda封装不同的python环境有关，因此增加python的绝对路径进行调用。<br>所以最后的控制台指令变为：<br>nsys profile -w true -t cuda,nvtx -s cpu  –capture-range&#x3D;cudaProfilerApi –stop-on-range-end&#x3D;true -x true -o my_profile C:\Users\face\anaconda3\envs\py39\python.exe train_rnr_analysis.py</li>
+</ul>
+<p>但是又遇到了新的问题：<br>在win10环境下，管理员权限下无法正确访问到网络映射盘。原因可能是因为：win10 的uac隔离更严格，普通用户权限创建的网络映射盘，管理员权限是无权访问的。<br>请教同学之后发现该服务器windows启动默认打开的是名为face的账户，真正的管理员用户Administrator是默认禁用的，可以在计算机管理取消禁用该用户后重新挂载网络映射盘，也可以管理员权限开启控制台，输入net use Y: \192.168.16.73\exchange命令进行重新映射。<br>现在nsys终于跑起来了（orz。</p>
 
 
   </div>
@@ -2907,10 +2941,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2023-09-05T16:47:35+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2023-09-06T17:02:21+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2023年9月5日</p>
+    <p>更新于：2023年9月6日</p>
   </a>
 </div>
 
@@ -4162,7 +4196,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/010.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/012.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/009.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/018.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/006.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/017.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/003.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/002.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/013.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/004.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/021.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/020.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/019.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/008.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/011.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/025.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/022.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/015.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/023.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/001.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/016.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/024.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/014.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/007.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/005.webp"];
+  let imgs = ["https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/014.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/021.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/002.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/018.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/007.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/022.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/023.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/019.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/015.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/011.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/013.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/001.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/006.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/005.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/012.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/025.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/009.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/017.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/016.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/024.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/004.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/003.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/020.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/008.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/010.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -4462,7 +4496,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Unknown Island","url":"https://yaelcassini.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/","sameAs":["https://github.com/volantis-x"],"description":"赛博小屋"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://yaelcassini.github.io/","name":"Unknown Island"}},{"@type":"ListItem","position":3,"item":{"@id":"https://yaelcassini.github.io/2023/09/05/GPU-Memory-Analysis/","name":"GPU 显存分析"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Unknown Island","url":"https://yaelcassini.github.io/","keywords":null,"description":"赛博小屋","author":{"@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/","description":"赛博小屋"},"publisher":{"@type":"Organization","name":"Unknown Island","url":"https://yaelcassini.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://yaelcassini.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"GPU 显存分析","description":"赛博小屋","inLanguage":["zh-CN","en","zh-HK","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://yaelcassini.github.io/2023/09/05/GPU-Memory-Analysis/"},"author":{"@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/"},"publisher":{"@type":"Organization","name":"Unknown Island","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://yaelcassini.github.io/2023/09/05/GPU-Memory-Analysis/","wordCount":0,"datePublished":"2023-09-05T06:42:16.000Z","dateModified":"2023-09-05T08:47:35.397Z","keywords":"Rendering,GPU,Machine Learing","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Unknown Island","url":"https://yaelcassini.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/","sameAs":["https://github.com/volantis-x"],"description":"赛博小屋"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://yaelcassini.github.io/","name":"Unknown Island"}},{"@type":"ListItem","position":3,"item":{"@id":"https://yaelcassini.github.io/2023/09/05/GPU-Memory-Analysis/","name":"GPU 显存分析"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Unknown Island","url":"https://yaelcassini.github.io/","keywords":null,"description":"赛博小屋","author":{"@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/","description":"赛博小屋"},"publisher":{"@type":"Organization","name":"Unknown Island","url":"https://yaelcassini.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://yaelcassini.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"GPU 显存分析","description":"赛博小屋","inLanguage":["zh-CN","en","zh-HK","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://yaelcassini.github.io/2023/09/05/GPU-Memory-Analysis/"},"author":{"@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/"},"publisher":{"@type":"Organization","name":"Unknown Island","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://yaelcassini.github.io/2023/09/05/GPU-Memory-Analysis/","wordCount":0,"datePublished":"2023-09-05T06:42:16.000Z","dateModified":"2023-09-06T09:02:21.759Z","keywords":"Rendering,GPU,Machine Learing","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
