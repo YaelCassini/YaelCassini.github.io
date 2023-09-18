@@ -32,19 +32,19 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>Shadow Rendering - Unknown Island</title>
+  <title>Shadow Rendering 阴影绘制方法的发展过程 - Unknown Island</title>
   <meta name="keywords" content="Rendering,Shadow,Shadow Map,PCF,PCSS,VSM,MSM,null">
-  <meta desc name="description" content="赛博小屋 - Cassini - Unknown Island">
+  <meta desc name="description" content="课程名称：计算机图形学（研究生）    报告主题：图形处理器(GPU)的历史、现状和展望  提交日期：2023 年 1 月 1 日 - Cassini - Unknown Island">
   
 <meta property="og:type" content="article">
-<meta property="og:title" content="Shadow Rendering">
+<meta property="og:title" content="Shadow Rendering 阴影绘制方法的发展过程">
 <meta property="og:url" content="https://yaelcassini.github.io/2023/03/29/Shadow-Rendering/index.html">
 <meta property="og:site_name" content="Unknown Island">
-<meta property="og:description" content="渲染技术研究报告——阴影绘制技术的发展历程及方法比较一、前言阴影绘制是真实感渲染中非常重要的一个模块，对提高场景的真实度有着至关重要的作用，不管是使用光栅化的流程还是光线追踪的流程进行场景绘制，阴影绘制的技术都经过了多次的更新和迭代。我也在一些课程中学习过一些简单的阴影绘制方法，因此想借此机会对所有的阴影绘制方法做一个系统性的梳理和总结。阴影绘制的方法按照时间发展顺序主要有Shadow Volum">
+<meta property="og:description" content="课程名称：计算机图形学（研究生）    报告主题：图形处理器(GPU)的历史、现状和展望  提交日期：2023 年 1 月 1 日">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2023-03-29T12:16:36.000Z">
-<meta property="article:modified_time" content="2023-09-06T10:00:54.582Z">
+<meta property="article:modified_time" content="2023-09-18T07:35:58.769Z">
 <meta property="article:author" content="Cassini">
 <meta property="article:tag" content="Rendering">
 <meta property="article:tag" content="Shadow">
@@ -1984,7 +1984,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: false,
     cdn: {"js":{"app":"/js/app.e546c981.js","parallax":"/js/plugins/parallax.8bf0ab10.js","rightMenu":"/js/plugins/rightMenu.d9437285.js","rightMenus":"/js/plugins/rightMenus.cd02aa19.js","sites":"/js/plugins/tags/sites.76bf19b8.js","friends":"/js/plugins/tags/friends.f372da57.js","contributors":"/js/plugins/tags/contributors.aec80453.js","search":"/js/search/hexo.0e52f222.js"},"css":{"style":"/css/style.87c2c8ad.css"}},
     default: {"avatar":"https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/avatar/round/3442075.svg","link":"https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/link/8f277b4ee0ecd.svg","cover":"https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/cover/76b86c0226ffd.svg","image":"https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg"},
-    lastupdate: new Date(1695021193442),
+    lastupdate: new Date(1695022782830),
     sidebar: {
       for_page: ["blogger","category","tagcloud"],
       for_post: ["blogger","toc"],
@@ -2798,7 +2798,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       <h1 class="title" itemprop="name headline">
-        Shadow Rendering
+        Shadow Rendering 阴影绘制方法的发展过程
       </h1>
       <div class='new-meta-box'>
         
@@ -2827,10 +2827,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             
   <div class='new-meta-item category'>
     <i class="fa-solid fa-folder-open fa-fw" aria-hidden="true"></i>
-    <a class="category-link" href="/categories/Rendering/">Rendering</a>
+    <a class="category-link" href="/categories/Computer-Graphics/">Computer Graphics</a>
     
       <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-        <a href="/categories/Rendering/" itemprop="url"><span itemprop="name">Rendering</span></a>
+        <a href="/categories/Computer-Graphics/" itemprop="url"><span itemprop="name">Computer Graphics</span></a>
       </span>
     
   </div>
@@ -2867,7 +2867,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <h3 id="渲染技术研究报告——阴影绘制技术的发展历程及方法比较"><a href="#渲染技术研究报告——阴影绘制技术的发展历程及方法比较" class="headerlink" title="渲染技术研究报告——阴影绘制技术的发展历程及方法比较"></a>渲染技术研究报告——阴影绘制技术的发展历程及方法比较</h3><h4 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h4><p>阴影绘制是真实感渲染中非常重要的一个模块，对提高场景的真实度有着至关重要的作用，不管是使用光栅化的流程还是光线追踪的流程进行场景绘制，阴影绘制的技术都经过了多次的更新和迭代。我也在一些课程中学习过一些简单的阴影绘制方法，因此想借此机会对所有的阴影绘制方法做一个系统性的梳理和总结。阴影绘制的方法按照时间发展顺序主要有Shadow Volume算法、Shadow Map算法、PCF算法、PCSS算法、VSM算法等等。<br><br>首先，阴影的定义是Shadow is the region of space for which at least on point of the light source is occluded，也就是绘制中那些至少对一盏光源，其没有被直接照亮而是被其他物体遮挡住的区域。<br><br><img src="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/note/202303292041.jpg" alt="图片alt" title="图片title"><br>图源Real-Time Rendering 4th<br>如上图所示，要实现阴影的绘制，需要考虑的有光源、遮挡物（Occluder）、接受物（Receiver）、本影区（umbra）半影区（penumbra）等。<br><br>其中，对于接收物体是平面的情况，我们可以直接通过光源位置、物体几何等信息进行光线求交几何计算，解析地得到平面上阴影的形状和范围（如下图），但是这显然无法处理复杂的场景阴影绘制，也不是我们需要的通用的方法，也因此本文仍然选择聚焦于在任何曲面或者几何体上产生阴影的通用方法。<br><br><img src="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/note/202303292042.jpg" alt="图片alt" title="图片title"><br>图源Real-Time Rendering 4th</p>
+    <p>课程名称：计算机图形学（研究生）    报告主题：图形处理器(GPU)的历史、现状和展望  提交日期：2023 年 1 月 1 日</p>
+<span id="more"></span>
+
+<h3 id="渲染技术研究报告——阴影绘制技术的发展历程及方法比较"><a href="#渲染技术研究报告——阴影绘制技术的发展历程及方法比较" class="headerlink" title="渲染技术研究报告——阴影绘制技术的发展历程及方法比较"></a>渲染技术研究报告——阴影绘制技术的发展历程及方法比较</h3><h4 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h4><p>阴影绘制是真实感渲染中非常重要的一个模块，对提高场景的真实度有着至关重要的作用，不管是使用光栅化的流程还是光线追踪的流程进行场景绘制，阴影绘制的技术都经过了多次的更新和迭代。我也在一些课程中学习过一些简单的阴影绘制方法，因此想借此机会对所有的阴影绘制方法做一个系统性的梳理和总结。阴影绘制的方法按照时间发展顺序主要有Shadow Volume算法、Shadow Map算法、PCF算法、PCSS算法、VSM算法等等。<br><br>首先，阴影的定义是Shadow is the region of space for which at least on point of the light source is occluded，也就是绘制中那些至少对一盏光源，其没有被直接照亮而是被其他物体遮挡住的区域。<br><br><img src="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/note/202303292041.jpg" alt="图片alt" title="图片title"><br>图源Real-Time Rendering 4th<br>如上图所示，要实现阴影的绘制，需要考虑的有光源、遮挡物（Occluder）、接受物（Receiver）、本影区（umbra）半影区（penumbra）等。<br><br>其中，对于接收物体是平面的情况，我们可以直接通过光源位置、物体几何等信息进行光线求交几何计算，解析地得到平面上阴影的形状和范围（如下图），但是这显然无法处理复杂的场景阴影绘制，也不是我们需要的通用的方法，也因此本文仍然选择聚焦于在任何曲面或者几何体上产生阴影的通用方法。<br><br><img src="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/note/202303292042.jpg" alt="图片alt" title="图片title"><br>图源Real-Time Rendering 4th</p>
 <h4 id="二、Shadow-Volume算法诞生及其改进"><a href="#二、Shadow-Volume算法诞生及其改进" class="headerlink" title="二、Shadow Volume算法诞生及其改进"></a>二、Shadow Volume算法诞生及其改进</h4><p><img src="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/note/202303292043.jpg" alt="图片alt" title="图片title"><br>图源Real-Time Rendering 4th<br>Shadow Volume是Franklin在1977年提出的阴影绘制算法，虽然在今天这个算法由于其较大的开销已经不太被使用，但我们仍然可以从中学到一些基础的思维方式，并且由于该算法不是在图像空间进行的，因此不会像Shadow Map一样收到采样的影响。<br><br>Shadow Volume算法的基本思想是对于投影物体（以一个三角形为例），以光源为出发点建立一个类似金字塔的无限延伸的体积结构，并切除在光源点和投影物体之间的部分。所有包含在剩余体积范围内的区域都处在阴影中。<br><br>对于场景中的所有物体，都可以使用该方法建立其投影金字塔。在正常绘制场景时，对于每一哥Fragment，都需要遍历所有的投影金字塔，计算其是否被包含在其中并记录被包含的次数。被包含的越多，则该处阴影强度越大（阴影颜色更暗）。以此类推，绘制完成所有的Fragment。可想而知，对于较为复杂的场景，Shadow Volume方法需要的时间和空间开销都是巨大的，不仅需要管理每一个投影物体的投影金字塔，还需要对任何一个片元进行所有金字塔的遍历测试。如果场景中包含N个物体，且都可以投射阴影，则该算法的时间复杂度将达到O(n²)。<br></p>
 <h4 id="三、Shadow-Map算法的诞生及其改进"><a href="#三、Shadow-Map算法的诞生及其改进" class="headerlink" title="三、Shadow Map算法的诞生及其改进"></a>三、Shadow Map算法的诞生及其改进</h4><p>早在 1968年，Arthur Appel就在研究隐藏面消除时提出了光线投射算法（Ray Casting），并首次给出了光线跟踪算法的描述。其具体思路是从每一个像素射出一条射线，然后找到最接近的物体挡住射线的路径，而视平面上每个像素的颜色取决于从可见光表面产生的亮度。<br></p>
 <p>1974年，Catmull为了解决消隐问题提出了Z-Buffer算法，该算法的主要思路是使用一个屏幕空间的缓存，记录每一个像素点所对应的最小深度，在绘制每一个多边形时，与对应像素位置的当前最小深度做对比，如果小于该值则证明该多边形可见，绘制并更新Z-Buffer。Z-Buffer算法思路简单且通用性较好，为之后图形学的许多技术提供了理论基础。<br></p>
@@ -2965,10 +2968,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2023-09-06T18:00:54+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2023-09-18T15:35:58+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2023年9月6日</p>
+    <p>更新于：2023年9月18日</p>
   </a>
 </div>
 
@@ -2991,7 +2994,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yaelcassini.github.io/2023/03/29/Shadow-Rendering/&title=Shadow Rendering - Unknown Island&summary="
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yaelcassini.github.io/2023/03/29/Shadow-Rendering/&title=Shadow Rendering 阴影绘制方法的发展过程 - Unknown Island&summary=课程名称：计算机图形学（研究生）    报告主题：图形处理器(GPU)的历史、现状和展望  提交日期：2023 年 1 月 1 日"
           
           >
           
@@ -3003,7 +3006,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://yaelcassini.github.io/2023/03/29/Shadow-Rendering/&title=Shadow Rendering - Unknown Island&summary="
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://yaelcassini.github.io/2023/03/29/Shadow-Rendering/&title=Shadow Rendering 阴影绘制方法的发展过程 - Unknown Island&summary=课程名称：计算机图形学（研究生）    报告主题：图形处理器(GPU)的历史、现状和展望  提交日期：2023 年 1 月 1 日"
           
           >
           
@@ -3015,7 +3018,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=https://yaelcassini.github.io/2023/03/29/Shadow-Rendering/&title=Shadow Rendering - Unknown Island&summary="
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://yaelcassini.github.io/2023/03/29/Shadow-Rendering/&title=Shadow Rendering 阴影绘制方法的发展过程 - Unknown Island&summary=课程名称：计算机图形学（研究生）    报告主题：图形处理器(GPU)的历史、现状和展望  提交日期：2023 年 1 月 1 日"
           
           >
           
@@ -3048,17 +3051,14 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     <div class="prev-next">
       
-        <a class='prev' href='/2023/04/18/PBR-Neural-Rendering/'>
-          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>PBR Neural Rendering</p>
-          <p class='content'>
-ICLR 2023：《Light Sampling Field and BRDF Representation for Physically-based Neural Rendering》
-
-...</p>
+        <a class='prev' href='/2023/04/24/Color-Management/'>
+          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>计算机中的颜色管理知识(有待补充更新)</p>
+          <p class='content'>颜色管理是图形学中一个非常重要的课题，图形学与图像和颜色的可视化息息相关，但是我们有时候追求的是储存元数据的信息，有时候又追求的是图像看上去合理，符合美术工作人员的期待。不同的显示器、不同的颜色...</p>
         </a>
       
       
         <a class='next' href='/2023/03/28/Rendering-History/'>
-          <p class='title'>Rendering History<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='title'>Rendering框架及发展历史总结(待补充)<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
           <p class='content'>真实感渲染光照模型 Illumination Model
 灯光
 阴影
@@ -4242,7 +4242,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/004.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/016.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/020.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/019.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/017.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/011.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/005.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/002.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/008.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/007.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/024.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/023.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/006.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/021.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/022.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/015.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/018.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/014.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/003.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/025.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/001.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/013.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/009.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/010.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/012.webp"];
+  let imgs = ["https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/021.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/006.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/024.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/002.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/022.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/012.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/025.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/019.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/001.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/005.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/009.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/017.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/016.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/008.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/010.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/003.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/013.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/011.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/020.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/015.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/014.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/007.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/018.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/023.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/004.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -4542,7 +4542,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Unknown Island","url":"https://yaelcassini.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/","sameAs":["https://github.com/volantis-x"],"description":"赛博小屋"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://yaelcassini.github.io/","name":"Unknown Island"}},{"@type":"ListItem","position":2,"item":{"@id":"https://yaelcassini.github.io/categories/Rendering/","name":"Rendering"}},{"@type":"ListItem","position":3,"item":{"@id":"https://yaelcassini.github.io/2023/03/29/Shadow-Rendering/","name":"Shadow Rendering"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Unknown Island","url":"https://yaelcassini.github.io/","keywords":null,"description":"赛博小屋","author":{"@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/","description":"赛博小屋"},"publisher":{"@type":"Organization","name":"Unknown Island","url":"https://yaelcassini.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://yaelcassini.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Shadow Rendering","description":"赛博小屋","inLanguage":["zh-CN","en","zh-HK","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://yaelcassini.github.io/2023/03/29/Shadow-Rendering/"},"author":{"@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/"},"publisher":{"@type":"Organization","name":"Unknown Island","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://yaelcassini.github.io/2023/03/29/Shadow-Rendering/","wordCount":0,"datePublished":"2023-03-29T12:16:36.000Z","dateModified":"2023-09-06T10:00:54.582Z","articleSection":"Rendering","keywords":"Rendering,Shadow,Shadow Map,PCF,PCSS,VSM,MSM","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Unknown Island","url":"https://yaelcassini.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/","sameAs":["https://github.com/volantis-x"],"description":"赛博小屋"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://yaelcassini.github.io/","name":"Unknown Island"}},{"@type":"ListItem","position":2,"item":{"@id":"https://yaelcassini.github.io/categories/Computer-Graphics/","name":"Computer Graphics"}},{"@type":"ListItem","position":3,"item":{"@id":"https://yaelcassini.github.io/2023/03/29/Shadow-Rendering/","name":"Shadow Rendering 阴影绘制方法的发展过程"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Unknown Island","url":"https://yaelcassini.github.io/","keywords":null,"description":"赛博小屋","author":{"@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/","description":"赛博小屋"},"publisher":{"@type":"Organization","name":"Unknown Island","url":"https://yaelcassini.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://yaelcassini.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Shadow Rendering 阴影绘制方法的发展过程","description":"课程名称：计算机图形学（研究生）    报告主题：图形处理器(GPU)的历史、现状和展望  提交日期：2023 年 1 月 1 日","inLanguage":["zh-CN","en","zh-HK","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://yaelcassini.github.io/2023/03/29/Shadow-Rendering/"},"author":{"@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/"},"publisher":{"@type":"Organization","name":"Unknown Island","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://yaelcassini.github.io/2023/03/29/Shadow-Rendering/","wordCount":65,"datePublished":"2023-03-29T12:16:36.000Z","dateModified":"2023-09-18T07:35:58.769Z","articleSection":"Computer Graphics","keywords":"Rendering,Shadow,Shadow Map,PCF,PCSS,VSM,MSM","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
