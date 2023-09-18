@@ -392,9 +392,9 @@
       
       <categories>
           
-          <category> Homework </category>
-          
           <category> Computer Graphics </category>
+          
+          <category> Rendering </category>
           
       </categories>
       
@@ -410,6 +410,8 @@
             <tag> Computer Graphics History </tag>
             
             <tag> Computer Graphics </tag>
+            
+            <tag> Homework </tag>
             
         </tags>
       
@@ -606,6 +608,8 @@
             <tag> VSM </tag>
             
             <tag> MSM </tag>
+            
+            <tag> Homework </tag>
             
         </tags>
       
