@@ -34,17 +34,17 @@
   <!-- 页面元数据 -->
   <title>Visibility - Unknown Island</title>
   <meta name="keywords" content="Deep Learing,Artificial Intelligent,Spherical Harmonics,null">
-  <meta desc name="description" content="赛博小屋 - Cassini - Unknown Island">
+  <meta desc name="description" content="任务目标：参与一个可微分渲染的项目，主要负责其中的渲染部分相关工作，在前期需要使用已有的Mesh和Texture数据生成网络所需要的输入数据。其中就包括Visibility，刚开始做的时候什么都不太懂，学习相关知识耽误了很多时间，故整理于此。 - Cassini - Unknown Island">
   
 <meta property="og:type" content="article">
 <meta property="og:title" content="Visibility">
 <meta property="og:url" content="https://yaelcassini.github.io/2023/02/17/Visibility/index.html">
 <meta property="og:site_name" content="Unknown Island">
-<meta property="og:description" content="任务目标：参与一个可微分渲染的项目，主要负责其中的渲染部分相关工作，在前期需要使用已有的Mesh和Texture数据生成网络所需要的输入数据。其中就包括Visibility，刚开始做的时候什么都不太懂，学习相关知识耽误了很多时间，故整理于此。 任务理解：经与导师沟通后，本项目要求的Visibility并不是从相机角度看过去的可视性，而是更像环境光照那种，设想有一个无限大的球面，在球面上通过遍历不同">
+<meta property="og:description" content="任务目标：参与一个可微分渲染的项目，主要负责其中的渲染部分相关工作，在前期需要使用已有的Mesh和Texture数据生成网络所需要的输入数据。其中就包括Visibility，刚开始做的时候什么都不太懂，学习相关知识耽误了很多时间，故整理于此。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2023-02-17T06:10:50.000Z">
-<meta property="article:modified_time" content="2023-09-18T07:38:42.911Z">
+<meta property="article:modified_time" content="2023-09-18T08:40:00.347Z">
 <meta property="article:author" content="Cassini">
 <meta property="article:tag" content="Deep Learing">
 <meta property="article:tag" content="Artificial Intelligent">
@@ -1980,7 +1980,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: false,
     cdn: {"js":{"app":"/js/app.e546c981.js","parallax":"/js/plugins/parallax.8bf0ab10.js","rightMenu":"/js/plugins/rightMenu.d9437285.js","rightMenus":"/js/plugins/rightMenus.cd02aa19.js","sites":"/js/plugins/tags/sites.76bf19b8.js","friends":"/js/plugins/tags/friends.f372da57.js","contributors":"/js/plugins/tags/contributors.aec80453.js","search":"/js/search/hexo.0e52f222.js"},"css":{"style":"/css/style.87c2c8ad.css"}},
     default: {"avatar":"https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/avatar/round/3442075.svg","link":"https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/link/8f277b4ee0ecd.svg","cover":"https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/cover/76b86c0226ffd.svg","image":"https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg"},
-    lastupdate: new Date(1695024559633),
+    lastupdate: new Date(1695026416430),
     sidebar: {
       for_page: ["blogger","category","tagcloud"],
       for_post: ["blogger","toc"],
@@ -2864,6 +2864,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
     <div class="story post-story"><h2 id="任务目标："><a href="#任务目标：" class="headerlink" title="任务目标："></a>任务目标：</h2><p>参与一个可微分渲染的项目，主要负责其中的渲染部分相关工作，在前期需要使用已有的Mesh和Texture数据生成网络所需要的输入数据。其中就包括Visibility，刚开始做的时候什么都不太懂，学习相关知识耽误了很多时间，故整理于此。</p>
+<span id="more"></span>
+
 </div><div class="story post-story"><h2 id="任务理解："><a href="#任务理解：" class="headerlink" title="任务理解："></a>任务理解：</h2><p>经与导师沟通后，本项目要求的Visibility并不是从相机角度看过去的可视性，而是更像环境光照那种，设想有一个无限大的球面，在球面上通过遍历不同的经纬得到不同的光线方向，对于模型上面的每一个顶点，计算在球面上各个方向其是否可视（光线不被其他物体或者面片遮挡）。<br><br>为了方便数据输入网络，导师还要求将这个可视数据通过球谐函数Spherical Harmonics计算得到在球谐函数空间的前9维系数，从而将每一个顶点在各个方向上是否可见的信息，转化为一个9维的向量，作为Mesh中顶点的附加属性。</p>
 </div><div class="story post-story"><h2 id="具体实现："><a href="#具体实现：" class="headerlink" title="具体实现："></a>具体实现：</h2><p>因为在计算Visibility中需要对整个球面进行光线方向的采样，并计算其在整个场景中是否与其他物体或者面片相交，因此其实可以转化为使用一个光线追踪的框架来帮助完成这个工作，在前期探索中，曾经试图使用Games202 Assignment2的Nori框架来完成这件事，但是后面与导师沟通后，导师建议我使用Mitsuba来完成该工作，原因主要有下：Mitsuba的使用场合较为广泛，相关的资料和实验室能够提供的帮助也较多；另外学习Mitsuba也对我之后在渲染方向的继续探索有帮助。</p>
 <p>而对于投影到SH这一步，目前我在Giuhub上找到一个开源的项目：</p>
@@ -2924,7 +2926,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2023-09-18T15:38:42+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2023-09-18T16:40:00+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：2023年9月18日</p>
@@ -2950,7 +2952,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yaelcassini.github.io/2023/02/17/Visibility/&title=Visibility - Unknown Island&summary="
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yaelcassini.github.io/2023/02/17/Visibility/&title=Visibility - Unknown Island&summary=任务目标：参与一个可微分渲染的项目，主要负责其中的渲染部分相关工作，在前期需要使用已有的Mesh和Texture数据生成网络所需要的输入数据。其中就包括Visibility，刚开始做的时候什么都不太懂，学习相关知识耽误了很多时间，故整理于此。"
           
           >
           
@@ -2962,7 +2964,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://yaelcassini.github.io/2023/02/17/Visibility/&title=Visibility - Unknown Island&summary="
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://yaelcassini.github.io/2023/02/17/Visibility/&title=Visibility - Unknown Island&summary=任务目标：参与一个可微分渲染的项目，主要负责其中的渲染部分相关工作，在前期需要使用已有的Mesh和Texture数据生成网络所需要的输入数据。其中就包括Visibility，刚开始做的时候什么都不太懂，学习相关知识耽误了很多时间，故整理于此。"
           
           >
           
@@ -2974,7 +2976,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=https://yaelcassini.github.io/2023/02/17/Visibility/&title=Visibility - Unknown Island&summary="
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://yaelcassini.github.io/2023/02/17/Visibility/&title=Visibility - Unknown Island&summary=任务目标：参与一个可微分渲染的项目，主要负责其中的渲染部分相关工作，在前期需要使用已有的Mesh和Texture数据生成网络所需要的输入数据。其中就包括Visibility，刚开始做的时候什么都不太懂，学习相关知识耽误了很多时间，故整理于此。"
           
           >
           
@@ -3009,9 +3011,11 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class='prev' href='/2023/03/24/PathTracing/'>
           <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>PathTracing(待补充)</p>
-          <p class='content'>Related Information:
-https://raytracing.github.io/books/RayTracingInOneWeekend.html
-https://raytr...</p>
+          <p class='content'>光线追踪及路径追踪算法学习与实践。
+
+
+Related Information:
+https://raytracing.github.io/books/RayTracingInOneWeeken...</p>
         </a>
       
       
@@ -4202,7 +4206,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/008.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/012.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/015.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/023.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/003.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/025.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/004.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/017.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/020.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/002.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/021.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/024.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/005.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/013.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/018.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/006.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/014.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/019.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/016.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/011.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/022.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/001.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/010.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/009.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/007.webp"];
+  let imgs = ["https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/009.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/024.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/010.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/005.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/011.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/014.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/016.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/012.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/025.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/013.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/018.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/023.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/015.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/001.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/007.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/008.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/002.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/020.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/003.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/022.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/006.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/021.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/017.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/004.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/019.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -4502,7 +4506,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Unknown Island","url":"https://yaelcassini.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/","sameAs":["https://github.com/volantis-x"],"description":"赛博小屋"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://yaelcassini.github.io/","name":"Unknown Island"}},{"@type":"ListItem","position":2,"item":{"@id":"https://yaelcassini.github.io/categories/Relighting-Project/","name":"Relighting Project"}},{"@type":"ListItem","position":3,"item":{"@id":"https://yaelcassini.github.io/2023/02/17/Visibility/","name":"Visibility"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Unknown Island","url":"https://yaelcassini.github.io/","keywords":null,"description":"赛博小屋","author":{"@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/","description":"赛博小屋"},"publisher":{"@type":"Organization","name":"Unknown Island","url":"https://yaelcassini.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://yaelcassini.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Visibility","description":"赛博小屋","inLanguage":["zh-CN","en","zh-HK","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://yaelcassini.github.io/2023/02/17/Visibility/"},"author":{"@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/"},"publisher":{"@type":"Organization","name":"Unknown Island","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://yaelcassini.github.io/2023/02/17/Visibility/","wordCount":0,"datePublished":"2023-02-17T06:10:50.000Z","dateModified":"2023-09-18T07:38:42.911Z","articleSection":"Relighting Project","keywords":"Deep Learing,Artificial Intelligent,Spherical Harmonics","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Unknown Island","url":"https://yaelcassini.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/","sameAs":["https://github.com/volantis-x"],"description":"赛博小屋"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://yaelcassini.github.io/","name":"Unknown Island"}},{"@type":"ListItem","position":2,"item":{"@id":"https://yaelcassini.github.io/categories/Relighting-Project/","name":"Relighting Project"}},{"@type":"ListItem","position":3,"item":{"@id":"https://yaelcassini.github.io/2023/02/17/Visibility/","name":"Visibility"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Unknown Island","url":"https://yaelcassini.github.io/","keywords":null,"description":"赛博小屋","author":{"@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/","description":"赛博小屋"},"publisher":{"@type":"Organization","name":"Unknown Island","url":"https://yaelcassini.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://yaelcassini.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Visibility","description":"任务目标：参与一个可微分渲染的项目，主要负责其中的渲染部分相关工作，在前期需要使用已有的Mesh和Texture数据生成网络所需要的输入数据。其中就包括Visibility，刚开始做的时候什么都不太懂，学习相关知识耽误了很多时间，故整理于此。","inLanguage":["zh-CN","en","zh-HK","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://yaelcassini.github.io/2023/02/17/Visibility/"},"author":{"@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/"},"publisher":{"@type":"Organization","name":"Unknown Island","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://yaelcassini.github.io/2023/02/17/Visibility/","wordCount":121,"datePublished":"2023-02-17T06:10:50.000Z","dateModified":"2023-09-18T08:40:00.347Z","articleSection":"Relighting Project","keywords":"Deep Learing,Artificial Intelligent,Spherical Harmonics","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
