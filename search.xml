@@ -26,7 +26,7 @@
       
       <categories>
           
-          <category> Relighing Project </category>
+          <category> Relighting Project </category>
           
       </categories>
       
@@ -56,6 +56,8 @@
       
       
       <categories>
+          
+          <category> Computer Graphics </category>
           
           <category> Neural Rendering </category>
           
@@ -113,7 +115,7 @@
       
       <categories>
           
-          <category> Homework </category>
+          <category> Computer Vision </category>
           
       </categories>
       
@@ -123,6 +125,8 @@
             <tag> Computer Vision </tag>
             
             <tag> Harris Corner </tag>
+            
+            <tag> Homework </tag>
             
         </tags>
       
@@ -140,7 +144,9 @@
       
       <categories>
           
-          <category> Homework </category>
+          <category> Computer Graphics </category>
+          
+          <category> Rendering </category>
           
       </categories>
       
@@ -154,6 +160,8 @@
             <tag> GPU </tag>
             
             <tag> Real-Time Rendering </tag>
+            
+            <tag> Homework </tag>
             
         </tags>
       
@@ -171,16 +179,18 @@
       
       <categories>
           
-          <category> Homework </category>
+          <category> Design&amp;Art </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> Degign </tag>
-            
             <tag> Art </tag>
+            
+            <tag> Homework </tag>
+            
+            <tag> Scene Degign </tag>
             
         </tags>
       
@@ -225,7 +235,7 @@
       
       <categories>
           
-          <category> Homework </category>
+          <category> Design&amp;Art </category>
           
       </categories>
       
@@ -236,9 +246,11 @@
             
             <tag> Art </tag>
             
-            <tag> Designk </tag>
-            
             <tag> Unity </tag>
+            
+            <tag> Homework </tag>
+            
+            <tag> Design </tag>
             
         </tags>
       
@@ -256,7 +268,7 @@
       
       <categories>
           
-          <category> Homework </category>
+          <category> Design&amp;Art </category>
           
       </categories>
       
@@ -268,6 +280,8 @@
             <tag> Art </tag>
             
             <tag> Hand-painted </tag>
+            
+            <tag> Homework </tag>
             
         </tags>
       
@@ -285,7 +299,7 @@
       
       <categories>
           
-          <category> Homework </category>
+          <category> Computer Vision </category>
           
       </categories>
       
@@ -295,6 +309,8 @@
             <tag> Computer Vision </tag>
             
             <tag> Hough Transformation </tag>
+            
+            <tag> Homework </tag>
             
         </tags>
       
@@ -312,7 +328,9 @@
       
       <categories>
           
-          <category> Homework </category>
+          <category> Computer Graphics </category>
+          
+          <category> Virtual Reality </category>
           
       </categories>
       
@@ -322,6 +340,8 @@
             <tag> EyeTracking </tag>
             
             <tag> Virtual Reality </tag>
+            
+            <tag> Homework </tag>
             
         </tags>
       
@@ -339,7 +359,9 @@
       
       <categories>
           
-          <category> Homework </category>
+          <category> Computer Graphics </category>
+          
+          <category> Rendering </category>
           
       </categories>
       
@@ -351,6 +373,8 @@
             <tag> ScanLine ZBuffer </tag>
             
             <tag> Octree </tag>
+            
+            <tag> Homework </tag>
             
         </tags>
       
@@ -403,7 +427,9 @@
       
       <categories>
           
-          <category> Homework </category>
+          <category> Computer Graphics </category>
+          
+          <category> Computer Animation </category>
           
       </categories>
       
@@ -413,6 +439,8 @@
             <tag> Computer Animation </tag>
             
             <tag> Spline </tag>
+            
+            <tag> Homework </tag>
             
         </tags>
       
@@ -430,7 +458,9 @@
       
       <categories>
           
-          <category> Homework </category>
+          <category> Computer Graphics </category>
+          
+          <category> Computer Animation </category>
           
       </categories>
       
@@ -440,6 +470,8 @@
             <tag> Computer Animation </tag>
             
             <tag> KeyFrame </tag>
+            
+            <tag> Homework </tag>
             
         </tags>
       
@@ -490,7 +522,7 @@
       
       <categories>
           
-          <category> Relighing Project </category>
+          <category> Relighting Project </category>
           
       </categories>
       
@@ -707,7 +739,7 @@
       
       <categories>
           
-          <category> Deep-Face Project </category>
+          <category> Relighting Project </category>
           
       </categories>
       
