@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>Python Useful Function</title>
+      <link href="/2023/09/20/Python-Useful-Function/"/>
+      <url>/2023/09/20/Python-Useful-Function/</url>
+      
+        <content type="html"><![CDATA[<h3 id="Tensor交换维度"><a href="#Tensor交换维度" class="headerlink" title="Tensor交换维度"></a>Tensor交换维度</h3><h4 id="transpose"><a href="#transpose" class="headerlink" title="transpose()"></a>transpose()</h4><p>可以交换tensor的任意两个维度，但是该函数一次只有两个参数，即一次只能交换两个维度。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import torch</span><br><span class="line">x = torch.randn(8, 6, 5, 4)</span><br><span class="line">y = x.transpose(1,2)  # 交换第二与第三维度</span><br></pre></td></tr></table></figure><h4 id="permute"><a href="#permute" class="headerlink" title="permute()"></a>permute()</h4><p>该函数可以随意交换任意维度，并且可以重新排列整合维度</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import torch</span><br><span class="line">x = torch.randn(8, 6, 5, 4)</span><br><span class="line">y = x.permute(3,0,2,1)</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Others </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Pytroch </tag>
+            
+            <tag> Python </tag>
+            
+            <tag> Numpy </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Vue.js学习及实践笔记</title>
       <link href="/2023/09/14/Vue-js-Learning/"/>
       <url>/2023/09/14/Vue-js-Learning/</url>
@@ -205,7 +234,7 @@
       <link href="/2023/05/23/Git-Management-Problems/"/>
       <url>/2023/05/23/Git-Management-Problems/</url>
       
-        <content type="html"><![CDATA[<p>git 管理相关问题及解决</p><span id="more"></span><h3 id="git-submodule-如何push-代码"><a href="#git-submodule-如何push-代码" class="headerlink" title="git submodule 如何push 代码"></a>git submodule 如何push 代码</h3><ul><li>cd your_submodule</li><li>git checkout master</li><li>git commit -a -m “commit message”</li><li>git push</li><li>cd ..</li><li>git add your_submodule</li><li>git commit -m “Update submodule”</li><li>git submodule update –remote</li><li>git pull –recurse-submodules</li></ul><h3 id="在一台新的电脑上使用exchange服务器无法git-pull-git-push-操作"><a href="#在一台新的电脑上使用exchange服务器无法git-pull-git-push-操作" class="headerlink" title="在一台新的电脑上使用exchange服务器无法git pull git push 操作"></a>在一台新的电脑上使用exchange服务器无法git pull git push 操作</h3><ul><li>git config –global –add safe.directory</li><li>打开新的电脑上用户名文件夹下的config文件，查看其中的路径是否正确。示例：%(prefix)&#x2F;&#x2F;&#x2F;192.168.16.73&#x2F;exchange&#x2F;DDBlender插件&#x2F;3.3&#x2F;ddblender。其中%(prefix)应该是服务器路径的一种语法规定，要按照这种形式输入才有效，另外，中文路径注意编码问题。</li><li>出现访问受限无法push的情况，可以使用<code>git config --system --unset credential.helper</code>重置git的认证设置，在push时手动输入用户名和密码，然后再使用<code>git config --global credential.helper store</code>保存用户密码。</li></ul>]]></content>
+        <content type="html"><![CDATA[<p>git 管理相关问题及解决</p><span id="more"></span><h3 id="git-submodule-如何push-代码"><a href="#git-submodule-如何push-代码" class="headerlink" title="git submodule 如何push 代码"></a>git submodule 如何push 代码</h3><ul><li>cd your_submodule</li><li>git checkout master</li><li>git commit -a -m “commit message”</li><li>git push</li><li>cd ..</li><li>git add your_submodule</li><li>git commit -m “Update submodule”</li><li>git submodule update –remote</li><li>git pull –recurse-submodules</li></ul><h3 id="在一台新的电脑上使用exchange服务器无法git-pull-git-push-操作"><a href="#在一台新的电脑上使用exchange服务器无法git-pull-git-push-操作" class="headerlink" title="在一台新的电脑上使用exchange服务器无法git pull git push 操作"></a>在一台新的电脑上使用exchange服务器无法git pull git push 操作</h3><ul><li>git config –global –add safe.directory</li><li>打开新的电脑上用户名文件夹下的config文件，查看其中的路径是否正确。示例：%(prefix)&#x2F;&#x2F;&#x2F;192.168.16.73&#x2F;exchange&#x2F;DDBlender插件&#x2F;3.3&#x2F;ddblender。其中%(prefix)应该是服务器路径的一种语法规定，要按照这种形式输入才有效，另外，中文路径注意编码问题。</li><li>出现访问受限无法push的情况，可以使用<code>git config --system --unset credential.helper</code>重置git的认证设置，在push时手动输入用户名和密码，然后再使用<code>git config --global credential.helper store</code>保存用户密码。</li></ul><h3 id="hexo-d报错无法连接到远程主机"><a href="#hexo-d报错无法连接到远程主机" class="headerlink" title="hexo d报错无法连接到远程主机"></a>hexo d报错无法连接到远程主机</h3><ul><li>报错：<br>ssh: connect to host github.com port 22: Connection timed out<br>fatal: Could not read from remote repository.</li></ul><p>Please make sure you have the correct access rights<br>and the repository exists.</p><ul><li>解决参考：</li><li><ul><li><a href="https://blog.csdn.net/qq_36408085/article/details/104117293%EF%BC%8C%E6%B2%A1%E7%94%A8">https://blog.csdn.net/qq_36408085/article/details/104117293，没用</a></li></ul></li></ul>]]></content>
       
       
       <categories>
