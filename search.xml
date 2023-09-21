@@ -40,6 +40,20 @@
         <content type="html"><![CDATA[<p>学校社团有做网站的计划，之前刚好接触过一丢丢前端，遂开始摸鱼。</p><span id="more"></span><p>参考资料：</p><ul><li><a href="https://zhuanlan.zhihu.com/p/349318513">https://zhuanlan.zhihu.com/p/349318513</a></li><li><a href="https://cn.vuejs.org/guide/quick-start.html">https://cn.vuejs.org/guide/quick-start.html</a></li><li><a href="https://element.eleme.cn/#/zh-CN/component/installation">https://element.eleme.cn/#/zh-CN/component/installation</a></li><li><a href="https://blog.csdn.net/weixin_46591962/article/details/109145467">https://blog.csdn.net/weixin_46591962/article/details/109145467</a></li></ul><ol><li>首先在Node.js官网安装Node.js: <a href="https://nodejs.org/en">https://nodejs.org/en</a></li><li>安装后新建路径，在cmd分别运行：<blockquote><p>npm create vue@latest<br>cd <your-project-name><br>npm install<br>npm run dev<br>测试没有问题之后Ctrl+C退出。<br>npm install -g vue-cli<br>npm install webpack -g<br>npm install element-ui -S<br>npm install vue-router vue-resource –S<br>npm install moment -S<br>npm run dev</p></blockquote></li></ol>]]></content>
       
       
+      <categories>
+          
+          <category> Front-end </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Vue.js </tag>
+            
+            <tag> Element-UI </tag>
+            
+        </tags>
       
     </entry>
     
