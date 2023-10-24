@@ -4,6 +4,95 @@
   
     
     <entry>
+      <title>Blender-Cycles源码学习（待补充</title>
+      <link href="/2023/10/24/Blender-Source-Code/"/>
+      <url>/2023/10/24/Blender-Source-Code/</url>
+      
+        <content type="html"><![CDATA[<p>由于工作需求，需要对齐可谓渲染中mitsuba的着色模型和blender中的着色模型，因此最近两日开始阅读Blender中Cycles的源码。</p><p>在查看Blender源码的过程中发现了一个<code>DEVICE_KERNEL_INTEGRATOR_SHADE_SURFACE_MNEE</code>，查询后认为MNEE指的应该是Manifold Next Event Estimation，这是一种可以正确的渲染焦散（caustic）的路径追踪方式。</p><p>NEE是Next Event Estimation的缩写。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Computer Graphics </category>
+          
+          <category> Rendering </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Rendering </tag>
+            
+            <tag> Monte Carlo </tag>
+            
+            <tag> Path tracing </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Quaternions四元数学习笔记（待补充</title>
+      <link href="/2023/10/12/Quaternions/"/>
+      <url>/2023/10/12/Quaternions/</url>
+      
+        <content type="html"><![CDATA[<p>参考资料：</p><ul><li><a href="https://www.bilibili.com/video/BV1fx41187tZ">https://www.bilibili.com/video/BV1fx41187tZ</a></li><li><a href="https://www.bilibili.com/video/BV1SW411y7W1">https://www.bilibili.com/video/BV1SW411y7W1</a></li></ul><h3 id="万向结死锁问题（Gimbal-Lock）"><a href="#万向结死锁问题（Gimbal-Lock）" class="headerlink" title="万向结死锁问题（Gimbal Lock）"></a>万向结死锁问题（Gimbal Lock）</h3><p>万向结死锁问题指的是，在使用Euler欧拉角进行旋转的表达时，由于沿着中间轴旋转90度导致的自由度丢失问题。我们在使用欧拉角描述旋转时，x,y,z三个轴互相垂直，以物体本身的坐标系来看，绕某一个轴旋转会导致顺序更靠前的轴旋转，但是不会导致顺序更靠前的轴旋转，可以使用万向结模型来思考这个问题，从外到内依次是xyz，当转动最外圈时，里面两个轴向都会跟着转动。因此，一旦沿y轴旋转了90度，就会导致x轴和z轴完全重合，旋转丧失了一个自由度。</p><h3 id="球极投影（Stereographic-Projection）"><a href="#球极投影（Stereographic-Projection）" class="headerlink" title="球极投影（Stereographic Projection）"></a>球极投影（Stereographic Projection）</h3><p>球极投影是一种</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Computer Graphics </category>
+          
+          <category> Rendering </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Rendering </tag>
+            
+            <tag> Quaternions </tag>
+            
+            <tag> Math </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Blender Plugins</title>
+      <link href="/2023/10/11/Blender-Plugins/"/>
+      <url>/2023/10/11/Blender-Plugins/</url>
+      
+        <content type="html"><![CDATA[<p>从去年七月接收公司的Blender插件至今也有一年多的时间了，期间断断续续地进行了很多Blender工具的开发，用于制作本科毕业的Demo以及满足流程中美术工作人员的需求，工具也进行了很多次迭代，但是最近在满足新的需求时，发现由于学习时主要是面向尽快投入使用的，自己在工具开发的基础仍然有些薄弱，因此准备再反刍学习一下基础的一些概念，开一个新帖在这里记录一下。(其实是因为当初准备学习的时候没有任何实践看不懂理论orz)<br>参考：</p><ul><li><a href="https://zhuanlan.zhihu.com/p/413506846">https://zhuanlan.zhihu.com/p/413506846</a></li><li><a href="https://zhuanlan.zhihu.com/p/418293645">https://zhuanlan.zhihu.com/p/418293645</a></li></ul><h3 id="一、"><a href="#一、" class="headerlink" title="一、"></a>一、</h3><ul><li>bl_info 插件信息，即在Blender加载插件界面显示的信息。</li><li>register 启用插件时会执行的函数</li><li>unregister 取消启用时会执行的函数</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Tool Development </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Blender </tag>
+            
+            <tag> Plugins </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Python Useful Function</title>
       <link href="/2023/09/20/Python-Useful-Function/"/>
       <url>/2023/09/20/Python-Useful-Function/</url>
