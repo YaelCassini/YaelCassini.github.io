@@ -316,9 +316,9 @@
             
             <tag> Homework </tag>
             
-            <tag> GPU </tag>
-            
             <tag> Rendering </tag>
+            
+            <tag> GPU </tag>
             
             <tag> Real-Time Rendering </tag>
             
@@ -566,9 +566,9 @@
             
             <tag> Homework </tag>
             
-            <tag> GPU </tag>
-            
             <tag> Rendering </tag>
+            
+            <tag> GPU </tag>
             
             <tag> Computer Graphics </tag>
             
@@ -801,11 +801,11 @@
             
             <tag> Rendering </tag>
             
+            <tag> Monte Carlo </tag>
+            
             <tag> RayTracing </tag>
             
             <tag> PathTracing </tag>
-            
-            <tag> Monte Carlo </tag>
             
         </tags>
       
@@ -834,11 +834,11 @@
             
             <tag> Rendering </tag>
             
+            <tag> Monte Carlo </tag>
+            
             <tag> RayTracing </tag>
             
             <tag> PathTracing </tag>
-            
-            <tag> Monte Carlo </tag>
             
         </tags>
       
