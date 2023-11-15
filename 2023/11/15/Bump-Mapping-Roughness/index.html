@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <!-- SEO相关 -->
   
-  <link rel="canonical" href="https://yaelcassini.github.io/2023/07/20/games101-notes/"/>
+  <link rel="canonical" href="https://yaelcassini.github.io/2023/11/15/bump-mapping-roughness/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -34,22 +34,24 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>Games101_notes - Unknown Island</title>
-  <meta name="keywords" content="Games101,Notes,null">
-  <meta desc name="description" content="Games101做作业的过程中遇到的问题及解决。 - Cassini - Unknown Island">
+  <title>凹凸映射以及粗糙度贴图 - Unknown Island</title>
+  <meta name="keywords" content="Rendering,Physically Based Rendering,Microfacet,Materials,null">
+  <meta desc name="description" content="本文摘自笔者的本科毕业论文，是在学习研究过程中一些对凹凸映射以及粗糙度贴图的知识的整理及个人理解。 - Cassini - Unknown Island">
   
 <meta property="og:type" content="article">
-<meta property="og:title" content="Games101_notes">
-<meta property="og:url" content="https://yaelcassini.github.io/2023/07/20/Games101-Notes/index.html">
+<meta property="og:title" content="凹凸映射以及粗糙度贴图">
+<meta property="og:url" content="https://yaelcassini.github.io/2023/11/15/Bump-Mapping-Roughness/index.html">
 <meta property="og:site_name" content="Unknown Island">
-<meta property="og:description" content="Games101做作业的过程中遇到的问题及解决。">
+<meta property="og:description" content="本文摘自笔者的本科毕业论文，是在学习研究过程中一些对凹凸映射以及粗糙度贴图的知识的整理及个人理解。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-<meta property="article:published_time" content="2023-07-20T06:45:04.000Z">
-<meta property="article:modified_time" content="2023-09-18T08:37:19.860Z">
+<meta property="article:published_time" content="2023-11-15T12:02:23.000Z">
+<meta property="article:modified_time" content="2023-11-15T12:23:01.147Z">
 <meta property="article:author" content="Cassini">
-<meta property="article:tag" content="Games101">
-<meta property="article:tag" content="Notes">
+<meta property="article:tag" content="Rendering">
+<meta property="article:tag" content="Physically Based Rendering">
+<meta property="article:tag" content="Microfacet">
+<meta property="article:tag" content="Materials">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png">
   <style>
@@ -2784,7 +2786,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
 <div id="l_main" class=''>
   <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow floatable blur article-type-post" id="post" itemscope itemprop="blogPost">
-  <link itemprop="mainEntityOfPage" href="https://yaelcassini.github.io/2023/07/20/Games101-Notes/">
+  <link itemprop="mainEntityOfPage" href="https://yaelcassini.github.io/2023/11/15/Bump-Mapping-Roughness/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Unknown Island">
   </span>
@@ -2805,7 +2807,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       <h1 class="title" itemprop="name headline">
-        Games101_notes
+        凹凸映射以及粗糙度贴图
       </h1>
       <div class='new-meta-box'>
         
@@ -2821,10 +2823,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
         
           
-            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2023-07-20T14:45:04+08:00">
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2023-11-15T20:02:23+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2023年7月20日</p>
+    <p>发布于：2023年11月15日</p>
   </a>
 </div>
 
@@ -2834,10 +2836,14 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             
   <div class='new-meta-item category'>
     <i class="fa-solid fa-folder-open fa-fw" aria-hidden="true"></i>
-    <a class="category-link" href="/categories/Computer-Graphics/">Computer Graphics</a>
+    <a class="category-link" href="/categories/Computer-Graphics/">Computer Graphics</a><span class="sep"></span><a class="category-link" href="/categories/Computer-Graphics/Rendering/">Rendering</a>
     
       <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
         <a href="/categories/Computer-Graphics/" itemprop="url"><span itemprop="name">Computer Graphics</span></a>
+      </span>
+    
+      <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+        <a href="/categories/Computer-Graphics/Rendering/" itemprop="url"><span itemprop="name">Rendering</span></a>
       </span>
     
   </div>
@@ -2874,44 +2880,25 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <p>Games101做作业的过程中遇到的问题及解决。</p>
+    <p>本文摘自笔者的本科毕业论文，是在学习研究过程中一些对凹凸映射以及粗糙度贴图的知识的整理及个人理解。</p>
 <span id="more"></span>
 
-<ol>
-<li>virual box 共享文件夹设置：</li>
-</ol>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/jumpingpig/article/details/104109395">https://blog.csdn.net/jumpingpig/article/details/104109395</a></li>
-</ul>
-<ol start="2">
-<li>二维三角形内部判定:</li>
-</ol>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/KimHyunA4minute/article/details/40079819">https://blog.csdn.net/KimHyunA4minute/article/details/40079819</a></li>
-</ul>
-<ol start="3">
-<li>Howework2:</li>
-</ol>
-<ul>
-<li>Super Sample部分，只对Depth Buffer进行细分会导致出现两个三角形覆盖交界处出现黑边，应该吧frame buffer也进行细分，输出时直接下采样。</li>
-</ul>
-<ol start="4">
-<li>Homework3：</li>
-</ol>
-<ul>
-<li>view_pos插值出了问题，view_pos语义应该是在view space的三角形三个点的坐标，但我感觉这个用什么坐标只要统一就可以，比如如果要传入world space就灯光、相机、mesh都传入world space的坐标，或者都传入view space的坐标。思考：Model matrix的变换是应该体现出来的，但是View Matrix的变换是否收到相机横竖比例不同的影响？（不影响，因为View Matrix里面只有内参，都是刚性变换。）</li>
-<li>灯光衰减系数要使用距离的平方，用距离就不太行，太亮了。</li>
-<li>Texture采样的时候因为加了1.0&#x2F;w会溢出，修改Texture类函数，加了：u &#x3D; (u + width)%width; v同理。</li>
-<li>这里我觉得网上的很多代码选择采样hmap后normalize很没有道理，看上去这个hmap更像是一张normal map，所以我取了采样后的z值作为高度。</li>
-<li>还有一个不明白的点：为什么注释里面要把kn和kh都乘到dU上面，在我看来算dUdV的时候乘kh，算displacement顶点位移的时候乘kn比较合理，但是不乘效果不佳，跟题目设置有关系。</li>
-<li>在写作业的过程中重新学习推导了TBN矩阵，并学习Displacement原理。</li>
-<li>Displacement造成的顶点坐标位移应该是沿着插值得到的法线方向，这里我取的值仍然是z分量，然后在bump shader中计算得到的新法向其实是顶点位移造成的法线变换，所以应该先变换顶点坐标，再赋予新的法向值，这也解释了前面我认为只乘kh是不对的，因为这个法向是通过坐标位移得到的，坐标位移的过程中要乘kn。</li>
-<li>在Displacement Shader为了和示例靠近把diffuse计算的*0.5+0.5去掉了。</li>
-<li>用Z值的Displacement效果不对，改成norm就对了，不准备深究了，因为真正的Displacement Texture应该在一开始mvp之前就参与到修改顶点坐标中？起码应该在view space加入计算。</li>
-<li>还有一个易错点：采样texture的时候先v再u。</li>
-<li>image.at采样得到的数据结构里面是int，直接统一用auto会出问题。</li>
-<li>悲惨的de了很久bug，发现是加权权重搞错了，左边的距离应该作为右边的权重。</li>
-</ul>
+<h3 id="凹凸映射及切向空间"><a href="#凹凸映射及切向空间" class="headerlink" title="凹凸映射及切向空间"></a>凹凸映射及切向空间</h3><p>凹凸映射（Bump Mapping）是一种通过对纹理贴图采样，扰动模型法线，从而表现出更多像素级别细节的技术。在渲染管线中计算片元着色时，三角形面片内部的法线最早是直接通过三个顶点的法线插值得到的。这样的方式保证了模型的平滑，但直接使用插值结果将使得我们无法表达出三角形面片内部的像素级凹凸细节，因此凹凸映射技术应运而生。凹凸映射最早使用的是高度图（Height Map），即通过采样高度图，修改片元的在模型表面的高度，因此模型表面的法线也会改变，从而影响着色，如下图。<br><img src="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/note/202311152005.jpg" title="高度贴图作用示意图" alt="高度贴图作用示意图" width="50%"></p>
+<p>目前行业中广泛使用的基于法线贴图（Normal Map）的Normal Mapping则是基于法线贴图的。法线贴图储存的是模型在切向空间（Tangent Space）的法线信息。切向空间（也可以称为TBN坐标系）是用来解决模型旋转或缩放造成的法线错误问题的。如果法线贴图中储存的是世界坐标下的法线，则模型的旋转和缩放等操作都会导致法线贴图错误，而切向空间可以保证法线不受模型这些变换干扰。切向空间中的Z轴取自顶点法线插值后得到的法线方向。另外两个轴则分别是模型切面上的切线方向（Tangent）和副切线方向（Bitangent），其中切线方向是模型的UV坐标中U分量增长的方向，而副切线方向则是V分量增长的方向。而法线贴图储存的数据就是该处法线相对于从顶点法线插值得到的法线的偏移量（在切向空间下），向量&lt;0,0,1&gt;代表直接使用插值得到的法线而不进行修改。<br><img src="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/note/202311152008.jpg" title="切向空间示意图" alt="切向空间示意图" width="50%"></p>
+<h3 id="使用高度贴图提取法线的算法实现"><a href="#使用高度贴图提取法线的算法实现" class="headerlink" title="使用高度贴图提取法线的算法实现"></a>使用高度贴图提取法线的算法实现</h3><p>我们的人脸重建项目可以通过人脸像素的颜色深度来提取模型表面的凹凸信息，即Height Map。而Normal Map其实就是高度场的归一化梯度，因此本文使用Lengyel在《Mathematics for 3D Game Programming and Computer Graphics》[14]中提到的思路：通过求解高度图梯度，在切空间构造S向量和T向量，并将其叉乘来得到法线。当沿着U和V方向高度差都为零时，模型没有高度变化，此时法线为Normal(i,j)&#x3D; &lt;0,0,1&gt;，直接使用插值得到的法线而不对其进行修改。否则，法线就会朝U或者V方向偏移。<br>设H(i,j)为高度图上(i,j)处像素的高度值，则S和T向量可以表示为：<br>$ S(i,j)&#x3D; &lt;1,0,aH(i+1,j)-aH(i-1,j)&gt; $<br>$ T(i,j)&#x3D; &lt;0,1,aH(i,j+1)-aH(i,j-1)&gt; $</p>
+<img src="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/note/202311152010.jpg" title="求解S、T向量示意图" alt="求解S、T向量示意图" width="50%">
+<img src="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/note/202311152011.jpg" title="求解S、T向量示意图" alt="求解S、T向量示意图" width="50%">
+
+<p>其中，a是一个用于放缩的控制参数，其取值取决于高度图的量纲，aH(i+1,j)-aH(i-1,j)表示模型表面沿着U方向的高度差，aH(i,j+1)-aH(i,j-1)表示模型表面沿着V方向的高度差。我们使用S_z和T_z来表示两个向量的Z分量，经过推导可以得到：<br>$$ Normal(i,j)&#x3D;  \frac{S(i,j)×T(i,j)}{||S(i,j)×T(i,j)||}   &#x3D;  \frac{&lt;-S_z,-T_z,1&gt;}{√S_z^2+T_z^2+1} $$<br>经过上述推导，本文将提取人脸法线的问题转化为求高度图图像梯度的问题。通过测试比较不同方法的效果，本文最终使用了Sobel算子，对图像进行滤波以计算图像梯度。Sobel_x和Sobel_y两个算子分别用于计算图像沿着x和y两个方向的梯度，整体梯度G可由x方向的梯度G_x和y方向的梯度G_y按以下公式求得：<br>$$ sobel_x  &#x3D;  \left[\begin{array}{l} 1\ 2\1 \end{array} \right] * \left[\begin{array}{l} 1 &amp; 0 &amp; -1 \end{array} \right]  &#x3D; \left[\begin{array}{l} 1 &amp; 0 &amp; -1 \ 2 &amp; 0 &amp; -2 \ 1 &amp; 0 &amp; -1 \end{array} \right]$$<br>$$ sobel_y  &#x3D;  \left[\begin{array}{l} 1 &amp; 2 &amp; 1 \end{array} \right] * \left[\begin{array}{l} 1\ 0\-1 \end{array} \right]  &#x3D; \left[\begin{array}{l} 1 &amp; 2 &amp; 1 \ 0 &amp; 0 &amp; 0 \ -1 &amp; -2 &amp; -1 \end{array} \right]$$<br>$$ G &#x3D; \sqrt{G_x^2 + G_y^2} $$</p>
+<p>综上所述，我们在本章使用高度贴图作为输入，通过计算图像的梯度信息，完成了对人脸法线的提取，为本文在下一章节完成人脸高光部分生成与编辑的主要任务打下了数据基础。图3.5展示了本章的阶段性成果，其中左图为人脸扫描重建中得到的高度贴图，而右图则是使用我们的方法得到的法线贴图。</p>
+<h3 id="Roughness-贴图的物理意义"><a href="#Roughness-贴图的物理意义" class="headerlink" title="Roughness 贴图的物理意义"></a>Roughness 贴图的物理意义</h3><p>在高光贴图中，Roughness贴图主要控制表面的粗糙程度，Roughness与渲染效果的关系如图4.4。所有的PBR技术都基于微平面理论。这项理论认为，达到微观尺度之后任何平面都可以使用被称为微平面(Microfacets)的细小镜面来进行描绘。根据平面粗糙程度的不同，这些细小镜面的朝向会有不同程度的随机[15]。理论上来讲，微表面可以通过几何上的变换进行模拟，但是由于这些微平面尺度太小，渲染时已经无法在像素水平对其进行区分，因此PBR理论中引入了粗糙度(Roughness)，并通过统计学的方法来近似这些微平面。Roughness越低表示微表面法线分布越统一，反射光线表现更加趋近于镜面反射，而Roughness越高，则表示表面法线分布越混乱越随机，反射光线表现更趋近于漫反射。<br><img src="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/note/202311152020.jpg" title="微表面及其法线示意图" alt="微表面及其法线示意图" width="50%"></p>
+<p>具体到反射方程中，Roughness会影响到BRDF中的D（法线分布函数）和G（几何函数）的计算。法线分布函数（NDF）被用来描述表面一点内微表面的法向分布。输入一个方向h，法线分布函数会返回法向是h的微平面占所有微表面的比例。法线分布函数有许多不同的模型，但都需要Roughness参与计算，其中目前最常使用的是由Bruce Walter和Kenneth Torrance提出的GGX-NDF[16]，其中，Burley推荐以 α&#x3D;roughness^2,其中roughness∈[0,1] 的方式代入模型表面粗糙度数据，以让分布以更线性的方式变化：</p>
+<p>几何函数（GSF）则是用于描述由于微面的自阴影行为而导致的光衰减的函数。几何函数模拟了在给定点微面相互遮挡或光在多个微面上反弹的概率，在这些情况下，光在到达视点之前会失去能量，因此宏观上也就表现为我们观察到该处的反射强度会降低。BRDF中使用的几何函数一般指的是包含了在光照方向L上的阴影函数（shadowing function）和在观察方向V上的遮蔽函数（masking function）的联合遮蔽阴影函数。几何函数对于BRDF能量守恒至关重要,BRDF方程一个关键部分是有效表面积（指的是能将光线从光源方向反射到视点方向的表面所覆盖的面积与微面表面的总表面积之间的比率）。而如果不考虑几何函数，则该有效表面积可能会超过总面积，也就破坏了能量守恒。为了准确地生成GSF，大多数拟合公式需要对粗糙度进行采样以确定微平面分布，因此几何函数也与粗糙度Roughness有密切的联系。</p>
+<img src="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/note/202311152021.jpg" title="在光照方向L上的阴影（左）和在观察方向V上的遮蔽（右）示意图" alt="在光照方向L上的阴影（左）和在观察方向V上的遮蔽（右）示意图" width="50%">
+<img src="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/note/202311152022.jpg" title="在光照方向L上的阴影（左）和在观察方向V上的遮蔽（右）示意图" alt="在光照方向L上的阴影（左）和在观察方向V上的遮蔽（右）示意图" width="50%">
+
+
+<h3 id="Mipmap技术"><a href="#Mipmap技术" class="headerlink" title="Mipmap技术"></a>Mipmap技术</h3><p>为了避免高光走样问题，现代渲染通常会使用Mipmap技术，我们的项目中也同样使用了该技术，但如果仅仅使用Mipmap技术处理法线贴图，在渲染时仍然会出现高光走样问题。因此，本文引入了NVIDIA提出的基于Mipmap的法线方差估计技术，以Mipmap原理为根据，通过近似地计算得到图像方差，实时地对粗糙度信息进行修改，从而避免了贴图采样精度不足引起的高光走样问题。<br>Mipmap技术现代渲染中必不可少的一个环节。图形学中使用纹理映射（Texture Mapping）将模型上每个点的颜色信息储存在二维的图像上。这种方式方便了美术工作者对模型着色的修改和控制，但贴图尺度过大或者过小都会引发一些渲染走样。当纹理相对于模型过小时，屏幕空间中多个像素点对应在纹理贴图上的坐标都集中在一个像素附近，如果简单地取最近邻的像素值，会导致渲染结果产生严重的走样。实际渲染中一般使用双线性插值来对坐标附近的像素值做一个混合，但这样得到的效果仍不足以弥补问题。</p>
 
   </div>
   
@@ -2934,7 +2921,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
                 
               
                 
-                  <p>本文永久链接是：<a href="https://yaelcassini.github.io/2023/07/20/Games101-Notes/">https://yaelcassini.github.io/2023/07/20/Games101-Notes/</a></p>
+                  <p>本文永久链接是：<a href="https://yaelcassini.github.io/2023/11/15/Bump-Mapping-Roughness/">https://yaelcassini.github.io/2023/11/15/Bump-Mapping-Roughness/</a></p>
                 
               
             </blockquote>
@@ -2953,10 +2940,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2023-09-18T16:37:19+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2023-11-15T20:23:01+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2023年9月18日</p>
+    <p>更新于：2023年11月15日</p>
   </a>
 </div>
 
@@ -2965,8 +2952,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Games101/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>Games101</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Notes/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>Notes</p></a></div>
-  <span hidden itemprop="keywords">Games101 Notes</span>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Rendering/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>Rendering</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Physically-Based-Rendering/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>Physically Based Rendering</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Microfacet/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>Microfacet</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Materials/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>Materials</p></a></div>
+  <span hidden itemprop="keywords">Rendering Physically Based Rendering Microfacet Materials</span>
 
 
         
@@ -2979,7 +2966,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yaelcassini.github.io/2023/07/20/Games101-Notes/&title=Games101_notes - Unknown Island&summary=Games101做作业的过程中遇到的问题及解决。"
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yaelcassini.github.io/2023/11/15/Bump-Mapping-Roughness/&title=凹凸映射以及粗糙度贴图 - Unknown Island&summary=本文摘自笔者的本科毕业论文，是在学习研究过程中一些对凹凸映射以及粗糙度贴图的知识的整理及个人理解。"
           
           >
           
@@ -2991,7 +2978,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://yaelcassini.github.io/2023/07/20/Games101-Notes/&title=Games101_notes - Unknown Island&summary=Games101做作业的过程中遇到的问题及解决。"
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://yaelcassini.github.io/2023/11/15/Bump-Mapping-Roughness/&title=凹凸映射以及粗糙度贴图 - Unknown Island&summary=本文摘自笔者的本科毕业论文，是在学习研究过程中一些对凹凸映射以及粗糙度贴图的知识的整理及个人理解。"
           
           >
           
@@ -3003,7 +2990,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=https://yaelcassini.github.io/2023/07/20/Games101-Notes/&title=Games101_notes - Unknown Island&summary=Games101做作业的过程中遇到的问题及解决。"
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://yaelcassini.github.io/2023/11/15/Bump-Mapping-Roughness/&title=凹凸映射以及粗糙度贴图 - Unknown Island&summary=本文摘自笔者的本科毕业论文，是在学习研究过程中一些对凹凸映射以及粗糙度贴图的知识的整理及个人理解。"
           
           >
           
@@ -3036,26 +3023,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     <div class="prev-next">
       
-        <a class='prev' href='/2023/07/26/Neural-Rendering-Notes/'>
-          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>Neural Rendering相关学习笔记(待补充)</p>
-          <p class='content'>记录一些关于Neural Rendering的学习笔记，可能有点乱orz。
-
-
-
-Neural Rendering其他参考：
-
-https://www.youtube.com/watch?v=o...</p>
-        </a>
       
-      
-        <a class='next' href='/2023/06/02/Harris-Corner-Detection/'>
-          <p class='title'>计算机视觉HW3 - Harris角点检测<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>课程名称：计算机视觉实验项目名称：harris角点检测实验日期：2020 年 12 月 16 日
-
-
-
-一、实验目的和要求
-读入摄像头，回放视频。按一下空格键，则暂停回放，并将当前帧图像做 Ha...</p>
+        <a class='next' href='/2023/11/13/PBR-BSDF-Based-Microfacet-Model/'>
+          <p class='title'>一篇搞懂基于微表面模型的PBR材质<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>在当前的图形学前沿研究中，对人脸的真实感渲染，基本都是基于PBR理论的。基于物理的渲染（Physically-based rendering）指的是使用数学建模的方式，模拟物体表面各种材质对光线...</p>
         </a>
       
     </div>
@@ -3071,7 +3042,7 @@ https://www.youtube.com/watch?v=o...</p>
 
   <article class="post white-box shadow floatable blur" id="comments">
     <span hidden>
-      <meta itemprop="discussionUrl" content="/2023/07/20/Games101-Notes/index.html#comments">
+      <meta itemprop="discussionUrl" content="/2023/11/15/Bump-Mapping-Roughness/index.html#comments">
     </span>
     <p ct><i class='fa-solid fa-comments'></i> 评论</p>
     
@@ -3175,9 +3146,19 @@ https://www.youtube.com/watch?v=o...</p>
   
 
 
-  <div class="">
-    <!-- pjax占位 -->
-  </div>
+  <section class="widget toc-wrapper desktop mobile " id="toc-div" >
+    
+  <header>
+    
+      <i class="fa-solid fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%B9%E5%87%B8%E6%98%A0%E5%B0%84%E5%8F%8A%E5%88%87%E5%90%91%E7%A9%BA%E9%97%B4"><span class="toc-text">凹凸映射及切向空间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E9%AB%98%E5%BA%A6%E8%B4%B4%E5%9B%BE%E6%8F%90%E5%8F%96%E6%B3%95%E7%BA%BF%E7%9A%84%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0"><span class="toc-text">使用高度贴图提取法线的算法实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Roughness-%E8%B4%B4%E5%9B%BE%E7%9A%84%E7%89%A9%E7%90%86%E6%84%8F%E4%B9%89"><span class="toc-text">Roughness 贴图的物理意义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Mipmap%E6%8A%80%E6%9C%AF"><span class="toc-text">Mipmap技术</span></a></li></ol>
+    </div>
+  </section>
 
   
 
@@ -4331,6 +4312,60 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 <!-- pjax 标签必须存在于所有页面 否则 pjax error -->
 <pjax>
 
+        <script>
+  // https://github.com/theme-next/hexo-theme-next/blob/master/layout/_third-party/math/mathjax.swig
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = "https://unpkg.com/volantis-static@0.0.1649552113628/libs/mathjax/es5/tex-mml-chtml.js";
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    // 文章章节标题不能为 “MathJax” ，否则会报错。
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typesetPromise();
+  }
+</script>
+
+
+
 </pjax>
 
 <script>
@@ -4462,7 +4497,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Unknown Island","url":"https://yaelcassini.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/","sameAs":["https://github.com/volantis-x"],"description":"赛博垃圾分离企划"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://yaelcassini.github.io/","name":"Unknown Island"}},{"@type":"ListItem","position":2,"item":{"@id":"https://yaelcassini.github.io/categories/Computer-Graphics/","name":"Computer Graphics"}},{"@type":"ListItem","position":3,"item":{"@id":"https://yaelcassini.github.io/2023/07/20/Games101-Notes/","name":"Games101_notes"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Unknown Island","url":"https://yaelcassini.github.io/","keywords":null,"description":"赛博垃圾分离企划","author":{"@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/","description":"赛博垃圾分离企划"},"publisher":{"@type":"Organization","name":"Unknown Island","url":"https://yaelcassini.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://yaelcassini.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Games101_notes","description":"Games101做作业的过程中遇到的问题及解决。","inLanguage":["zh-CN","en","zh-HK","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://yaelcassini.github.io/2023/07/20/Games101-Notes/"},"author":{"@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/"},"publisher":{"@type":"Organization","name":"Unknown Island","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://yaelcassini.github.io/2023/07/20/Games101-Notes/","wordCount":24,"datePublished":"2023-07-20T06:45:04.000Z","dateModified":"2023-09-18T08:37:19.860Z","articleSection":"Computer Graphics","keywords":"Games101,Notes","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Unknown Island","url":"https://yaelcassini.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/","sameAs":["https://github.com/volantis-x"],"description":"赛博垃圾分离企划"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://yaelcassini.github.io/","name":"Unknown Island"}},{"@type":"ListItem","position":2,"item":{"@id":"https://yaelcassini.github.io/categories/Computer-Graphics/","name":"Computer Graphics"}},{"@type":"ListItem","position":2,"item":{"@id":"https://yaelcassini.github.io/categories/Computer-Graphics/Rendering/","name":"Rendering"}},{"@type":"ListItem","position":3,"item":{"@id":"https://yaelcassini.github.io/2023/11/15/Bump-Mapping-Roughness/","name":"凹凸映射以及粗糙度贴图"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Unknown Island","url":"https://yaelcassini.github.io/","keywords":null,"description":"赛博垃圾分离企划","author":{"@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/","description":"赛博垃圾分离企划"},"publisher":{"@type":"Organization","name":"Unknown Island","url":"https://yaelcassini.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://yaelcassini.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"凹凸映射以及粗糙度贴图","description":"本文摘自笔者的本科毕业论文，是在学习研究过程中一些对凹凸映射以及粗糙度贴图的知识的整理及个人理解。","inLanguage":["zh-CN","en","zh-HK","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://yaelcassini.github.io/2023/11/15/Bump-Mapping-Roughness/"},"author":{"@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/"},"publisher":{"@type":"Organization","name":"Unknown Island","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://yaelcassini.github.io/2023/11/15/Bump-Mapping-Roughness/","wordCount":49,"datePublished":"2023-11-15T12:02:23.000Z","dateModified":"2023-11-15T12:23:01.147Z","articleSection":"Computer Graphics","keywords":"Rendering,Physically Based Rendering,Microfacet,Materials","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
