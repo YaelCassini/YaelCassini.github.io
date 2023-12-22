@@ -34,19 +34,19 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>Blender-Cycles源码学习（待补充 - Unknown Island</title>
+  <title>基于Beckmann分布的Blender-Cycles与Mitsuba高光渲染效果对齐 - Unknown Island</title>
   <meta name="keywords" content="Rendering,Monte Carlo,Path tracing,null">
-  <meta desc name="description" content="由于工作需求，需要对齐工程项目中可微渲染中mitsuba的着色模型和blender中美术流程使用的的着色模型，因此最近两日开始阅读Blender中Cycles的源码。 - Cassini - Unknown Island">
+  <meta desc name="description" content="由于工作需求，我们的采集流程中使用的是基于Mitsuba的可微渲染，而采集得到的高光贴图需要在Blender中进行渲染成图，两边的BSDF渲染效果不统一问题困扰了我们许久。因此本文的核心需求是，阅读Blender和Mitsuba的源码，找出其差异，并在源码级别实现在Blender中复现Mitsuba的高光渲染效果... - Cassini - Unknown Island">
   
 <meta property="og:type" content="article">
-<meta property="og:title" content="Blender-Cycles源码学习（待补充">
+<meta property="og:title" content="基于Beckmann分布的Blender-Cycles与Mitsuba高光渲染效果对齐">
 <meta property="og:url" content="https://yaelcassini.github.io/2023/10/24/Blender-Source-Code/index.html">
 <meta property="og:site_name" content="Unknown Island">
-<meta property="og:description" content="由于工作需求，需要对齐工程项目中可微渲染中mitsuba的着色模型和blender中美术流程使用的的着色模型，因此最近两日开始阅读Blender中Cycles的源码。">
+<meta property="og:description" content="由于工作需求，我们的采集流程中使用的是基于Mitsuba的可微渲染，而采集得到的高光贴图需要在Blender中进行渲染成图，两边的BSDF渲染效果不统一问题困扰了我们许久。因此本文的核心需求是，阅读Blender和Mitsuba的源码，找出其差异，并在源码级别实现在Blender中复现Mitsuba的高光渲染效果。最后本文对Blender源码做了修改和重编译，用新的Blender编译版本实现了该渲">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2023-10-24T08:21:36.000Z">
-<meta property="article:modified_time" content="2023-12-20T12:30:18.507Z">
+<meta property="article:modified_time" content="2023-12-22T03:34:22.538Z">
 <meta property="article:author" content="Cassini">
 <meta property="article:tag" content="Rendering">
 <meta property="article:tag" content="Monte Carlo">
@@ -1976,7 +1976,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: false,
     cdn: {"js":{"app":"/js/app.7a2c825e.js","parallax":"/js/plugins/parallax.8bf0ab10.js","rightMenu":"/js/plugins/rightMenu.d9437285.js","rightMenus":"/js/plugins/rightMenus.80d861b1.js","sites":"/js/plugins/tags/sites.76bf19b8.js","friends":"/js/plugins/tags/friends.f372da57.js","contributors":"/js/plugins/tags/contributors.aec80453.js","search":"/js/search/hexo.85946653.js"},"css":{"style":"/css/style.5b752725.css"}},
     default: {"avatar":"https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/avatar/round/3442075.svg","link":"https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/link/8f277b4ee0ecd.svg","cover":"https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/cover/76b86c0226ffd.svg","image":"https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg"},
-    lastupdate: new Date(1703075454560),
+    lastupdate: new Date(1703216070057),
     sidebar: {
       for_page: ["blogger","category","tagcloud"],
       for_post: ["blogger","toc"],
@@ -2806,7 +2806,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       <h1 class="title" itemprop="name headline">
-        Blender-Cycles源码学习（待补充
+        基于Beckmann分布的Blender-Cycles与Mitsuba高光渲染效果对齐
       </h1>
       <div class='new-meta-box'>
         
@@ -2879,10 +2879,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <p>由于工作需求，需要对齐工程项目中可微渲染中mitsuba的着色模型和blender中美术流程使用的的着色模型，因此最近两日开始阅读Blender中Cycles的源码。</p>
+    <p>由于工作需求，我们的采集流程中使用的是基于Mitsuba的可微渲染，而采集得到的高光贴图需要在Blender中进行渲染成图，两边的BSDF渲染效果不统一问题困扰了我们许久。因此本文的核心需求是，阅读Blender和Mitsuba的源码，找出其差异，并在源码级别实现在Blender中复现Mitsuba的高光渲染效果。最后本文对Blender源码做了修改和重编译，用新的Blender编译版本实现了该渲染效果对齐的需求。</p>
 <span id="more"></span>
 
-<h3 id="学习中使用到的阅读资料和学到的新知识点"><a href="#学习中使用到的阅读资料和学到的新知识点" class="headerlink" title="学习中使用到的阅读资料和学到的新知识点"></a>学习中使用到的阅读资料和学到的新知识点</h3><h4 id="Cycles官方开发文档"><a href="#Cycles官方开发文档" class="headerlink" title="Cycles官方开发文档"></a>Cycles官方开发文档</h4><ul>
+<h3 id="前期学习阶段中使用到的阅读资料和学到的新知识点"><a href="#前期学习阶段中使用到的阅读资料和学到的新知识点" class="headerlink" title="前期学习阶段中使用到的阅读资料和学到的新知识点"></a>前期学习阶段中使用到的阅读资料和学到的新知识点</h3><h4 id="Cycles官方开发文档"><a href="#Cycles官方开发文档" class="headerlink" title="Cycles官方开发文档"></a>Cycles官方开发文档</h4><ul>
 <li><a target="_blank" rel="noopener" href="https://www.cycles-renderer.org/development/">https://www.cycles-renderer.org/development/</a></li>
 <li><a target="_blank" rel="noopener" href="https://wiki.blender.org/wiki/Source/Render/Cycles">https://wiki.blender.org/wiki/Source/Render/Cycles</a></li>
 </ul>
@@ -2910,14 +2910,14 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li><a target="_blank" rel="noopener" href="https://github.com/AcademySoftwareFoundation/OpenShadingLanguage/blob/main/src/doc/osl-languagespec.pdf">https://github.com/AcademySoftwareFoundation/OpenShadingLanguage/blob/main/src/doc/osl-languagespec.pdf</a></li>
 <li><a target="_blank" rel="noopener" href="https://juejin.cn/post/7147477548220776484">https://juejin.cn/post/7147477548220776484</a></li>
 </ul>
-<h4 id="OptiX"><a href="#OptiX" class="headerlink" title="OptiX"></a>OptiX</h4><p>OpitX和Cuda都是NVidia的渲染框架，OptiX是专为光线追踪设计的，相比与Cuda在渲染更复杂的场景或者材质时可以提供更快的渲染时间。另外，目前在Blender中要使用OSL编程着色模型并且使用GPU渲染的话，似乎只支持OptiX不支持Cuda（2023.10.30，Blender3.6）。</p>
+<h4 id="OptiX"><a href="#OptiX" class="headerlink" title="OptiX"></a>OptiX</h4><p>OpitX和Cuda都是NVidia的渲染框架，OptiX是专为光线追踪设计的，相比与Cuda在渲染更复杂的场景或者材质时可以提供更快的渲染时间。另外，目前在Blender中要使用OSL编程着色模型并且使用GPU渲染的话，似乎只支持OptiX不支持Cuda（截至2023.12.21，Blender4.0）。</p>
 <ul>
 <li>参考资料：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/648965721">https://zhuanlan.zhihu.com/p/648965721</a></li>
 </ul>
 <h4 id="Cycles-Kernel-Language"><a href="#Cycles-Kernel-Language" class="headerlink" title="Cycles Kernel Language"></a>Cycles Kernel Language</h4><ul>
 <li><a target="_blank" rel="noopener" href="https://wiki.blender.org/wiki/Source/Render/Cycles/KernelLanguage">https://wiki.blender.org/wiki/Source/Render/Cycles/KernelLanguage</a></li>
 </ul>
-<h4 id="Wavefront-Path-Tracing"><a href="#Wavefront-Path-Tracing" class="headerlink" title="Wavefront Path Tracing:"></a>Wavefront Path Tracing:</h4><p>为了解决GPU编程时Kernel函数过大遇到的问题，把一个很大的Kernel拆分成很多小的Kernel。</p>
+<h4 id="Wavefront-Path-Tracing"><a href="#Wavefront-Path-Tracing" class="headerlink" title="Wavefront Path Tracing:"></a>Wavefront Path Tracing:</h4><p>Blender源码中，一种为了解决GPU编程时Kernel函数过大遇到的问题，把一个很大的Kernel拆分成很多小的Kernel的技术。</p>
 <ul>
 <li>参考资料：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/Heskey0/p/15973546.html">https://www.cnblogs.com/Heskey0/p/15973546.html</a></li>
 </ul>
@@ -2925,7 +2925,21 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <ul>
 <li>参考资料：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/55327037">https://zhuanlan.zhihu.com/p/55327037</a></li>
 </ul>
-<h3 id="针对Glossy-BSDF着色节点的跟踪分析"><a href="#针对Glossy-BSDF着色节点的跟踪分析" class="headerlink" title="针对Glossy BSDF着色节点的跟踪分析"></a>针对Glossy BSDF着色节点的跟踪分析</h3><p>需求主要是分析Glossy BSDF节点的具体实现公式，因此在大致学习了Blender源码的编写结构之后就从Glossy BSDF结点入手进行具体分析。</p>
+<h3 id="Blender和Mitsuba渲染场景及参数的对齐"><a href="#Blender和Mitsuba渲染场景及参数的对齐" class="headerlink" title="Blender和Mitsuba渲染场景及参数的对齐"></a>Blender和Mitsuba渲染场景及参数的对齐</h3><p>为了方便对齐两边的渲染效果，我需要首先把两边的渲染场景对齐，其中Mitsuba使用xml文件储存场景信息，而Blender则是工程文件，我具体进行的对齐有：</p>
+<ol>
+<li>两边都取消所有点光源、面光源等，都只使用同一张exr格式的环境贴图，对贴图亮度的scale都设置为0.05，使用的环境贴图是Equirectangular Mapping格式。</li>
+<li>两边camera的参数对齐，包括外参：相机的姿态矩阵和内参：相机的fov、cx、cy等，都使用perspective透视模式。（这部分其实包含很多具体的学习内容和计算，可以参考我的博客文章：<a href="https://yaelcassini.github.io/2023/11/07/Camera-Realted-Knowledge/%EF%BC%89">https://yaelcassini.github.io/2023/11/07/Camera-Realted-Knowledge/）</a></li>
+<li>两边渲染分辨率的对齐，都使用6960*4640。</li>
+<li>两边spp（sample per pixel）的对齐，实验过程中都使用1024。</li>
+<li>两边渲染结果都使用exr格式输出。（这里一开始由于Blender的颜色管理出问题导致误以为两边光照不相同，浪费了很多时间，具体可以参考我的博客文章：<a href="https://yaelcassini.github.io/2023/04/24/Color-Management/%EF%BC%89">https://yaelcassini.github.io/2023/04/24/Color-Management/）</a></li>
+<li>两边的最大bounce次数对齐，其中，Blender中Max Bounces都设置为0时，才是只有直接光照的结果，而不是设置为1时。</li>
+<li>两边渲染使用的Mesh完全相同，（载入Blender时要注意Blender的坐标系是z轴朝上的，import obj会默认做一个绕x轴的90度旋转。）</li>
+<li>模型贴图都使用exr格式输入，不做颜色空间转换避免出现问题。</li>
+</ol>
+<h3 id="Mistuba源码阅读及分析"><a href="#Mistuba源码阅读及分析" class="headerlink" title="Mistuba源码阅读及分析"></a>Mistuba源码阅读及分析</h3><p>Mitsuba场景文件中的bsdf信息如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;bsdf id=&quot;obj_bsdf&quot; type=&quot;roughconductor&quot;&gt;</span><br><span class="line">    &lt;boolean name=&quot;sample_visible&quot; value=&quot;false&quot;/&gt;</span><br><span class="line">    &lt;string name=&quot;distribution&quot; value=&quot;beckmann&quot;/&gt;</span><br><span class="line">    &lt;boolean name=&quot;fresnel_schlick&quot; value=&quot;true&quot;/&gt;</span><br><span class="line">    &lt;boolean name=&quot;forward&quot; value=&quot;true&quot;/&gt;</span><br><span class="line">    &lt;texture id=&quot;f0&quot; name=&quot;f0&quot; type=&quot;bitmap&quot;&gt;</span><br><span class="line">        &lt;string name=&quot;filename&quot; value=&quot;/f0.exr&quot;/&gt;</span><br><span class="line">    &lt;/texture&gt;</span><br><span class="line">    &lt;texture id=&quot;alpha&quot; name=&quot;alpha&quot; type=&quot;bitmap&quot;&gt;</span><br><span class="line">        &lt;string name=&quot;filename&quot; value=&quot;alpha.exr&quot;/&gt;</span><br><span class="line">    &lt;/texture&gt;</span><br><span class="line">&lt;/bsdf&gt;</span><br></pre></td></tr></table></figure>
+<p>可以看到使用的是roughconductor模型，主要代码在<code>mitsuba2\src\bsdfs\roughconductor.cpp</code>文件中，bsdf的相关计算在RoughConductor类的eval函数中，我们项目中使用的是学长修改过的mitsuba，因此可以支持fresnel_schlick近似的计算，学习源码后转化的公式为：<br>$ res &#x3D; \frac{F<em>D</em>G}{4 * cos\theta_i} $<br>$ D_{NDF_Beckmann} (n,h,α)&#x3D;\frac{1}{(\pi α^2 (n·h)^4 )} e^((\frac{(n·h)^2-1}{α^2 (n·h)^2 })) $<br>$ G &#x3D; G2(l,v,h) &#x3D; G_1(l) * G_1(v) $<br>$$$ G_{GGX_Beckmann}(v) &#x3D; G_{Beckmann}(\vv) &#x3D; \left{<br>\begin{array}{l l}<br> \frac{ 3.535 c + 2.181 c^2 }{ 1 + 2.276 c + 2.577 c^2 } &amp; \quad \text{if $c &lt; 1.6$}\<br> 1 &amp; \quad \text{if $c \geq 1.6$}<br>\end{array} \right. $$$<br>$ c &#x3D; \frac{\ndotv}{ \alpha \sqrt{1 - (\ndotv)^2} } $</p>
+<h3 id="Blender源码阅读及分析（主要针对Glossy-BSDF着色节点的跟踪）"><a href="#Blender源码阅读及分析（主要针对Glossy-BSDF着色节点的跟踪）" class="headerlink" title="Blender源码阅读及分析（主要针对Glossy BSDF着色节点的跟踪）"></a>Blender源码阅读及分析（主要针对Glossy BSDF着色节点的跟踪）</h3><p>Blender中“Principled BSDF”节点是没有Beckmann分布的，只提供GGX和Multiscatter GGX两个微表面模型。 需求主要是分析Glossy BSDF节点的具体实现公式，因此在大致学习了Blender源码的编写结构之后就从Glossy BSDF结点入手进行具体分析。</p>
 <ol>
 <li>底层实现使用OSL编写，在blender源码的<code>intern\cycles\kernel\osl\shaders\node_glossy_bsdf.osl</code>文件中，其中使用到了<code>microfacet</code>函数。</li>
 <li>接下来自然而然地去找<code>microfacet</code>函数的实现，找到<code>intern\cycles\kernel\osl\closures_template.h</code>文件中使用<code>OSL_CLOSURE_STRUCT_</code>系列关键字做了Microfacet、microfacet和用到的参数及其类型的声明。</li>
@@ -3046,10 +3060,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2023-12-20T20:30:18+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2023-12-22T11:34:22+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2023年12月20日</p>
+    <p>更新于：2023年12月22日</p>
   </a>
 </div>
 
@@ -3072,7 +3086,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yaelcassini.github.io/2023/10/24/Blender-Source-Code/&title=Blender-Cycles源码学习（待补充 - Unknown Island&summary=由于工作需求，需要对齐工程项目中可微渲染中mitsuba的着色模型和blender中美术流程使用的的着色模型，因此最近两日开始阅读Blender中Cycles的源码。"
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yaelcassini.github.io/2023/10/24/Blender-Source-Code/&title=基于Beckmann分布的Blender-Cycles与Mitsuba高光渲染效果对齐 - Unknown Island&summary=由于工作需求，我们的采集流程中使用的是基于Mitsuba的可微渲染，而采集得到的高光贴图需要在Blender中进行渲染成图，两边的BSDF渲染效果不统一问题困扰了我们许久。因此本文的核心需求是，阅读Blender和Mitsuba的源码，找出其差异，并在源码级别实现在Blender中复现Mitsuba的高光渲染效果。最后本文对Blender源码做了修改和重编译，用新的Blender编译版本实现了该渲染效果对齐的需求。"
           
           >
           
@@ -3084,7 +3098,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://yaelcassini.github.io/2023/10/24/Blender-Source-Code/&title=Blender-Cycles源码学习（待补充 - Unknown Island&summary=由于工作需求，需要对齐工程项目中可微渲染中mitsuba的着色模型和blender中美术流程使用的的着色模型，因此最近两日开始阅读Blender中Cycles的源码。"
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://yaelcassini.github.io/2023/10/24/Blender-Source-Code/&title=基于Beckmann分布的Blender-Cycles与Mitsuba高光渲染效果对齐 - Unknown Island&summary=由于工作需求，我们的采集流程中使用的是基于Mitsuba的可微渲染，而采集得到的高光贴图需要在Blender中进行渲染成图，两边的BSDF渲染效果不统一问题困扰了我们许久。因此本文的核心需求是，阅读Blender和Mitsuba的源码，找出其差异，并在源码级别实现在Blender中复现Mitsuba的高光渲染效果。最后本文对Blender源码做了修改和重编译，用新的Blender编译版本实现了该渲染效果对齐的需求。"
           
           >
           
@@ -3096,7 +3110,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=https://yaelcassini.github.io/2023/10/24/Blender-Source-Code/&title=Blender-Cycles源码学习（待补充 - Unknown Island&summary=由于工作需求，需要对齐工程项目中可微渲染中mitsuba的着色模型和blender中美术流程使用的的着色模型，因此最近两日开始阅读Blender中Cycles的源码。"
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://yaelcassini.github.io/2023/10/24/Blender-Source-Code/&title=基于Beckmann分布的Blender-Cycles与Mitsuba高光渲染效果对齐 - Unknown Island&summary=由于工作需求，我们的采集流程中使用的是基于Mitsuba的可微渲染，而采集得到的高光贴图需要在Blender中进行渲染成图，两边的BSDF渲染效果不统一问题困扰了我们许久。因此本文的核心需求是，阅读Blender和Mitsuba的源码，找出其差异，并在源码级别实现在Blender中复现Mitsuba的高光渲染效果。最后本文对Blender源码做了修改和重编译，用新的Blender编译版本实现了该渲染效果对齐的需求。"
           
           >
           
@@ -3275,7 +3289,7 @@ https://www.bilibili.com/video/BV1SW411y7W1
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0%E4%B8%AD%E4%BD%BF%E7%94%A8%E5%88%B0%E7%9A%84%E9%98%85%E8%AF%BB%E8%B5%84%E6%96%99%E5%92%8C%E5%AD%A6%E5%88%B0%E7%9A%84%E6%96%B0%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-text">学习中使用到的阅读资料和学到的新知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Cycles%E5%AE%98%E6%96%B9%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3"><span class="toc-text">Cycles官方开发文档</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Next-Event-Estimation%EF%BC%88NEE%EF%BC%89"><span class="toc-text">Next Event Estimation（NEE）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#HIP"><span class="toc-text">HIP</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#clang-fromat"><span class="toc-text">clang-fromat</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Open-Shading-Language%EF%BC%88OSL%EF%BC%89"><span class="toc-text">Open Shading Language（OSL）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#OptiX"><span class="toc-text">OptiX</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Cycles-Kernel-Language"><span class="toc-text">Cycles Kernel Language</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Wavefront-Path-Tracing"><span class="toc-text">Wavefront Path Tracing:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SIMD"><span class="toc-text">SIMD</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%92%88%E5%AF%B9Glossy-BSDF%E7%9D%80%E8%89%B2%E8%8A%82%E7%82%B9%E7%9A%84%E8%B7%9F%E8%B8%AA%E5%88%86%E6%9E%90"><span class="toc-text">针对Glossy BSDF着色节点的跟踪分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Open-Shading-Language-%E6%95%99%E7%A8%8B"><span class="toc-text">Open Shading Language 教程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2023-11-28"><span class="toc-text">2023.11.28</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Blender-%E8%B0%83%E8%AF%95%E6%B5%81%E7%A8%8B"><span class="toc-text">Blender 调试流程</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E6%9C%9F%E5%AD%A6%E4%B9%A0%E9%98%B6%E6%AE%B5%E4%B8%AD%E4%BD%BF%E7%94%A8%E5%88%B0%E7%9A%84%E9%98%85%E8%AF%BB%E8%B5%84%E6%96%99%E5%92%8C%E5%AD%A6%E5%88%B0%E7%9A%84%E6%96%B0%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-text">前期学习阶段中使用到的阅读资料和学到的新知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Cycles%E5%AE%98%E6%96%B9%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3"><span class="toc-text">Cycles官方开发文档</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Next-Event-Estimation%EF%BC%88NEE%EF%BC%89"><span class="toc-text">Next Event Estimation（NEE）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#HIP"><span class="toc-text">HIP</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#clang-fromat"><span class="toc-text">clang-fromat</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Open-Shading-Language%EF%BC%88OSL%EF%BC%89"><span class="toc-text">Open Shading Language（OSL）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#OptiX"><span class="toc-text">OptiX</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Cycles-Kernel-Language"><span class="toc-text">Cycles Kernel Language</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Wavefront-Path-Tracing"><span class="toc-text">Wavefront Path Tracing:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SIMD"><span class="toc-text">SIMD</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Blender%E5%92%8CMitsuba%E6%B8%B2%E6%9F%93%E5%9C%BA%E6%99%AF%E5%8F%8A%E5%8F%82%E6%95%B0%E7%9A%84%E5%AF%B9%E9%BD%90"><span class="toc-text">Blender和Mitsuba渲染场景及参数的对齐</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Mistuba%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%E5%8F%8A%E5%88%86%E6%9E%90"><span class="toc-text">Mistuba源码阅读及分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Blender%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%E5%8F%8A%E5%88%86%E6%9E%90%EF%BC%88%E4%B8%BB%E8%A6%81%E9%92%88%E5%AF%B9Glossy-BSDF%E7%9D%80%E8%89%B2%E8%8A%82%E7%82%B9%E7%9A%84%E8%B7%9F%E8%B8%AA%EF%BC%89"><span class="toc-text">Blender源码阅读及分析（主要针对Glossy BSDF着色节点的跟踪）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Open-Shading-Language-%E6%95%99%E7%A8%8B"><span class="toc-text">Open Shading Language 教程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2023-11-28"><span class="toc-text">2023.11.28</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Blender-%E8%B0%83%E8%AF%95%E6%B5%81%E7%A8%8B"><span class="toc-text">Blender 调试流程</span></a></li></ol>
     </div>
   </section>
 
@@ -4335,7 +4349,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/021.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/017.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/010.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/015.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/003.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/016.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/013.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/014.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/011.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/004.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/022.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/006.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/002.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/024.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/018.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/009.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/020.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/025.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/005.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/023.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/019.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/008.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/012.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/001.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/007.webp"];
+  let imgs = ["https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/020.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/017.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/002.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/019.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/025.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/005.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/003.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/004.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/010.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/001.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/013.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/021.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/016.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/007.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/008.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/009.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/011.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/022.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/024.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/018.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/006.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/015.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/014.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/012.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/023.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -4562,7 +4576,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Unknown Island","url":"https://yaelcassini.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/","sameAs":["https://github.com/volantis-x"],"description":"赛博垃圾分离企划"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://yaelcassini.github.io/","name":"Unknown Island"}},{"@type":"ListItem","position":2,"item":{"@id":"https://yaelcassini.github.io/categories/Computer-Graphics/","name":"Computer Graphics"}},{"@type":"ListItem","position":2,"item":{"@id":"https://yaelcassini.github.io/categories/Computer-Graphics/Rendering/","name":"Rendering"}},{"@type":"ListItem","position":3,"item":{"@id":"https://yaelcassini.github.io/2023/10/24/Blender-Source-Code/","name":"Blender-Cycles源码学习（待补充"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Unknown Island","url":"https://yaelcassini.github.io/","keywords":null,"description":"赛博垃圾分离企划","author":{"@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/","description":"赛博垃圾分离企划"},"publisher":{"@type":"Organization","name":"Unknown Island","url":"https://yaelcassini.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://yaelcassini.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Blender-Cycles源码学习（待补充","description":"由于工作需求，需要对齐工程项目中可微渲染中mitsuba的着色模型和blender中美术流程使用的的着色模型，因此最近两日开始阅读Blender中Cycles的源码。","inLanguage":["zh-CN","en","zh-HK","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://yaelcassini.github.io/2023/10/24/Blender-Source-Code/"},"author":{"@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/"},"publisher":{"@type":"Organization","name":"Unknown Island","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://yaelcassini.github.io/2023/10/24/Blender-Source-Code/","wordCount":83,"datePublished":"2023-10-24T08:21:36.000Z","dateModified":"2023-12-20T12:30:18.507Z","articleSection":"Computer Graphics","keywords":"Rendering,Monte Carlo,Path tracing","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Unknown Island","url":"https://yaelcassini.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/","sameAs":["https://github.com/volantis-x"],"description":"赛博垃圾分离企划"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://yaelcassini.github.io/","name":"Unknown Island"}},{"@type":"ListItem","position":2,"item":{"@id":"https://yaelcassini.github.io/categories/Computer-Graphics/","name":"Computer Graphics"}},{"@type":"ListItem","position":2,"item":{"@id":"https://yaelcassini.github.io/categories/Computer-Graphics/Rendering/","name":"Rendering"}},{"@type":"ListItem","position":3,"item":{"@id":"https://yaelcassini.github.io/2023/10/24/Blender-Source-Code/","name":"基于Beckmann分布的Blender-Cycles与Mitsuba高光渲染效果对齐"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Unknown Island","url":"https://yaelcassini.github.io/","keywords":null,"description":"赛博垃圾分离企划","author":{"@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/","description":"赛博垃圾分离企划"},"publisher":{"@type":"Organization","name":"Unknown Island","url":"https://yaelcassini.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://yaelcassini.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"基于Beckmann分布的Blender-Cycles与Mitsuba高光渲染效果对齐","description":"由于工作需求，我们的采集流程中使用的是基于Mitsuba的可微渲染，而采集得到的高光贴图需要在Blender中进行渲染成图，两边的BSDF渲染效果不统一问题困扰了我们许久。因此本文的核心需求是，阅读Blender和Mitsuba的源码，找出其差异，并在源码级别实现在Blender中复现Mitsuba的高光渲染效果。最后本文对Blender源码做了修改和重编译，用新的Blender编译版本实现了该渲染效果对齐的需求。","inLanguage":["zh-CN","en","zh-HK","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://yaelcassini.github.io/2023/10/24/Blender-Source-Code/"},"author":{"@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/"},"publisher":{"@type":"Organization","name":"Unknown Island","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://yaelcassini.github.io/2023/10/24/Blender-Source-Code/","wordCount":209,"datePublished":"2023-10-24T08:21:36.000Z","dateModified":"2023-12-22T03:34:22.538Z","articleSection":"Computer Graphics","keywords":"Rendering,Monte Carlo,Path tracing","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
