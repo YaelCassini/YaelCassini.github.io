@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>Website Logo</title>
+      <link href="/2024/01/05/Website-Logo/"/>
+      <url>/2024/01/05/Website-Logo/</url>
+      
+        <content type="html"><![CDATA[<p>闲来无事，网上找了个参考图使用Adobe Illustrator重新制作了网站的LOGO，特此记录。</p><p>参考图：<br><img src="https://cdn.jsdelivr.net/gh/YaelCassini/MyGraphBed/note/202401051559.png" width="100%" align="middle"></p><p>打开Illustrator，用基本图形描出轮廓线：<br><img src="https://cdn.jsdelivr.net/gh/YaelCassini/MyGraphBed/note/202401051600.png" width="100%" align="middle"></p><p>用形状生成器得到需要的边缘，删除不需要的区域：<br><img src="https://cdn.jsdelivr.net/gh/YaelCassini/MyGraphBed/note/202401051601.png" width="100%" align="middle"></p><p>上色：<br><img src="https://cdn.jsdelivr.net/gh/YaelCassini/MyGraphBed/note/202401051559.png" width="100%" align="middle"></p><p>填上眼睛：<br><img src="https://cdn.jsdelivr.net/gh/YaelCassini/MyGraphBed/note/202401051559.png" width="100%" align="middle"></p><p>完工！<br><img src="https://cdn.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/logo_256.png" width="100%" align="middle"></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Github+Hexo+Volantis个人主页个性化搭建（进阶版）</title>
       <link href="/2024/01/03/Website-Building-Tutotrials-Futher/"/>
       <url>/2024/01/03/Website-Building-Tutotrials-Futher/</url>
