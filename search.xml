@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>OpenGL学习笔记 &amp; OpenGL项目代码整理</title>
+      <link href="/2024/01/19/OpenGL-Learning-Notes/"/>
+      <url>/2024/01/19/OpenGL-Learning-Notes/</url>
+      
+        <content type="html"><![CDATA[<p>本篇记录一些OpenGL的学习笔记以及相关代码。</p><span id="more"></span><p>在大学学习中接触到OpenGL的课程主要有两个：大二上的计算机图形学和大四上的基于GPU的绘制。<br>在学习过程我发现本人边学边忘，不断需要反刍，特此记录。<br>后面也有计划做一个基于OpenGL的简单的自己的渲染器，但这目前只是一个遥遥无期的flag。</p><p>基于GPU的绘制课程作业：</p><div class="tag link"><a class="link-card" title="code" href="hhttps://github.com/YaelCassini/GPUrendering_HW"><div class="left"><img src="https://cdn.jsdelivr.net/gh/YaelCassini/MyGraphBed/icon/github_rgba.png"/></div><div class="right"><p class="text">code</p><p class="url">hhttps://github.com/YaelCassini/GPUrendering_HW</p></div></a></div><div class="tag link"><a class="link-card" title="video" href="https://www.bilibili.com/video/BV1uu411n7y7/"><div class="left"><img src="https://cdn.jsdelivr.net/gh/YaelCassini/MyGraphBed/icon/bilibili_rgb.png"/></div><div class="right"><p class="text">video</p><p class="url">https://www.bilibili.com/video/BV1uu411n7y7/</p></div></a></div><p>基于GPU的绘制课程大程：</p><div class="tag link"><a class="link-card" title="code" href="https://github.com/YaelCassini/Cloth_Real-Time-Rendering.git"><div class="left"><img src="https://cdn.jsdelivr.net/gh/YaelCassini/MyGraphBed/icon/github_rgba.png"/></div><div class="right"><p class="text">code</p><p class="url">https://github.com/YaelCassini/Cloth_Real-Time-Rendering.git</p></div></a></div><div class="tag link"><a class="link-card" title="video" href="https://www.bilibili.com/video/BV175411o7t1/"><div class="left"><img src="https://cdn.jsdelivr.net/gh/YaelCassini/MyGraphBed/icon/bilibili_rgb.png"/></div><div class="right"><p class="text">video</p><p class="url">https://www.bilibili.com/video/BV175411o7t1/</p></div></a></div><h3 id="OpenGL常用库"><a href="#OpenGL常用库" class="headerlink" title="OpenGL常用库"></a>OpenGL常用库</h3><img src="https://cdn.jsdelivr.net/gh/YaelCassini/MyGraphBed/note/202401191908.png" title="OpenGL常用库" alt="OpenGL常用库" width="50%"><p>对于顶点着色器，输入有三类：<br>1.uniform参数，此类参数在一次绘制中，所有顶点着色器的实例都相同，且为application传入引擎数据。<br>2.attribute参数，此类参数不同顶点着色器的实例不同，单同一顶点着色器在不同绘制中都相同，且为application传入引擎数据。<br>3.build－in参数，此类参数为opengl内建参数，可以看成是opengl的绘制上下文信息。<br>顶点着色器的输出有两类：<br>1.build－in参数，顶点着色器通过这些内建参数与控制后续计算框架的计算。<br>2.varying参数，顶点着色器通过这些参数把数据传递给片段着色器。<br> <br>对于片段着色器，输入有两类：<br>1.build－in参数，此类参数为opengl内建参数，可以看成是opengl的绘制上下文信息。<br>2.varying参数，顶点着色器通过这些参数把数据传递给片段着色器。<br>输出只有一类：<br>1.build－in参数，片段着色器通过这些内建参数与控制后续计算框架的计算。</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Computer Graphics </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>PBRT-Notes</title>
       <link href="/2024/01/11/PBRT-Notes/"/>
       <url>/2024/01/11/PBRT-Notes/</url>
