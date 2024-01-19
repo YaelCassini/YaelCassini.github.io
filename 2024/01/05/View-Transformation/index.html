@@ -42,11 +42,11 @@
 <meta property="og:title" content="View Transformation">
 <meta property="og:url" content="https://yaelcassini.github.io/2024/01/05/View-Transformation/index.html">
 <meta property="og:site_name" content="Unknown Island">
-<meta property="og:description" content="Blender中相机平移旋转参数和相机变化矩阵的相互转换计算 渲染中的坐标变换：    https:&#x2F;&#x2F;blog.csdn.net&#x2F;sinat_34870723&#x2F;article&#x2F;details&#x2F;113925012    https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;115395322">
+<meta property="og:description" content="Blender中相机平移旋转参数和相机变化矩阵的相互转换计算首先在讨论旋转矩阵的时候一定先区分手系，左手系和右手系的旋转矩阵是不一样的，常见的软件和框架使用的手系及默认朝上的坐标轴区别如下图（图源网络）：  渲染中的坐标变换：    https:&#x2F;&#x2F;blog.csdn.net&#x2F;sinat_34870723&#x2F;article&#x2F;details&#x2F;113925012    https:&#x2F;&#x2F;zhuanlan.">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2024-01-05T12:28:32.000Z">
-<meta property="article:modified_time" content="2024-01-05T12:28:54.929Z">
+<meta property="article:modified_time" content="2024-01-18T07:50:37.784Z">
 <meta property="article:author" content="Cassini">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png">
@@ -1973,7 +1973,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: false,
     cdn: {"js":{"app":"/js/app.7a2c825e.js","parallax":"/js/plugins/parallax.8bf0ab10.js","rightMenu":"/js/plugins/rightMenu.d9437285.js","rightMenus":"/js/plugins/rightMenus.80d861b1.js","sites":"/js/plugins/tags/sites.76bf19b8.js","friends":"/js/plugins/tags/friends.f372da57.js","contributors":"/js/plugins/tags/contributors.aec80453.js","search":"/js/search/hexo.85946653.js"},"css":{"style":"/css/style.5b752725.css"}},
     default: {"avatar":"https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/avatar/round/3442075.svg","link":"https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/link/8f277b4ee0ecd.svg","cover":"https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/cover/76b86c0226ffd.svg","image":"https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg"},
-    lastupdate: new Date(1704471039034),
+    lastupdate: new Date(1705585274152),
     sidebar: {
       for_page: ["blogger","category","tagcloud"],
       for_post: ["blogger","toc"],
@@ -2862,7 +2862,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <h3 id="Blender中相机平移旋转参数和相机变化矩阵的相互转换计算"><a href="#Blender中相机平移旋转参数和相机变化矩阵的相互转换计算" class="headerlink" title="Blender中相机平移旋转参数和相机变化矩阵的相互转换计算"></a>Blender中相机平移旋转参数和相机变化矩阵的相互转换计算</h3><ol start="18">
+    <h3 id="Blender中相机平移旋转参数和相机变化矩阵的相互转换计算"><a href="#Blender中相机平移旋转参数和相机变化矩阵的相互转换计算" class="headerlink" title="Blender中相机平移旋转参数和相机变化矩阵的相互转换计算"></a>Blender中相机平移旋转参数和相机变化矩阵的相互转换计算</h3><p>首先在讨论旋转矩阵的时候一定先区分手系，左手系和右手系的旋转矩阵是不一样的，常见的软件和框架使用的手系及默认朝上的坐标轴区别如下图（图源网络）：<br><img src="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/note/202401181527.png" title="不同画幅对比" alt="不同NDF曲线对比" width="50%"></p>
+<ol start="18">
 <li>渲染中的坐标变换：</li>
 </ol>
 <ul>
@@ -2875,7 +2876,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </ul>
 </li>
 </ul>
-
+<h3 id="绕坐标轴旋转"><a href="#绕坐标轴旋转" class="headerlink" title="绕坐标轴旋转"></a>绕坐标轴旋转</h3><h3 id="罗德里格斯角旋转公式"><a href="#罗德里格斯角旋转公式" class="headerlink" title="罗德里格斯角旋转公式"></a>罗德里格斯角旋转公式</h3><h3 id="Look-Up-Transformation"><a href="#Look-Up-Transformation" class="headerlink" title="Look-Up Transformation"></a>Look-Up Transformation</h3><h3 id="法线的变换"><a href="#法线的变换" class="headerlink" title="法线的变换"></a>法线的变换</h3>
   </div>
   
   
@@ -2916,10 +2917,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2024-01-05T20:28:54+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2024-01-18T15:50:37+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2024年1月5日</p>
+    <p>更新于：2024年1月18日</p>
   </a>
 </div>
 
@@ -2994,6 +2995,12 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   
     <div class="prev-next">
+      
+        <a class='prev' href='/2024/01/11/PBRT-Notes/'>
+          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>PBRT-Notes</p>
+          <p class='content'>Rendering is the process of producing an image from the description of a 3D scene.好精准的描述
+</p>
+        </a>
       
       
         <a class='next' href='/2024/01/05/Website-Logo/'>
@@ -3132,7 +3139,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Blender%E4%B8%AD%E7%9B%B8%E6%9C%BA%E5%B9%B3%E7%A7%BB%E6%97%8B%E8%BD%AC%E5%8F%82%E6%95%B0%E5%92%8C%E7%9B%B8%E6%9C%BA%E5%8F%98%E5%8C%96%E7%9F%A9%E9%98%B5%E7%9A%84%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2%E8%AE%A1%E7%AE%97"><span class="toc-text">Blender中相机平移旋转参数和相机变化矩阵的相互转换计算</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Blender%E4%B8%AD%E7%9B%B8%E6%9C%BA%E5%B9%B3%E7%A7%BB%E6%97%8B%E8%BD%AC%E5%8F%82%E6%95%B0%E5%92%8C%E7%9B%B8%E6%9C%BA%E5%8F%98%E5%8C%96%E7%9F%A9%E9%98%B5%E7%9A%84%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2%E8%AE%A1%E7%AE%97"><span class="toc-text">Blender中相机平移旋转参数和相机变化矩阵的相互转换计算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%95%E5%9D%90%E6%A0%87%E8%BD%B4%E6%97%8B%E8%BD%AC"><span class="toc-text">绕坐标轴旋转</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%97%E5%BE%B7%E9%87%8C%E6%A0%BC%E6%96%AF%E8%A7%92%E6%97%8B%E8%BD%AC%E5%85%AC%E5%BC%8F"><span class="toc-text">罗德里格斯角旋转公式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Look-Up-Transformation"><span class="toc-text">Look-Up Transformation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%95%E7%BA%BF%E7%9A%84%E5%8F%98%E6%8D%A2"><span class="toc-text">法线的变换</span></a></li></ol>
     </div>
   </section>
 
@@ -4192,7 +4199,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/002.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/025.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/017.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/008.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/013.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/024.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/020.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/019.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/023.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/012.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/022.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/009.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/015.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/003.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/016.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/010.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/004.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/007.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/001.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/011.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/014.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/021.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/018.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/005.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/006.webp"];
+  let imgs = ["https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/019.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/023.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/025.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/002.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/006.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/024.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/020.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/005.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/017.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/013.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/008.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/018.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/011.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/022.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/010.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/003.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/016.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/021.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/004.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/009.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/007.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/001.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/012.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/014.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/015.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -4419,7 +4426,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Unknown Island","url":"https://yaelcassini.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/","sameAs":["https://github.com/volantis-x"],"description":"赛博垃圾分离企划"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://yaelcassini.github.io/","name":"Unknown Island"}},{"@type":"ListItem","position":3,"item":{"@id":"https://yaelcassini.github.io/2024/01/05/View-Transformation/","name":"View Transformation"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Unknown Island","url":"https://yaelcassini.github.io/","keywords":null,"description":"赛博垃圾分离企划","author":{"@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/","description":"赛博垃圾分离企划"},"publisher":{"@type":"Organization","name":"Unknown Island","url":"https://yaelcassini.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://yaelcassini.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"View Transformation","description":"赛博垃圾分离企划","inLanguage":["zh-CN","en","zh-HK","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://yaelcassini.github.io/2024/01/05/View-Transformation/"},"author":{"@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/"},"publisher":{"@type":"Organization","name":"Unknown Island","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://yaelcassini.github.io/2024/01/05/View-Transformation/","wordCount":0,"datePublished":"2024-01-05T12:28:32.000Z","dateModified":"2024-01-05T12:28:54.929Z","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Unknown Island","url":"https://yaelcassini.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/","sameAs":["https://github.com/volantis-x"],"description":"赛博垃圾分离企划"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://yaelcassini.github.io/","name":"Unknown Island"}},{"@type":"ListItem","position":3,"item":{"@id":"https://yaelcassini.github.io/2024/01/05/View-Transformation/","name":"View Transformation"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Unknown Island","url":"https://yaelcassini.github.io/","keywords":null,"description":"赛博垃圾分离企划","author":{"@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/","description":"赛博垃圾分离企划"},"publisher":{"@type":"Organization","name":"Unknown Island","url":"https://yaelcassini.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://yaelcassini.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"View Transformation","description":"赛博垃圾分离企划","inLanguage":["zh-CN","en","zh-HK","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://yaelcassini.github.io/2024/01/05/View-Transformation/"},"author":{"@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/"},"publisher":{"@type":"Organization","name":"Unknown Island","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://yaelcassini.github.io/2024/01/05/View-Transformation/","wordCount":0,"datePublished":"2024-01-05T12:28:32.000Z","dateModified":"2024-01-18T07:50:37.784Z","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
