@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <!-- SEO相关 -->
   
-  <link rel="canonical" href="https://yaelcassini.github.io/2024/01/24/blender4-0-principled-bsdf-upgrade/"/>
+  <link rel="canonical" href="https://yaelcassini.github.io/2024/03/18/gaussianshader-environment/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -34,23 +34,20 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>Blender4.0升级中遇到的Principled BSDF效果不对应问题 - Unknown Island</title>
-  <meta name="keywords" content="Blender,Rendering,BSDF,null">
-  <meta desc name="description" content="项目升级Blender4.0后发现Principled BSDF整个重构了，改动非常大，虽然使用Blender4.0打开之前版本的Blender文件时，会有一个自动转换的过程，但是该过程并没有完全达到相同的效果，因此对改动前后的Principled bsdf做了学习和研究，以期望达到之前做的资产在4.0中也可以经... - Cassini - Unknown Island">
+  <title>GaussianShader Environment - Unknown Island</title>
+  <meta name="keywords" content="null">
+  <meta desc name="description" content="赛博垃圾分离企划 - Cassini - Unknown Island">
   
 <meta property="og:type" content="article">
-<meta property="og:title" content="Blender4.0升级中遇到的Principled BSDF效果不对应问题">
-<meta property="og:url" content="https://yaelcassini.github.io/2024/01/24/Blender4-0-Principled-BSDF-Upgrade/index.html">
+<meta property="og:title" content="GaussianShader Environment">
+<meta property="og:url" content="https://yaelcassini.github.io/2024/03/18/GaussianShader-Environment/index.html">
 <meta property="og:site_name" content="Unknown Island">
-<meta property="og:description" content="项目升级Blender4.0后发现Principled BSDF整个重构了，改动非常大，虽然使用Blender4.0打开之前版本的Blender文件时，会有一个自动转换的过程，但是该过程并没有完全达到相同的效果，因此对改动前后的Principled bsdf做了学习和研究，以期望达到之前做的资产在4.0中也可以经过转换后实现和之前差不多的效果的需求。">
+<meta property="og:description" content="最近由于科研需求，在学习3D Gaussian Splatting相关的内容，并有尝试跑源码，本来是在Windows系统下跑了Gaussian Splatting的源码，后续想跑Gaussian Shader的时候，发现依赖里很多包都是只有linux有的，原文作者的环境应该是在Linux下的，因此在自己的设备上装了Linux双系统，在实践的过程中遇到了诸多问题，故在此记录，望能帮助有缘人。（感谢我">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-<meta property="article:published_time" content="2024-01-24T13:20:22.000Z">
-<meta property="article:modified_time" content="2024-01-26T07:35:07.024Z">
+<meta property="article:published_time" content="2024-03-18T14:29:03.000Z">
+<meta property="article:modified_time" content="2024-03-18T15:43:00.118Z">
 <meta property="article:author" content="Cassini">
-<meta property="article:tag" content="Blender">
-<meta property="article:tag" content="Rendering">
-<meta property="article:tag" content="BSDF">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png">
   <style>
@@ -1976,7 +1973,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: false,
     cdn: {"js":{"app":"/js/app.7a2c825e.js","parallax":"/js/plugins/parallax.8bf0ab10.js","rightMenu":"/js/plugins/rightMenu.d9437285.js","rightMenus":"/js/plugins/rightMenus.80d861b1.js","sites":"/js/plugins/tags/sites.76bf19b8.js","friends":"/js/plugins/tags/friends.f372da57.js","contributors":"/js/plugins/tags/contributors.aec80453.js","search":"/js/search/hexo.85946653.js"},"css":{"style":"/css/style.5b752725.css"}},
     default: {"avatar":"https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/avatar/round/3442075.svg","link":"https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/link/8f277b4ee0ecd.svg","cover":"https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/cover/76b86c0226ffd.svg","image":"https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg"},
-    lastupdate: new Date(1706262758605),
+    lastupdate: new Date(1710776588870),
     sidebar: {
       for_page: ["blogger","category","tagcloud"],
       for_post: ["blogger","toc"],
@@ -2785,7 +2782,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
 <div id="l_main" class=''>
   <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow floatable blur article-type-post" id="post" itemscope itemprop="blogPost">
-  <link itemprop="mainEntityOfPage" href="https://yaelcassini.github.io/2024/01/24/Blender4-0-Principled-BSDF-Upgrade/">
+  <link itemprop="mainEntityOfPage" href="https://yaelcassini.github.io/2024/03/18/GaussianShader-Environment/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Unknown Island">
   </span>
@@ -2806,7 +2803,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       <h1 class="title" itemprop="name headline">
-        Blender4.0升级中遇到的Principled BSDF效果不对应问题
+        GaussianShader Environment
       </h1>
       <div class='new-meta-box'>
         
@@ -2822,10 +2819,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
         
           
-            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2024-01-24T21:20:22+08:00">
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2024-03-18T22:29:03+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2024年1月24日</p>
+    <p>发布于：2024年3月18日</p>
   </a>
 </div>
 
@@ -2833,20 +2830,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
             
-  <div class='new-meta-item category'>
-    <i class="fa-solid fa-folder-open fa-fw" aria-hidden="true"></i>
-    <a class="category-link" href="/categories/Computer-Graphics/">Computer Graphics</a><span class="sep"></span><a class="category-link" href="/categories/Computer-Graphics/Rendering/">Rendering</a>
-    
-      <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-        <a href="/categories/Computer-Graphics/" itemprop="url"><span itemprop="name">Computer Graphics</span></a>
-      </span>
-    
-      <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-        <a href="/categories/Computer-Graphics/Rendering/" itemprop="url"><span itemprop="name">Rendering</span></a>
-      </span>
-    
-  </div>
-
 
           
         
@@ -2879,43 +2862,65 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <p>项目升级Blender4.0后发现Principled BSDF整个重构了，改动非常大，虽然使用Blender4.0打开之前版本的Blender文件时，会有一个自动转换的过程，但是该过程并没有完全达到相同的效果，因此对改动前后的Principled bsdf做了学习和研究，以期望达到之前做的资产在4.0中也可以经过转换后实现和之前差不多的效果的需求。</p>
-<span id="more"></span>
-
-<h3 id="学习资料"><a href="#学习资料" class="headerlink" title="学习资料"></a>学习资料</h3><p>过程中阅读了很多相关资料，又学了一遍Disney Principled BSDF，学习的相关资料如下：</p>
+    <p>最近由于科研需求，在学习3D Gaussian Splatting相关的内容，并有尝试跑源码，本来是在Windows系统下跑了Gaussian Splatting的源码，后续想跑Gaussian Shader的时候，发现依赖里很多包都是只有linux有的，原文作者的环境应该是在Linux下的，因此在自己的设备上装了Linux双系统，在实践的过程中遇到了诸多问题，故在此记录，望能帮助有缘人。（感谢我的同门唐同学对我的指导的帮助。）</p>
+<h3 id="3D-Gaussian-Splatting环境配置过程（Windows下）"><a href="#3D-Gaussian-Splatting环境配置过程（Windows下）" class="headerlink" title="3D Gaussian Splatting环境配置过程（Windows下）"></a>3D Gaussian Splatting环境配置过程（Windows下）</h3><p>3D Gaussian Splatting的环境非常好配置，因为所需的依赖非常少且干净，只需要照着下面提供的参考资料视频逐步操作即可。我的电脑配置是：RTX 4090 + CUDA 11.8，environment.yml中给定的环境是py3.7 + pytorch1.12.0-cuda11.6，一开始其实cuda版本没有对应，但是跑代码本身没有问题，GPU调用也非常正常，CUDA toolkit应该是在编译时才会使用。<br>后来重新装了一遍cuda11.6，对于cudnn库，我看到conda环境中的pytorch是： py3.7_cuda11.6_cudnn8_0，因此其对应的cudnn应该是8.0，但是官网的cudnn只有8.2.0及以上有对应cuda11.6的版本，因此我安装的是cudnn8.6.0。</p>
+<ol>
+<li>3D GS Source Code: <a target="_blank" rel="noopener" href="https://github.com/graphdeco-inria/gaussian-splatting">https://github.com/graphdeco-inria/gaussian-splatting</a></li>
+<li>Windows环境配置参考资料:</li>
+</ol>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/60977923%EF%BC%8C%E6%AF%9B%E6%98%9F%E4%BA%91%E8%80%81%E5%B8%88%E5%9C%A8%E6%88%91%E5%AD%A6%E4%B9%A0%E7%9A%84%E8%B7%AF%E4%B8%8A%E7%9C%9F%E7%9A%84%E7%A7%B0%E5%BE%97%E4%B8%8A%E5%85%88%E7%94%9F%E5%8D%83%E5%8F%A4%E3%80%82">https://zhuanlan.zhihu.com/p/60977923，毛星云老师在我学习的路上真的称得上先生千古。</a></li>
-<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/57771965">https://zhuanlan.zhihu.com/p/57771965</a></li>
-<li><a target="_blank" rel="noopener" href="https://wiki.blender.org/wiki/Reference/Release_Notes/4.0/Shading">https://wiki.blender.org/wiki/Reference/Release_Notes/4.0/Shading</a></li>
-<li><a target="_blank" rel="noopener" href="https://docs.blender.org/manual/zh-hans/3.6/render/shader_nodes/shader/principled.html">https://docs.blender.org/manual/zh-hans/3.6/render/shader_nodes/shader/principled.html</a></li>
-<li><a target="_blank" rel="noopener" href="https://docs.blender.org/manual/en/4.0/render/shader_nodes/shader/principled.html">https://docs.blender.org/manual/en/4.0/render/shader_nodes/shader/principled.html</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=UXtuigy_wYc">https://www.youtube.com/watch?v=UXtuigy_wYc</a> </li>
+<li><a target="_blank" rel="noopener" href="https://github.com/jonstephens85/gaussian-splatting-Windows">https://github.com/jonstephens85/gaussian-splatting-Windows</a></li>
 </ul>
-<h3 id="Blender打开旧资产自动转换对应关系"><a href="#Blender打开旧资产自动转换对应关系" class="headerlink" title="Blender打开旧资产自动转换对应关系"></a>Blender打开旧资产自动转换对应关系</h3><p>我用我们项目中的工程文件进行了测试，用Blender4.0打开Blender3.6的文件（Blender会进行一些自动转换），得到的Principled BSDF前后的参数对应关系如下表：<br><img src="https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/note/202401251154.png" title="Principled BSDF前后的参数对应关系" alt="Principled BSDF前后的参数对应关系" width="80%"></p>
-<h3 id="参数区别总结"><a href="#参数区别总结" class="headerlink" title="参数区别总结"></a>参数区别总结</h3><ol>
-<li>3.6 Base Color 和Subsurface两个颜色输入，Subsurface是浮点数输入。4.0 只有一个Base Color，自动添加了Mix Color节点，混合之前的两个输入作为Base Color的输入，该节点混合的Factor为原来的Subsurface输入（Clamp Factor）。</li>
-<li>Roughness和Normal连接不变。</li>
-<li>3.6的Subsurface除了作为mix factor还会连接在4.0的Subsurface模块的Scale输入上。</li>
-<li>3.6的Specular输入在4.0连接在Specular模块的IOR Level上。</li>
-<li>3.6Sheen的值到4.0会有变化。</li>
+<p>从数据处理到训练，查看结果的过程中用到的指令集：</p>
+<ul>
+<li>ffmpeg -i .&#x2F;David.mov -qscale:v 1 -qmin 1 -vf fps&#x3D;10 %04d.jpg</li>
+<li>python convert.py -s C:\LPY\GassianSplatting\dataset_self\David01</li>
+<li>python train.py -s C:\LPY\GassianSplatting\dataset_self\DavidWide01</li>
+<li>SIBR_gaussianViewer_app.exe -m C:\LPY\GassianSplatting\gaussian-splatting\output\120f6889-4</li>
+</ul>
+<h3 id="Gaussian-Shader环境配置，及Ubuntu-windows双系统诸多排雷记录"><a href="#Gaussian-Shader环境配置，及Ubuntu-windows双系统诸多排雷记录" class="headerlink" title="Gaussian Shader环境配置，及Ubuntu+windows双系统诸多排雷记录"></a>Gaussian Shader环境配置，及Ubuntu+windows双系统诸多排雷记录</h3><p>这部分光前前后后各种卸载重装解决问题就消耗了我四天的时间，期间多次情绪崩溃，好在最后终于得以解决。</p>
+<h4 id="部分submodule及其安装"><a href="#部分submodule及其安装" class="headerlink" title="部分submodule及其安装"></a>部分submodule及其安装</h4><p>GaussianShader的原作者似乎没有清理环境文件，感觉是linux下直接导出的，因此不确定有一些依赖是否没有用到，这部分时间原因不再深究，但是该项目用到了一些其他的项目，而这些是无法直接用conda安装找到的，包括：</p>
+<ul>
+<li>diff-gaussian-rasterization</li>
+<li>simple-knn</li>
+<li>nvdiffrast</li>
+<li>cutlass<br>其中，前两个在clone仓库时就会作为submodule下载下来，只需要cd到其路径下，“pip install .”即可。nvdiffrast和cutlass需要自己去github上找到并下载，再使用“pip install .”安装。另外，cutlass我没有找到依赖中显示的0.0.1版本，最早的只找到了0.1.0。<h4 id="WSL尝试"><a href="#WSL尝试" class="headerlink" title="WSL尝试"></a>WSL尝试</h4>试图跑GaussianShader的时候发现它的代码是在Linux环境下的，有些包只有在linux下才有。一开始使用了WSL（Windows下的Linux，后来我觉得非常坑弃用了），但是发现在使用pip安装diff-gaussian-rasterization的时候会报错，具体错误为：<br>（这里忘记记录了，但总之报错的大概含义是找不到CUDA）<br>但是该报错中的环境变量路径是正确的CUDA路径，检查后发现“nvcc -V”也无法访问到cuda，尝试在~&#x2F;.bashrc中添加了环境变量，仍然没有解决问题，因此我考虑到有可能是cuda是安装的windows版本有关系，我上官网进行了查询，发现WSL有一个单独的CUDA版本。因此我换用了WSL专用的CUDA，这次nvcc -V可以正常访问，但是diff-gaussian-rasterization仍然不能安装。这个我感觉应该是wsl自己的锅了，后续请教了一下我的同门，最后得出的结论是，WSL下的CUDA有一些文件与linux版本放的位置不同，导致程序在链接的时候找不到这些文件，不能跑通，通过一个修改可以使得程度跑通：</li>
+</ul>
+<p>但是这个发现也令我两天之后终于痛定思痛地放弃了WSL，这玩意太弱智了。。。。</p>
+<h3 id="投身Windows-Ubuntu双系统的怀抱"><a href="#投身Windows-Ubuntu双系统的怀抱" class="headerlink" title="投身Windows+Ubuntu双系统的怀抱"></a>投身Windows+Ubuntu双系统的怀抱</h3><ol>
+<li>关于Ubuntu镜像文件制作，这里就是找了网上常见的教程，但是有一个很坑的点，不知道为什么我的balenaEtcher烧了几百遍就是每次烧Ubuntu20.04都失败，但是烧Ubuntu22.04就能成功，后来我换用了rufus制作镜像系统安装盘。</li>
+<li>在装Ubuntu的时候首先的考虑是：不能用Ubuntu22.04，因为一开始看到GaussianShader里面的依赖对应cuda版本是11.1，但是CUDA toolkit 11.1没有Ubuntu22对应版本。坑的要死，谁懂那种好不容易装好了Ubuntu之后发现没有对应cuda版本的死亡感觉。</li>
+<li>试图换用Ubuntu20.04，发现cuda11.1版本太低，在4090上会有问题（真的呕吐了），因此我直接cuda11.1限制了，把依赖里面的pytorch全部注释掉，回头自己装。</li>
+<li>然后我试图用回Ubuntu22.04，配置过程如下：</li>
 </ol>
-<h3 id="查看官方Release-Notes和OSL-Shader后发现的一些区别"><a href="#查看官方Release-Notes和OSL-Shader后发现的一些区别" class="headerlink" title="查看官方Release Notes和OSL Shader后发现的一些区别"></a>查看官方Release Notes和OSL Shader后发现的一些区别</h3><ol>
-<li>3.6的bssrdf传入的参数直接是Roughness，4.0传入的是r2&#x3D; Roughness*Roughness。</li>
-<li>Blender3.6中的Specular会参与到IOR的计算中，显式的IOR调节几乎没有效果，而Blender4.0中自动转换链接的IOR Level是一个线性放缩高光的接口。</li>
-<li>Blender3.6的Coat和Sheen图层几乎没有作用效果，但是Blender4.0重构了BSDF的分层设计，这两种效果现在也都比较明显。</li>
+<ul>
+<li>先装Ubuntu虚拟机。 Ubuntu22.04</li>
+<li>检查nvidia-smi，能调用到显卡。</li>
+<li>装Clash梯子。</li>
+<li>装anaconda。</li>
+<li>装git</li>
+<li>git clone</li>
+<li>下载example data并放在对的位置</li>
+<li>把环境里面的子模块以及cutlass还有pytorch（由于cuda11.1在4090上有bug）注释掉，然后conda env create</li>
+<li>安装cuda toolkit 11.8，报错，出现的问题：<a target="_blank" rel="noopener" href="https://forums.developer.nvidia.com/t/cant-install-cuda-11-8-on-ubuntu-22-04-lts/263227">https://forums.developer.nvidia.com/t/cant-install-cuda-11-8-on-ubuntu-22-04-lts/263227</a></li>
+<li>尝试重装nvidia-driver，无果，根本看不懂报错，是我太菜了。</li>
+</ul>
+<ol start="4">
+<li>最终因为一些稳定性的考虑，还是使用了Ubuntu20.04版本。配置过程如下：</li>
 </ol>
-<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><ol>
-<li>如果要和之前的效果尽量对齐，可以尝试手动把Sheen和Coat值调为0。</li>
-<li>高光方面，如果要物理意义对齐，应该要手动通过Speuclar值计算IOR并连接到4.0的IOR节点，然后将IOR Level置为0.5，经过测试，这样手动转换之后确实会让效果变好，但是由于3.6到4.0的跨越本来就比较大，修改后也无法实现完全对齐，且效果差别不大。转换公式： $ IOR &#x3D; \frac{2}{1-\sqrt{0.08*Specular}}-1 $。这里有一个0.08的系数是因为Blender3.6中就是把f0进行了这样的一个映射。</li>
-<li>Blender4.0传入的Roughness参数是经过平方计算后的，而Blender3.6传入的则是原始Roughness，但是经过测试后，发现该值对Roughness的影响并不大，考虑到Blender4.0的release notes里面写设计更偏向于基于物理的真实，因此我觉得这个参数也不需要手动修改。</li>
-</ol>
-<h3 id="这次主要学习到和梳理清楚的新知识有："><a href="#这次主要学习到和梳理清楚的新知识有：" class="headerlink" title="这次主要学习到和梳理清楚的新知识有："></a>这次主要学习到和梳理清楚的新知识有：</h3><ol>
-<li>BRDF材质图像切片的空间原理（Slice Space）</li>
-<li>接触到掠射逆反射的概念</li>
-<li>Metallic这个参数是用来控制材质的金属度的，它的原理是对金属材质和非金属材质两种不同的计算方式得到的结果以该值为权重进行线性插值。</li>
-<li>PBR在工业界有两种工作流程，在金属&#x2F;粗糙度工作流程中，只有一张BaseColor贴图，里面同时包含了电介质的漫反射颜色和金属的F0两种数据，而Metallic贴图相当于一张Mask，控制了哪些地方把它当成金属，哪些地方当成电介质计算。</li>
-<li>Blender3.6中可以显式地控制Specular值，原理为“介电镜面反射量。指定面向（沿法线） 反射率在最常见的 0 - 8% 范围内。”，bsdf计算中通过该值计算得到ior。Blender4.0中取消了原来的Specular接口，而更物理地直接使用IOR控制，因此我在材质节点中手动增加节点组从原来的F0值计算得到ior。</li>
-<li>Blender4.0对Principled BSDF进行了重新的分层建模，不同层之间有并列关系也有覆盖关系：<img src="https://www.blender.org/wp-content/uploads/2023/10/principled_bsdf_blender_4_0.png" title="Blender4.0的Principled BSDF分层设计" alt="Blender4.0的Principled BSDF分层设计" width="80%"></li>
-</ol>
+<ul>
+<li>换用Ubuntu 20.04 Desktop。 安装的时候没有让ubuntu安装显卡驱动。安装的时候选择与Windows并存。这里也导致我重装了一两次Ubuntu，因为之前按照网上的教程单独分区，总有些区用着用着就报low disk space，但是这样直接选共存，会所有的都在同一个连续的储存中，不会出现某一部分空间不足。</li>
+<li>直接安装cuda11.8，会自动安装520版本的显卡驱动 nvidia-smi可以访问，nvcc -V需要自己配置环境变量- </li>
+<li>anaconda用最新版不行，无论如何配置环境变量都找不到conda，最后用的是2023.03</li>
+<li>clash最新版1.3.8不行，直接就是一个安好了打不开，死活打不开。最后用的是clash1.3.6。</li>
+<li>安装ibus中文输入法，不行，找不到拼音输入，重启解决问题</li>
+<li>重启的时候发现ubuntu不能重启，解决方案如<a target="_blank" rel="noopener" href="https://www.cnblogs.com/masbay/p/10718514.html">https://www.cnblogs.com/masbay/p/10718514.html</a></li>
+<li>conda环境安装时，pip那些包装不上 每次都。。。进行一个断网，conda的都装上了，因此把pip安装的依赖复制出来做成txt，使用pip install -r requirements.txt命令单独安装。后来发现就是因为open3D和scipy太大了，老是会响应时间太长然后直接中断了然后断网。</li>
+<li>关于挂梯子代理的问题，请教了同门之后发现控制台和GUI是两个分开的代理，如果只用GUI的clash开启代理，控制台是访问不到的，因此最后使用了。</li>
+<li>设置了pip install some-package –default-timeout&#x3D;100，增大pip的响应时间，最终终于把open3d下载下来了。</li>
+<li>注意有一个问题是，这几个submodule的安装似乎是依赖于pytorch版本的，总之每次换了pytorch版本都要uninstall再install重新来一次。</li>
+</ul>
 
   </div>
   
@@ -2938,7 +2943,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
                 
               
                 
-                  <p>本文永久链接是：<a href="https://yaelcassini.github.io/2024/01/24/Blender4-0-Principled-BSDF-Upgrade/">https://yaelcassini.github.io/2024/01/24/Blender4-0-Principled-BSDF-Upgrade/</a></p>
+                  <p>本文永久链接是：<a href="https://yaelcassini.github.io/2024/03/18/GaussianShader-Environment/">https://yaelcassini.github.io/2024/03/18/GaussianShader-Environment/</a></p>
                 
               
             </blockquote>
@@ -2957,10 +2962,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2024-01-26T15:35:07+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2024-03-18T23:43:00+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2024年1月26日</p>
+    <p>更新于：2024年3月18日</p>
   </a>
 </div>
 
@@ -2968,10 +2973,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         
           
-  
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Blender/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>Blender</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Rendering/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>Rendering</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/BSDF/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>BSDF</p></a></div>
-  <span hidden itemprop="keywords">Blender Rendering BSDF</span>
-
 
         
       
@@ -2983,7 +2984,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yaelcassini.github.io/2024/01/24/Blender4-0-Principled-BSDF-Upgrade/&title=Blender4.0升级中遇到的Principled BSDF效果不对应问题 - Unknown Island&summary=项目升级Blender4.0后发现Principled BSDF整个重构了，改动非常大，虽然使用Blender4.0打开之前版本的Blender文件时，会有一个自动转换的过程，但是该过程并没有完全达到相同的效果，因此对改动前后的Principled bsdf做了学习和研究，以期望达到之前做的资产在4.0中也可以经过转换后实现和之前差不多的效果的需求。"
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yaelcassini.github.io/2024/03/18/GaussianShader-Environment/&title=GaussianShader Environment - Unknown Island&summary="
           
           >
           
@@ -2995,7 +2996,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://yaelcassini.github.io/2024/01/24/Blender4-0-Principled-BSDF-Upgrade/&title=Blender4.0升级中遇到的Principled BSDF效果不对应问题 - Unknown Island&summary=项目升级Blender4.0后发现Principled BSDF整个重构了，改动非常大，虽然使用Blender4.0打开之前版本的Blender文件时，会有一个自动转换的过程，但是该过程并没有完全达到相同的效果，因此对改动前后的Principled bsdf做了学习和研究，以期望达到之前做的资产在4.0中也可以经过转换后实现和之前差不多的效果的需求。"
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://yaelcassini.github.io/2024/03/18/GaussianShader-Environment/&title=GaussianShader Environment - Unknown Island&summary="
           
           >
           
@@ -3007,7 +3008,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=https://yaelcassini.github.io/2024/01/24/Blender4-0-Principled-BSDF-Upgrade/&title=Blender4.0升级中遇到的Principled BSDF效果不对应问题 - Unknown Island&summary=项目升级Blender4.0后发现Principled BSDF整个重构了，改动非常大，虽然使用Blender4.0打开之前版本的Blender文件时，会有一个自动转换的过程，但是该过程并没有完全达到相同的效果，因此对改动前后的Principled bsdf做了学习和研究，以期望达到之前做的资产在4.0中也可以经过转换后实现和之前差不多的效果的需求。"
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://yaelcassini.github.io/2024/03/18/GaussianShader-Environment/&title=GaussianShader Environment - Unknown Island&summary="
           
           >
           
@@ -3041,12 +3042,15 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class="prev-next">
       
       
-        <a class='next' href='/2024/01/19/OpenGL-Learning-Notes/'>
-          <p class='title'>OpenGL学习笔记 & OpenGL项目代码整理<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>本篇记录一些OpenGL的学习笔记以及相关代码。
+        <a class='next' href='/2024/02/26/Gaussian-Splatting-Notes/'>
+          <p class='title'>2024年3月18日<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>Source Code:
 
+https://github.com/graphdeco-inria/gaussian-splatting
 
-在大学学习中接触到OpenGL的课程主要有两个：大二上的计算机图形学和大四上的基于GPU的绘制。在学习过程我发现本人边学边忘，不断需要反刍，...</p>
+需要展开的名词：
+
+Structure-from-Mot...</p>
         </a>
       
     </div>
@@ -3062,7 +3066,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <article class="post white-box shadow floatable blur" id="comments">
     <span hidden>
-      <meta itemprop="discussionUrl" content="/2024/01/24/Blender4-0-Principled-BSDF-Upgrade/index.html#comments">
+      <meta itemprop="discussionUrl" content="/2024/03/18/GaussianShader-Environment/index.html#comments">
     </span>
     <p ct><i class='fa-solid fa-comments'></i> 评论</p>
     
@@ -3176,7 +3180,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99"><span class="toc-text">学习资料</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Blender%E6%89%93%E5%BC%80%E6%97%A7%E8%B5%84%E4%BA%A7%E8%87%AA%E5%8A%A8%E8%BD%AC%E6%8D%A2%E5%AF%B9%E5%BA%94%E5%85%B3%E7%B3%BB"><span class="toc-text">Blender打开旧资产自动转换对应关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E5%8C%BA%E5%88%AB%E6%80%BB%E7%BB%93"><span class="toc-text">参数区别总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%AE%98%E6%96%B9Release-Notes%E5%92%8COSL-Shader%E5%90%8E%E5%8F%91%E7%8E%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E5%8C%BA%E5%88%AB"><span class="toc-text">查看官方Release Notes和OSL Shader后发现的一些区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="toc-text">解决方案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%99%E6%AC%A1%E4%B8%BB%E8%A6%81%E5%AD%A6%E4%B9%A0%E5%88%B0%E5%92%8C%E6%A2%B3%E7%90%86%E6%B8%85%E6%A5%9A%E7%9A%84%E6%96%B0%E7%9F%A5%E8%AF%86%E6%9C%89%EF%BC%9A"><span class="toc-text">这次主要学习到和梳理清楚的新知识有：</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#3D-Gaussian-Splatting%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E8%BF%87%E7%A8%8B%EF%BC%88Windows%E4%B8%8B%EF%BC%89"><span class="toc-text">3D Gaussian Splatting环境配置过程（Windows下）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Gaussian-Shader%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%EF%BC%8C%E5%8F%8AUbuntu-windows%E5%8F%8C%E7%B3%BB%E7%BB%9F%E8%AF%B8%E5%A4%9A%E6%8E%92%E9%9B%B7%E8%AE%B0%E5%BD%95"><span class="toc-text">Gaussian Shader环境配置，及Ubuntu+windows双系统诸多排雷记录</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%83%A8%E5%88%86submodule%E5%8F%8A%E5%85%B6%E5%AE%89%E8%A3%85"><span class="toc-text">部分submodule及其安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#WSL%E5%B0%9D%E8%AF%95"><span class="toc-text">WSL尝试</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%95%E8%BA%ABWindows-Ubuntu%E5%8F%8C%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%80%80%E6%8A%B1"><span class="toc-text">投身Windows+Ubuntu双系统的怀抱</span></a></li></ol>
     </div>
   </section>
 
@@ -4236,7 +4240,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/011.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/008.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/013.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/019.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/007.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/023.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/009.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/018.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/015.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/024.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/012.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/006.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/014.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/021.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/022.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/005.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/010.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/017.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/025.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/003.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/002.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/020.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/004.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/001.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/016.webp"];
+  let imgs = ["https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/022.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/015.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/025.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/014.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/004.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/016.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/006.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/001.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/024.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/007.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/008.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/005.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/021.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/010.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/020.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/019.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/011.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/003.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/013.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/017.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/023.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/009.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/002.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/018.webp","https://fastly.jsdelivr.net/gh/YaelCassini/MyGraphBed/blog/background/012.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -4331,60 +4335,6 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 <!-- pjax 标签必须存在于所有页面 否则 pjax error -->
 <pjax>
-
-        <script>
-  // https://github.com/theme-next/hexo-theme-next/blob/master/layout/_third-party/math/mathjax.swig
-  if (typeof MathJax === 'undefined') {
-    window.MathJax = {
-      loader: {
-        source: {
-          '[tex]/amsCd': '[tex]/amscd',
-          '[tex]/AMScd': '[tex]/amscd'
-        }
-      },
-      tex: {
-        inlineMath: {'[+]': [['$', '$']]},
-        tags: 'ams'
-      },
-      options: {
-        renderActions: {
-          findScript: [10, doc => {
-            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
-              const display = !!node.type.match(/; *mode=display/);
-              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
-              const text = document.createTextNode('');
-              node.parentNode.replaceChild(text, node);
-              math.start = {node: text, delim: '', n: 0};
-              math.end = {node: text, delim: '', n: 0};
-              doc.math.push(math);
-            });
-          }, '', false],
-          insertedScript: [200, () => {
-            document.querySelectorAll('mjx-container').forEach(node => {
-              let target = node.parentNode;
-              if (target.nodeName.toLowerCase() === 'li') {
-                target.parentNode.classList.add('has-jax');
-              }
-            });
-          }, '', false]
-        }
-      }
-    };
-    (function () {
-      var script = document.createElement('script');
-      script.src = "https://unpkg.com/volantis-static@0.0.1649552113628/libs/mathjax/es5/tex-mml-chtml.js";
-      script.defer = true;
-      document.head.appendChild(script);
-    })();
-  } else {
-    // 文章章节标题不能为 “MathJax” ，否则会报错。
-    MathJax.startup.document.state(0);
-    MathJax.texReset();
-    MathJax.typesetPromise();
-  }
-</script>
-
-
 
 </pjax>
 
@@ -4517,7 +4467,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Unknown Island","url":"https://yaelcassini.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/","sameAs":["https://github.com/volantis-x"],"description":"赛博垃圾分离企划"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://yaelcassini.github.io/","name":"Unknown Island"}},{"@type":"ListItem","position":2,"item":{"@id":"https://yaelcassini.github.io/categories/Computer-Graphics/","name":"Computer Graphics"}},{"@type":"ListItem","position":2,"item":{"@id":"https://yaelcassini.github.io/categories/Computer-Graphics/Rendering/","name":"Rendering"}},{"@type":"ListItem","position":3,"item":{"@id":"https://yaelcassini.github.io/2024/01/24/Blender4-0-Principled-BSDF-Upgrade/","name":"Blender4.0升级中遇到的Principled BSDF效果不对应问题"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Unknown Island","url":"https://yaelcassini.github.io/","keywords":null,"description":"赛博垃圾分离企划","author":{"@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/","description":"赛博垃圾分离企划"},"publisher":{"@type":"Organization","name":"Unknown Island","url":"https://yaelcassini.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://yaelcassini.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Blender4.0升级中遇到的Principled BSDF效果不对应问题","description":"项目升级Blender4.0后发现Principled BSDF整个重构了，改动非常大，虽然使用Blender4.0打开之前版本的Blender文件时，会有一个自动转换的过程，但是该过程并没有完全达到相同的效果，因此对改动前后的Principled bsdf做了学习和研究，以期望达到之前做的资产在4.0中也可以经过转换后实现和之前差不多的效果的需求。","inLanguage":["zh-CN","en","zh-HK","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://yaelcassini.github.io/2024/01/24/Blender4-0-Principled-BSDF-Upgrade/"},"author":{"@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/"},"publisher":{"@type":"Organization","name":"Unknown Island","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://yaelcassini.github.io/2024/01/24/Blender4-0-Principled-BSDF-Upgrade/","wordCount":176,"datePublished":"2024-01-24T13:20:22.000Z","dateModified":"2024-01-26T07:35:07.024Z","articleSection":"Computer Graphics","keywords":"Blender,Rendering,BSDF","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Unknown Island","url":"https://yaelcassini.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/","sameAs":["https://github.com/volantis-x"],"description":"赛博垃圾分离企划"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://yaelcassini.github.io/","name":"Unknown Island"}},{"@type":"ListItem","position":3,"item":{"@id":"https://yaelcassini.github.io/2024/03/18/GaussianShader-Environment/","name":"GaussianShader Environment"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Unknown Island","url":"https://yaelcassini.github.io/","keywords":null,"description":"赛博垃圾分离企划","author":{"@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/","description":"赛博垃圾分离企划"},"publisher":{"@type":"Organization","name":"Unknown Island","url":"https://yaelcassini.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://yaelcassini.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"GaussianShader Environment","description":"赛博垃圾分离企划","inLanguage":["zh-CN","en","zh-HK","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://yaelcassini.github.io/2024/03/18/GaussianShader-Environment/"},"author":{"@type":"Person","name":"Cassini","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://yaelcassini.github.io/"},"publisher":{"@type":"Organization","name":"Unknown Island","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://yaelcassini.github.io/2024/03/18/GaussianShader-Environment/","wordCount":0,"datePublished":"2024-03-18T14:29:03.000Z","dateModified":"2024-03-18T15:43:00.118Z","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
